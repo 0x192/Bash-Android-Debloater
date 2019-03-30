@@ -1,22 +1,22 @@
 # Beta Version (0.9.1)
 
-## New Features
-- Backup before debloating
+### New Features
+- **Backup before debloating**
 	- Sytem apps apk included
 	- Only internal memory
 	- Stored in current directory under "phone-DDMMYY-HHMMSS.adb"
 
-## Changed 
+### Changed 
 - Minor UI changes
 
 # Beta Version (0.9)
 
-## Supported brands : 
+### Supported brands : 
 - Samsung
 - Xiaomi
 - Huawei
 
-## Specific debloat lists : 
+### Specific debloat lists : 
 - Facebook related
 - T-Mobile related
 - Microsoft related
