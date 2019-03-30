@@ -21,7 +21,6 @@ declare -a google_bloat=(
 	"com.google.android.email"
 	"com.google.android.feedback" #When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
 	"com.google.android.gm" #G-mail app.
-	"com.google.android.googlequicksearchbox" 
 	"com.google.android.googlequicksearchbox" #Google Search.
 	"com.google.android.markup" #Google Markup app made for modifying pictures, ships by default on every Pie+ device.
 	"com.google.android.music" #Google Music
@@ -232,7 +231,6 @@ declare -a microsoft_bloat=(
 
 declare -a generic_bloat=(
 	"com.android.apps.tag" #Still unclear how it acts with system, but should be safe to remove...
-	"com.android.backupconfirm" #Restore google settings with Google Backup restore function.
 	"com.android.bips" #Built-in Print Service. Safe to remove.
 	"com.android.bluetoothmidiservice" #Provides classes for sending and receiving messages using the MIDI event protocol over Bluetooth LE.
 	"com.android.browser" #Stock Browser
@@ -284,6 +282,7 @@ declare -a generic_bloat=(
 	#"com.android.phone.recorder" #Call recorder function.
 	#"com.android.providers.userdictionary" #User dictionary for keyboard apps.
 	#"contacts.com.android.providers.calendar" #Necessary to sync stock Calendar app and let it work correctly.
+	#"com.android.backupconfirm" #Restore google settings with Google Backup restore function. Essential package for ADB backup !! 
 	#******** DEBLOAT AVANCE ********#
 	)
 
