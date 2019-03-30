@@ -12,10 +12,10 @@ function debloat {
 	bloat=("${!name}")
 
 	for i in "${bloat[@]}"; do
-adb shell "
-printf '${RED}$i${NC} --> '
-pm uninstall --user 0 $i
-"
+		adb shell "
+		printf '${RED}$i${NC} --> '
+		pm uninstall --user 0 $i
+		"
 	done
 }
 
@@ -49,6 +49,17 @@ function restore {
 	adb shell "restore backup.ab"
 }
 
+function check_backup {
+	set -o pipefail
+	for a in *.adb; do
+		echo "Vérification de la sauvegarde ($a)";
+		dd if="$a" bs=24 skip=1 | zlib-flate -uncompress | tar tf - >/dev/null;
+		if [ $? = 0 ]; then 
+			printf "${RED}${bold}La sauvegarde généré est intègre${normal}${NC}\n"
+		else printf "${RED}${bold}La sauvegarde généré est corrompue ! ${normal}${NC}\n"
+		fi
+	done
+}
 
 clear
 printf "\n ================================================\n"
@@ -63,10 +74,16 @@ printf " ================================================\n"
 sleep 1
 echo
 adb devices
-# printf "${RED}${bold}Sauvegarde des données du téléphone...${normal}${NC}\n"
-# adb backup '-apk -shared -all -f backup.ab'
-# echo "Vous avez peut-être besoin de confirmer cette sauvegarde depuis votre téléphone"
-# printf "${RED}${bold}Sauvegarde effectuée !${normal}${NC}\n"
+
+printf "${RED}${bold}Voulez vous faire une sauvegarde du téléphone (recommandé) ? ${normal}${NC}\n"
+read -p "YES / NO : "
+if [[ $REPLY =~ [Yy]*[Ee]*[Ss]* ]]; then
+	echo 
+	adb backup -apk -all -system -f "${PHONE:-phone}-`date +%Y%m%d-%H%M%S`.adb"  # -noshare option is default
+	check_backup;
+else printf "${RED}${bold}Pas de sauvegarde${normal}${NC}\n"
+fi
+
 
 # marque=$(adb shell getprop | grep manufacturer)
 
@@ -91,19 +108,19 @@ while true; do
 	echo
 
 	case $action in
-1) list ;;
-2) remove ;;
-3) install ;;
- 4) debloat google_bloat ;;
-5) debloat samsung_bloat ;;
-6) debloat T_Mobile_bloat ;;
-7) debloat amazon_bloat ;;
-8) debloat facebook_bloat ;;
-9) debloat microsoft_bloat ;;
-10) debloat misc_bloat ;;
-11) debloat huawei_bloat;;
-12) debloat generic_bloat ;;
-13) debloat xiaomi_bloat ;;
-"exit") break ;;
+		1) list ;;
+		2) remove ;;
+		3) install ;;
+		4) debloat google_bloat ;;
+		5) debloat samsung_bloat ;;
+		6) debloat T_Mobile_bloat ;;
+		7) debloat amazon_bloat ;;
+		8) debloat facebook_bloat ;;
+		9) debloat microsoft_bloat ;;
+		10) debloat misc_bloat ;;
+		11) debloat huawei_bloat;;
+		12) debloat generic_bloat ;;
+		13) debloat xiaomi_bloat ;;
+		"exit") break ;;
 	esac
 done	
