@@ -20,7 +20,7 @@ function debloat {
 }
 
 function list {
-	printf "\n${RED}Rechercher des paquets : ${NC}"
+	printf "\n${RED}${bold}Rechercher des paquets : ${normal}${NC}"
 	read -r package
 	printf "\n"
 	adb shell "
@@ -29,7 +29,7 @@ function list {
 }
 
 function remove {
-	printf "\n${RED}Nom du paquet à désinstaller : ${NC}"
+	printf "\n${RED}${bold}Nom du paquet à désinstaller : ${normal}${NC}"
 	read -r nom_paquet
 	adb shell "
 	 pm uninstall --user 0 $nom_paquet
@@ -37,7 +37,7 @@ function remove {
 }
 
 function install {
-	printf "\n${RED}Nom du paquet à installer : ${NC}"
+	printf "\n${RED}${bold}Nom du paquet à installer : ${normal}${NC}"
 	read -r nom_paquet
 	adb shell "
 	cmd package install-existing $nom_paquet
@@ -75,9 +75,9 @@ sleep 1
 echo
 adb devices
 
-printf "${RED}${bold}Voulez vous faire une sauvegarde du téléphone (recommandé) ? ${normal}${NC}\n"
+printf "${RED}${bold}Voulez vous faire une sauvegarde du téléphone ? (recommandé) ${normal}${NC}\n"
 read -p "YES / NO : "
-if [[ $REPLY =~ [Yy]*[Ee]*[Ss]* ]]; then
+if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	echo 
 	adb backup -apk -all -system -f "${PHONE:-phone}-`date +%Y%m%d-%H%M%S`.adb"  # -noshare option is default
 	check_backup;
@@ -87,9 +87,9 @@ fi
 
 # marque=$(adb shell getprop | grep manufacturer)
 
-printf "\n${bold}======= MENU PRINCIPAL =======  ${normal}\n"
 
 while true; do
+	printf "\n${bold}======= MENU PRINCIPAL =======  ${normal}\n"
 	printf "\n1  - Lister des paquets\n"
 	printf "2  - Désinstaller un paquet\n"
 	printf "3  - Réinstaller un paquet\n"
