@@ -1,13 +1,5 @@
 #!/bin/bash
 
-
-#### TODO #### 
-# Handle Sony, Wiko, Nokia, Motorola, Asus
-# Workspace lokout meteo partage de lien Mobile hotspot (Samsung)
-# Install apk
-# Backup / Restore
-# Detect brand
-
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 bold=$(tput bold) 
@@ -57,12 +49,12 @@ declare -a google_bloat=(
 	"com.google.tango.measure" #Google Measure app. 
 	"com.google.vr.vrcore" # VR stuff
 	#**********DEBLOAT AVANCE**********#
-	#"com.android.vending" #Google Play Store app.
-	#"com.google.android.apps.maps" #Google maps
-	#"com.google.android.apps.photos" #Application photo
+	"com.android.vending" #Google Play Store app.
+	"com.google.android.apps.maps" #Google maps
+	"com.google.android.apps.photos" #Application photo
 	#"com.google.android.gms" #Google Play Services. DO NOT remove this.
 	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps. DO NOT remove this.
-	#"com.google.android.gsf.login" #Support for managing Google accounts. DO NOT remove this.
+	"com.google.android.gsf.login" #Support for managing Google accounts. DO NOT remove this.
 	#"com.google.android.inputmethod.latin" #Google Board (Clavier Google).
 	#**********DEBLOAT AVANCE**********#
 	)
@@ -269,7 +261,6 @@ declare -a generic_bloat=(
 	"com.android.phasebeam" #Wallpaper.
 	"com.android.printservice.reccomendation" #Keep it, if you need to print directly via your phone.
 	"com.android.printspooler" #Keep it, if you need to print directly via your phone.
-	"com.android.providers.contacts" #Part of stock contact app, sync !!!!! contacts.com.android.providers.calendar #Necessary to sync stock Calendar app and let it work correctly.
 	"com.android.providers.partnerbookmarks" #Provides bookmarks about partners of Google in Chrome.
 	"com.android.quicksearchbox" #Search box.
 	"com.android.soundrecorder" #Sound recorder, obviously.
@@ -280,6 +271,7 @@ declare -a generic_bloat=(
 	"com.android.wallpaper.livepicker" #Wallpaper picker.
 	"com.android.wallpapercropper" #Wallpaper cropper.
 	"com.example.android.notepad" #Notepad app.
+
 
 	#******** DEBLOAT AVANCE ********#
 	#"com.android.emergency"
@@ -296,6 +288,7 @@ declare -a generic_bloat=(
 	#"com.android.vpndialogs" #VPN system.
 	#"com.android.phone.recorder" #Call recorder function.
 	#"com.android.providers.userdictionary" #User dictionary for keyboard apps.
+	#"contacts.com.android.providers.calendar" #Necessary to sync stock Calendar app and let it work correctly.
 	#******** DEBLOAT AVANCE ********#
 	)
 
