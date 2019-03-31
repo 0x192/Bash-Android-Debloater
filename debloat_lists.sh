@@ -1,15 +1,15 @@
 #!/bin/bash
 
+declare -a brands=("Asus" "Huawei" "LG,Nokia" "Samsung" "Xiaomi")
+
 declare -a google_bloat=(
 	"com.android.chrome" #Chrome app
 	"com.google.android.apps.books" #Google Books.
 	"com.google.android.apps.cloudprint" #Cloud print.
 	"com.google.android.apps.currents" #Currents.
-	"com.google.android.apps.docs"
 	"com.google.android.apps.docs" #Google Drive.
 	"com.google.android.apps.fitness" #Google Fit.
 	"com.google.android.apps.magazines" #Google magazines
-	"com.google.android.apps.mapps" #Google Maps app.
 	"com.google.android.apps.photos" #Google Photos.
 	"com.google.android.apps.plus" #Google+.
 	"com.google.android.apps.restore" #Restore apps during first boot.
@@ -18,7 +18,6 @@ declare -a google_bloat=(
 	"com.google.android.apps.wellbeing" #Digital Wellbeing app that is prebuilt in Android Pie. Safe to remove.
 	"com.google.android.backuptransport" #Allows Android apps to back up their data on Google servers.
 	"com.google.android.drive" #Google Drive
-	"com.google.android.email"
 	"com.google.android.feedback" #When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
 	"com.google.android.gm" #G-mail app.
 	"com.google.android.googlequicksearchbox" #Google Search.
@@ -43,12 +42,12 @@ declare -a google_bloat=(
 	"com.google.tango.measure" #Google Measure app. 
 	"com.google.vr.vrcore" # VR stuff
 	#**********DEBLOAT AVANCE**********#
-	"com.android.vending" #Google Play Store app.
-	"com.google.android.apps.maps" #Google maps
-	"com.google.android.apps.photos" #Application photo
+	#"com.android.vending" #Google Play Store app.
+	#"com.google.android.apps.maps" #Google maps
+	#"com.google.android.apps.photos" #Application photo
 	#"com.google.android.gms" #Google Play Services. DO NOT remove this.
 	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps. DO NOT remove this.
-	"com.google.android.gsf.login" #Support for managing Google accounts. DO NOT remove this.
+	#"com.google.android.gsf.login" #Support for managing Google accounts. DO NOT remove this.
 	#"com.google.android.inputmethod.latin" #Google Board (Clavier Google).
 	#**********DEBLOAT AVANCE**********#
 	)
@@ -126,7 +125,6 @@ declare -a samsung_bloat=(
 	"com.dsi.ant.service.socket"
 	"com.dsi.ant.server"
 	"com.dsi.ant.plugins.antplus"
-	"com.android.egg"
 	"com.samsung.android.app.social"
 	"com.samsung.android.app.watchmanagerstub"
 	"com.samsung.android.mateagent"
@@ -267,14 +265,13 @@ declare -a generic_bloat=(
 
 
 	#******** DEBLOAT AVANCE ********#
-	#"com.android.emergency"
 	#"com.android.calendar" #Stock calendar app.
 	#"com.android.contacts" #Stock contacts app.
 	#"com.android.email" #Stock Email app (not Gmail).
 	#"com.android.emergency" #Emergency Contacts. Remove it if you don't use this feature.
 	#"com.android.facelock" #Essential if you wanna use Face Unlock features, removable if you don't want to.
 	#"com.android.gallery3d" #Gallery app.
-	#"com.android.inputmethod.latin" #AOSP keyboard. Safe to remove.
+	#"com.android.inputmethod.latin" #AOSP keyboard.
 	#"com.android.mms" #Stock SMS app.
 	#"com.android.phone" #Dialer app.
 	#"com.android.providers.blockednumber" #Storage of blocked numbers.
@@ -376,7 +373,6 @@ declare -a xiaomi_bloat=(
 	"com.miui.daemon"
 	"com.miui.enbbs"
 	"com.miui.fm"
-	"com.miui.gallery"
 	"com.miui.greenguard"
 	"com.miui.hybrid"
 	"com.miui.hybrid.accessory"
@@ -428,4 +424,7 @@ declare -a xiaomi_bloat=(
 	"com.xiaomi.vipaccount"
 	"org.codeaurora.gps.gpslogsave"
 	"org.simalliance.openmobileapi.service"
+	#******** DEBLOAT AVANCE ********#
+	"com.miui.gallery" #MIUI Gallery 
+	#******** DEBLOAT AVANCE ********#
 	)

@@ -67,16 +67,28 @@ function brand_detection {
 		check=$(adb shell getprop | grep -c $brand)
 		if [[ $check>0 ]]; then 
 			case $brand in
-				"Asus")  echo "Asus -- Debloat list à faire" ;; #Penser à ajouter un break 
-				"Huawei") echo "huawei_bloat" ;; 
-				"LG") echo "LG -- Debloat list à faire" ;;
-				"Nokia") echo "Nokia -- Debloat list à faire" ;;
-				"Samsung") echo "samsung_bloat" ;; 
-				"Xiaomi") echo "xiaomi_bloat" ;;
+				"Asus")  
+					echo "Asus -- Debloat list à faire"
+					return ;;
+				"Huawei") 
+					echo "huawei_bloat"
+					return ;;
+				"LG") 
+					echo "LG -- Debloat list à faire"
+					return ;;
+				"Nokia") 
+					echo "Nokia -- Debloat list à faire"
+					return ;;
+				"Samsung") 
+					echo "samsung_bloat"
+					return ;; 
+				"Xiaomi") 	
+					echo "xiaomi_bloat"
+					return ;;
 			esac
 		fi
-		#echo "Marque non supportée"
 	done
+	echo "Marque non supportée"
 }
 
 clear

@@ -29,7 +29,7 @@
 	- Miscellaneous
 
 ### Changed :
-- **Most of android bloat (independant from brand device) is now moved into its own list (Android bloat) in order to avoid duplicate in the others lists
+- **Most of android bloat (independant from brand device) is now moved into its own list (Android bloat) in order to avoid duplicate in the others lists**
 - **UI/UX improvement :**
 	- Colors added
 	- New banner
