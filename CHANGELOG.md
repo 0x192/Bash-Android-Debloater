@@ -2,7 +2,7 @@
 
 ### Added : 
 - **Sony debloat list**
-## Changed :
+### Changed :
 - ** Some changes in other debloat lists
 
 ### Bugfixes : 
