@@ -12,8 +12,8 @@ function debloat {
 	bloat=("${!name}")
 	printf "${RED}${bold}=== $brand debloat list ===${normal}${NC}\n"
 	for i in "${bloat[@]}"; do
+		printf "${RED}$i${NC} -->"
 		adb shell "
-		printf '${RED}$i${NC} --> '
 		pm uninstall --user 0 $i
 		"
 	done
@@ -62,7 +62,9 @@ function check_backup_integrity {
 	done
 }
 
+
 function brand_detection {
+	## brand = $(adb shell getprop ro.product.device) // peut-être plus judicieux d'utiliser ça
 	for brand in ${brands[@]}; do
 		check=$(adb shell getprop | grep -c $brand)
 		if [[ $check>0 ]]; then 
@@ -147,4 +149,4 @@ while true; do
 		12) debloat generic_bloat ;;
 		"exit") break ;;
 	esac
-done	
+done

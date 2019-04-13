@@ -1,3 +1,11 @@
+# What a vilain bug (v1.1)
+
+### Added : 
+- **Sony debloat list**
+
+### Bugfixes : 
+- **Package display when debloating**
+
 # Here we go (v1.0)
 
 ### New features : 

@@ -14,6 +14,7 @@ Bash script using ADB for unrooted smartphones.
 - Samsung
 - Xiaomi
 - Huawei
+- Sony
 
 ## Debloat lists :
 - Brand's firmware related
@@ -24,8 +25,8 @@ Bash script using ADB for unrooted smartphones.
 - Miscellaneous 
 
 
-## === TODO list === : 
-- **Add debloat list for Nokia, Sony, Wiko, Motorola, Asus**
+## === TODO list === 
+- **Add debloat list for Nokia, Wiko, Motorola, Asus**
 - Add optionnal installation of alternative FOSS apps (F-droid, YalpStore,Silence...)
 - Improve UI/UX
 - Add Windows compatibility
@@ -34,6 +35,6 @@ Bash script using ADB for unrooted smartphones.
 
 ## How to use it (Newbies friendly) :
  - Install Android plateform tools with your package manager 
- - Go the release section and download the .zip file
+ - Go to the release section and download the .zip file
  - Execute *debloat_script.sh*
 

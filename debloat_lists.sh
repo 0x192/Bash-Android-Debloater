@@ -17,12 +17,12 @@ declare -a google_bloat=(
 	"com.google.android.apps.wallpaper" #Google Wallpapers. Safe to remove.
 	"com.google.android.apps.wellbeing" #Digital Wellbeing app that is prebuilt in Android Pie. Safe to remove.
 	"com.google.android.backuptransport" #Allows Android apps to back up their data on Google servers.
+	"com.google.android.calendar" #Google Calendar (NOTE SURE maybe "com.google.android.apps.calendar")
 	"com.google.android.drive" #Google Drive
 	"com.google.android.feedback" #When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
-	"com.google.android.gm" #G-mail app.
 	"com.google.android.googlequicksearchbox" #Google Search.
 	"com.google.android.markup" #Google Markup app made for modifying pictures, ships by default on every Pie+ device.
-	"com.google.android.music" #Google Music
+	"com.google.android.music" #Google Music 
 	"com.google.android.onetimeinitializer" #Provides first time setup, safe to remove.
 	"com.google.android.partnersetup" #Software that helps other apps to work with Google products.
 	"com.google.android.play.games" #Google Play Games.
@@ -33,15 +33,17 @@ declare -a google_bloat=(
 	"com.google.android.syncadapters.calendar" #Google Calendar sync.
 	"com.google.android.syncadapters.contacts" #Google Contacts sync.
 	"com.google.android.talk" #Google Hangouts.
-	"com.google.android.tts" #Text-to-speech powers apps to read text on your scream aloud, in many languages.
-	"com.google.android.videos" #Google Play Movies.
-	"com.google.android.videos" #Google Videos
+	"com.google.android.tts" #Text-to-speech powers apps to read text on your scream aloud, in many languages #Google Play Movies #Google Videos
 	"com.google.android.youtube" #YouTube app.
-	"com.google.ar.core" #Google ARCore app.
+	"com.google.ar.core" #Google ARCore app (Augmented Reality)
+	"com.google.ar.lens" #Google AR again
 	"com.google.marvin.talkback" #Adds some features about accessibility settings.
 	"com.google.tango.measure" #Google Measure app. 
 	"com.google.vr.vrcore" # VR stuff
+	"com.android.hotwordenrollment.okgoogle" #OK Google
+
 	#**********DEBLOAT AVANCE**********#
+	#"com.google.android.gm" #G-mail app.
 	#"com.android.vending" #Google Play Store app.
 	#"com.google.android.apps.maps" #Google maps
 	#"com.google.android.apps.photos" #Application photo
@@ -61,7 +63,7 @@ declare -a samsung_bloat=(
 	"com.samsung.android.app.ledcoverdream"
 	"com.samsung.android.app.memo"
 	"com.samsung.android.app.sbrowseredge"
-	"com.samsung.android.app.storyalbumwidget"
+	"com.samsung.android.app.storyalbumwidge"
 	"com.samsung.android.app.vrsetupwizardstub"
 	"com.samsung.android.app.watchmanager"
 	"com.samsung.android.drivelink.stub"
@@ -85,7 +87,7 @@ declare -a samsung_bloat=(
 	"com.samsung.groupcast"
 	"com.samsung.svoice.sync"
 	"com.samsung.voiceserviceplatform"
-	"com.sec.android.app.desktoplauncher"
+	#"com.sec.android.app.desktoplauncher" #Samsung Launcher
 	"com.sec.android.app.gamehub"
 	"com.sec.android.app.ocr"
 	"com.sec.android.app.samsungapps"
@@ -192,6 +194,9 @@ declare -a amazon_bloat=(
 	"com.amazon.venezia"
 	"com.amazon.aa.attribution"
 	"com.amazon.aa"
+	"com.amazon.mShop.android.shopping"
+	"com.amazon.clouddrive.photo"
+	"com.amazon.avod.thirdpartyclient"
 	)
 
 declare -a facebook_bloat=(
@@ -200,6 +205,8 @@ declare -a facebook_bloat=(
 	"com.facebook.appmanager"
 	"com.facebook.services"
 	"com.facebook.orca"
+	"com.whatsapp"
+	"com.instagram.android"
 	)
 
 declare -a misc_bloat=(
@@ -217,6 +224,7 @@ declare -a misc_bloat=(
 	"com.ebay.mobile"
 	"com.netflix.partner.activation"
 	"com.netflix.mediaclient"
+	"com.spotify.music" 
 	)
 
 declare -a microsoft_bloat=(
@@ -228,6 +236,10 @@ declare -a microsoft_bloat=(
 	)
 
 declare -a generic_bloat=(
+	"com.google.android.marvin.talkback" #Accessibility Service that helps blind and vision-impaired users 
+	"com.android.backupconfirm" # ??? (Sony)
+	"com.android.calllogbackup" # ???? (Sony)
+	"com.android.keychain" # ????? (Sony)
 	"com.android.apps.tag" #Still unclear how it acts with system, but should be safe to remove...
 	"com.android.bips" #Built-in Print Service. Safe to remove.
 	"com.android.bluetoothmidiservice" #Provides classes for sending and receiving messages using the MIDI event protocol over Bluetooth LE.
@@ -263,8 +275,9 @@ declare -a generic_bloat=(
 	"com.android.wallpapercropper" #Wallpaper cropper.
 	"com.example.android.notepad" #Notepad app.
 
-
 	#******** DEBLOAT AVANCE ********#
+	#"com.android.musicfx" #Audio Equalizer
+	#"com.android.facelock" #Face unlock
 	#"com.android.calendar" #Stock calendar app.
 	#"com.android.contacts" #Stock contacts app.
 	#"com.android.email" #Stock Email app (not Gmail).
@@ -427,4 +440,93 @@ declare -a xiaomi_bloat=(
 	#******** DEBLOAT AVANCE ********#
 	"com.miui.gallery" #MIUI Gallery 
 	#******** DEBLOAT AVANCE ********#
+	)
+
+declare -a sony_bloat=(
+	"com.sonymobile.advancedlogging" 
+	"com.sonymobile.anondata" 
+	"com.sonymobile.aptx.notifier" 
+	"com.s.antivirus" 
+	"com.sonyericsson.xhs" 
+	"com.sonymobile.xperialounge.services" 
+	"com.sonymobile.demoappchecker" 
+	"com.sonymobile.deviceconfigtool" 	 
+	"com.sonymobile.music.googlelyricsplugin" 
+	"com.android.htmlviewer" 
+	"com.sonyericsson.idd.agent" 
+	"com.sonymobile.intelligent.observer" 
+	"com.sonymobile.email" 
+	"com.sonyericsson.warrantytime" 
+	"com.sonymobile.prediction" 
+	"com.sonymobile.xperiaservices" 
+	"com.sonymobile.synchub"  
+	"com.sonymobile.music.wikipediaplugin" 
+	"com.sonymobile.xperiatransfermobile" 
+	"com.sonymobile.music.youtubekaraokeplugin" 
+	"com.sonymobile.music.youtubeplugin" 
+	"com.sonyericsson.android.addoncamera.artfilter" 
+	"com.sonymobile.assist.persistent" 
+	"com.sonymobile.assist"  
+	"com.sonymobile.cameracommon.wearablebridge" 
+	"com.sonymobile.retaildemo"
+	"com.sonymobile.getset" 
+	"com.sonymobile.getset.priv"  
+	"com.sonymobile.intelligent.backlight"  
+	"com.sonyericsson.android.omacp" 
+	"com.android.sharedstoragebackup" 
+	"com.sonymobile.simlockunlockapp" 
+	"org.simalliance.openmobileapi.service" 
+	"com.sonymobile.smartcharger"
+	"com.sonymobile.android.addoncamera.soundphoto" 
+	"com.sonyericsson.startupflagservice" 
+	"com.sonyericsson.mtp.extension.backuprestore" 
+	"com.sonyericsson.mtp.extension.factoryreset"
+	"com.sonymobile.mtp.extension.fotaupdate" 
+	"com.sonyericsson.mtp.extension.update" 
+	"com.sonyericsson.mtp" 
+	"com.sonyericsson.wappush" 
+	"com.sonymobile.cellbroadcast.notification" 
+	"com.sonyericsson.unsupportedheadsetnotifier"  
+	"com.sonymobile.support" 
+	"com.sony.tvsideview.videoph" 
+	"com.sonyericsson.textinput.chinese" 
+	"com.sonymobile.android.externalkeyboardjp" 
+	"com.sonymobile.coverapp2" 
+	"com.sonymobile.dualshockmanager" 
+	"com.sonymobile.glovemode" 
+	"com.sonymobile.pip" 
+	"com.sonymobile.pobox" 
+	"com.sonymobile.moviecreator.rmm" 
+	"com.sonymobile.entrance" 
+	"com.android.partnerbrowsercustomizations.chromeHomepage" 
+	"com.sonymobile.scan3d"
+	"com.sonymobile.xperiaweather"
+	"com.sonyericsson.music"
+	"com.sonymobile.assist"
+	"com.sonymobile.assist.persistent"
+	"com.sonymobile.android.externalkeyboardjp"
+	"com.sonymobile.advancedwidget.topcontacts"
+	"com.sonymobile.android.contacts"
+	"com.sonymobile.android.contacts.res.overlay_305"
+	"com.sonymobile.anondata"
+	"com.sonymobile.demoappchecker"
+	"com.sonymobile.dualshockmanager"
+	"com.sonymobile.email"
+	"com.sonymobile.getmore.client"
+	"com.sonymobile.gettoknowit"
+	"com.sonymobile.googleanalyticsproxy"
+	"com.sonymobile.intelligent.backlight"
+	"com.sonymobile.intelligent.gesture"
+	"com.sonymobile.intelligent.iengine"
+	"com.sonymobile.intelligent.observer"
+	"com.sonymobile.lifelog"
+	"com.sonymobile.music.googlelyricsplugin"
+	"com.sonymobile.music.wikipediaplugin"
+	"com.sonymobile.music.youtubekaraokeplugin"
+	"com.sonymobile.music.youtubeplugin"
+	"com.sonymobile.xperialounge.services"
+	"com.sonymobile.xperiaservices"
+	"com.sonymobile.xperiatransfermobile"
+	"com.sonyericsson.textinput.chinese"
+	"com.sonymobile.support"
 	)
