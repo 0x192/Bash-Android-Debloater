@@ -38,11 +38,12 @@ Bash script using ADB for unrooted smartphones.
 
 ## How to use it (Newbies) :
  - Install *Android plateform tools* with your package manager :
+ 
  	Debian Base : 
  	```console
  	apt-get install android-sdk-platform-tools
  	```
- 	Arc-Linux Base
+ 	Arc-Linux Base :
  	```console
  	pacman -S android-tools
  	```
