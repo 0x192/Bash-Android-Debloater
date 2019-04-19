@@ -1,55 +1,140 @@
 #!/bin/bash
 
-declare -a brands=("Asus" "Huawei" "LG,Nokia" "Samsung" "Xiaomi")
+declare -a brands=("Asus" "Huawei" "LG" "Nokia" "Samsung" "Sony" "Xiaomi")
 
 declare -a google_bloat=(
-	"com.android.chrome" #Chrome app
+	"com.android.hotwordenrollment.okgoogle" #OK Google
+	"com.chrome.beta"
+	"com.chrome.canary"
+	"com.chrome.dev"
+	"com.google.android.apps.access.wifi.consumer"
+	"com.google.android.apps.adm"
+	"com.google.android.apps.ads.publisher"
+	"com.google.android.apps.adwords"
+	"com.google.android.apps.authenticator2"
+	"com.google.android.apps.blogger"
 	"com.google.android.apps.books" #Google Books.
+	"com.google.android.apps.chromecast.app"
 	"com.google.android.apps.cloudprint" #Cloud print.
+	"com.google.android.apps.cultural"
 	"com.google.android.apps.currents" #Currents.
 	"com.google.android.apps.docs" #Google Drive.
+	"com.google.android.apps.docs.editors.docs"
+	"com.google.android.apps.docs.editors.sheets"
+	"com.google.android.apps.docs.editors.slides"
+	"com.google.android.apps.dynamite"
+	"com.google.android.apps.enterprise.cpanel"
+	"com.google.android.apps.enterprise.dmagent"
+	"com.google.android.apps.fireball"
 	"com.google.android.apps.fitness" #Google Fit.
+	"com.google.android.apps.freighter"
+	"com.google.android.apps.giant"
+	"com.google.android.apps.googleassistant"
+	"com.google.android.apps.handwriting.ime"
+	"com.google.android.apps.hangoutsdialer"
+	"com.google.android.apps.inbox"
+	"com.google.android.apps.inputmethod.hindi"
+	"com.google.android.apps.kids.familylink"
+	"com.google.android.apps.kids.familylinkhelper"
+	"com.google.android.apps.m4b"
 	"com.google.android.apps.magazines" #Google magazines
+	"com.google.android.apps.maps"
+	"com.google.android.apps.maps"
+	"com.google.android.apps.mapslite"
+	"com.google.android.apps.meetings"
+	"com.google.android.apps.messaging"
+	"com.google.android.apps.navlite"
+	"com.google.android.apps.nbu.files"
+	"com.google.android.apps.paidtasks"
+	"com.google.android.apps.pdfviewer"
 	"com.google.android.apps.photos" #Google Photos.
+	"com.google.android.apps.photos.scanner"
 	"com.google.android.apps.plus" #Google+.
+	"com.google.android.apps.podcasts"
 	"com.google.android.apps.restore" #Restore apps during first boot.
+	"com.google.android.apps.santatracker"
+	"com.google.android.apps.subscriptions.red"
 	"com.google.android.apps.tachyon" #Google Duo.
+	"com.google.android.apps.tasks"
+	"com.google.android.apps.translate"
+	"com.google.android.apps.travel.onthego"
+	"com.google.android.apps.vega"
+	"com.google.android.apps.walletnfcrel"
 	"com.google.android.apps.wallpaper" #Google Wallpapers. Safe to remove.
 	"com.google.android.apps.wellbeing" #Digital Wellbeing app that is prebuilt in Android Pie. Safe to remove.
+	"com.google.android.apps.youtube.creator"
+	"com.google.android.apps.youtube.gaming"
+	"com.google.android.apps.youtube.kids"
+	"com.google.android.apps.youtube.music"
+	"com.google.android.apps.youtube.vr"
 	"com.google.android.backuptransport" #Allows Android apps to back up their data on Google servers.
+	"com.google.android.calculator"
 	"com.google.android.calendar" #Google Calendar (NOTE SURE maybe "com.google.android.apps.calendar")
+	"com.google.android.configupdater"
+	"com.google.android.contacts"
 	"com.google.android.drive" #Google Drive
+	"com.google.android.ext.services"
+	"com.google.android.ext.shared"
 	"com.google.android.feedback" #When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
+	"com.google.android.gm"
+	"com.google.android.gms"
 	"com.google.android.googlequicksearchbox" #Google Search.
+	"com.google.android.gsf"
+	"com.google.android.gsf.login"
+	"com.google.android.ims"
+	"com.google.android.inputmethod.japanese"
+	"com.google.android.inputmethod.korean"
+	"com.google.android.inputmethod.latin"
+	"com.google.android.inputmethod.pinyin"
+	"com.google.android.keep"
 	"com.google.android.markup" #Google Markup app made for modifying pictures, ships by default on every Pie+ device.
+	"com.google.android.marvin.talkback"         
 	"com.google.android.music" #Google Music 
 	"com.google.android.onetimeinitializer" #Provides first time setup, safe to remove.
+	"com.google.android.packageinstaller"
 	"com.google.android.partnersetup" #Software that helps other apps to work with Google products.
 	"com.google.android.play.games" #Google Play Games.
 	"com.google.android.printservice.recommendation"
+	"com.google.android.projection.gearhead"
 	"com.google.android.setupwizard" #Removable after the first start of the phone, it's the basic configuration wizard that drives you through first boot.
 	"com.google.android.soundpicker" #Google Sounds. Removable if you already have another media select service.
 	"com.google.android.street" #Google Street View app.
 	"com.google.android.syncadapters.calendar" #Google Calendar sync.
 	"com.google.android.syncadapters.contacts" #Google Contacts sync.
 	"com.google.android.talk" #Google Hangouts.
+	"com.google.android.tts"
 	"com.google.android.tts" #Text-to-speech powers apps to read text on your scream aloud, in many languages #Google Play Movies #Google Videos
+	"com.google.android.tv.remote"
+	"com.google.android.videos"
+	"com.google.android.vr.home"
+	"com.google.android.vr.inputmethod"
+	"com.google.android.wearable.app"
+	"com.google.android.webview"
 	"com.google.android.youtube" #YouTube app.
 	"com.google.ar.core" #Google ARCore app (Augmented Reality)
 	"com.google.ar.lens" #Google AR again
+	"com.google.chromeremotedesktop"
+	"com.google.earth"
 	"com.google.marvin.talkback" #Adds some features about accessibility settings.
+	"com.google.samples.apps.cardboarddemo"
 	"com.google.tango.measure" #Google Measure app. 
+	"com.google.vr.cyclops"
+	"com.google.vr.expeditions"
 	"com.google.vr.vrcore" # VR stuff
-	"com.android.hotwordenrollment.okgoogle" #OK Google
+	"com.google.zxing.client.android"
+	"com.niksoftware.snapseed"
 
 	#**********DEBLOAT AVANCE**********#
-	#"com.google.android.gm" #G-mail app.
+	"com.google.android.launcher" #Google Now Launcher
+	"com.android.chrome" #Chrome app
+	"com.google.android.deskclock" #Default clock app
+	"com.google.android.gm" #G-mail app.
 	#"com.android.vending" #Google Play Store app.
-	#"com.google.android.apps.maps" #Google maps
-	#"com.google.android.apps.photos" #Application photo
-	#"com.google.android.gms" #Google Play Services. DO NOT remove this.
-	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps. DO NOT remove this.
-	#"com.google.android.gsf.login" #Support for managing Google accounts. DO NOT remove this.
+	"com.google.android.apps.maps" #Google maps
+	"com.google.android.apps.photos" #Application photo
+	#"com.google.android.gms" #Google Play Services ----------------------------------- DO NOT remove this unless you know what you're doing !
+	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps ------ DO NOT remove this unless you know what you're doing !
+	#"com.google.android.gsf.login" #Support for managing Google accounts ------------- DO NOT remove this unless you know what you're doing !
 	#"com.google.android.inputmethod.latin" #Google Board (Clavier Google).
 	#**********DEBLOAT AVANCE**********#
 	)
@@ -224,7 +309,8 @@ declare -a misc_bloat=(
 	"com.ebay.mobile"
 	"com.netflix.partner.activation"
 	"com.netflix.mediaclient"
-	"com.spotify.music" 
+	"com.spotify.music"
+	"com.evernote"
 	)
 
 declare -a microsoft_bloat=(
@@ -239,6 +325,7 @@ declare -a generic_bloat=(
 	"com.google.android.marvin.talkback" #Accessibility Service that helps blind and vision-impaired users 
 	"com.android.backupconfirm" # ??? (Sony)
 	"com.android.calllogbackup" # ???? (Sony)
+	"com.android.dreams.phototable"              
 	"com.android.keychain" # ????? (Sony)
 	"com.android.apps.tag" #Still unclear how it acts with system, but should be safe to remove...
 	"com.android.bips" #Built-in Print Service. Safe to remove.
@@ -278,6 +365,7 @@ declare -a generic_bloat=(
 	#******** DEBLOAT AVANCE ********#
 	#"com.android.musicfx" #Audio Equalizer
 	#"com.android.facelock" #Face unlock
+	#"com.android.providers.calendar" #Stock calendar app           
 	#"com.android.calendar" #Stock calendar app.
 	#"com.android.contacts" #Stock contacts app.
 	#"com.android.email" #Stock Email app (not Gmail).
@@ -530,3 +618,196 @@ declare -a sony_bloat=(
 	"com.sonyericsson.textinput.chinese"
 	"com.sonymobile.support"
 	)
+
+declare -a nokia_bloat=(
+	"com.evenwell.apnwidget.overlay.base.s600ww"
+	"com.evenwell.AprUploadService"
+	"com.evenwell.AprUploadService.data.overlay.base.s600ww"
+	"com.evenwell.autoregistration"
+	"com.evenwell.autoregistration.overlay.base.s600ww"
+	"com.evenwell.batteryprotect"
+	"com.evenwell.batteryprotect.overlay.base.s600ww"
+	"com.evenwell.bboxsbox"
+	"com.evenwell.bboxsbox.app"
+	"com.evenwell.bokeheditor"
+	"com.evenwell.bokeheditor.overlay.base.s600ww"
+	"com.evenwell.CPClient"
+	"com.evenwell.CPClient.overlay.base.s600ww"
+	"com.evenwell.custmanager"
+	"com.evenwell.custmanager.data.overlay.base.s600ww"
+	"com.evenwell.customerfeedback.overlay.base.s600ww"
+	"com.evenwell.dataagent"
+	"com.evenwell.dataagent.overlay.base.s600ww"
+	"com.evenwell.DbgCfgTool"
+	"com.evenwell.DbgCfgTool.overlay.base.s600ww"
+	"com.evenwell.defaultappconfigure.overlay.base.s600ww"
+	"com.evenwell.DeviceMonitorControl"
+	"com.evenwell.DeviceMonitorControl.data.overlay.base.s600ww"
+	"com.evenwell.email.data.overlay.base.s600ww"
+	"com.evenwell.factorywizard"
+	"com.evenwell.factorywizard.overlay.base.s600ww"
+	"com.evenwell.fmradio"
+	"com.evenwell.fmradio.overlay.base.s600ww"
+	"com.evenwell.foxlauncher.partner"
+	"com.evenwell.fqc"
+	"com.evenwell.legalterm"
+	"com.evenwell.legalterm.overlay.base.s600ww"
+	"com.evenwell.managedprovisioning.overlay.base.s600ww"
+	"com.evenwell.mappartner"
+	"com.evenwell.nps"
+	"com.evenwell.nps.overlay.base.s600ww"
+	"com.evenwell.OTAUpdate"
+	"com.evenwell.OTAUpdate.overlay.base.s600ww"
+	"com.evenwell.partnerbrowsercustomizations.overlay.base.s600ww"
+	"com.evenwell.permissiondetection"
+	"com.evenwell.permissiondetection.overlay.base.s600ww"
+	"com.evenwell.phone.overlay.base.s600ww"
+	"com.evenwell.PowerMonitor"
+	"com.evenwell.PowerMonitor.overlay.base.s600ww"
+	"com.evenwell.powersaving.g3"
+	"com.evenwell.powersaving.g3.overlay.base.s600ww"
+	"com.evenwell.providers.downloads.overlay.base.s600ww"
+	"com.evenwell.providers.downloads.ui.overlay.base.s600ww"
+	"com.evenwell.providers.partnerbookmarks.overlay.base.s600ww"
+	"com.evenwell.providers.weather"
+	"com.evenwell.providers.weather.overlay.base.s600ww"
+	"com.evenwell.pushagent"
+	"com.evenwell.pushagent.overlay.base.s600ww"
+	"com.evenwell.retaildemoapp"
+	"com.evenwell.retaildemoapp.overlay.base.s600ww"
+	"com.evenwell.screenlock.overlay.base.s600ww"
+	"com.evenwell.settings.data.overlay.base.s600ww"
+	"com.evenwell.SettingsUtils"
+	"com.evenwell.SettingsUtils.overlay.base.s600ww"
+	"com.evenwell.SetupWizard"
+	"com.evenwell.setupwizard.btl.s600ww.overlay"
+	"com.evenwell.SetupWizard.overlay.base.s600ww"
+	"com.evenwell.stbmonitor"
+	"com.evenwell.stbmonitor.data.overlay.base.s600ww"
+	"com.evenwell.telecom.data.overlay.base.s600ww"
+	"com.evenwell.UsageStatsLogReceiver"
+	"com.evenwell.UsageStatsLogReceiver.data.overlay.base.s600ww"
+	"com.evenwell.weather.overlay.base.s600ww"
+	"com.evenwell.weatherservice"
+	"com.evenwell.weatherservice.overlay.base.s600ww"
+
+	#************DEBLOAT AVANCE***********#
+	#Inbuilt camera -> can be replaced by Open-camera 
+	"com.hmdglobal.camera2"
+	"com.evenwell.camera2"
+	"com.hmdglobal.support"
+	"com.evenwell.hdrservice"
+	###############
+	)
+
+declare -a asus_bloat=(
+	"com.asus.soundrecorder"                     
+	"com.caf.fmradio" 
+	"com.huaqin.FM"                                                  
+	"com.generalmobi.go2pay"                                
+	"com.asus.ia.asusapp"                        
+	"id.co.babe"                                 
+	"com.pure.indosat.care"                      
+	"com.shopee.id"                                                        
+	#******** DEBLOAT AVANCE *******#
+	#"com.asus.calculator"                        
+	)
+
+declare -a lg_bloat=(
+	"com.android.LGSetupWizard"
+	"com.android.printspooler"
+	"com.lge.appbox.client"
+	"com.lge.bnr"
+	"com.lge.bnr.launcher"
+	"com.lge.cic.eden.service"
+	"com.lge.clock"
+	"com.lge.cloudhub"
+	"com.lge.drmservice"
+	"com.lge.easyhome"
+	"com.lge.eltest"
+	"com.lge.email"
+	"com.lge.eula"
+	"com.lge.eulaprovider"
+	"com.lge.fmradio"
+	"com.lge.fmradio"
+	"com.lge.friendsmanager"
+	"com.lge.gallery.collagewallpaper"
+	"com.lge.gallery.vr.wallpaper"
+	"com.lge.gcuv"
+	"com.lge.gestureanswering"
+	"com.lge.gnss.airtest"
+	"com.lge.gnsslogcat"
+	"com.lge.gnsspostest"
+	"com.lge.gnsstest"
+	"com.lge.hifirecorder"
+	"com.lge.homeselector"
+	"com.lge.hotspotlauncher"
+	"com.lge.ia.task.incalagent"
+	"com.lge.ia.task.smartcare"
+	"com.lge.ia.task.smartsetting"
+	"com.lge.iftttmanager"
+	"com.lge.ime"
+	"com.lge.ime.solution.handwriting"
+	"com.lge.ime.solution.text"
+	"com.lge.launcher2"
+	"com.lge.launcher2.theme.optimus"
+	"com.lge.launcher3"
+	"com.lge.leccp"
+	"com.lge.lgaccount"
+	"com.lge.lgdrm.permission"
+	"com.lge.lginstallservies"
+	"com.lge.lgmapui"
+	"com.lge.lgsetupview"
+	"com.lge.lgworld"
+	"com.lge.lifetracker"
+	"com.lge.mirrorlink"
+	"com.lge.mlt"
+	"com.lge.mtalk.sf"
+	"com.lge.musicshare"
+	"com.lge.myplace"
+	"com.lge.myplace.engine"
+	"com.lge.phonemanagement"
+	"com.lge.privacylock"
+	"com.lge.qhelp"
+	"com.lge.qhelp.application"
+	"com.lge.qmemoplus"
+	"com.lge.remote.lgairdrive"
+	"com.lge.remote.setting"
+	"com.lge.sizechangable.musicwidget.widget"
+	"com.lge.sizechangable.weather"
+	"com.lge.sizechangable.weather.platform"
+	"com.lge.sizechangable.weather.theme.optimus"
+	"com.lge.smartdoctor.webview"
+	"com.lge.smartshare"
+	"com.lge.smartshare.provider"
+	"com.lge.smartsharepush"
+	"com.lge.snappage"
+	"com.lge.springcleaning"
+	"com.lge.sync"
+	"com.lge.updatecenter"
+	"com.lge.video.vr.wallpaper"
+	"com.lge.videoplayer"
+	"com.lge.videostudio"
+	"com.lge.voicecare"
+	"com.lge.vrplayer"
+	"com.lge.wernicke"
+	"com.lge.wernicke.nlp"
+	"com.lge.wfd.spmirroring.source"	
+	"com.lge.wfds.service.v3"
+	"com.lge.wifi.p2p"
+	"com.lge.wifihotspotwidget"
+	"com.LogiaGroup.LogiaDeck"
+	"com.lookout"
+	"com.mobitv.client.tmobiletvhd"
+	"com.nextradioapp.nextradio"
+	"com.tmobile.pr.adapt"
+	"com.tmobile.pr.mytmobile"
+	"com.tmobile.services.nameid"
+	"com.tmobile.simlock"
+
+	#******** DEBLOAT AVANCE ********#
+	#"com.lge.filemanager" #Stock file manager
+	"com.lge.music" #Stock music player
+	#"com.lge.floatingbar" #Floating bar
+	)
+

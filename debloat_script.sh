@@ -70,20 +70,23 @@ function brand_detection {
 		if [[ $check>0 ]]; then 
 			case $brand in
 				"Asus")  
-					echo "Asus -- Debloat list à faire"
+					echo "asus_bloat"
 					return ;;
 				"Huawei") 
 					echo "huawei_bloat"
 					return ;;
 				"LG") 
-					echo "LG -- Debloat list à faire"
+					echo "lg_bloat"
 					return ;;
 				"Nokia") 
-					echo "Nokia -- Debloat list à faire"
+					echo "nokia_bloat"
 					return ;;
 				"Samsung") 
 					echo "samsung_bloat"
 					return ;; 
+				"Sony") 	
+					echo "sony_bloat"
+					return ;;
 				"Xiaomi") 	
 					echo "xiaomi_bloat"
 					return ;;
@@ -99,7 +102,7 @@ printf " #                                              #\n"
 printf " #             SCRIPT ----- DEBLOAT             #\n"
 printf " #         ALL DEVICES COMPATIBLE (WIP)         #\n"
 printf " #                                              #\n"
-printf " # %14s${RED}${bold}v1.0 (31-03-2019)${normal}${NC}%14s#\n"
+printf " # %14s${RED}${bold}v1.2 (19-04-2019)${normal}${NC}%14s#\n"
 printf " #                                              #\n"
 printf " ================================================\n"
 echo
@@ -111,6 +114,7 @@ read
 if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	echo 
 	adb backup -apk -all -system -f "${PHONE:-phone}-`date +%Y%m%d-%H%M%S`.adb"  # -noshare option is default
+	echo "Verification de l'intégrité de la sauvegarde..."
 	check_backup_integrity;
 else printf "${RED}${bold}Pas de sauvegarde${normal}${NC}\n"
 fi

@@ -1,7 +1,17 @@
+# More supported devices (v1.2)
+
+### Added : 
+- **Asus debloat list**
+- **LG debloat list**
+- **Nokia debloat list**
+
+
 # What a vilain bug (v1.1)
 
 ### Added : 
 - **Sony debloat list**
+### Changed :
+- ** Some changes in other debloat lists
 
 ### Bugfixes : 
 - **Package display when debloating**

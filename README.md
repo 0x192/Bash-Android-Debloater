@@ -10,11 +10,14 @@ Bash script using ADB for unrooted smartphones.
 - Restore an existed backup
 - Brand device detection and auto-selection of the appropriate debloat list
 
-## Supported brands : 
-- Samsung
-- Xiaomi
+## Supported brands :
+- Asus
+- LG
 - Huawei
+- Nokia
+- Samsung
 - Sony
+- Xiaomi
 
 ## Debloat lists :
 - Brand's firmware related
@@ -26,7 +29,7 @@ Bash script using ADB for unrooted smartphones.
 
 
 ## === TODO list === 
-- **Add debloat list for Nokia, Wiko, Motorola, Asus**
+- **Add debloat list for Wiko, Motorola, Google (Pixel)**
 - Add optionnal installation of alternative FOSS apps (F-droid, YalpStore,Silence...)
 - Improve UI/UX
 - Add Windows compatibility
