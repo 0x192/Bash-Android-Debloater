@@ -11,7 +11,7 @@
 ### Added : 
 - **Sony debloat list**
 ### Changed :
-- ** Some changes in other debloat lists
+- **Some changes in other debloat lists**
 
 ### Bugfixes : 
 - **Package display when debloating**
