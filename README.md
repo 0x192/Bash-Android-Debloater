@@ -36,8 +36,16 @@ Bash script using ADB for unrooted smartphones.
 - Add in comment the purpose of each deleted package
 
 
-## How to use it (Newbies friendly) :
- - Install Android plateform tools with your package manager 
+## How to use it (Newbies) :
+ - Install *Android plateform tools* with your package manager :
+ 	Debian Base : 
+ 	```console
+ 	apt-get install android-sdk-platform-tools
+ 	```
+ 	Arc-Linux Base
+ 	```console
+ 	pacman -S android-tools
+ 	```
  - Go to the release section and download the .zip file
- - Execute *debloat_script.sh*
+ - Execute *debloat_script.sh* et voilà ! 
 
