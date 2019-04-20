@@ -23,6 +23,7 @@ You can NOT brick your device with this script !
 * [X] Asus
 * [X] LG
 * [ ] Google
+* [ ] HTC
 * [X] Huawei
 * [ ] Motorola
 * [X] Nokia
