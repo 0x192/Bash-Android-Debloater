@@ -46,16 +46,6 @@ Phone carriers :
 * [ ] Bouygues Telecom
 
 
-## === TODO LIST === 
-- **Add debloat list for more brand**
-- **Add debloat list for more phone carrier (US and French FAI first)**
-- **Wiki and FAQ (What to do if the phone is in bootloop etc...)**
-- Add optionnal installation of alternative FOSS apps (F-droid, YalpStore,Silence...)
-- Improve UI/UX
-- Add Windows compatibility
-- Add in comment the purpose of each deleted package
-
-
 ## How to use it (Newbies) :
 - **Read the FAQ (Wiki Section)**
 - Install *Android plateform tools* with your package manager :
