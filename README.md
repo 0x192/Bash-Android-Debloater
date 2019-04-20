@@ -15,7 +15,7 @@ You can NOT brick your device with this script !
 * [X] Backup all .apk from system/user apps stored in internal memory
 * [X] Restore an existed backup
 * [X] Brand device detection and auto-selection of the appropriate debloat list
-* [ ] Installation of alternative FOOS apps (list in the WIKI section)
+* [ ] Installation of alternative FOSS apps replacing stock app (list in the WIKI section)
 
 ## Supported brands :
 * [X] Asus
