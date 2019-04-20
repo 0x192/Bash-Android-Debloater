@@ -4,7 +4,9 @@ Bash script using ADB for unrooted smartphones.
 
 **DISCLAIMER** : I am not responsible for thermonuclear war, you getting fired because you disabled the alarm app or for anything that could happen to your phone actually. :)
 
-Don't worry, this script is pretty safe if you only use my debloat lists. The worse thing you can do is "deleting" (this script doesn't delete because it's for non-rooted phone actually (see FAQ)) a system packet essential to the system preventing the phone to correctly boot (bootloop). After arround 5 try to boot, the phone will automatically boot into recovery mode enabling you to do a FACTORY RESET. You can NOT brick your device with this script ! 
+Don't worry, this script is pretty safe if you only use my debloat lists. The worse thing you can do is "deleting" (you don't delete actually -- cf.FAQ) a system packet essential to the system preventing the phone to boot correctly (bootloop). After about 5 failed system boot, the phone will automatically boot into recovery mode enabling you to do a FACTORY RESET. 
+
+You can NOT brick your device with this script ! 
 
 ## Features :
 - Quick search among all the packages of a phone
