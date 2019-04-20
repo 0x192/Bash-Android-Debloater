@@ -9,34 +9,47 @@ Don't worry, this script is pretty safe if you only use my debloat lists. The wo
 You can NOT brick your device with this script ! 
 
 ## Features :
-- Quick search among all the packages of a phone
-- Uninstall system/user package
-- Reinstall system package
-- Backup all .apk from system/user apps stored in internal memory
-- Restore an existed backup
-- Brand device detection and auto-selection of the appropriate debloat list
+* [X] Quick search among all the packages of a phone
+* [X] Uninstall system/user package
+* [X] Reinstall system package
+* [X] Backup all .apk from system/user apps stored in internal memory
+* [X] Restore an existed backup
+* [X] Brand device detection and auto-selection of the appropriate debloat list
+* [ ] Installation of alternative FOOS apps (list in the WIKI section)
 
 ## Supported brands :
-- Asus
-- LG
-- Huawei
-- Nokia
-- Samsung
-- Sony
-- Xiaomi
+* [X] Asus
+* [X] LG
+* [ ] Google
+* [X] Huawei
+* [ ] Motorola
+* [X] Nokia
+* [X] Samsung
+* [X] Sony
+* [ ] Wiko
+* [X] Xiaomi
 
 ## Debloat lists :
-- Brand's firmware related
-- Facebook related
-- T-Mobile related
-- Microsoft related
-- Google related
-- Miscellaneous 
+* [X] Brand's firmware related
+* [X] Facebook related
+* [X] Google related
+* [X] Microsoft related
+* [X] Miscellaneous
+
+Phone carriers :
+* [X] T-Mobile
+* [ ] Verizon 
+* [ ] AT&T
+* [ ] Free 
+* [ ] SFR
+* [ ] Orange
+* [ ] Bouygues Telecom
 
 
-## === TODO list === 
-- **Add debloat list for Wiko, Motorola, Google (Pixel)**
-- **Wiki and FAQ (What to do if the phone is in bootloop etc...)
+## === TODO LIST === 
+- **Add debloat list for more brand**
+- **Add debloat list for more phone carrier (US and French FAI first)**
+- **Wiki and FAQ (What to do if the phone is in bootloop etc...)**
 - Add optionnal installation of alternative FOSS apps (F-droid, YalpStore,Silence...)
 - Improve UI/UX
 - Add Windows compatibility
