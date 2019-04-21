@@ -3,12 +3,12 @@
 Bash script using ADB for unrooted smartphones.
 
 
-> **DISCLAIMER** : I am not responsible for thermonuclear war, you getting fired because you disabled the alarm app or for anything that could happen to your phone actually. :)
->
+**DISCLAIMER** : I am not responsible for thermonuclear war, you getting fired because you break the alarm app or for anything that could happen to your phone actually. 
 
-Don't worry, this script is pretty safe if you only use my debloat lists. The worse thing you can do is "deleting" (you don't delete actually -- cf.FAQ) a system packet essential to the system preventing the phone to boot correctly (bootloop). After about 5 failed system boot, the phone will automatically boot into recovery mode enabling you to do a FACTORY RESET. 
 
-You can NOT brick your device with this script ! 
+Don't worry, this script is pretty safe if you only use my debloat lists. If not, the worse thing you can do is "deleting" (you don't delete actually -- cf.FAQ) a system packet essential to the system and preventing the phone to boot correctly (bootloop). After about 5 failed system boot, the phone will automatically boot into recovery mode enabling you to do a FACTORY RESET. 
+
+You can NOT brick your device with this script ! :smiley:
 
 ## Features :
 * [X] Quick search among all the packages of a phone
@@ -17,7 +17,7 @@ You can NOT brick your device with this script !
 * [X] Backup all .apk from system/user apps stored in internal memory
 * [X] Restore an existed backup
 * [X] Brand device detection and auto-selection of the appropriate debloat list
-* [ ] Installation of alternative FOSS apps replacing stock app (list in the WIKI section)
+* [ ] Installation of alternative FOSS apps replacing stock apps (list in the WIKI section)
 
 ## Supported brands :
 * [X] Asus
