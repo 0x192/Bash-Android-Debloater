@@ -1,4 +1,4 @@
-# v1.2.1
+# Reminder is important (v1.2.1)
 
 ### Added : 
 - **Reminder for the user** 
@@ -6,6 +6,13 @@
 	- To reboot the phone after debloat
 	- The backup is not what you could think (refer to the FAQ)
 
+# More supported devices (v1.2)
+	
+### Added : 	
+- **Asus debloat list**	
+- **LG debloat list**	
+- **Nokia debloat list**
+	
 
 # What a vilain bug (v1.1)
 
@@ -16,6 +23,7 @@
 
 ### Bugfixes : 
 - **Package display when debloating**
+
 
 # Here we go (v1.0)
 
@@ -40,6 +48,7 @@
 
 ### Changed :
 - **Minor UI changes**
+
 
 # Beta Version (v0.8)
 
