@@ -102,14 +102,15 @@ printf " #                                              #\n"
 printf " #             SCRIPT ----- DEBLOAT             #\n"
 printf " #         ALL DEVICES COMPATIBLE (WIP)         #\n"
 printf " #                                              #\n"
-printf " # %14s${RED}${bold}v1.2 (19-04-2019)${normal}${NC}%14s#\n"
+printf " # %13s${RED}${bold}v1.2.1 (21-04-2019)${normal}${NC}%13s#\n"
 printf " #                                              #\n"
 printf " ================================================\n"
 echo
 
 adb devices
-
-printf "${RED}${bold}Voulez vous faire une sauvegarde du téléphone [Yes/No] ? (recommandé) ${normal}${NC}"
+printf "${RED}${bold}AVERTISSEMENT : Lisez attentivement la FAQ avant de vous servir de ce script\n\n"
+printf "Voulez vous faire une sauvegarde de toutes les applications du téléphone [Yes/No] ? (recommandé)\n\n${normal}${NC}"
+printf "RAPPEL : Il est probable que toutes les applications ne soient pas sauvegardées (cf. FAQ).\n\n"
 read
 if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	echo 
@@ -118,7 +119,6 @@ if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	check_backup_integrity;
 else printf "${RED}${bold}Pas de sauvegarde${normal}${NC}\n"
 fi
-
 while true; do
 	printf "\n${bold}======= MENU PRINCIPAL =======  ${normal}\n\n"
 	printf "1    - Lister des paquets\n"
@@ -134,6 +134,7 @@ while true; do
 	printf "11   - Debloat Divers\n"
 	printf "12   - Debloat Android\n"
 	printf "exit - Quitter\n\n"
+	printf "${RED}${bold}PENSEZ À REDEMARRER VOTRE TELEPHONE UNE FOIS LE DEBLOAT TERMINE. ${normal}${NC}\n\n"
 	read -p "${bold}Choisissez une action : ${normal}" action
 	echo
 

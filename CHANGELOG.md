@@ -1,9 +1,10 @@
-# More supported devices (v1.2)
+# v1.2.1
 
 ### Added : 
-- **Asus debloat list**
-- **LG debloat list**
-- **Nokia debloat list**
+- **Reminder for the user** 
+	- To read the FAQ before using the script
+	- To reboot the phone after debloat
+	- The backup is not what you could think (refer to the FAQ)
 
 
 # What a vilain bug (v1.1)
