@@ -47,7 +47,7 @@ Phone carriers :
 
 
 ## How to use it (Newbies) :
-- **Read the [FAQ](FAQ) !!** 
+- **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/wikis/FAQ) !!** 
 - Install *Android plateform tools* with your package manager :
 
  	Debian Base : 
