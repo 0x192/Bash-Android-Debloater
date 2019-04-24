@@ -5,7 +5,7 @@
 
 Don't worry, this script is (pretty) safe if you only use my debloat lists. If not, the worse thing you can do is preventing a essential system process to be loaded during boot and causing thus an unfortunate bootloop. After about 5 failed system boot, the phone will automatically boot into recovery mode and you'll have to perform a FACTORY RESET. 
 
-In any case, You can NOT brick your device with this script ! :smiley:
+In any case, you can NOT brick your device with this script ! :smiley:
 
 ## Features :
 * [X] Quick search among all the packages of a phone
@@ -54,7 +54,7 @@ Phone carriers :
  	```console
  	apt-get install android-sdk-platform-tools
  	```
- 	Arc-Linux Base :
+ 	Arch-Linux Base :
  	```console
  	pacman -S android-tools
  	```
