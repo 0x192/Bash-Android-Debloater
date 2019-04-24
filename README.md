@@ -1,14 +1,11 @@
 # Universal Android Debloater
 
-Bash script using ADB for unrooted smartphones.
-
-
 **DISCLAIMER** : I am not responsible for thermonuclear war, you getting fired because you break the alarm app or for anything that could happen to your phone actually. 
 
 
-Don't worry, this script is pretty safe if you only use my debloat lists. If not, the worse thing you can do is "deleting" (you don't delete actually -- cf.FAQ) a system packet essential to the system and preventing the phone to boot correctly (bootloop). After about 5 failed system boot, the phone will automatically boot into recovery mode enabling you to do a FACTORY RESET. 
+Don't worry, this script is (pretty) safe if you only use my debloat lists. If not, the worse thing you can do is preventing a essential system process to be loaded during boot and causing thus an unfortunate bootloop. After about 5 failed system boot, the phone will automatically boot into recovery mode and you'll have to perform a FACTORY RESET. 
 
-You can NOT brick your device with this script ! :smiley:
+In any case, You can NOT brick your device with this script ! :smiley:
 
 ## Features :
 * [X] Quick search among all the packages of a phone
@@ -50,7 +47,7 @@ Phone carriers :
 
 
 ## How to use it (Newbies) :
-- **Read the FAQ (Wiki Section)**
+- **Read the FAQ (Wiki Section) !!** 
 - Install *Android plateform tools* with your package manager :
 
  	Debian Base : 
