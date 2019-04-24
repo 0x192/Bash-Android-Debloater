@@ -47,7 +47,7 @@ Phone carriers :
 
 
 ## How to use it (Newbies) :
-- **Read the FAQ (Wiki Section) !!** 
+- **Read the [FAQ](FAQ) !!** 
 - Install *Android plateform tools* with your package manager :
 
  	Debian Base : 
