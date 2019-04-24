@@ -1,11 +1,11 @@
 # Universal Android Debloater
 
-**DISCLAIMER** : I am not responsible for thermonuclear war, you getting fired because you break the alarm app or for anything that could happen to your phone actually. 
+**DISCLAIMER** : I am not responsible for thermonuclear war, you getting fired because you broke the alarm app or for anything that could happen to your phone actually. 
 
 
 Don't worry, this script is (pretty) safe if you only use my debloat lists. If not, the worse thing you can do is preventing a essential system process to be loaded during boot and causing thus an unfortunate bootloop. After about 5 failed system boot, the phone will automatically boot into recovery mode and you'll have to perform a FACTORY RESET. 
 
-In any case, you can NOT brick your device with this script ! :smiley:
+In any case, you can NOT brick your device with this script ! It is the essential right ? :smiley:
 
 ## Features :
 * [X] Quick search among all the packages of a phone
