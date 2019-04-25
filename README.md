@@ -31,10 +31,12 @@ In any case, you can NOT brick your device with this script ! That's the main th
 * [X] Xiaomi
 
 ## Debloat lists :
-* [X] Brand's firmware related
-* [X] Facebook related
-* [X] Google related
-* [X] Microsoft related
+* [X] Amazon 
+* [X] Brand's firmware specific
+* [X] Facebook
+* [X] Generic Android bloat
+* [X] Google
+* [X] Microsoft
 * [X] Miscellaneous
 
 Phone carriers :
