@@ -17,6 +17,7 @@ In any case, you can NOT brick your device with this script ! That's the main th
 * [ ] Installation of alternative FOSS apps replacing stock apps (list in the WIKI section)
 
 ## Supported brands :
+* [ ] Archos
 * [X] Asus
 * [X] LG
 * [ ] Google
