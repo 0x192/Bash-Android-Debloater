@@ -14,7 +14,7 @@
 - **Nokia debloat list**
 	
 
-# What a vilain bug (v1.1)
+# What a naughty bug (v1.1)
 
 ### Added : 
 - **Sony debloat list**
