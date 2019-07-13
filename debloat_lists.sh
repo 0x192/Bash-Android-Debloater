@@ -39,7 +39,6 @@ declare -a google_bloat=(
 	"com.google.android.apps.m4b"
 	"com.google.android.apps.magazines" #Google magazines
 	"com.google.android.apps.maps"
-	"com.google.android.apps.maps"
 	"com.google.android.apps.mapslite"
 	"com.google.android.apps.meetings"
 	"com.google.android.apps.messaging"
@@ -77,21 +76,16 @@ declare -a google_bloat=(
 	"com.google.android.ext.shared"
 	"com.google.android.feedback" #When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
 	"com.google.android.gm"
-	"com.google.android.gms"
 	"com.google.android.googlequicksearchbox" #Google Search.
-	"com.google.android.gsf"
-	"com.google.android.gsf.login"
 	"com.google.android.ims"
 	"com.google.android.inputmethod.japanese"
 	"com.google.android.inputmethod.korean"
-	"com.google.android.inputmethod.latin"
 	"com.google.android.inputmethod.pinyin"
 	"com.google.android.keep"
 	"com.google.android.markup" #Google Markup app made for modifying pictures, ships by default on every Pie+ device.
 	"com.google.android.marvin.talkback"         
 	"com.google.android.music" #Google Music 
 	"com.google.android.onetimeinitializer" #Provides first time setup, safe to remove.
-	"com.google.android.packageinstaller"
 	"com.google.android.partnersetup" #Software that helps other apps to work with Google products.
 	"com.google.android.play.games" #Google Play Games.
 	"com.google.android.printservice.recommendation"
@@ -102,14 +96,12 @@ declare -a google_bloat=(
 	"com.google.android.syncadapters.calendar" #Google Calendar sync.
 	"com.google.android.syncadapters.contacts" #Google Contacts sync.
 	"com.google.android.talk" #Google Hangouts.
-	"com.google.android.tts"
 	"com.google.android.tts" #Text-to-speech powers apps to read text on your scream aloud, in many languages #Google Play Movies #Google Videos
 	"com.google.android.tv.remote"
 	"com.google.android.videos"
 	"com.google.android.vr.home"
 	"com.google.android.vr.inputmethod"
 	"com.google.android.wearable.app"
-	"com.google.android.webview"
 	"com.google.android.youtube" #YouTube app.
 	"com.google.ar.core" #Google ARCore app (Augmented Reality)
 	"com.google.ar.lens" #Google AR again
@@ -125,6 +117,7 @@ declare -a google_bloat=(
 	"com.niksoftware.snapseed"
 
 	#**********DEBLOAT AVANCE**********#
+	#"com.google.android.webview"
 	"com.google.android.launcher" #Google Now Launcher
 	"com.android.chrome" #Chrome app
 	"com.google.android.deskclock" #Default clock app
@@ -132,8 +125,9 @@ declare -a google_bloat=(
 	#"com.android.vending" #Google Play Store app.
 	"com.google.android.apps.maps" #Google maps
 	"com.google.android.apps.photos" #Application photo
-	#"com.google.android.gms" #Google Play Services ----------------------------------- DO NOT remove this unless you know what you're doing !
-	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps ------ DO NOT remove this unless you know what you're doing !
+	#"com.google.android.packageinstaller" #Gives ability to install, update or remove applications on the device --> !!!! WARNING : Bootloop on Xiaomi Note 5 
+	#"com.google.android.gms" #Google Play Services ----------------------------------- DO NOT remove this unless you know what you're doing ! --> No Bootloop on Xiaomi Note 5
+	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps ------ DO NOT remove this unless you know what you're doing ! --> No Bootloop on Xiaomi Note 5
 	#"com.google.android.gsf.login" #Support for managing Google accounts ------------- DO NOT remove this unless you know what you're doing !
 	#"com.google.android.inputmethod.latin" #Google Board (Clavier Google).
 	#**********DEBLOAT AVANCE**********#
@@ -322,17 +316,16 @@ declare -a microsoft_bloat=(
 	)
 
 declare -a generic_bloat=(
-	"com.google.android.marvin.talkback" #Accessibility Service that helps blind and vision-impaired users 
-	"com.android.backupconfirm" # ??? (Sony)
-	"com.android.calllogbackup" # ???? (Sony)
-	"com.android.dreams.phototable"              
-	"com.android.keychain" # ????? (Sony)
 	"com.android.apps.tag" #Still unclear how it acts with system, but should be safe to remove...
+	"com.android.backupconfirm" # ??? (Sony)
 	"com.android.bips" #Built-in Print Service. Safe to remove.
 	"com.android.bluetoothmidiservice" #Provides classes for sending and receiving messages using the MIDI event protocol over Bluetooth LE.
+	"com.android.bookmarkprovider" #Found on Xiaomi Note 5
 	"com.android.browser" #Stock Browser
 	"com.android.calculator2" #Stock calculator app.
+	"com.android.calllogbackup" # ???? (Sony)
 	"com.android.carrierconfig" #Provides access to telephony configuration values that are carrier-specific.
+	"com.android.carrierdefaultapp" # Found on Xiaomi Note 5 
 	"com.android.cellbroadcastreceiver" #Alerts for Broadcasts.
 	"com.android.deskclock" #Clock app, plus alarm function.
 	"com.android.dreams.basic" #Support for screensaver mode.
@@ -342,12 +335,14 @@ declare -a generic_bloat=(
 	"com.android.hotwordenrollment.okgoogle" #"OK Google" detection service (used when you wanna enroll Assistant by the hotword.
 	"com.android.htmlviewer" #In-built HTML viewer.
 	"com.android.inputdevices" #Manages the input devices.
+	"com.android.keychain" # ????? (Sony)
 	"com.android.keychain" #Should provide access to private keys plus their certificate chains in storage.
 	"com.android.magicsmoke" #Live wallpaper.
 	"com.android.managedprovisioning" #For corporate restritctions on phones with Google Workplace.
 	"com.android.mediacenter" #EMUI music app.
 	"com.android.noisefield" #Live wallpaper.
 	"com.android.pacprocessor" #PAC stands for proxy auto-config, and this file defines how web browsers and other agents can automatically define the correct proxy server for fetching an URL. Removable, if you don't use proxies on your phone.
+	"com.android.partnerbrowsercustomizations.chromeHomepage" 
 	"com.android.phasebeam" #Wallpaper.
 	"com.android.printservice.reccomendation" #Keep it, if you need to print directly via your phone.
 	"com.android.printspooler" #Keep it, if you need to print directly via your phone.
@@ -361,25 +356,38 @@ declare -a generic_bloat=(
 	"com.android.wallpaper.livepicker" #Wallpaper picker.
 	"com.android.wallpapercropper" #Wallpaper cropper.
 	"com.example.android.notepad" #Notepad app.
+	"com.google.android.marvin.talkback" #Accessibility Service that helps blind and vision-impaired users 
+	"com.qualcomm.atfwd"
+	"com.qualcomm.qti.qms.service.telemetry"
+	"com.qualcomm.qti.rcsbootstraputil"
+	"com.qualcomm.qti.rcsimsbootstraputil"
+	"com.qualcomm.timeservice"
+
 
 	#******** DEBLOAT AVANCE ********#
-	#"com.android.musicfx" #Audio Equalizer
-	#"com.android.facelock" #Face unlock
-	#"com.android.providers.calendar" #Stock calendar app           
-	#"com.android.calendar" #Stock calendar app.
-	#"com.android.contacts" #Stock contacts app.
-	#"com.android.email" #Stock Email app (not Gmail).
+	"com.qualcomm.qti.qms.service.connectionsecurity" #CURRENTLY IN TEST / MAY NOT BE SAFE
+	"com.qualcomm.qti.services.secureui"
+	"com.qualcomm.qti.auth.fidocryptoservice"
+	"com.qualcomm.qti.perfdump"
+	"com.android.musicfx" #Audio Equalizer
+	"com.android.providers.calendar" #Stock calendar app           
+	"com.android.calendar" #Stock calendar app.
+	"com.android.contacts" #Stock contacts app.
+	"com.android.providers.downloads" #Stock download app
+	"com.android.providers.downloads.ui" #Stock download app
+	"com.android.providers.contacts" #Sync for stock contacts app
+	"com.android.email" #Stock Email app (not Gmail).
 	#"com.android.emergency" #Emergency Contacts. Remove it if you don't use this feature.
-	#"com.android.facelock" #Essential if you wanna use Face Unlock features, removable if you don't want to.
-	#"com.android.gallery3d" #Gallery app.
+	"com.android.facelock" #Essential if you wanna use Face Unlock features, removable if you don't want to.
+	"com.android.gallery3d" #Gallery app.
 	#"com.android.inputmethod.latin" #AOSP keyboard.
-	#"com.android.mms" #Stock SMS app.
-	#"com.android.phone" #Dialer app.
+	"com.android.mms" #Stock SMS app.
+	#"com.android.phone" #Dialer app (!!! WARNING No SIM with a Xiaomi Note 5 Phone !!! Seems NOT to be safe)
 	#"com.android.providers.blockednumber" #Storage of blocked numbers.
 	#"com.android.vpndialogs" #VPN system.
 	#"com.android.phone.recorder" #Call recorder function.
 	#"com.android.providers.userdictionary" #User dictionary for keyboard apps.
-	#"contacts.com.android.providers.calendar" #Necessary to sync stock Calendar app and let it work correctly.
+	"contacts.com.android.providers.calendar" #Necessary to sync stock Calendar app and let it work correctly.
 	#"com.android.backupconfirm" #Restore google settings with Google Backup restore function. Essential package for ADB backup !! 
 	#******** DEBLOAT AVANCE ********#
 	)
@@ -443,6 +451,8 @@ declare -a huawei_bloat=(
 
 declare -a xiaomi_bloat=(
 	"android.autoinstalls.config.Xiaomi.cepheus"
+	"android.autoinstalls.config.Xiaomi.dipper"
+	"com.android.browser" # Xiaomi Browser
 	"com.android.wallpaper.holospiral"
 	"com.autonavi.minimap"
 	"com.baidu.duersdk.opensdk"
@@ -452,27 +462,31 @@ declare -a xiaomi_bloat=(
 	"com.caf.fmradio"
 	"com.duokan.phone.remotecontroller"
 	"com.duokan.phone.remotecontroller.peel.plugin"
-	"com.mfashiongallery.emag"
-	"com.mi.android.globalpersonalassistant"
+	"com.mfashiongallery.emag"	# Wallpapers by xiaomi
+	"com.mi.android.globalpersonalassistant" # MI Vault, aka the "assistent" you open swiping left from MI Home
 	"com.mi.global.bbs"
+	"com.mi.global.shop"
 	"com.mi.globalTrendNews"
 	"com.mi.liveassistant"
+	"com.mi.webkit.core"
 	"com.milink.service"
 	"com.mipay.wallet"
 	"com.mipay.wallet.id"
 	"com.mipay.wallet.in"
 	"com.miui.analytics"
+	"com.miui.android.fashiongallery" # Wallpapers by xiaomi
+	"com.miui.antispam"
 	"com.miui.audioeffect"
 	"com.miui.bugreport"
 	"com.miui.cit"
 	"com.miui.cleanmaster"
 	"com.miui.cloudbackup"
-	"com.miui.cloudservice"
+	"com.miui.cloudservice" # Settings will crash when pressing on any "Mi Cloud" button
 	"com.miui.cloudservice.sysbase"
 	"com.miui.compass"
 	"com.miui.contentcatcher"
 	"com.miui.daemon"
-	"com.miui.enbbs"
+	"com.miui.enbbs" # Xiaomi Forums
 	"com.miui.fm"
 	"com.miui.greenguard"
 	"com.miui.hybrid"
@@ -480,15 +494,16 @@ declare -a xiaomi_bloat=(
 	"com.miui.klo.bugreport"
 	"com.miui.micloudsync"
 	"com.miui.miwallpaper"
-	"com.miui.msa.global"
+	"com.miui.msa.global" # MIUI System Ads Solution
 	"com.miui.nextpay"
 	"com.miui.notes"
 	"com.miui.personalassistant"
 	"com.miui.player"
+	"com.miui.providers.weather"
 	"com.miui.qr"
 	"com.miui.screenrecorder"
 	"com.miui.systemAdSolution"
-	"com.miui.touchassistant"
+	"com.miui.touchassistant" # Quick Ball/Touch Assistant
 	"com.miui.translation.kingsoft"
 	"com.miui.translation.xmcloud"
 	"com.miui.translation.youdao"
@@ -496,13 +511,13 @@ declare -a xiaomi_bloat=(
 	"com.miui.userguide"
 	"com.miui.video"
 	"com.miui.videoplayer"
+	"com.miui.videoplayer.overlay"
 	"com.miui.virtualsim"
 	"com.miui.vsimcore"
 	"com.miui.weather2"
 	"com.miui.yellowpage"
 	"com.opera.preinstall"
 	"com.qiyi.video"
-	"com.qualcomm.qti.perfdump"
 	"com.samsung.aasaservice"
 	"com.sec.android.AutoPreconfig"
 	"com.sec.android.service.health"
@@ -514,8 +529,11 @@ declare -a xiaomi_bloat=(
 	"com.xiaomi.joyose"
 	"com.xiaomi.jr"
 	"com.xiaomi.lens"
+	"com.xiaomi.micloud.sdk"
 	"com.xiaomi.midrop"
+	"com.xiaomi.midrop.overlay"
 	"com.xiaomi.mipicks"
+	"com.xiaomi.mirecycle"
 	"com.xiaomi.o2o"
 	"com.xiaomi.pass"
 	"com.xiaomi.payment"
@@ -526,100 +544,102 @@ declare -a xiaomi_bloat=(
 	"org.codeaurora.gps.gpslogsave"
 	"org.simalliance.openmobileapi.service"
 	#******** DEBLOAT AVANCE ********#
-	"com.miui.gallery" #MIUI Gallery 
+	"com.xiaomi.account"
+	"com.miui.gallery" #MIUI Gallery
+	#"com.xiaomi.discover" # !!! WARNING : Disable System app update (but not firmware update)
+	#"com.mi.android.globalFileexplorer" #Stock Files Manager
+	#"com.miui.home" #MIUI launcher. Install another launcher before deleting this one
 	#******** DEBLOAT AVANCE ********#
+
+	#******** DO NOT DELETE ********#
+	#"com.miui.securitycenter" ---- BOOTLOOP
+	#"com.miui.securityadd" ------- BOOTLOOP
+	#"com.xiaomi.finddevice" ------ BOOTLOOP
 	)
 
 declare -a sony_bloat=(
+	"com.android.htmlviewer" 
+	"com.android.partnerbrowsercustomizations.chromeHomepage" 
+	"com.android.sharedstoragebackup" 
+	"com.s.antivirus" 
+	"com.sony.tvsideview.videoph" 
+	"com.sonyericsson.android.addoncamera.artfilter" 
+	"com.sonyericsson.android.omacp" 
+	"com.sonyericsson.idd.agent" 
+	"com.sonyericsson.mtp" 
+	"com.sonyericsson.mtp.extension.backuprestore" 
+	"com.sonyericsson.mtp.extension.update" 
+	"com.sonyericsson.music"
+	"com.sonyericsson.startupflagservice" 
+	"com.sonyericsson.textinput.chinese" 
+	"com.sonyericsson.unsupportedheadsetnotifier"  
+	"com.sonyericsson.wappush" 
+	"com.sonyericsson.warrantytime" 
+	"com.sonyericsson.xhs" 
 	"com.sonymobile.advancedlogging" 
+	"com.sonymobile.advancedwidget.topcontacts"
+	"com.sonymobile.android.addoncamera.soundphoto" 
+	"com.sonymobile.android.contacts.res.overlay_305"
+	"com.sonymobile.android.externalkeyboardjp"
 	"com.sonymobile.anondata" 
 	"com.sonymobile.aptx.notifier" 
-	"com.s.antivirus" 
-	"com.sonyericsson.xhs" 
-	"com.sonymobile.xperialounge.services" 
+	"com.sonymobile.assist" 
+	"com.sonymobile.assist.persistent" 
+	"com.sonymobile.camera"
+	"com.sonymobile.cameracommon.wearablebridge" 
+	"com.sonymobile.cellbroadcast.notification" 
+	"com.sonymobile.coverapp2" 
 	"com.sonymobile.demoappchecker" 
 	"com.sonymobile.deviceconfigtool" 	 
-	"com.sonymobile.music.googlelyricsplugin" 
-	"com.android.htmlviewer" 
-	"com.sonyericsson.idd.agent" 
-	"com.sonymobile.intelligent.observer" 
-	"com.sonymobile.email" 
-	"com.sonyericsson.warrantytime" 
-	"com.sonymobile.prediction" 
-	"com.sonymobile.xperiaservices" 
-	"com.sonymobile.synchub"  
-	"com.sonymobile.music.wikipediaplugin" 
-	"com.sonymobile.xperiatransfermobile" 
-	"com.sonymobile.music.youtubekaraokeplugin" 
-	"com.sonymobile.music.youtubeplugin" 
-	"com.sonyericsson.android.addoncamera.artfilter" 
-	"com.sonymobile.assist.persistent" 
-	"com.sonymobile.assist"  
-	"com.sonymobile.cameracommon.wearablebridge" 
-	"com.sonymobile.retaildemo"
+	"com.sonymobile.dualshockmanager" 
+	"com.sonymobile.email"
+	"com.sonymobile.entrance" 
+	"com.sonymobile.getmore.client"
 	"com.sonymobile.getset" 
 	"com.sonymobile.getset.priv"  
-	"com.sonymobile.intelligent.backlight"  
-	"com.sonyericsson.android.omacp" 
-	"com.android.sharedstoragebackup" 
-	"com.sonymobile.simlockunlockapp" 
-	"org.simalliance.openmobileapi.service" 
-	"com.sonymobile.smartcharger"
-	"com.sonymobile.android.addoncamera.soundphoto" 
-	"com.sonyericsson.startupflagservice" 
-	"com.sonyericsson.mtp.extension.backuprestore" 
-	"com.sonyericsson.mtp.extension.factoryreset"
-	"com.sonymobile.mtp.extension.fotaupdate" 
-	"com.sonyericsson.mtp.extension.update" 
-	"com.sonyericsson.mtp" 
-	"com.sonyericsson.wappush" 
-	"com.sonymobile.cellbroadcast.notification" 
-	"com.sonyericsson.unsupportedheadsetnotifier"  
-	"com.sonymobile.support" 
-	"com.sony.tvsideview.videoph" 
-	"com.sonyericsson.textinput.chinese" 
-	"com.sonymobile.android.externalkeyboardjp" 
-	"com.sonymobile.coverapp2" 
-	"com.sonymobile.dualshockmanager" 
-	"com.sonymobile.glovemode" 
-	"com.sonymobile.pip" 
-	"com.sonymobile.pobox" 
-	"com.sonymobile.moviecreator.rmm" 
-	"com.sonymobile.entrance" 
-	"com.android.partnerbrowsercustomizations.chromeHomepage" 
-	"com.sonymobile.scan3d"
-	"com.sonymobile.xperiaweather"
-	"com.sonyericsson.music"
-	"com.sonymobile.assist"
-	"com.sonymobile.assist.persistent"
-	"com.sonymobile.android.externalkeyboardjp"
-	"com.sonymobile.advancedwidget.topcontacts"
-	"com.sonymobile.android.contacts"
-	"com.sonymobile.android.contacts.res.overlay_305"
-	"com.sonymobile.anondata"
-	"com.sonymobile.demoappchecker"
-	"com.sonymobile.dualshockmanager"
-	"com.sonymobile.email"
-	"com.sonymobile.getmore.client"
 	"com.sonymobile.gettoknowit"
+	"com.sonymobile.glovemode" 
 	"com.sonymobile.googleanalyticsproxy"
-	"com.sonymobile.intelligent.backlight"
+	"com.sonymobile.intelligent.backlight" 
 	"com.sonymobile.intelligent.gesture"
 	"com.sonymobile.intelligent.iengine"
-	"com.sonymobile.intelligent.observer"
+	"com.sonymobile.intelligent.observer" 
 	"com.sonymobile.lifelog"
-	"com.sonymobile.music.googlelyricsplugin"
+	"com.sonymobile.moviecreator.rmm"
+	"com.sonymobile.mtp.extension.fotaupdate" 
+	"com.sonymobile.music.googlelyricsplugin" 
 	"com.sonymobile.music.wikipediaplugin"
-	"com.sonymobile.music.youtubekaraokeplugin"
-	"com.sonymobile.music.youtubeplugin"
-	"com.sonymobile.xperialounge.services"
-	"com.sonymobile.xperiaservices"
-	"com.sonymobile.xperiatransfermobile"
-	"com.sonyericsson.textinput.chinese"
+	"com.sonymobile.music.youtubekaraokeplugin" 
+	"com.sonymobile.music.youtubeplugin" 
+	"com.sonymobile.pip" 
+	"com.sonymobile.pobox" 
+	"com.sonymobile.prediction" 
+	"com.sonymobile.retaildemo" 
+	"com.sonymobile.scan3d"
+	"com.sonymobile.simlockunlockapp" 
+	"com.sonymobile.smartcharger" 
 	"com.sonymobile.support"
+	"com.sonymobile.synchub" 
+	"com.sonymobile.xperialounge.services" 
+	"com.sonymobile.xperiaservices" 
+	"com.sonymobile.xperiatransfermobile" 
+	"com.sonymobile.xperiaweather"
+	"org.simalliance.openmobileapi.service" 
 	)
 
 declare -a nokia_bloat=(
+	"com.android.bips"
+	"com.android.calllogbackup"
+	"com.android.cellbroadcastreceiver.overlay.base.s600ww"
+	"com.android.partnerbrowsercustomizations.btl.s600ww.overlay"
+	"com.android.printspooler"
+	"com.android.providers.calendar.overlay.base.s600ww"
+	"com.android.providers.partnerbookmarks"
+	"com.android.providers.settings.btl.s600ww.overlay"
+	"com.android.providers.settings.overlay.base.s600ww"
+	"com.android.retaildemo.overlay.base.s600ww"
+	"com.android.simappdialog"
+	"com.data.overlay.base.s600ww"
 	"com.evenwell.apnwidget.overlay.base.s600ww"
 	"com.evenwell.AprUploadService"
 	"com.evenwell.AprUploadService.data.overlay.base.s600ww"
@@ -664,8 +684,6 @@ declare -a nokia_bloat=(
 	"com.evenwell.phone.overlay.base.s600ww"
 	"com.evenwell.PowerMonitor"
 	"com.evenwell.PowerMonitor.overlay.base.s600ww"
-	"com.evenwell.powersaving.g3"
-	"com.evenwell.powersaving.g3.overlay.base.s600ww"
 	"com.evenwell.providers.downloads.overlay.base.s600ww"
 	"com.evenwell.providers.downloads.ui.overlay.base.s600ww"
 	"com.evenwell.providers.partnerbookmarks.overlay.base.s600ww"
@@ -684,12 +702,18 @@ declare -a nokia_bloat=(
 	"com.evenwell.SetupWizard.overlay.base.s600ww"
 	"com.evenwell.stbmonitor"
 	"com.evenwell.stbmonitor.data.overlay.base.s600ww"
+	"com.evenwell.tele"
 	"com.evenwell.telecom.data.overlay.base.s600ww"
 	"com.evenwell.UsageStatsLogReceiver"
 	"com.evenwell.UsageStatsLogReceiver.data.overlay.base.s600ww"
 	"com.evenwell.weather.overlay.base.s600ww"
 	"com.evenwell.weatherservice"
 	"com.evenwell.weatherservice.overlay.base.s600ww"
+	"com.fih.infodisplay"
+	"com.fih.StatsdLogger"
+	"com.foxconn.ifaa"
+	"com.hmdglobal.datago.overlay.base.s600ww"
+	"com.quicinc.cne.CNEService"
 
 	#************DEBLOAT AVANCE***********#
 	#Inbuilt camera -> can be replaced by Open-camera 
@@ -806,8 +830,8 @@ declare -a lg_bloat=(
 	"com.tmobile.simlock"
 
 	#******** DEBLOAT AVANCE ********#
-	#"com.lge.filemanager" #Stock file manager
-	"com.lge.music" #Stock music player
-	#"com.lge.floatingbar" #Floating bar
+	#"com.lge.filemanager"  #Stock file manager
+	"com.lge.music"         #Stock music player
+	#"com.lge.floatingbar"  #Floating bar
 	)
 

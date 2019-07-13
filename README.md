@@ -25,7 +25,7 @@ In any case, you can NOT brick your device with this script ! That's the main th
 * [X] Huawei
 * [ ] Motorola
 * [X] Nokia
-* [ ] OnePlus
+* [ ] OnePlus	
 * [X] Samsung
 * [X] Sony
 * [ ] Wiko

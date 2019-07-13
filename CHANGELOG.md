@@ -1,3 +1,11 @@
+# This is an important one (v1.4)
+
+### Added : 
+- Even more package to debloat for Xiaomi, Nokia & Sony devices
+
+### Changed:
+- Package **com.google.android.packageinstaller** removed because it causes bootloop on Xiaomi Note 5. I don't know why I added this one on the list. It's a essential core package.
+
 # Reminder is important (v1.2.1)
 
 ### Added : 
