@@ -136,11 +136,16 @@ declare -a google_bloat=(
 declare -a samsung_bloat=(
 	"com.android.dreams.phototable"
 	"com.android.exchange"
+	#"com.sec.android.app.desktoplauncher"
+	#"com.samsung.android.mdx" 
 	"com.dsi.ant.plugins.antplus" #Samsung+ ?
 	"com.enhance.gameservice"
+	"com.samsung.android.calendar"
 	"com.samsung.android.app.episodes"
 	"com.samsung.android.app.ledcoverdream"
 	"com.samsung.android.app.memo"
+	"com.samsung.android.app.reminder"
+	"com.samsung.android.smartmirroring"
 	"com.samsung.android.app.sbrowseredge"
 	"com.samsung.android.app.storyalbumwidge"
 	"com.samsung.android.app.vrsetupwizardstub"
@@ -159,6 +164,7 @@ declare -a samsung_bloat=(
 	"com.samsung.android.spdfnote"
 	"com.samsung.android.svoice"
 	"com.samsung.android.tripwidget"
+	#"com.samsung.android.mobileservice"
 	"com.samsung.android.voicewakeup"
 	"com.samsung.android.weather" # Météo
 	"com.samsung.android.widgetapp.yahooedge.finance"
@@ -166,7 +172,6 @@ declare -a samsung_bloat=(
 	"com.samsung.groupcast"
 	"com.samsung.svoice.sync"
 	"com.samsung.voiceserviceplatform"
-	#"com.sec.android.app.desktoplauncher" #Samsung Launcher
 	"com.sec.android.app.gamehub"
 	"com.sec.android.app.ocr"
 	"com.sec.android.app.samsungapps"
@@ -305,6 +310,17 @@ declare -a misc_bloat=(
 	"com.netflix.mediaclient"
 	"com.spotify.music"
 	"com.evernote"
+	"com.UCMobile.intl"
+	"com.opera.mini.native"
+	"com.opera.app.news"
+	"com.til.timesnews"
+	"com.opera.branding"
+	"in.mohalla.sharechat"
+	"com.micredit.in"
+	"flipboard.boxer.app"
+	"com.s.antivirus"
+	"com.enhance.gameservice"
+	"com.linkedin.android"
 	)
 
 declare -a microsoft_bloat=(
@@ -312,7 +328,13 @@ declare -a microsoft_bloat=(
 	"com.skype.raider"
 	"com.microsoft.office.excel"
 	"com.microsoft.office.word"
+	"com.microsoft.office.outlook"
 	"com.microsoft.office.powerpoint"
+	"com.skype.m2"
+	"com.microsoft.office.officehubhl"
+	"com.microsoft.office.officehub"
+	"com.microsoft.office.officehubrow"
+	"com.microsoft.appmanager"
 	)
 
 declare -a generic_bloat=(
@@ -344,7 +366,7 @@ declare -a generic_bloat=(
 	"com.android.pacprocessor" #PAC stands for proxy auto-config, and this file defines how web browsers and other agents can automatically define the correct proxy server for fetching an URL. Removable, if you don't use proxies on your phone.
 	"com.android.partnerbrowsercustomizations.chromeHomepage" 
 	"com.android.phasebeam" #Wallpaper.
-	"com.android.printservice.reccomendation" #Keep it, if you need to print directly via your phone.
+	"com.android.printservice.recommendation" #Keep it, if you need to print directly via your phone.
 	"com.android.printspooler" #Keep it, if you need to print directly via your phone.
 	"com.android.providers.partnerbookmarks" #Provides bookmarks about partners of Google in Chrome.
 	"com.android.quicksearchbox" #Search box.
@@ -373,9 +395,7 @@ declare -a generic_bloat=(
 	"com.android.providers.calendar" #Stock calendar app           
 	"com.android.calendar" #Stock calendar app.
 	"com.android.contacts" #Stock contacts app.
-	"com.android.providers.downloads" #Stock download app
 	"com.android.providers.downloads.ui" #Stock download app
-	"com.android.providers.contacts" #Sync for stock contacts app
 	"com.android.email" #Stock Email app (not Gmail).
 	#"com.android.emergency" #Emergency Contacts. Remove it if you don't use this feature.
 	"com.android.facelock" #Essential if you wanna use Face Unlock features, removable if you don't want to.
@@ -487,6 +507,7 @@ declare -a xiaomi_bloat=(
 	"com.miui.contentcatcher"
 	"com.miui.daemon"
 	"com.miui.enbbs" # Xiaomi Forums
+	"com.eterno"
 	"com.miui.fm"
 	"com.miui.greenguard"
 	"com.miui.hybrid"
@@ -517,6 +538,7 @@ declare -a xiaomi_bloat=(
 	"com.miui.weather2"
 	"com.miui.yellowpage"
 	"com.opera.preinstall"
+	"com.phonepe.app"
 	"com.qiyi.video"
 	"com.samsung.aasaservice"
 	"com.sec.android.AutoPreconfig"
@@ -535,6 +557,7 @@ declare -a xiaomi_bloat=(
 	"com.xiaomi.mipicks"
 	"com.xiaomi.mirecycle"
 	"com.xiaomi.o2o"
+	"com.xiaomi.oversea.ecom"
 	"com.xiaomi.pass"
 	"com.xiaomi.payment"
 	"com.xiaomi.providers.appindex"

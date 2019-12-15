@@ -2,51 +2,47 @@
 
 source debloat_lists.sh
 
+# Colors used for printing
 RED='\033[0;31m'
+BLUE='\033[0;34m'
+BBLUE='\033[1;34m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
-bold=$(tput bold) 
-normal=$(tput sgr0)
+Bold=$(tput B) 
+nBold=$(tput sgr0)
+
 
 function debloat {
 	name=$1[@]
-	bloat=("${!name}")
-	printf "${RED}${bold}=== $brand debloat list ===${normal}${NC}\n"
-	for i in "${bloat[@]}"; do
-		printf "${RED}$i${NC} -->"
-		adb shell "
-		pm uninstall --user 0 $i
-		"
+	#bloat=("${!name}")
+	printf "${RED}${Bold}=== $brand debloat list ===${nBold}\n"
+	for i in "${name[@]}"; do
+		printf "${RED}$i${nBold} -->"
+		adb shell "pm uninstall --user 0 $i ${NC}"
 	done
 }
 
 function list {
-	printf "\n${RED}${bold}Rechercher des paquets : ${normal}${NC}"
-	read -r package
+	read -r -p "\n${RED}${Bold}Search for packages : ${nBold}${NC} "	
 	printf "\n"
-	adb shell "
-	pm list packages | grep $package
-	"
+	adb shell "pm list packages | grep $REPLY"
 }
 
 function remove {
-	printf "\n${RED}${bold}Nom du paquet à désinstaller : ${normal}${NC}"
-	read -r nom_paquet
-	adb shell "
-	 pm uninstall --user 0 $nom_paquet
-	"
+	read -r -p "\n${RED}${Bold}package name to remove : ${nBold}${NC} "
+	adb shell "pm uninstall --user 0 $REPLY"
 }
 
 function install {
-	printf "\n${RED}${bold}Nom du paquet à installer : ${normal}${NC}"
-	read -r nom_paquet
-	adb shell "
-	cmd package install-existing $nom_paquet
-	"
+	read -r -p "\n${RED}${Bold}package name to reinstall : ${nBold}${NC} "
+	adb shell "cmd package install-existing $REPLY"
 }
 
 function restore {
-	printf "${RED}${bold}Restaurer une sauvegarde${normal}${NC}\n"
-	read -p "Nom ${bold}exact${normal} de la sauvegarde : "
+	printf "${RED}${Bold}Restore a backup\n ${nBold}${NC}"
+	read -p -r "Nom ${Bold}exact ${nBold} de la sauvegarde : "
 	adb restore $REPLY
 }
 
@@ -56,8 +52,8 @@ function check_backup_integrity {
 		echo "Vérification de la sauvegarde ($a)";
 		dd if="$a" bs=24 skip=1 | zlib-flate -uncompress | tar tf - >/dev/null;
 		if [ $? = 0 ]; then 
-			printf "${RED}${bold}La sauvegarde générée est intègre${normal}${NC}\n"
-		else printf "${RED}${bold}La sauvegarde générée est corrompue ! ${normal}${NC}\n"
+			printf "${RED}${Bold}La sauvegarde générée est intègre${nBold}\n"
+		else printf "${GREEN}${Bold}La sauvegarde générée est corrompue ! ${nBold}\n"
 		fi
 	done
 }
@@ -102,14 +98,14 @@ printf " #                                              #\n"
 printf " #             SCRIPT ----- DEBLOAT             #\n"
 printf " #         ALL DEVICES COMPATIBLE (WIP)         #\n"
 printf " #                                              #\n"
-printf " # %13s${RED}${bold}v1.2.1 (21-04-2019)${normal}${NC}%13s#\n"
+printf " # %10s${RED}${Bold}v1.3 (23 September 2019)${nBold}%11s#\n"
 printf " #                                              #\n"
 printf " ================================================\n"
 echo
 
 adb devices
-printf "${RED}${bold}AVERTISSEMENT : Lisez attentivement la FAQ avant de vous servir de ce script\n\n"
-printf "Voulez vous faire une sauvegarde de toutes les applications du téléphone [Yes/No] ? (recommandé)\n\n${normal}${NC}"
+printf "${RED}${Bold}AVERTISSEMENT : Lisez attentivement la FAQ avant de vous servir de ce script\n\n"
+printf "Voulez vous faire une sauvegarde de toutes les applications du téléphone [Yes/No] ?\n\n${nBold}"
 printf "RAPPEL : Il est probable que toutes les applications ne soient pas sauvegardées (cf. FAQ).\n\n"
 read
 if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
@@ -117,34 +113,39 @@ if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	adb backup -apk -all -system -f "${PHONE:-phone}-`date +%Y%m%d-%H%M%S`.adb"  # -noshare option is default
 	echo "Verification de l'intégrité de la sauvegarde..."
 	check_backup_integrity;
-else printf "${RED}${bold}Pas de sauvegarde${normal}${NC}\n"
+else printf "${RED}${Bold}Pas de sauvegarde${nBold}\n"
 fi
+
+brand=$(brand_detection)
+
 while true; do
-	printf "\n${bold}======= MENU PRINCIPAL =======  ${normal}\n\n"
-	printf "1    - Lister des paquets\n"
-	printf "2    - Désinstaller un paquet\n"
-	printf "3    - Réinstaller un paquet\n"
-	printf "4    - Auto-Debloat\n"
-	printf "5    - Restaurer une sauvegarde\n"
-	printf "6    - Debloat Google\n"
-	printf "7    - Debloat T-Mobile\n"
-	printf "8    - Debloat Amazon\n"
-	printf "9    - Debloat Facebook\n"
-	printf "10   - Debloat Microsoft\n"
-	printf "11   - Debloat Divers\n"
-	printf "12   - Debloat Android\n"
-	printf "exit - Quitter\n\n"
-	printf "${RED}${bold}PENSEZ À REDEMARRER VOTRE TELEPHONE UNE FOIS LE DEBLOAT TERMINE. ${normal}${NC}\n\n"
-	read -p "${bold}Choisissez une action : ${normal}" action
+	printf "\n${Bold}${ORANGE}======= MENU PRINCIPAL ======= ${NC}${nBold}\n\n"
+	printf " 1   - Lister des paquets\n"
+	printf " 2   - Désinstaller un paquet\n"
+	printf " 3   - Réinstaller un paquet\n"
+	printf " 4   - Restaurer une sauvegarde\n"
+	printf "\n${Bold}${BBLUE}------- DEBLOAT -------${NC}${nBold}\n"
+	printf " 5   - ${brand}\n"
+	printf " 6   - Google\n"
+	printf " 7   - T-Mobile\n"
+	printf " 8   - Amazon\n"
+	printf " 9   - Facebook\n"
+	printf " 10  - Microsoft\n"
+	printf " 11  - Divers\n"
+	printf " 12  - Générique\n"
+	printf "\n exit - Quitter\n\n"
+	printf "${Bold}${ORANGE}==============================${NC}${nBold}\n\n"
+
+	printf "${RED}${Bold}PENSEZ À REDEMARRER VOTRE TELEPHONE UNE FOIS LE DEBLOAT TERMINE. ${nBold}${NC}\n\n"
+	read -p "${Bold}Choisissez une action : ${nBold}" action
 	echo
 
-	brand=$(brand_detection)
 	case $action in
 		1) list ;;
 		2) remove ;;
 		3) install ;;
-		4) debloat $brand ;;
-		5) restore ;;
+		4) restore ;;
+		5) debloat $brand ;;
 		6) debloat google_bloat ;;
 		7) debloat T_Mobile_bloat ;;
 		8) debloat amazon_bloat ;;
