@@ -49,7 +49,7 @@ In any case, you can NOT brick your device with this script ! That's the main th
 	* [ ] Bouygues Telecom
 - USA
 	* [X] T-Mobile 
-	* [ ] Verizon 
+	* [X] Verizon 
 	* [ ] AT&T
 
 ## How to use it (Newbies) :
