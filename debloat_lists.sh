@@ -4,270 +4,368 @@ declare -a brands=("Asus" "Huawei" "LG" "Nokia" "Samsung" "Sony" "Xiaomi")
 
 declare -a google_bloat=(
 	"com.android.hotwordenrollment.okgoogle" #OK Google
-	"com.chrome.beta"
-	"com.chrome.canary"
-	"com.chrome.dev"
-	"com.google.android.apps.access.wifi.consumer"
-	"com.google.android.apps.adm"
-	"com.google.android.apps.ads.publisher"
-	"com.google.android.apps.adwords"
-	"com.google.android.apps.authenticator2"
-	"com.google.android.apps.blogger"
-	"com.google.android.apps.books" #Google Books.
-	"com.google.android.apps.chromecast.app"
-	"com.google.android.apps.cloudprint" #Cloud print.
-	"com.google.android.apps.cultural"
-	"com.google.android.apps.currents" #Currents.
-	"com.google.android.apps.docs" #Google Drive.
-	"com.google.android.apps.docs.editors.docs"
-	"com.google.android.apps.docs.editors.sheets"
-	"com.google.android.apps.docs.editors.slides"
-	"com.google.android.apps.dynamite"
-	"com.google.android.apps.enterprise.cpanel"
-	"com.google.android.apps.enterprise.dmagent"
-	"com.google.android.apps.fireball"
-	"com.google.android.apps.fitness" #Google Fit.
-	"com.google.android.apps.freighter"
-	"com.google.android.apps.giant"
-	"com.google.android.apps.googleassistant"
-	"com.google.android.apps.handwriting.ime"
-	"com.google.android.apps.hangoutsdialer"
-	"com.google.android.apps.inbox"
-	"com.google.android.apps.inputmethod.hindi"
-	"com.google.android.apps.kids.familylink"
-	"com.google.android.apps.kids.familylinkhelper"
-	"com.google.android.apps.m4b"
-	"com.google.android.apps.magazines" #Google magazines
-	"com.google.android.apps.maps"
-	"com.google.android.apps.mapslite"
-	"com.google.android.apps.meetings"
-	"com.google.android.apps.messaging"
-	"com.google.android.apps.navlite"
-	"com.google.android.apps.nbu.files"
-	"com.google.android.apps.paidtasks"
-	"com.google.android.apps.pdfviewer"
-	"com.google.android.apps.photos" #Google Photos.
-	"com.google.android.apps.photos.scanner"
-	"com.google.android.apps.plus" #Google+.
-	"com.google.android.apps.podcasts"
+	"com.chrome.beta" #Google Chrome Beta (https://play.google.com/store/apps/details?id=com.chrome.beta)
+	"com.chrome.canary" #Google Chrome Canary (Nightly build) (https://play.google.com/store/apps/details?id=com.chrome.canary)
+	"com.chrome.dev" #Google Chrome (developer)	(https://play.google.com/store/apps/details?id=com.chrome.dev)
+	"com.google.android.apps.access.wifi.consumer" #Google Wifi app (https://play.google.com/store/apps/details?id=com.google.android.apps.access.wifi.consumer&hl=en)
+	"com.google.android.apps.adm" #Google Find my device app (https://play.google.com/store/apps/details?id=com.google.android.apps.adm&hl=en)
+	"com.google.android.apps.ads.publisher" #Google Adsense app (https://play.google.com/store/apps/details?id=com.google.android.apps.ads.publisher&hl=en) 
+	"com.google.android.apps.adwords" #Google Ads app (https://play.google.com/store/apps/details?id=com.google.android.apps.adwords&hl=en)
+	"com.google.android.apps.authenticator2" #Google authentificator app (https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en)
+	"com.google.android.apps.blogger" #Google blogger app (https://play.google.com/store/apps/details?id=com.google.android.apps.blogger&hl=en)
+	"com.google.android.apps.books" #Google Play Books (https://play.google.com/store/apps/details?id=com.google.android.apps.books&hl=en)
+	"com.google.android.apps.chromecast.app" #Google Home (https://play.google.com/store/apps/details?id=com.google.android.apps.chromecast.app&hl=en_US)
+	"com.google.android.apps.cloudprint" #Cloud print (https://play.google.com/store/apps/details?id=com.google.android.apps.cloudprint&hl=en)
+	"com.google.android.apps.cultural" #Google Arts & Culture (https://play.google.com/store/apps/details?id=com.google.android.apps.cultural&hl=en_US)
+	"com.google.android.apps.currents" #Google Currents (discontinued)
+	"com.google.android.apps.docs" #Google Drive (https://play.google.com/store/apps/details?id=com.google.android.apps.docs&hl=en_US)
+	"com.google.android.apps.docs.editors.docs" #Google Docs (https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.docs&hl=en)
+	"com.google.android.apps.docs.editors.sheets" #Google sheets
+	"com.google.android.apps.docs.editors.slides" #Google slides (for presentation)
+	"com.google.android.apps.dynamite" #Hangout chat (https://play.google.com/store/apps/details?id=com.google.android.apps.dynamite&hl=en)
+	"com.google.android.apps.enterprise.cpanel" #Google Admin (https://play.google.com/store/apps/details?id=com.google.android.apps.enterprise.cpanel&hl=en)
+	"com.google.android.apps.enterprise.dmagent" #Google apps device policy (https://play.google.com/store/apps/details?id=com.google.android.apps.enterprise.dmagent&hl=en)
+	"com.google.android.apps.fireball" #Google Allo (discontinued)
+	"com.google.android.apps.fitness" #Google Fit (https://play.google.com/store/apps/details?id=com.google.android.apps.fitness)
+	"com.google.android.apps.freighter" #Google Datally (discontinued)
+	"com.google.android.apps.giant" #Google Analytics (https://play.google.com/store/apps/details?id=com.google.android.apps.giant&hl=en)
+	"com.google.android.apps.googleassistant" #Google Assistant (https://play.google.com/store/apps/details?id=com.google.android.apps.googleassistant&hl=en_US)
+	"com.google.android.apps.handwriting.ime" #Google Handwriting Input (https://play.google.com/store/apps/details?id=com.google.android.apps.handwriting.ime&hl=en) 
+	"com.google.android.apps.hangoutsdialer" #Google Hangout Dialer (https://play.google.com/store/apps/details?id=com.google.android.apps.hangoutsdialer&hl=en)
+	"com.google.android.apps.inbox" #Inbox by Gmail (Discontinued)
+	"com.google.android.apps.kids.familylink" #Google Family Link (https://play.google.com/store/apps/details?id=com.google.android.apps.kids.familylink&hl=en)
+	"com.google.android.apps.kids.familylinkhelper" #Google Family Link for children & teens (https://play.google.com/store/apps/details?id=com.google.android.apps.kids.familylinkhelper&hl=en)
+	"com.google.android.apps.m4b" #Google My Maps (https://play.google.com/store/apps/details?id=com.google.android.apps.m4b&hl=en)
+	"com.google.android.apps.magazines" #Google News (https://play.google.com/store/apps/details?id=com.google.android.apps.magazines&hl=en)
+	"com.google.android.apps.mapslite" #Google Maps Go (lite web app of Maps) (https://play.google.com/store/apps/details?id=com.google.android.apps.mapslite&hl=en)
+	"com.google.android.apps.meetings" #Hangout Meet (https://play.google.com/store/apps/details?id=com.google.android.apps.meetings&hl=en)
+	"com.google.android.apps.messaging" #Google Messaging (SMS) (https://play.google.com/store/apps/details?id=com.google.android.apps.messaging&hl=en)
+	"com.google.android.apps.navlite" #Google Maps GPS (https://play.google.com/store/apps/details?id=com.google.android.apps.navlite&hl=en)
+	"com.google.android.apps.nbu.files" #File Management (https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.files&hl=en)
+	"com.google.android.apps.paidtasks" #Google Opinion Rewards (https://play.google.com/store/apps/details?id=com.google.android.apps.paidtasks&hl=en)
+	"com.google.android.apps.pdfviewer" #Google PDF Viewer (https://play.google.com/store/apps/details?id=com.google.android.apps.pdfviewer&hl=en)
+	"com.google.android.apps.photos" #Google Photos (https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en_US)
+	"com.google.android.apps.photos.scanner" #PhotoScan app (https://play.google.com/store/apps/details?id=com.google.android.apps.photos.scanner&hl=en)
+	"com.google.android.apps.plus" #Google+ (https://play.google.com/store/apps/details?id=com.google.android.apps.plus&hl=en_US)
+	"com.google.android.apps.podcasts" #Google Podcasts (https://play.google.com/store/apps/details?id=com.google.android.apps.podcasts&hl=en)
 	"com.google.android.apps.restore" #Restore apps during first boot.
-	"com.google.android.apps.santatracker"
-	"com.google.android.apps.subscriptions.red"
-	"com.google.android.apps.tachyon" #Google Duo.
-	"com.google.android.apps.tasks"
-	"com.google.android.apps.translate"
-	"com.google.android.apps.travel.onthego"
-	"com.google.android.apps.vega"
-	"com.google.android.apps.walletnfcrel"
-	"com.google.android.apps.wallpaper" #Google Wallpapers. Safe to remove.
-	"com.google.android.apps.wellbeing" #Digital Wellbeing app that is prebuilt in Android Pie. Safe to remove.
-	"com.google.android.apps.youtube.creator"
-	"com.google.android.apps.youtube.gaming"
-	"com.google.android.apps.youtube.kids"
-	"com.google.android.apps.youtube.music"
-	"com.google.android.apps.youtube.vr"
+	"com.google.android.apps.santatracker" #Google Santa Tracker WTF ??? (https://play.google.com/store/apps/details?id=com.google.android.apps.santatracker&hl=en)
+	"com.google.android.apps.subscriptions.red" #Google One (https://play.google.com/store/apps/details?id=com.google.android.apps.subscriptions.red&hl=en_US)
+	"com.google.android.apps.tachyon" #Google Duo (Video Calls) (https://play.google.com/store/apps/details?id=com.google.android.apps.tachyon&hl=en)
+	"com.google.android.apps.tasks" #Google Task (TODO list) (https://play.google.com/store/apps/details?id=com.google.android.apps.tasks&hl=en)
+	"com.google.android.apps.translate" #Google Translate (https://play.google.com/store/apps/details?id=com.google.android.apps.translate&hl=en)
+	"com.google.android.apps.travel.onthego" #Google Trip (discontinued)
+	"com.google.android.apps.vega" #Google My Business (https://play.google.com/store/apps/details?id=com.google.android.apps.vega&hl=en)
+	"com.google.android.apps.walletnfcrel" #Google Pay (https://play.google.com/store/apps/details?id=com.google.android.apps.walletnfcrel&hl=en)
+	"com.google.android.apps.wallpaper" #Google Wallpapers (https://play.google.com/store/apps/details?id=com.google.android.apps.wallpaper&hl=en)
+	"com.google.android.apps.wellbeing" #Digital Wellbeing (habits tracking tool) (https://play.google.com/store/apps/details?id=com.google.android.apps.wellbeing&hl=en)
+	"com.google.android.apps.youtube.creator" #Youtube Studio (https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.creator&hl=en)
+	"com.google.android.apps.youtube.gaming" #Youtube Gaming -(discontinued in March 2019, features integrated in main youtube app)
+	"com.google.android.apps.youtube.kids" #Youtube Kid (https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.kids&hl=en)
+	"com.google.android.apps.youtube.music" #Youtube Music (https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music&hl=en)
+	"com.google.android.apps.youtube.vr" #Youtube VR (https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.vr&hl=en)
 	"com.google.android.backuptransport" #Allows Android apps to back up their data on Google servers.
-	"com.google.android.calculator"
-	"com.google.android.calendar" #Google Calendar (NOTE SURE maybe "com.google.android.apps.calendar")
-	"com.google.android.configupdater"
-	"com.google.android.contacts"
-	"com.google.android.drive" #Google Drive
-	"com.google.android.ext.services"
-	"com.google.android.ext.shared"
+	"com.google.android.calculator" #Google Calculator (https://play.google.com/store/apps/details?id=com.google.android.calculator&hl=en)
+	"com.google.android.calendar" #Google Calendar (https://play.google.com/store/apps/details?id=com.google.android.calendar&hl=en)
+	"com.google.android.configupdater" #??? Discontinued
+	"com.google.android.contacts" #Google Contacts (https://play.google.com/store/apps/details?id=com.google.android.contacts&hl=en)
+	"com.google.android.ext.services" #Android Services Library. Do some minors things to notifications (https://android.stackexchange.com/a/169291)
+	"com.google.android.ext.shared" #???????????????????????????
 	"com.google.android.feedback" #When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
-	"com.google.android.gm"
-	"com.google.android.googlequicksearchbox" #Google Search.
-	"com.google.android.ims"
-	"com.google.android.inputmethod.japanese"
-	"com.google.android.inputmethod.korean"
-	"com.google.android.inputmethod.pinyin"
-	"com.google.android.keep"
+	"com.google.android.googlequicksearchbox" #Google Search box (https://play.google.com/store/apps/details?id=com.google.android.googlequicksearchbox)
+	"com.google.android.keep" #Google Keep (https://play.google.com/store/apps/details?id=com.google.android.keep)
 	"com.google.android.markup" #Google Markup app made for modifying pictures, ships by default on every Pie+ device.
-	"com.google.android.marvin.talkback"         
-	"com.google.android.music" #Google Music 
+	"com.google.android.marvin.talkback" #Android Accessibility Suite (https://play.google.com/store/apps/details?id=com.google.android.marvin.talkback)   
+	"com.google.android.music" #Google Play Music (https://play.google.com/store/apps/details?id=com.google.android.music)
 	"com.google.android.onetimeinitializer" #Provides first time setup, safe to remove.
 	"com.google.android.partnersetup" #Software that helps other apps to work with Google products.
-	"com.google.android.play.games" #Google Play Games.
-	"com.google.android.printservice.recommendation"
-	"com.google.android.projection.gearhead"
+	"com.google.android.play.games" #Google Play Games (https://play.google.com/store/apps/details?id=com.google.android.play.games)
+	"com.google.android.printservice.recommendation" #Something linked to Print service
+	"com.google.android.projection.gearhead" #Android auto (https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en)
 	"com.google.android.setupwizard" #Removable after the first start of the phone, it's the basic configuration wizard that drives you through first boot.
 	"com.google.android.soundpicker" #Google Sounds. Removable if you already have another media select service.
-	"com.google.android.street" #Google Street View app.
-	"com.google.android.syncadapters.calendar" #Google Calendar sync.
-	"com.google.android.syncadapters.contacts" #Google Contacts sync.
-	"com.google.android.talk" #Google Hangouts.
+	"com.google.android.street" #Google Street View (https://play.google.com/store/apps/details?id=com.google.android.street)
+	"com.google.android.syncadapters.calendar" #Synchronisation for Google Calendar.
+	"com.google.android.syncadapters.contacts" #Synchronisation for Google Contacts.
+	"com.google.android.talk" #Google Hangouts (https://play.google.com/store/apps/details?id=com.google.android.talk)
 	"com.google.android.tts" #Text-to-speech powers apps to read text on your scream aloud, in many languages #Google Play Movies #Google Videos
-	"com.google.android.tv.remote"
-	"com.google.android.videos"
-	"com.google.android.vr.home"
-	"com.google.android.vr.inputmethod"
-	"com.google.android.wearable.app"
-	"com.google.android.youtube" #YouTube app.
-	"com.google.ar.core" #Google ARCore app (Augmented Reality)
-	"com.google.ar.lens" #Google AR again
-	"com.google.chromeremotedesktop"
-	"com.google.earth"
+	"com.google.android.tv.remote" #Android TV remote control (https://play.google.com/store/apps/details?id=com.google.android.tv.remote)
+	"com.google.android.videos" #Google Play Movies & TV (https://play.google.com/store/apps/details?id=com.google.android.videos)
+	"com.google.android.vr.home" #Daydream (VR stuff) (https://play.google.com/store/apps/details?id=com.google.android.vr.home)
+	"com.google.android.vr.inputmethod" #Daydream virtual keyboard (VR stuff) (https://play.google.com/store/apps/details?id=com.google.android.vr.inputmethod)
+	"com.google.android.wearable.app" #Wear OS Smartwatch (https://play.google.com/store/apps/details?id=com.google.android.wearable.app)
+	"com.google.android.youtube" #YouTube app (https://play.google.com/store/apps/details?id=com.google.android.youtube)
+	"com.google.ar.core" #Google Play Services for AR (Augmented Reality) (https://play.google.com/store/apps/details?id=com.google.ar.core)
+	"com.google.ar.lens" #Google Lens (for AR too) (https://play.google.com/store/apps/details?id=com.google.ar.lens)
+	"com.google.chromeremotedesktop" #Chrome Remote Desktop (https://play.google.com/store/apps/details?id=com.google.chromeremotedesktop)
+	"com.google.earth" #Google Earth (https://play.google.com/store/apps/details?id=com.google.earth)
 	"com.google.marvin.talkback" #Adds some features about accessibility settings.
-	"com.google.samples.apps.cardboarddemo"
-	"com.google.tango.measure" #Google Measure app. 
-	"com.google.vr.cyclops"
-	"com.google.vr.expeditions"
-	"com.google.vr.vrcore" # VR stuff
-	"com.google.zxing.client.android"
-	"com.niksoftware.snapseed"
+	"com.google.samples.apps.cardboarddemo" #Google Cardboard (VR stuff) (https://play.google.com/store/apps/details?id=com.google.samples.apps.cardboarddemo)
+	"com.google.tango.measure" #Google Measure (https://play.google.com/store/apps/details?id=com.google.tango.measure)
+	"com.google.vr.cyclops" #Google Cardboard Camera (VR stuff) (https://play.google.com/store/apps/details?id=com.google.vr.cyclops)
+	"com.google.vr.expeditions" #Google Expedition (VR stuff) (https://play.google.com/store/apps/details?id=com.google.vr.expeditions)
+	"com.google.vr.vrcore" # Google VR services (https://play.google.com/store/apps/details?id=com.google.vr.vrcore)
+	"com.google.zxing.client.android" #Google Barcode Scanner (Discontinued) (https://play.google.com/store/apps/details?id=com.google.zxing.client.android)
+	"com.niksoftware.snapseed" #Snapseed (https://play.google.com/store/apps/details?id=com.niksoftware.snapseed)
 
-	#**********DEBLOAT AVANCE**********#
-	#"com.google.android.webview"
-	"com.google.android.launcher" #Google Now Launcher
-	"com.android.chrome" #Chrome app
-	"com.google.android.deskclock" #Default clock app
-	"com.google.android.gm" #G-mail app.
+
+
+	#**********ADVANCED DEBLOAT **********#
+	#"com.google.android.webview" #Android System Webview (https://play.google.com/store/apps/details?id=com.google.android.webview)
+	"com.google.android.launcher" #Google Now Launcher (https://play.google.com/store/apps/details?id=com.google.android.launcher)
+	"com.android.chrome" #Chrome app (https://play.google.com/store/apps/details?id=com.android.chrome)
+	"com.google.android.deskclock" #Google clock app (https://play.google.com/store/apps/details?id=com.google.android.deskclock)
+	"com.google.android.gm" #Gmail (https://play.google.com/store/apps/details?id=com.google.android.gm)
+	"com.google.android.ims" #Carrier Services (for Google phones). Not really sure about this one (https://play.google.com/store/apps/details?id=com.google.android.ims)
 	#"com.android.vending" #Google Play Store app.
-	"com.google.android.apps.maps" #Google maps
-	"com.google.android.apps.photos" #Application photo
+	#"com.google.android.apps.maps" #Google maps (https://play.google.com/store/apps/details?id=com.google.android.apps.maps)
+	"com.google.android.apps.photos" #Google photos (https://play.google.com/store/apps/details?id=com.google.android.apps.photos)
 	#"com.google.android.packageinstaller" #Gives ability to install, update or remove applications on the device --> !!!! WARNING : Bootloop on Xiaomi Note 5 
 	#"com.google.android.gms" #Google Play Services ----------------------------------- DO NOT remove this unless you know what you're doing ! --> No Bootloop on Xiaomi Note 5
 	#"com.google.android.gsf" #Google Services Framework, needed for Google Apps ------ DO NOT remove this unless you know what you're doing ! --> No Bootloop on Xiaomi Note 5
 	#"com.google.android.gsf.login" #Support for managing Google accounts ------------- DO NOT remove this unless you know what you're doing !
-	#"com.google.android.inputmethod.latin" #Google Board (Clavier Google).
+	
+	#"com.google.android.inputmethod.latin" #Google Keyboard (https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin)
+	#"com.google.android.apps.inputmethod.hindi" #Google Keyboard + Hinndi languages (https://play.google.com/store/apps/details?id=com.google.android.apps.inputmethod.hindi&hl=en)
+	#"com.google.android.inputmethod.japanese"
+	#"com.google.android.inputmethod.korean"
+	#"com.google.android.inputmethod.pinyin"
 	#**********DEBLOAT AVANCE**********#
 	)
 
 declare -a samsung_bloat=(
-	"com.android.dreams.phototable"
-	"com.android.exchange"
-	#"com.sec.android.app.desktoplauncher"
-	#"com.samsung.android.mdx" 
+	"com.cnn.mobile.android.phone.edgepanel"
+	"com.customermobile.preload.vzw"
 	"com.dsi.ant.plugins.antplus" #Samsung+ ?
-	"com.enhance.gameservice"
-	"com.samsung.android.calendar"
+	"com.dsi.ant.sample.acquirechannels"
+	"com.dsi.ant.server"
+	"com.dsi.ant.service.socket"
+	"com.hiya.star" # system/app/HiyaService/HiyaService.apk
+	"com.mobeam.barcodeService"
+	"com.monotype.android.font.chococooky"
+	"com.monotype.android.font.cooljazz"
+	"com.monotype.android.font.foundation"
+	"com.monotype.android.font.rosemary"
+	"com.policydm"
+	"com.samsung.aasaservice"
+	"com.samsung.advp.imssettings"
+	"com.samsung.android.allshare.service.mediashare"
+	"com.samsung.android.app.appsedge"
+	"com.samsung.android.app.camera.sticker.facearavatar.preload"
+	"com.samsung.android.app.clipboardedge" # system/app/ClipboardEdge/ClipboardEdge.apk
 	"com.samsung.android.app.episodes"
+	"com.samsung.android.app.galaxyfinder"
+	"com.samsung.android.app.ledbackcover"
 	"com.samsung.android.app.ledcoverdream"
 	"com.samsung.android.app.memo"
+	"com.samsung.android.app.mhswrappertmo"
+	"com.samsung.android.app.mirrorlink"
+	"com.samsung.android.app.news"
+	"com.samsung.android.app.notes"
 	"com.samsung.android.app.reminder"
-	"com.samsung.android.smartmirroring"
+	"com.samsung.android.app.routines"
 	"com.samsung.android.app.sbrowseredge"
+	"com.samsung.android.app.social"
+	"com.samsung.android.app.spage"
 	"com.samsung.android.app.storyalbumwidge"
+	"com.samsung.android.app.talkback"
+	"com.samsung.android.app.talkback" # system/app/STalkback/STalkback.apk
+	"com.samsung.android.app.taskedge"
 	"com.samsung.android.app.vrsetupwizardstub"
 	"com.samsung.android.app.watchmanager"
+	"com.samsung.android.app.watchmanagerstub"
+	"com.samsung.android.app.withtv" # system/app/withTV/withTV.apk
+	"com.samsung.android.aremoji"
+	"com.samsung.android.asksmanager"
+	"com.samsung.android.authfw"
+	"com.samsung.android.bbc.bbcagent"
+	"com.samsung.android.beaconmanager"
+	"com.samsung.android.bixby.agent"
+	"com.samsung.android.bixby.agent.dummy"
+	"com.samsung.android.bixby.es.globalaction"
+	"com.samsung.android.bixby.plmsync"
+	"com.samsung.android.bixby.service"
+	"com.samsung.android.bixby.voiceinput"
+	"com.samsung.android.bixby.wakeup"
+	"com.samsung.android.bixbyvision.framework"
+	"com.samsung.android.calendar"
+	"com.samsung.android.da.daagent"
 	"com.samsung.android.drivelink.stub"
+	"com.samsung.android.easysetup"
 	"com.samsung.android.email.provider"
 	"com.samsung.android.game.gamehome"
 	"com.samsung.android.game.gametools"
-	"com.samsung.android.hmt.vrshell"
-	"com.samsung.android.hmt.vrsvc"
-	"com.samsung.android.samsungpass"
-	"com.samsung.android.scloud" # Samsung Cloud
-	"com.samsung.android.service.travel"
-	"com.samsung.android.spay"
-	"com.samsung.android.spayfw" #Samsung Pay Framework"
-	"com.samsung.android.spdfnote"
-	"com.samsung.android.svoice"
-	"com.samsung.android.tripwidget"
-	#"com.samsung.android.mobileservice"
-	"com.samsung.android.voicewakeup"
-	"com.samsung.android.weather" # Météo
-	"com.samsung.android.widgetapp.yahooedge.finance"
-	"com.samsung.android.widgetapp.yahooedge.sport"
-	"com.samsung.groupcast"
-	"com.samsung.svoice.sync"
-	"com.samsung.voiceserviceplatform"
-	"com.sec.android.app.gamehub"
-	"com.sec.android.app.ocr"
-	"com.sec.android.app.samsungapps"
-	"com.sec.android.app.sbrowser" # Navigateur internet par defaut
-	"com.sec.android.app.shealth"
-	"com.sec.android.app.translator"
-	"com.sec.android.app.withtv"
-	"com.sec.android.cover.ledcover"
-	"com.sec.android.provider.snote"
-	"com.sec.android.service.health"
-	"com.sec.android.sidesync30"
-	"com.sec.android.widgetapp.diotek.smemo"
-	"com.sec.android.widgetapp.samsungapps"
-	"com.sec.everglades"
-	"com.sec.everglades.update"
-	"com.sec.kidsplat.installer"
-	"com.sec.readershub"
-	"com.sec.spp.push"
-	"com.sec.yosemite.phone"
-	"com.tripadvisor.tripadvisor"
-	"com.vlingo.midas"
-	"tv.peel.samsung.app"
-
-	########## Galaxy S10 #############
-	# BIXBY
-	#"com.samsung.android.bixby.wakeup"
-	#"com.samsung.android.app.spage"
-	#"com.samsung.android.app.routines"
-	#"com.samsung.android.bixby.service"
-	#"com.samsung.android.visionintelligence"
-	#"com.samsung.android.bixby.agent"
-	#"com.samsung.android.bixby.agent.dummy"
-	#"com.samsung.android.bixbyvision.framework"
-
-	# GENERAL SYSTEM
-	"com.dsi.ant.sample.acquirechannels"
-	"com.dsi.ant.service.socket"
-	"com.dsi.ant.server"
-	"com.dsi.ant.plugins.antplus"
-	"com.samsung.android.app.social"
-	"com.samsung.android.app.watchmanagerstub"
-	"com.samsung.android.mateagent"
-	"com.sec.android.app.launcher"
-	"com.sec.android.daemonapp"
-	"com.sec.android.easyMover.Agent"
-	"com.sec.android.easyonehand"
-
-	# SAMSUNG PASS / PAY
-	"com.samsung.android.samsungpassautofill"
-	"com.samsung.android.authfw"
-	"com.samsung.android.spayfw"
-
-	# GIMMICKY APPS
-	"com.samsung.android.aremoji"
-	"com.google.ar.core"
-	"flipboard.boxer.app"
-	"com.samsung.android.wellbeing"
-	"com.samsung.android.da.daagent"
-	"com.samsung.android.service.livedrawing"
-	"com.sec.android.mimage.avatarstickers"
-
-	# PRINTING
-	"com.android.printspooler"
-
-	# SAMSUNG EMAIL
-	"com.wsomacp"
-
-	# SAMSUNG GAME LAUNCHER
 	"com.samsung.android.game.gos"
 	"com.samsung.android.gametuner.thin"
-
-	# SAMSUNG KIDS
+	"com.samsung.android.hmt.vrshell"
+	"com.samsung.android.hmt.vrsvc"
+	"com.samsung.android.keyguardwallpaperupdator"
 	"com.samsung.android.kidsinstaller"
-	"com.samsung.android.app.camera.sticker.facearavatar.preload"
-
-	# SAMSUNG LED COVER
-	"com.samsung.android.app.ledbackcover"
-
-	# EDGE
+	"com.samsung.android.lool"
+	"com.samsung.android.mateagent"
+	"com.samsung.android.mdx" 
+	"com.samsung.android.mobileservice"
+	"com.samsung.android.samsungpass"
+	"com.samsung.android.samsungpassautofill"
+	"com.samsung.android.scloud" # Samsung Cloud
+	"com.samsung.android.securitylogagent"
+	"com.samsung.android.service.livedrawing"
 	"com.samsung.android.service.peoplestripe"
-
-	# SAMSUNG DEX
-	"com.sec.android.desktopmode.uiservice"
+	"com.samsung.android.service.travel"
+	"com.samsung.android.smartmirroring"
+	"com.samsung.android.spay"
+	"com.samsung.android.spayfw"
+	"com.samsung.android.spayfw" #Samsung Pay Framework"
+	"com.samsung.android.spdfnote"
+	"com.samsung.android.ststub"
+	"com.samsung.android.svoice"
+	"com.samsung.android.tripwidget"
+	"com.samsung.android.visionintelligence"
+	"com.samsung.android.voicewakeup"
+	"com.samsung.android.weather"
+	"com.samsung.android.weather" # Météo
+	"com.samsung.android.wellbeing"
+	"com.samsung.android.widgetapp.yahooedge.finance"
+	"com.samsung.android.widgetapp.yahooedge.sport"
 	"com.samsung.desktopsystemui"
+	"com.samsung.ecomm"
+	"com.samsung.groupcast"
+	"com.samsung.knox.securefolder"
+	"com.samsung.oh"
+	"com.samsung.safetyinformation"
+	"com.samsung.SMT"
+	"com.samsung.svoice.sync"
+	"com.samsung.systemui.bixby"
+	"com.samsung.tmovvm"
+	"com.samsung.voiceserviceplatform"
+	"com.sec.android.app.billing"
+	"com.sec.android.app.gamehub"
+	"com.sec.android.app.launcher"
+	"com.sec.android.app.magnifier"
+	"com.sec.android.app.myfiles"
+	"com.sec.android.app.ocr"
+	"com.sec.android.app.quicktool"
+	"com.sec.android.app.samsungapps"
+	"com.sec.android.app.sbrowser" # Navigateur internet par defaut
+	"com.sec.android.app.SecSetupWizard"
+	"com.sec.android.app.shealth"
+	"com.sec.android.app.translator"
+	"com.sec.android.app.voicenote"
+	"com.sec.android.app.withtv"
+	"com.sec.android.cover.ledcover"
+	"com.sec.android.daemonapp"
+	"com.sec.android.desktopmode.uiservice"
+	"com.sec.android.easyMover"
+	"com.sec.android.easyMover.Agent"
+	"com.sec.android.easyonehand"
+	"com.sec.android.gallery3d"
+	"com.sec.android.mimage.avatarstickers"
+	"com.sec.android.mimage.photoretouching"
+	"com.sec.android.provider.snote"
+	"com.sec.android.sidesync30"
+	"com.sec.android.uibcvirtualsoftkey"
+	"com.sec.android.widgetapp.diotek.smemo"
+	"com.sec.android.widgetapp.easymodecontactswidget"
+	"com.sec.android.widgetapp.samsungapps"
+	"com.sec.bcservice"
+	"com.sec.epdgtestapp"
+	"com.sec.everglades"
+	"com.sec.everglades.update"
+	"com.sec.factory"
+	"com.sec.kidsplat.installer"
+	"com.sec.location.nsflp2"
+	"com.sec.readershub"
+	"com.sec.spp.push"
+	"com.sec.svoice.lang.en_US"
+	"com.sec.svoice.lang.es_US"
+	"com.sec.yosemite.phone"
+	"com.trustonic.tuiservice"
+	"com.turner.cnvideoapp"
+	"com.vlingo.midas"
+	"com.wsomacp"
+	"net.sharewire.parkmobilev2"
+	"samsung.android.app.galaxyfinder"
+	"samsung.android.app.pinboard"
+	"samsung.android.bbc.bbcagent"
+	"samsung.android.bbc.fileprovider"
+	"samsung.android.scloud.auth"
+	"samsung.android.scloud.sync"
+	"samsung.android.sconnect"
+	"samsung.android.securitylogagent"
+	"samsung.helphub"
+	"samsung.klmsagent"
+	"samsung.knox.knoxtrustagent"
+	"samsung.knox.kss"
+	"samsung.mdl.radio"
+	"samsung.sdm"
+	"samsung.sdm.sdmviewer"
+	"samsung.vvm"
+	"sec.allsharecastplayer"
+	"sec.android.app.billing"
+	"sec.android.app.mt"
+	"sec.android.app.samsungapps"
+	"sec.android.app.shealth"
+	"sec.android.app.sns3"
+	"sec.enterprise.knox.attestation"
+	"sec.enterprise.knox.shareddevice.keyguard"
+	"sec.knox.bluetooth"
+	"sec.knox.bridge"
+	"sec.knox.containeragent2"
+	"sec.knox.foldercontainer"
+	"sec.knox.knoxsetupwizardclient"
+	"sec.knox.packageverifier"
+	"sec.knox.shortcutsms"
+	"sec.knox.switcher"
+	"sec.knox.switchknoxI"
+	"sec.knox.switchknoxII"
+	"tv.peel.samsung.app"
+
+	###### ADVANCED DEBLOAT ######
+	#"com.sec.android.app.desktoplauncher"
+	#"sec.android.emergencylauncher"
 	)
 
-declare -a T_Mobile_bloat=(
-	"com.tmobile.services.nameid" #Name ID T-Mobile
+declare -a US_carrier_bloat=(
+	
+
+	#T-Mobile
 	"com.mobitv.client.tmobiletvhd"
-	"us.com.dt.iq.appsource.tmobile"
-	"com.tmobile.pr.mytmobile"
-	"com.tmobile.simlock"
-	"com.whitepages.nameid.tmobile"
 	"com.tmobile.pr.adapt"
+	"com.tmobile.pr.mytmobile"
+	"com.tmobile.services.nameid" #Name ID T-Mobile
+	"com.tmobile.simlock"
 	"com.tmobile.vvm.application"
+	"com.whitepages.nameid.tmobile"
+	"us.com.dt.iq.appsource.tmobile"
+
+	#Verizon
+	"asurion.android.verizon.vms"
+	"com.asurion.android.verizon.vms"
+	"com.motorola.vzw.phone.extensions"
+	"com.securityandprivacy.android.verizon.vms"
+	"com.telecomsys.directedsms.android.SCG"
+	"com.verizon.llkagent"
+	"com.verizon.messaging.vzmsgs"
+	"com.verizon.mips.services"
+	"com.verizon.obdm"
+	"com.verizon.obdm_permissions"
+	"com.verizon.vzwavs"
+	"com.verizontelematics.verizonhum"
+	"com.vzw.ecid"
+	"com.vzw.hss.myverizon"
+	"com.vzw.qualitydatalog"
+	"customermobile.preload.vzw"
+	"vznavigator.Generic"
+	"vzw.hss.widgets.infozone.large"
 	)
+
+declare -a French_carrier_bloat=(
+	#SFR
+	#Bouygues
+	#Free
+	#Orange / Sosh
+	)
+
 
 declare -a amazon_bloat=(
 	"com.amazon.mShop.android"
@@ -281,6 +379,11 @@ declare -a amazon_bloat=(
 	"com.amazon.mShop.android.shopping"
 	"com.amazon.clouddrive.photo"
 	"com.amazon.avod.thirdpartyclient"
+	"amazon.venezia"
+	"amazon.mp3"
+	"amazon.mShop.android"
+	"amazon.fv"
+	"amazon.kindle"
 	)
 
 declare -a facebook_bloat=(
@@ -289,38 +392,43 @@ declare -a facebook_bloat=(
 	"com.facebook.appmanager"
 	"com.facebook.services"
 	"com.facebook.orca"
-	"com.whatsapp"
 	"com.instagram.android"
+	#"com.whatsapp"
 	)
 
 declare -a misc_bloat=(
-	"flipboard.app"
-	"flipboard.boxer.app"
-	"com.hancom.office.editor.hidden"
+	"audible.application"
+	"cequint.ecid"
 	"com.audible.application"
 	"com.blurb.checkout"
-	"com.cequint.ecid"
-	"com.imdb.mobile"
-	"com.gotv.nflgamecenter.us.lite"
-	"com.infraware.polarisoffice5"
-	"com.nuance.swype.input"
 	"com.booking"
+	"com.cequint.ecid"
 	"com.ebay.mobile"
-	"com.netflix.partner.activation"
-	"com.netflix.mediaclient"
-	"com.spotify.music"
-	"com.evernote"
-	"com.UCMobile.intl"
-	"com.opera.mini.native"
-	"com.opera.app.news"
-	"com.til.timesnews"
-	"com.opera.branding"
-	"in.mohalla.sharechat"
-	"com.micredit.in"
-	"flipboard.boxer.app"
-	"com.s.antivirus"
 	"com.enhance.gameservice"
+	"com.evernote"
+	"com.gotv.nflgamecenter.us.lite"
+	"com.hancom.office.editor.hidden"
+	"com.imdb.mobile"
+	"com.infraware.polarisoffice5"
 	"com.linkedin.android"
+	"com.micredit.in"
+	"com.netflix.mediaclient"
+	"com.netflix.partner.activation"
+	"com.nuance.swype.input"
+	"com.opera.app.news"
+	"com.opera.branding"
+	"com.opera.mini.native"
+	"com.s.antivirus"
+	"com.spotify.music"
+	"com.til.timesnews"
+	"com.tripadvisor.tripadvisor"
+	"com.UCMobile.intl"
+	"flipboard.app"
+	"flipboard.boxer.app"
+	"gotv.nflgamecenter.us.lite"
+	"in.mohalla.sharechat"
+	"yahoo.mobile.client.android.liveweather"
+
 	)
 
 declare -a microsoft_bloat=(
@@ -338,6 +446,9 @@ declare -a microsoft_bloat=(
 	)
 
 declare -a generic_bloat=(
+	"org.simalliance.openmobileapi.service"
+	"com.android.sharedstoragebackup"
+	"com.sec.android.AutoPreconfig"
 	"com.android.apps.tag" #Still unclear how it acts with system, but should be safe to remove...
 	"com.android.backupconfirm" # ??? (Sony)
 	"com.android.bips" #Built-in Print Service. Safe to remove.
@@ -357,7 +468,6 @@ declare -a generic_bloat=(
 	"com.android.hotwordenrollment.okgoogle" #"OK Google" detection service (used when you wanna enroll Assistant by the hotword.
 	"com.android.htmlviewer" #In-built HTML viewer.
 	"com.android.inputdevices" #Manages the input devices.
-	"com.android.keychain" # ????? (Sony)
 	"com.android.keychain" #Should provide access to private keys plus their certificate chains in storage.
 	"com.android.magicsmoke" #Live wallpaper.
 	"com.android.managedprovisioning" #For corporate restritctions on phones with Google Workplace.
@@ -369,7 +479,6 @@ declare -a generic_bloat=(
 	"com.android.printservice.recommendation" #Keep it, if you need to print directly via your phone.
 	"com.android.printspooler" #Keep it, if you need to print directly via your phone.
 	"com.android.providers.partnerbookmarks" #Provides bookmarks about partners of Google in Chrome.
-	"com.android.quicksearchbox" #Search box.
 	"com.android.soundrecorder" #Sound recorder, obviously.
 	"com.android.spul" #SUPL20SERVICES, seems related to GPS in Huawei devices. Should be safe to remove.
 	"com.android.stk" #SIM toolkit app.
@@ -381,12 +490,17 @@ declare -a generic_bloat=(
 	"com.google.android.marvin.talkback" #Accessibility Service that helps blind and vision-impaired users 
 	"com.qualcomm.atfwd"
 	"com.qualcomm.qti.qms.service.telemetry"
+	"com.LogiaGroup.LogiaDeck"
+	"com.vcast.mediamanager"
+	"com.sec.android.service.health"
+	"com.lookout"
 	"com.qualcomm.qti.rcsbootstraputil"
 	"com.qualcomm.qti.rcsimsbootstraputil"
 	"com.qualcomm.timeservice"
 
 
-	#******** DEBLOAT AVANCE ********#
+	#******** ADVANCED DEBLOAT ********#
+	"com.android.quicksearchbox" #Search box.
 	"com.qualcomm.qti.qms.service.connectionsecurity" #CURRENTLY IN TEST / MAY NOT BE SAFE
 	"com.qualcomm.qti.services.secureui"
 	"com.qualcomm.qti.auth.fidocryptoservice"
@@ -404,12 +518,24 @@ declare -a generic_bloat=(
 	"com.android.mms" #Stock SMS app.
 	#"com.android.phone" #Dialer app (!!! WARNING No SIM with a Xiaomi Note 5 Phone !!! Seems NOT to be safe)
 	#"com.android.providers.blockednumber" #Storage of blocked numbers.
+	#"android.browser.provider" # ???????????????
 	#"com.android.vpndialogs" #VPN system.
 	#"com.android.phone.recorder" #Call recorder function.
 	#"com.android.providers.userdictionary" #User dictionary for keyboard apps.
 	"contacts.com.android.providers.calendar" #Necessary to sync stock Calendar app and let it work correctly.
 	#"com.android.backupconfirm" #Restore google settings with Google Backup restore function. Essential package for ADB backup !! 
 	#******** DEBLOAT AVANCE ********#
+	)
+
+declare -a motorola_bloat=(
+	"com.motorola.mot5gmod"
+	"com.motorola.vzw.mot5gmod"
+	"com.discoveryscreen"
+	"com.motorola.vzw.cloudsetup"
+	"com.motorola.ltebroadcastservices_vzw"
+	"com.motorola.vzw.loader"
+	"com.motorola.omadm.vzw"
+	"com.motorola.vzw.provider"
 	)
 
 declare -a huawei_bloat=(
@@ -463,17 +589,68 @@ declare -a huawei_bloat=(
 	"com.huawei.watch.sync " #Huawei Watch sync function. Safe to remove.
 	"com.iflytek.speechsuite " #Default voice input method.
 	"com.nuance.swype.emui " #Huawei Swype functions.
-	#******** DEBLOAT AVANCE ********#
+
+	#******** ADVANCED DEBLOAT ********#
 	#"com.hisi.mapcon " #Don't disable/remove this if you use WiFi Calling, or it'll kill the app. If you don't use WiFi Calling, this is safe to remove. (Thanks @mj084 !)
 	#"com.huawei.hidisk " #Huawei File Manager app.
-	#******** DEBLOAT AVANCE ********#
 	)
 
 declare -a xiaomi_bloat=(
+	"com.mipay.wallet"
+	"com.miui.analytics #Analytics"
+	"com.miui.android.fashiongallery"
+	"com.miui.antispam"
+	"com.miui.bugreport" #Mi Feedback
+	"com.miui.calculator" #Calculator
+	"com.miui.cleanmaster"
+	"com.miui.cloudbackup"
+	"com.miui.cloudservice"
+	"com.miui.cloudservice.sysbase"
+	"com.miui.compass" #Mi Compass
+	"com.miui.contentcatcher"
+	"com.miui.daemon"
+	"com.miui.fm"
+	"com.miui.gallery"
+	"com.miui.home"
+	"com.miui.hybrid"
+	"com.miui.klo.bugreport"
+	"com.miui.msa.global" #Main System Advertising
+	"com.miui.notes" #Mi Notes
+	"com.miui.personalassistant"
+	"com.miui.player" #Mi Music
+	"com.miui.providers.weather"
+	"com.miui.screenrecorder" #Mi Screen Recorder
+	"com.miui.systemAdSolution"
+	"com.miui.translation.kingsoft"
+	"com.miui.translation.youdao"
+	"com.miui.video"
+	"com.miui.videoplayer" #Mi Video
+	"com.miui.videoplayer.overlay"
+	"com.miui.virtualsim"
+	"com.miui.vsimcore"
+	"com.miui.weather2"
+	"com.miui.yellowpage"
+	"com.mi.webkit.core"
+	"com.qiyi.video"
+	"com.sohu.inputmethod.sogou.xiaomi"
+	"com.xiaomi.ab"
+	"com.xiaomi.account" #Mi Account
+	"com.xiaomi.channel"
+	"com.xiaomi.gamecenter.sdk.service"
+	"com.xiaomi.joyose"
+	"com.xiaomi.jr"
+	"com.xiaomi.lens"
+	"com.xiaomi.midrop" #Mi Drop
+	"com.xiaomi.midrop.overlay"
+	"com.xiaomi.mipicks" #Mi Apps
+	"com.xiaomi.o2o"
+	"com.xiaomi.pass"
+	"com.xiaomi.payment"
+	"com.xiaomi.scanner" #Mi Scannercom.miui.screenrecorder
+	"com.xiaomi.shop"
+	"com.xiaomi.vipaccount"
 	"android.autoinstalls.config.Xiaomi.cepheus"
 	"android.autoinstalls.config.Xiaomi.dipper"
-	"com.android.browser" # Xiaomi Browser
-	"com.android.wallpaper.holospiral"
 	"com.autonavi.minimap"
 	"com.baidu.duersdk.opensdk"
 	"com.baidu.input_mi"
@@ -488,91 +665,53 @@ declare -a xiaomi_bloat=(
 	"com.mi.global.shop"
 	"com.mi.globalTrendNews"
 	"com.mi.liveassistant"
-	"com.mi.webkit.core"
 	"com.milink.service"
-	"com.mipay.wallet"
 	"com.mipay.wallet.id"
 	"com.mipay.wallet.in"
 	"com.miui.analytics"
 	"com.miui.android.fashiongallery" # Wallpapers by xiaomi
-	"com.miui.antispam"
 	"com.miui.audioeffect"
 	"com.miui.bugreport"
 	"com.miui.cit"
-	"com.miui.cleanmaster"
-	"com.miui.cloudbackup"
 	"com.miui.cloudservice" # Settings will crash when pressing on any "Mi Cloud" button
-	"com.miui.cloudservice.sysbase"
 	"com.miui.compass"
-	"com.miui.contentcatcher"
-	"com.miui.daemon"
 	"com.miui.enbbs" # Xiaomi Forums
 	"com.eterno"
-	"com.miui.fm"
 	"com.miui.greenguard"
-	"com.miui.hybrid"
 	"com.miui.hybrid.accessory"
-	"com.miui.klo.bugreport"
 	"com.miui.micloudsync"
 	"com.miui.miwallpaper"
 	"com.miui.msa.global" # MIUI System Ads Solution
 	"com.miui.nextpay"
 	"com.miui.notes"
-	"com.miui.personalassistant"
 	"com.miui.player"
-	"com.miui.providers.weather"
 	"com.miui.qr"
 	"com.miui.screenrecorder"
-	"com.miui.systemAdSolution"
 	"com.miui.touchassistant" # Quick Ball/Touch Assistant
-	"com.miui.translation.kingsoft"
 	"com.miui.translation.xmcloud"
-	"com.miui.translation.youdao"
 	"com.miui.translationservice"
 	"com.miui.userguide"
-	"com.miui.video"
 	"com.miui.videoplayer"
-	"com.miui.videoplayer.overlay"
-	"com.miui.virtualsim"
-	"com.miui.vsimcore"
-	"com.miui.weather2"
-	"com.miui.yellowpage"
+	"com.mi.android.globalpersonalassistant"
 	"com.opera.preinstall"
 	"com.phonepe.app"
-	"com.qiyi.video"
 	"com.samsung.aasaservice"
-	"com.sec.android.AutoPreconfig"
-	"com.sec.android.service.health"
-	"com.sohu.inputmethod.sogou.xiaomi"
-	"com.xiaomi.ab"
-	"com.xiaomi.channel"
-	"com.xiaomi.gamecenter.sdk.service"
 	"com.xiaomi.glgm"
-	"com.xiaomi.joyose"
-	"com.xiaomi.jr"
-	"com.xiaomi.lens"
 	"com.xiaomi.micloud.sdk"
 	"com.xiaomi.midrop"
-	"com.xiaomi.midrop.overlay"
 	"com.xiaomi.mipicks"
 	"com.xiaomi.mirecycle"
-	"com.xiaomi.o2o"
 	"com.xiaomi.oversea.ecom"
-	"com.xiaomi.pass"
-	"com.xiaomi.payment"
 	"com.xiaomi.providers.appindex"
 	"com.xiaomi.scanner"
-	"com.xiaomi.shop"
-	"com.xiaomi.vipaccount"
 	"org.codeaurora.gps.gpslogsave"
-	"org.simalliance.openmobileapi.service"
-	#******** DEBLOAT AVANCE ********#
+	#******** ADVCANED DEBLOAT ********#
 	"com.xiaomi.account"
 	"com.miui.gallery" #MIUI Gallery
 	#"com.xiaomi.discover" # !!! WARNING : Disable System app update (but not firmware update)
 	#"com.mi.android.globalFileexplorer" #Stock Files Manager
 	#"com.miui.home" #MIUI launcher. Install another launcher before deleting this one
-	#******** DEBLOAT AVANCE ********#
+	#******** ADVANCED DEBLOAT ********#
 
 	#******** DO NOT DELETE ********#
 	#"com.miui.securitycenter" ---- BOOTLOOP
@@ -580,11 +719,7 @@ declare -a xiaomi_bloat=(
 	#"com.xiaomi.finddevice" ------ BOOTLOOP
 	)
 
-declare -a sony_bloat=(
-	"com.android.htmlviewer" 
-	"com.android.partnerbrowsercustomizations.chromeHomepage" 
-	"com.android.sharedstoragebackup" 
-	"com.s.antivirus" 
+declare -a sony_bloat=( 
 	"com.sony.tvsideview.videoph" 
 	"com.sonyericsson.android.addoncamera.artfilter" 
 	"com.sonyericsson.android.omacp" 
@@ -598,7 +733,14 @@ declare -a sony_bloat=(
 	"com.sonyericsson.unsupportedheadsetnotifier"  
 	"com.sonyericsson.wappush" 
 	"com.sonyericsson.warrantytime" 
-	"com.sonyericsson.xhs" 
+	"com.sonyericsson.xhs"
+	"com.sonyericsson.conversations.res.overlay _305"
+	"com.sonyericsson.trackid.res.overlay_305"
+	"com.sonymobile.themes.sou.cid18.black"
+	"com.sonymobile.themes.sou.cid19.silver"
+	"com.sonymobile.themes.sou.cid20.blue"
+	"com.sonymobile.themes.sou.cid21.pink"
+
 	"com.sonymobile.advancedlogging" 
 	"com.sonymobile.advancedwidget.topcontacts"
 	"com.sonymobile.android.addoncamera.soundphoto" 
@@ -647,15 +789,18 @@ declare -a sony_bloat=(
 	"com.sonymobile.xperiaservices" 
 	"com.sonymobile.xperiatransfermobile" 
 	"com.sonymobile.xperiaweather"
-	"org.simalliance.openmobileapi.service" 
+
+	#*** ADVANCED DEBLOAT ****
+	#"com.sonyericsson.album"
+	#"com.sonyericsson.music"
+	#"com.sonymobile.email"
+	#"com.sonymobile.android.contacts"
+	
 	)
 
 declare -a nokia_bloat=(
-	"com.android.bips"
-	"com.android.calllogbackup"
 	"com.android.cellbroadcastreceiver.overlay.base.s600ww"
 	"com.android.partnerbrowsercustomizations.btl.s600ww.overlay"
-	"com.android.printspooler"
 	"com.android.providers.calendar.overlay.base.s600ww"
 	"com.android.providers.partnerbookmarks"
 	"com.android.providers.settings.btl.s600ww.overlay"
@@ -749,7 +894,7 @@ declare -a nokia_bloat=(
 
 declare -a asus_bloat=(
 	"com.asus.soundrecorder"                     
-	"com.caf.fmradio" 
+	"com.caf.fmradio" #Radio app (Transistor [https://f-droid.org/en/packages/org.y20k.transistor/] is much better)
 	"com.huaqin.FM"                                                  
 	"com.generalmobi.go2pay"                                
 	"com.asus.ia.asusapp"                        
@@ -762,7 +907,6 @@ declare -a asus_bloat=(
 
 declare -a lg_bloat=(
 	"com.android.LGSetupWizard"
-	"com.android.printspooler"
 	"com.lge.appbox.client"
 	"com.lge.bnr"
 	"com.lge.bnr.launcher"
@@ -775,7 +919,6 @@ declare -a lg_bloat=(
 	"com.lge.email"
 	"com.lge.eula"
 	"com.lge.eulaprovider"
-	"com.lge.fmradio"
 	"com.lge.fmradio"
 	"com.lge.friendsmanager"
 	"com.lge.gallery.collagewallpaper"
@@ -843,15 +986,7 @@ declare -a lg_bloat=(
 	"com.lge.wfds.service.v3"
 	"com.lge.wifi.p2p"
 	"com.lge.wifihotspotwidget"
-	"com.LogiaGroup.LogiaDeck"
-	"com.lookout"
-	"com.mobitv.client.tmobiletvhd"
 	"com.nextradioapp.nextradio"
-	"com.tmobile.pr.adapt"
-	"com.tmobile.pr.mytmobile"
-	"com.tmobile.services.nameid"
-	"com.tmobile.simlock"
-
 	#******** DEBLOAT AVANCE ********#
 	#"com.lge.filemanager"  #Stock file manager
 	"com.lge.music"         #Stock music player

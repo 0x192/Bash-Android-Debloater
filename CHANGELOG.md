@@ -1,7 +1,28 @@
+# Happy new year (v1.5)
+
+### Added : 
+- A bunch of new packages for Samsung devices
+- Verizon carrier debloat list
+- All Google packages are now linked to its Google Store page
+- More documentation about listed packages
+
+
+### Changed
+- Full english translation (Finally !)
+- Merge carrier bloat into a single category (7 - Carrier). US carriers and EU carriers are traited separatly.
+- Code improvement and cleaning
+- When searching for packages, I use *grep*. Grep is now used with *-i* argument to be case insensitive.
+
+
+### Misc 
+- Fixed some glitches with bold and colors
+- UX improved 
+
+
 # This is an important one (v1.4)
 
 ### Added : 
-- Even more package to debloat for Xiaomi, Nokia & Sony devices
+- Even more packages to debloat for Xiaomi, Nokia & Sony devices
 
 ### Changed:
 - Package **com.google.android.packageinstaller** removed because it causes bootloop on Xiaomi Note 5. I don't know why I added this one on the list. It's a essential core package.
@@ -95,7 +116,7 @@
 # Beta Version (v0.6)
 
 ### New features added :
-- **New drand's specific debloat list** : 
+- **New Brand's specific debloat list** : 
 	- Xiaomi (not complete)
 - **New debloat list** :
 	- Facebook related

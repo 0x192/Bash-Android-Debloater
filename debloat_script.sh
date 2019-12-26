@@ -16,51 +16,71 @@ nBold=$(tput sgr0)
 
 function debloat {
 	name=$1[@]
-	#bloat=("${!name}")
-	printf "${RED}${Bold}=== $brand debloat list ===${nBold}\n"
-	for i in "${name[@]}"; do
-		printf "${RED}$i${nBold} -->"
-		adb shell "pm uninstall --user 0 $i ${NC}"
+	bloat=("${!name}")
+	printf "${RED}${bold}=== $1 debloat list ===${normal}${NC}\n"
+	for i in "${bloat[@]}"; do
+		printf "${RED}$i${NC} -->"
+		adb shell "pm uninstall --user 0 $i"
 	done
 }
 
+function carrier_choice {
+	clear
+	echo "1 - US_carriers"
+	echo "2 - French carriers"
+	read -r
+	case $REPLY in	
+		1) clear;debloat US_carrier_bloat ;;
+		2) clear;debloat French_carrier_bloat ;;
+	esac
+}
+
 function list {
-	read -r -p "\n${RED}${Bold}Search for packages : ${nBold}${NC} "	
+	clear
+	printf "\n${RED}${Bold}Search for packages (grep used):${nBold}${NC} "
+	read -r
 	printf "\n"
-	adb shell "pm list packages | grep $REPLY"
+	adb shell "pm list packages | grep -i $REPLY"
+	echo
+	read -n 1 -s -r -p "Press any key to continue"
 }
 
 function remove {
-	read -r -p "\n${RED}${Bold}package name to remove : ${nBold}${NC} "
+	clear
+	printf "\n${RED}${Bold}package name to remove : ${nBold}${NC} "
+	read -r
 	adb shell "pm uninstall --user 0 $REPLY"
 }
 
 function install {
-	read -r -p "\n${RED}${Bold}package name to reinstall : ${nBold}${NC} "
+	clear
+	printf "\n${RED}${Bold}package name to reinstall : ${nBold}${NC} "
+	read -r
 	adb shell "cmd package install-existing $REPLY"
 }
 
 function restore {
-	printf "${RED}${Bold}Restore a backup\n ${nBold}${NC}"
-	read -p -r "Nom ${Bold}exact ${nBold} de la sauvegarde : "
+	clear
+	printf "${RED}${Bold}Enter the exact name of the backup to restore : ${nBold}${NC} "
+	read -r
 	adb restore $REPLY
 }
 
 function check_backup_integrity {
 	set -o pipefail
 	for a in *.adb; do
-		echo "Vérification de la sauvegarde ($a)";
+		echo "Backup integrity checking ($a)";
 		dd if="$a" bs=24 skip=1 | zlib-flate -uncompress | tar tf - >/dev/null;
 		if [ $? = 0 ]; then 
-			printf "${RED}${Bold}La sauvegarde générée est intègre${nBold}\n"
-		else printf "${GREEN}${Bold}La sauvegarde générée est corrompue ! ${nBold}\n"
+			printf "${RED}${Bold}Bakcup integrity check : OK${nBold}\n"
+		else printf "${GREEN}${Bold}Backup integrity check : FAILED${nBold}\n"
 		fi
 	done
 }
 
 
 function brand_detection {
-	## brand = $(adb shell getprop ro.product.device) // peut-être plus judicieux d'utiliser ça
+	## brand = $(adb shell getprop ro.product.device) // Maybe I should have use this
 	for brand in ${brands[@]}; do
 		check=$(adb shell getprop | grep -c $brand)
 		if [[ $check>0 ]]; then 
@@ -89,7 +109,7 @@ function brand_detection {
 			esac
 		fi
 	done
-	echo "Marque non supportée"
+	echo "Brand not supported (yet)"
 }
 
 clear
@@ -98,56 +118,55 @@ printf " #                                              #\n"
 printf " #             SCRIPT ----- DEBLOAT             #\n"
 printf " #         ALL DEVICES COMPATIBLE (WIP)         #\n"
 printf " #                                              #\n"
-printf " # %10s${RED}${Bold}v1.3 (23 September 2019)${nBold}%11s#\n"
+printf " # %10s${RED}${Bold}v1.5 (December 30th 2019)${nBold}%10s#\n"
 printf " #                                              #\n"
 printf " ================================================\n"
 echo
 
 adb devices
-printf "${RED}${Bold}AVERTISSEMENT : Lisez attentivement la FAQ avant de vous servir de ce script\n\n"
-printf "Voulez vous faire une sauvegarde de toutes les applications du téléphone [Yes/No] ?\n\n${nBold}"
-printf "RAPPEL : Il est probable que toutes les applications ne soient pas sauvegardées (cf. FAQ).\n\n"
-read
+printf "${RED}${Bold}WARNING : Read carefully the FAQ before using this script!\n\n"
+printf "Do you want to do a backup of your apps ? [Yes/No] ?\n\n${nBold}"
+printf "REMINDER : It is likely that some apps wil NOT be backed up (see FAQ).\n\n"
+read -r
 if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	echo 
 	adb backup -apk -all -system -f "${PHONE:-phone}-`date +%Y%m%d-%H%M%S`.adb"  # -noshare option is default
-	echo "Verification de l'intégrité de la sauvegarde..."
+	echo "Checking backup integrity..."
 	check_backup_integrity;
-else printf "${RED}${Bold}Pas de sauvegarde${nBold}\n"
 fi
 
 brand=$(brand_detection)
 
 while true; do
 	printf "\n${Bold}${ORANGE}======= MENU PRINCIPAL ======= ${NC}${nBold}\n\n"
-	printf " 1   - Lister des paquets\n"
-	printf " 2   - Désinstaller un paquet\n"
-	printf " 3   - Réinstaller un paquet\n"
-	printf " 4   - Restaurer une sauvegarde\n"
+	printf " 1   - Find packages\n"
+	printf " 2   - Uninstall a specific package\n"
+	printf " 3   - Reinstall a package\n"
+	printf " 4   - Restore a backup\n"
 	printf "\n${Bold}${BBLUE}------- DEBLOAT -------${NC}${nBold}\n"
 	printf " 5   - ${brand}\n"
 	printf " 6   - Google\n"
-	printf " 7   - T-Mobile\n"
+	printf " 7   - Carrier\n"
 	printf " 8   - Amazon\n"
 	printf " 9   - Facebook\n"
 	printf " 10  - Microsoft\n"
 	printf " 11  - Divers\n"
-	printf " 12  - Générique\n"
-	printf "\n exit - Quitter\n\n"
+	printf " 12  - Common Android bloat\n"
+	printf "\n exit\n\n"
 	printf "${Bold}${ORANGE}==============================${NC}${nBold}\n\n"
 
-	printf "${RED}${Bold}PENSEZ À REDEMARRER VOTRE TELEPHONE UNE FOIS LE DEBLOAT TERMINE. ${nBold}${NC}\n\n"
-	read -p "${Bold}Choisissez une action : ${nBold}" action
+	printf "${RED}${Bold}DON'T FORGET TO REBOOT YOUR PHONE ONCE THE DEBLOAT IS OVER. ${nBold}${NC}\n\n"
+	read -p "${Bold}Choose an action : ${nBold}" action
 	echo
 
-	case $action in
+	case $action in	
 		1) list ;;
 		2) remove ;;
 		3) install ;;
 		4) restore ;;
 		5) debloat $brand ;;
 		6) debloat google_bloat ;;
-		7) debloat T_Mobile_bloat ;;
+		7) carrier_choice ;;
 		8) debloat amazon_bloat ;;
 		9) debloat facebook_bloat ;;
 		10) debloat microsoft_bloat ;;
