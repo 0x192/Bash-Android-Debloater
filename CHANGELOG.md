@@ -1,22 +1,23 @@
 # Happy new year (v1.5)
 
-### Added : 
-- A bunch of new packages for Samsung devices
-- Verizon carrier debloat list
-- All Google packages are now linked to its Google Store page
-- More documentation about listed packages
-
-
-### Changed
-- Full english translation (Finally !)
-- Merge carrier bloat into a single category (7 - Carrier). US carriers and EU carriers are traited separatly.
-- Code improvement and cleaning
-- When searching for packages, I use *grep*. Grep is now used with *-i* argument to be case insensitive.
+## New : 
+- A bunch of new packages for Samsung devices added
+- Verizon carrier bloatwares added
+- *Beginning of the documentation* for listed packages (It takes a lot of time !) 
+	- Google bloat
+	- Samsung bloat
+- Merge carrier bloat into a single category (7 - Carrier) in the main menu. US carriers and EU carriers are traited separatly.
+- When searching for packages, *grep* is now used with *-i* argument to be case insensitive.
+- Generic android packages regrouped in the appropriate list (they were spread out among the others lists). List renamed in AOSP.
+- Better categorization of packages. Somes were not in the good file.
+- *Each manufacturer has now its own file*. This idea is to document all the packages so you can choose what you want to debloat. There will still be a preselection.
 
 
 ### Misc 
 - Fixed some glitches with bold and colors
-- UX improved 
+- UI/UX improved
+- Full english translation (Finally !)
+- Code improvement and cleaning
 
 
 # This is an important one (v1.4)

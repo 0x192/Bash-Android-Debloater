@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source debloat_lists.sh
+for file in ./lists/* ; do
+  if [ -f "$file" ] ; then
+    . "$file"
+  fi
+done
 
 # Colors used for printing
 RED='\033[0;31m'
@@ -10,7 +14,7 @@ GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
-Bold=$(tput B) 
+Bold=$(tput bold) 
 nBold=$(tput sgr0)
 
 
@@ -78,38 +82,28 @@ function check_backup_integrity {
 	done
 }
 
-
 function brand_detection {
-	## brand = $(adb shell getprop ro.product.device) // Maybe I should have use this
-	for brand in ${brands[@]}; do
-		check=$(adb shell getprop | grep -c $brand)
-		if [[ $check>0 ]]; then 
-			case $brand in
-				"Asus")  
-					echo "asus_bloat"
-					return ;;
-				"Huawei") 
-					echo "huawei_bloat"
-					return ;;
-				"LG") 
-					echo "lg_bloat"
-					return ;;
-				"Nokia") 
-					echo "nokia_bloat"
-					return ;;
-				"Samsung") 
-					echo "samsung_bloat"
-					return ;; 
-				"Sony") 	
-					echo "sony_bloat"
-					return ;;
-				"Xiaomi") 	
-					echo "xiaomi_bloat"
-					return ;;
-			esac
-		fi
-	done
-	echo "Brand not supported (yet)"
+	brand=$(adb shell getprop ro.product.brand)
+	if [[ $brand>0 ]]; then 
+		case $brand in
+			"asus")  
+				echo "asus_bloat" ;;
+			"huawei") 
+				echo "huawei_bloat" ;;
+			"lg") 
+				echo "lg_bloat" ;;
+			"nokia") 
+				echo "nokia_bloat" ;;
+			"samsung") 
+				echo "samsung_bloat" ;;
+			"sony") 	
+				echo "sony_bloat" ;;
+			"xiaomi") 	
+				echo "xiaomi_bloat" ;;
+			*) 
+				echo "Brand not supported (yet)" ;;
+		esac
+	fi
 }
 
 clear
@@ -118,7 +112,7 @@ printf " #                                              #\n"
 printf " #             SCRIPT ----- DEBLOAT             #\n"
 printf " #         ALL DEVICES COMPATIBLE (WIP)         #\n"
 printf " #                                              #\n"
-printf " # %10s${RED}${Bold}v1.5 (December 30th 2019)${nBold}%10s#\n"
+printf " # %10s${RED}${Bold}v1.5 (January 9th 2019)${nBold}%12s#\n"
 printf " #                                              #\n"
 printf " ================================================\n"
 echo
@@ -138,7 +132,7 @@ fi
 brand=$(brand_detection)
 
 while true; do
-	printf "\n${Bold}${ORANGE}======= MENU PRINCIPAL ======= ${NC}${nBold}\n\n"
+	printf "\n${Bold}${ORANGE}========= MAIN MENU  ========= ${NC}${nBold}\n\n"
 	printf " 1   - Find packages\n"
 	printf " 2   - Uninstall a specific package\n"
 	printf " 3   - Reinstall a package\n"
@@ -150,8 +144,8 @@ while true; do
 	printf " 8   - Amazon\n"
 	printf " 9   - Facebook\n"
 	printf " 10  - Microsoft\n"
-	printf " 11  - Divers\n"
-	printf " 12  - Common Android bloat\n"
+	printf " 11  - Miscellaneous\n"
+	printf " 12  - AOSP\n"
 	printf "\n exit\n\n"
 	printf "${Bold}${ORANGE}==============================${NC}${nBold}\n\n"
 
@@ -171,7 +165,7 @@ while true; do
 		9) debloat facebook_bloat ;;
 		10) debloat microsoft_bloat ;;
 		11) debloat misc_bloat ;;
-		12) debloat generic_bloat ;;
+		12) debloat AOSP_bloat ;;
 		"exit") break ;;
 	esac
 done
