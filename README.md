@@ -1,8 +1,8 @@
 # Universal Android Debloater
 
-**DISCLAIMER** : Use this script at you own risk. I am not responsible for anything that could happen to you. Don't eat it tho. It is not comestible.
+**DISCLAIMER** : Use this script at you own risk. I am not responsible for anything that could happen to you. Don't eat it ! It is not comestible.
 
-But don't worry. This script *should* be safe as long as you only use my default debloat lists and the last stable release. The worse thing which can happen is preventing an essential system process to be loaded during boot thus causing an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. 
+But don't worry. This script *should* be safe as long as you only use my preselections and the last stable release. The worse thing which can happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. 
 
 In any case, you can NOT brick your device with this script ! That's the main thing, right ? :smiley:
 
@@ -10,20 +10,18 @@ In any case, you can NOT brick your device with this script ! That's the main th
 
 ## Features :
 * [X] Quick search among all the packages of your phone
-* [X] Uninstall any system/user package
+* [X] Uninstall* any system/user package
 * [X] Reinstall system packages
 * [X] ADB backup (see FAQ)
 * [X] Brand device detection and auto-selection of the appropriate debloat list
-* [X] Light/heavy debloat
-* [ ] Installation of alternative FOSS apps replacing stock apps (list in the WIKI section)
+* [ ] Installation of alternative FOSS apps replacing stock apps (list in the WIKI section) (WIP)
+
+* It is not a real uninstallation for system apps (see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
 
 ## Universal debloat lists :
-* [X] Amazon 
+* [X] GFAM (Google/Facebook/Amazon/Microsoft)
 * [X] Manufacturer bloat
-* [X] Facebook
-* [X] Generic Android bloat
-* [X] Google
-* [X] Microsoft
+* [X] AOSP bloat
 * [X] Miscellaneous
 
 ## Manufacturers debloat list:
@@ -41,7 +39,7 @@ In any case, you can NOT brick your device with this script ! That's the main th
 * [ ] Wiko
 * [X] Xiaomi
 
-## Phone carriers debloat list : 
+## Phone carriers debloat lists : 
  - France 
 	* [ ] Free 
 	* [ ] SFR
@@ -52,8 +50,10 @@ In any case, you can NOT brick your device with this script ! That's the main th
 	* [X] Verizon 
 	* [ ] AT&T
 
-## How to use it (Newbies) :
-- **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ) !!** 
+## How to use it :
+- **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ) !!**
+
+### LINUX
 - Install *Android plateform tools* with your package manager :
 
  	Debian Base : 
@@ -65,5 +65,11 @@ In any case, you can NOT brick your device with this script ! That's the main th
  	pacman -S android-tools
  	```
 - Go to the release section and download the .zip file
-- Execute *debloat_script.sh* et voilà ! 
+- Execute *debloat_script.sh* et voilà !
+
+### WINDOWS
+- Install WSL (Windows Subsystem for Linux) : https://itsfoss.com/install-bash-on-windows/ in order to be able to use bash script.
+- Go to the release section and download the .zip file
+- Execute *debloat_script.sh* from the Ubuntu bash shell et voilà !
+
 
