@@ -1,7 +1,8 @@
 #!/bin/bash
 
 declare -a google_bloat=(
-	"com.android.hotwordenrollment.okgoogle" #OK Google
+	"com.android.hotwordenrollment.okgoogle" # "OK Google" detection service.
+	"com.android.partnerbrowsercustomizations.chromeHomepage" # Horrible stuff for Google Chrome. This package bypass your DNS settings (for letting pass Google ads)
 	"com.chrome.beta" #Google Chrome Beta (https://play.google.com/store/apps/details?id=com.chrome.beta)
 	"com.chrome.canary" #Google Chrome Canary (Nightly build) (https://play.google.com/store/apps/details?id=com.chrome.canary)
 	"com.chrome.dev" #Google Chrome (developer)	(https://play.google.com/store/apps/details?id=com.chrome.dev)

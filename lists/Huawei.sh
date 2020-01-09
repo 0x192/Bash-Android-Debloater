@@ -53,6 +53,7 @@ declare -a huawei_bloat=(
 	"com.nuance.swype.emui " #Huawei Swype functions.
 
 	#******** ADVANCED DEBLOAT ********#
+	"com.android.mediacenter" 	# Huawei music app. (yeah they messed up with the package name)
 	#"com.hisi.mapcon " #Don't disable/remove this if you use WiFi Calling, or it'll kill the app. If you don't use WiFi Calling, this is safe to remove. (Thanks @mj084 !)
 	#"com.huawei.hidisk " #Huawei File Manager app.
 	)

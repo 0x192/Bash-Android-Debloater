@@ -14,9 +14,11 @@ declare -a US_carrier_bloat=(
 	"asurion.android.verizon.vms"
 	"com.asurion.android.verizon.vms"
 	"com.customermobile.preload.vzw"
+	"com.LogiaGroup.LogiaDeck"
 	"com.motorola.vzw.phone.extensions"
 	"com.securityandprivacy.android.verizon.vms"
 	"com.telecomsys.directedsms.android.SCG"
+	"com.vcast.mediamanager" # Verizon Cloud (https://play.google.com/store/apps/details?id=com.vcast.mediamanager)
 	"com.verizon.llkagent"
 	"com.verizon.messaging.vzmsgs"
 	"com.verizon.mips.services"

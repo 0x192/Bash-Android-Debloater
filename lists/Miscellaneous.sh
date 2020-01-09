@@ -1,7 +1,5 @@
 #!/bin/bash
 
-declare -a brands=("Asus" "Huawei" "LG" "Nokia" "Samsung" "Sony" "Xiaomi")
-
 declare -a amazon_bloat=(
 	"com.amazon.mShop.android"
 	"com.sec.android.app.dictionary"
@@ -14,11 +12,6 @@ declare -a amazon_bloat=(
 	"com.amazon.mShop.android.shopping"
 	"com.amazon.clouddrive.photo"
 	"com.amazon.avod.thirdpartyclient"
-	"amazon.venezia"
-	"amazon.mp3"
-	"amazon.mShop.android"
-	"amazon.fv"
-	"amazon.kindle"
 	)
 
 declare -a facebook_bloat=(
@@ -46,23 +39,23 @@ declare -a microsoft_bloat=(
 	)
 
 declare -a misc_bloat=(
-	"audible.application"
-	"cequint.ecid"
-	"com.audible.application"
+	"com.audible.application" # Cover Audible Audiobooks (https://play.google.com/store/apps/details?id=com.audible.application)
 	"com.blurb.checkout"
 	"com.booking"
 	"com.cequint.ecid"
 	"com.ebay.mobile"
 	"com.enhance.gameservice"
 	"com.evernote"
-	"com.gotv.nflgamecenter.us.lite"
+	"com.gotv.nflgamecenter.us.lite" #Football NFL (https://play.google.com/store/apps/details?id=com.gotv.nflgamecenter.us.lite)
 	"com.hancom.office.editor.hidden"
 	"com.imdb.mobile"
 	"com.infraware.polarisoffice5"
 	"com.linkedin.android"
+	"com.lookout" # Lookout Security & Antivirus (https://play.google.com/store/apps/details?id=com.lookout)
 	"com.micredit.in"
 	"com.netflix.mediaclient"
 	"com.netflix.partner.activation"
+	"com.niksoftware.snapseed" #Snapseed (https://play.google.com/store/apps/details?id=com.niksoftware.snapseed)
 	"com.nuance.swype.input"
 	"com.opera.app.news"
 	"com.opera.branding"
@@ -73,15 +66,21 @@ declare -a misc_bloat=(
 	"com.til.timesnews"
 	"com.tripadvisor.tripadvisor"
 	"com.UCMobile.intl"
-	"flipboard.app"
+	"com.yahoo.mobile.client.android.liveweather" # Yahoo Weather (https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather)
+	"flipboard.app" # Flipboard App (https://play.google.com/store/apps/details?id=flipboard.app)
 	"flipboard.boxer.app" #Briefing app (https://play.google.com/store/apps/details?id=flipboard.boxer.app)
-	"gotv.nflgamecenter.us.lite"
-	"in.mohalla.sharechat"
-	"yahoo.mobile.client.android.liveweather"
+	"in.mohalla.sharechat" #ShareChat (https://play.google.com/store/apps/details?id=in.mohalla.sharechat)
+
+	#### QUALCOMM ####
 	"com.qualcomm.qti.rcsbootstraputil"
 	"com.qualcomm.qti.rcsimsbootstraputil"
+	"com.qualcomm.qti.qms.service.connectionsecurity" #CURRENTLY IN TEST / MAY NOT BE SAFE
+	"com.qualcomm.qti.services.secureui"
+	"com.qualcomm.qti.auth.fidocryptoservice"
+	"com.qualcomm.qti.perfdump"
+	"com.qualcomm.atfwd"
+	"com.qualcomm.qti.qms.service.telemetry"
 	"com.qualcomm.timeservice"
-	"com.niksoftware.snapseed" #Snapseed (https://play.google.com/store/apps/details?id=com.niksoftware.snapseed)
 	)
 
 
