@@ -4,8 +4,9 @@
 - A bunch of new packages for Samsung devices added
 - Verizon carrier bloatwares added
 - *Beginning of the documentation* for listed packages (It takes a lot of time !) 
-	- Google bloat
-	- Samsung bloat
+	- Google 
+	- Samsung
+	- AOSP
 - Merge carrier bloat into a single category (7 - Carrier) in the main menu. US carriers and EU carriers are traited separatly.
 - When searching for packages, *grep* is now used with *-i* argument to be case insensitive.
 - Generic android packages regrouped in the appropriate list (they were spread out among the others lists). List renamed in AOSP.
