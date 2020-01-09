@@ -68,8 +68,12 @@ In any case, you can NOT brick your device with this script ! That's the main th
 - Execute *debloat_script.sh* et voilà !
 
 ### WINDOWS
-- Install WSL (Windows Subsystem for Linux) : https://itsfoss.com/install-bash-on-windows/ in order to be able to use bash script.
+- Install [WSL (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to use bash script.
+
+- Install [ADB](https://dl.google.com/android/repository/platform-tools-latest-windows.zip). If you want ADB support everywhere on your PC, you need to add the path of ADB folder in the system variables (see [this](https://www.xda-developers.com/adb-fastboot-any-directory-windows-linux/)).
+
 - Go to the release section and download the .zip file
+
 - Execute *debloat_script.sh* from the Ubuntu bash shell et voilà !
 
 
