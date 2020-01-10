@@ -106,11 +106,11 @@ declare -a AOSP_bloat=(
 
 	#####################   UP TO YOU (can be useful features but safe to remove)   #####################
 
-	"com.android.backupconfirm"
+	#"com.android.backupconfirm"
 	# Restore google settings with Google Backup restore function.
 	# Also display confirmation popup when doing ADB backup. If you remove this package you couldn't do ADB Backup.
 
-	"com.android.bluetooth"
+	#"com.android.bluetooth"
 	# Bluetooth service
 
 	"com.android.browser" 
@@ -125,13 +125,13 @@ declare -a AOSP_bloat=(
 	# Access to events from the calendar.
 	# Safe to remove if you don't use built-in calendar
 
-	"com.android.calculator2" 
+	#"com.android.calculator2" 
 	# Stock calculator app.
 
 	"com.android.calllogbackup"
 	# Call Logs Backup/Restore
 
-	"com.android.captiveportallogin"
+	#"com.android.captiveportallogin"
 	# Take care of redirecting to the web page that the user of a public access network is obliged to view and interect with, before access is granted.
 
 	"com.android.cellbroadcastreceiver"
@@ -140,11 +140,11 @@ declare -a AOSP_bloat=(
 	# It operates independently of the other services and runs at boot time and after exiting airplane mode.
 	# https://www.androidcentral.com/amber-alerts-and-android-what-you-need-know
 
-	"com.android.contacts" 
+	#"com.android.contacts" 
 	# Stock contacts app (it is not Google contact)
 
-	"com.android.cts.ctsshim"
-	"com.android.cts.priv.ctsshim"
+	#"com.android.cts.ctsshim"
+	#"com.android.cts.priv.ctsshim"
 	# Compatibilty Test Service. The CTS shim is a package that resides on a device's /system partition in order
 	# to verify certain upgrade scenarios. Could mess up OTA. 
 	# Don't really know what happens with custom ROM if disabled. Should be safe. 
@@ -163,7 +163,7 @@ declare -a AOSP_bloat=(
 	# The ExchangeService handles all aspects of starting, maintaining, and stopping the various sync adapters for email.
 	# [WARNING] I need to know to test if it only concerns stock mail app.
 
-	"com.android.facelock" 
+	#"com.android.facelock" 
 	# Essential if you wanna use Face Unlock features, removable if you don't want to.
 
 	"com.android.gallery3d" 
@@ -190,17 +190,16 @@ declare -a AOSP_bloat=(
 	#"com.android.phone.recorder" 
 	# Call recorder function.
 
-	"com.android.providers.blockednumber"
-	# Handle blocked number storage
-	# Useful stuff but safe to remove if wanted
+	#"com.android.providers.blockednumber"
+	# Handle blocked numbers storage
 
 	"com.android.providers.calendar" 
 	# Necessary to sync stock Calendar app and let it work correctly.
 
-	"com.android.providers.userdictionary"
+	#"com.android.providers.userdictionary"
 	# Handle user dictionary for keyboard apps.
 
-	"com.android.proxyhandler"
+	#"com.android.proxyhandler"
 	# Handle proxy config
 	# Safe to remove if you don't use a proxy.
 
