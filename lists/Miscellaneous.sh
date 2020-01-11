@@ -39,6 +39,7 @@ declare -a microsoft_bloat=(
 	)
 
 declare -a misc_bloat=(
+
 	"com.audible.application" # Cover Audible Audiobooks (https://play.google.com/store/apps/details?id=com.audible.application)
 	"com.blurb.checkout"
 	"com.booking"
@@ -62,14 +63,17 @@ declare -a misc_bloat=(
 	"com.opera.mini.native"
 	"com.s.antivirus"
 	"com.slacker.radio" # LiveXLive - Streaming Music and Live Events (https://play.google.com/store/apps/details?id=com.slacker.radio)
+	"net.sharewire.parkmobilev2" # ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
 	"com.spotify.music"
 	"com.til.timesnews"
+	"com.turner.cnvideoapp" # Cartoon network App (https://play.google.com/store/apps/details?id=com.turner.cnvideoapp)
 	"com.tripadvisor.tripadvisor"
 	"com.UCMobile.intl"
 	"com.yahoo.mobile.client.android.liveweather" # Yahoo Weather (https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather)
 	"flipboard.app" # Flipboard App (https://play.google.com/store/apps/details?id=flipboard.app)
 	"flipboard.boxer.app" #Briefing app (https://play.google.com/store/apps/details?id=flipboard.boxer.app)
 	"in.mohalla.sharechat" #ShareChat (https://play.google.com/store/apps/details?id=in.mohalla.sharechat)
+	"net.sharewire.parkmobilev2" # ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
 
 	#### QUALCOMM ####
 	"com.qualcomm.qti.rcsbootstraputil"
@@ -81,6 +85,27 @@ declare -a misc_bloat=(
 	"com.qualcomm.atfwd"
 	"com.qualcomm.qti.qms.service.telemetry"
 	"com.qualcomm.timeservice"
+
+	#### FONTS ####
+	"com.monotype.android.font.chococooky"
+	"com.monotype.android.font.cooljazz"
+	"com.monotype.android.font.foundation"
+	"com.monotype.android.font.rosemary"
+
+	#### ANT(+) ####
+	# ANT+ (Adaptive Network Topology) is a proprietary multicast wireless sensor network technology. 
+	# It's like Bluetooth low energy, but oriented towards usage with sensors. ANT+ is mostly used for sport tracking devices 
+	# https://www.thisisant.com/directory
+	# Somes stuff are open-source : https://github.com/ant-wireless
+
+	"com.dsi.ant.plugins.antplus" 
+	# ANT+ plugin service (https://play.google.com/store/apps/details?id=com.dsi.ant.plugins.antplus)
+	
+	"com.dsi.ant.sample.acquirechannels"
+	"com.dsi.ant.server"
+	"com.dsi.ant.service.socket"
+
+
 	)
 
 
