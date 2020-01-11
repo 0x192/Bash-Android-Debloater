@@ -3,9 +3,13 @@
 declare -a samsung_bloat=(
 
 	#####################  SAFE TO DEBLOAT (useless features)  #####################
-
+	
 	"com.cnn.mobile.android.phone.edgepanel" # (Samsung-exclusive)
 	# CNN Edge panel. Twitter trends, and news from CNN.
+
+	"com.enhance.gameservice"
+	# Legacy game Optimizing Service (was replaced by com.samsung.android.game.gos)
+	# Is supposed to "improve" game performance.
 
 	"com.hiya.star" # also called android-ss-service-lib (Samsung-exclusive)
 	# Third-party that provides caller profile information to help consumers identify incoming calls and block unwanted ones.
@@ -645,6 +649,9 @@ declare -a samsung_bloat=(
 	# Samsung camera app
 	# Safe to remove (but not recommanded)
 
+	"com.sec.android.app.dictionary"
+	# Samsung Dictionary is is an app that enables you to manage all the dictionaries stored on your Samsung device.
+
 	"com.sec.android.app.gamehub"
 	# Samsung Game Hub
 	# Was replaced by "com.samsung.android.game.gamehome"
@@ -924,6 +931,15 @@ declare -a samsung_bloat=(
 	# Device Test app
 	# I didn't find any information about this app. Safe to remove anyawy.
 
+	#"com.sec.ims"
+	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling).
+	# Don't really know the difference with com.sec.imsservice. Anyway, there is obviously strong interactions between them.
+	# May be unsafe to uninstall it. I need some more testing. 
+
+	"com.sec.imslogger"
+	# IMS Logger provide logging optins.
+	# Security flaw : https://nitter.net/fs0c131y/status/1115889065285562368
+
 	#"com.sec.imsservice"
 	# This service allows calls and text messages to be delivered via an IP network (Volte/VoIP/Wifi calling). Video calling are obviously also concerned.
 	# Note : Samsung Dialer will crash if you delete this package and have wifi-calling activated in the Dialer's settings.
@@ -1067,7 +1083,7 @@ declare -a samsung_bloat=(
 	)
 
 
- #####################  DO NOT REMOVE THIS (prevent core stuff to work)  #####################
+#####################  DO NOT REMOVE THIS (prevent core stuff to work)  #####################
 
 "com.policydm"
 # Samsung security policy update. I don't have this package and I'm not sure if it is really necessary.
