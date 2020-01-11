@@ -1,3 +1,20 @@
+# New Release (v1.6)
+
+## New : 
+- Complete documentation for :
+	- Carriers packages
+	- Miscellaneous packages
+	- Google packages
+
+- Added somes new packages 
+
+## Misc
+- Fix 3 wrong packages names
+- Moved Verizon Motorola-exclusive bloat from *Motorola* file to *Carriers* file
+- Some cleaning (some packages were still not in the right file)
+- Updated pre-selection for Miscellenaous packages
+
+
 # Happy new year (v1.5)
 
 ## New : 
