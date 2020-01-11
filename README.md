@@ -14,7 +14,7 @@ In any case, you can NOT brick your device with this script ! That's the main th
 * [X] Reinstall system packages
 * [X] ADB backup (see FAQ)
 * [X] Brand device detection and auto-selection of the appropriate debloat list
-* [ ] Installation of alternative FOSS apps replacing stock apps (list in the WIKI section) (WIP)
+* [ ] Installation of alternative open-source apps replacing stock apps (list in the WIKI section) (WIP)
 
 NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
 
@@ -77,4 +77,5 @@ NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitl
 - Execute *debloat_script.sh* from the Ubuntu bash shell et voilà !
 
 
+- **Don't forget to check the debloat lists to see what are my default choices and to avoid bad surprises.**
 
