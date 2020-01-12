@@ -128,6 +128,9 @@ declare -a misc_bloat=(
 	"com.ebay.mobile"
 	# Ebay app (https://play.google.com/store/apps/details?id=com.ebay.mobile)
 
+	"com.eterno"
+	# Daily hunts News. (https://play.google.com/store/apps/details?id=com.eterno&hl=en)
+
 	"com.evernote"
 	# Evernote app (https://play.google.com/store/apps/details?id=com.evernote)
 
@@ -178,6 +181,17 @@ declare -a misc_bloat=(
 
 	"com.opera.mini.native"
 	# Opera Mini web browser (https://play.google.com/store/apps/details?id=com.opera.mini.native)
+
+	"com.opera.preinstall"
+	# It seems to be Opera Max Data saving (discontinued)
+
+	"com.phonepe.app"
+	# PhonePe (https://play.google.com/store/apps/details?id=com.phonepe.app)
+	# PhonePe is a payments app that allows indian users to use BHIM UPI, your credit card and debit card or wallet to recharge your mobile phone, 
+	# pay your utility bills and also make instant payments at offline and online stores.
+	# PhonePe is an indian company (https://en.wikipedia.org/wiki/PhonePe)
+	# BHIM = Bharat Interface for Money : https://en.wikipedia.org/wiki/BHIM
+	# UPI = Unified Payement Interface : https://en.wikipedia.org/wiki/Unified_Payments_Interface
 
 	"com.s.antivirus"
 	# AVG Antivirus (https://play.google.com/store/apps/details?id=com.s.antivirus) for Sony Xperia.
