@@ -1,3 +1,22 @@
+# New Release (v1.7)
+
+## New : 
+- Full documentation for :
+	- Xiaomi packages
+	- Huawei packages
+
+## Misc
+- Fixed 2 package name (com.miui.analytics & com.huawei.hwid) that was miswritten. 
+- **Removed a lot of Xiaomi duplicates** (I think I forgot checking for duplicate after adding a list of new packages...).
+- Regrouped somes Xiaomi packages together because you may not want to delete it (but you should if you ask me).
+- Moved *com.eterno* (Daily hunts News) from Xiaomi list to Miscellaneous list.
+- Moved *com.opera.preinstall* (Opera Max Data Saving) from Xiaomi list to Miscellaneous list.
+- Moved *com.phonepe.app* (PhonePe) from Xiaomi list to Miscellaneous list.
+- Removed *com.samsung.aasaservice* from Xiaomi list (dafuk ? O_O).
+- Reordered the Xiaomi list (alpabetic order + advanced debloat).
+- **Removed an extra space at the end of all package name strings in Huawei file causing the script to not finding any Huawei packages** (whoops :/)
+
+
 # New Release (v1.6)
 
 ## New : 
