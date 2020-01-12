@@ -1,59 +1,236 @@
-#!/bin/bash
+# !/bin/bash
 
 declare -a huawei_bloat=(
-	"com.baidu.input_huawei " #Huawei chinese stock input keyboard. Safe to remove.
-	"com.huawei.android.chr " #HwChrService. Safe to remove.
-	"com.huawei.android.FloatTasks " #Floating dock function. 
-	"com.huawei.android.hsf " #Huawei Services Framework. Safe to remove.
-	"com.huawei.android.hwpay " #Huawei Pay. Safe to remove.
-	"com.huawei.android.instantshare " #Huawei Share features. DO NOT remove this.
-	"com.huawei.android.internal.app " #Component of Huawei sharing. DO NOT remove this.
-	"com.huawei.android.karaoke " #Karaoke mode feature. Safe to remove.
-	"com.huawei.android.launcher " #Huawei launcher app.
-	"com.huawei.android.mirrorshare " #MirrorShare feature.
-	"com.huawei.android.remotecontroller " #Juawei Smart Controller app.
-	"com.huawei.android.tips " #Huawei Tips. Safe to remove.
-	"com.huawei.android.totemweather " #Huawei Weather app.
-	"com.huawei.android.wfdirect " #Wi-Fi Direct feature.
-	"com.huawei.aod " #Always On Display feature. DO NOT remove this.
-	"com.huawei.appmarket " #Huawei Market app.
-	"com.huawei.arengine.service " #Augmented reality service. Safe to remove.
-	"com.huawei.bluetooth " #Import contact via Bluetooth function.
-	"com.huawei.browser " #Huawei Browser app. More than safe to remove if you have another browser installed.
-	"com.huawei.compass " #Huawei Compass app.
-	"com.huawei.contactscamcard " #CamCard is a business card reader app. Safe to remove.
-	"com.huawei.desktop.explorer " #Service that is been used when you wanna use your phone as an operative system on a PC. Safe to remove.
-	"com.huawei.fido.uafclient " #Fast ID Online function. Safe to remove.
-	"com.huawei.gameassistant " #Huawei Game Suite (HiGame). Safe to remove.
-	"com.huawei.geofence " #GeofenceService. Safe to remove.
-	"com.huawei.hdiw " #Huawei ID app. Safe to remove.
-	"com.huawei.hifolder " #Huawei Online Cloud folder service. Safe to remove.
-	"com.huawei.himovie.overseas " #Huawei videos App. Safe to remove.
-	"com.huawei.hitouch " #Floating dock by Huawei. Safe to remove. 
-	"com.huawei.hwasm " #FIDO UAF Autenthicator-Specific Module.
-	"com.huawei.hwdetectrepair " #Huawei Smart diagnosis app. Safe to remove.
-	"com.huawei.HwMultiScreenShot " #Sliding screen feature.
-	"com.huawei.iaware " #Never understood what thid does, but hey it's safe to remove.
-	"com.huawei.ihealth " #MotionService package, it's required for actions like shaking the phone to shut off the alarm, ecc. " #remove it, if you don't care about this.
-	"com.huawei.livewallpaper.paradise " #Live wallpaper service.
-	"com.huawei.mirror " #Huawei Mirror app. Safe to remove.
-	"com.huawei.parentcontrol " #Parental controls functions. Safe to remove.
-	"com.huawei.pcassistant " #HiSuite service. If you use it, keep it.
-	"com.huawei.phoneservice " #HiCare app. Safe to remove.
-	"com.huawei.screenrecorder " #Huawei Screen recorder feature. Safe to remove.
-	"com.huawei.search " #HiSearch. Safe to remove.
-	"com.huawei.stylus.floatmenu " #Floating menu with M-Pen feature. Safe to remove.
-	"com.huawei.synergy " #Huawei Cloud Synergy. Shouldn't be safe to remove, need to learn more 'bout this.
-	"com.huawei.trustagent " #Intelligent unlock feature.
-	"com.huawei.vassistant " #HiVoice app. Safe to remove.
-	"com.huawei.videoeditor " #Video editor function. Safe to remove.
-	"com.huawei.wallet " #Huawei Wallet. Safe to remove.
-	"com.huawei.watch.sync " #Huawei Watch sync function. Safe to remove.
-	"com.iflytek.speechsuite " #Default voice input method.
-	"com.nuance.swype.emui " #Huawei Swype functions.
+	# I NEVER HAD AN HUAWEI DEVICE ON HAND. THIS LIST WAS MADE POSSIBLE BY @REDSKULL23 
+	# https://forum.xda-developers.com/honor-6x/how-to/guide-list-bloat-software-emui-safe-to-t3700814
+	# Yet, his documentation is not enough precise to me.
+	# I already made more intensive search on the web to complete it but I need Huawei users to really improve it.
+	# I use [MORE INFO NEEDED] tag as a marker.
 
-	#******** ADVANCED DEBLOAT ********#
-	"com.android.mediacenter" 	# Huawei music app. (yeah they messed up with the package name)
-	#"com.hisi.mapcon " #Don't disable/remove this if you use WiFi Calling, or it'll kill the app. If you don't use WiFi Calling, this is safe to remove. (Thanks @mj084 !)
-	#"com.huawei.hidisk " #Huawei File Manager app.
+	"com.baidu.input_huawei"
+	# Woh! 51 permissions! 
+	# Huawei chinese stock input keyboard.
+
+	"com.huawei.android.chr" 
+	# HwChrService
+	# Huawei Call History Record. 
+
+	"com.huawei.android.FloatTasks" 
+	# Floating dock function.
+	# https://consumer.huawei.com/en/support/how-to/detail-troubleshooting/en-us00310067/
+
+	"com.huawei.android.hsf" # [MORE INFO NEEDED]
+	# Huawei Services Framework
+	# 3 permissions : DELETE_PACKAGES, INSTALL_PACKAGES, PACKAGE_USAGE_STATS
+	# Safe to remove according to huawei users
+
+	"com.huawei.android.hwpay" 
+	# Huawei Pay
+	# Mobile payment and e-wallet service for Huawei devices that offers the same services as Apple Pay, Samsung Pay etc...
+	# https://consumer.huawei.com/en/mobileservices/huawei-wallet/
+
+	"com.huawei.android.instantshare" 
+	# Huawei Share features.
+	# File transfer tool between Huawei mobiles, using Bluetooth connection and WiFi Direct technology.
+
+	#"com.huawei.android.internal.app" 
+	# Component of Huawei sharing. A read someone saying "Do not remove or you won't be able to send files to apps".
+	# Can someone test it ? 
+
+	"com.huawei.android.karaoke" 
+	# Karaoke mode feature.
+
+	"com.huawei.android.mirrorshare" 
+	# MirrorShare feature (Miracast rebranded by Huawei)
+	# Used to mirror screen of you smartphone on a TV.
+
+	"com.huawei.android.remotecontroller" 
+	# Huawei Smart Controller app.
+	# Lets you you add, customize, and set up remote controls, allowing control of your electronic appliances through your phone. 
+
+	"com.huawei.android.tips" 
+	# Huawei Tips.
+
+	"com.huawei.android.totemweather" 
+	# Huawei Weather app.
+
+	"com.huawei.android.wfdirect" 
+	# Wi-Fi Direct feature.
+
+	#"com.huawei.aod" [MORE INFO NEEDED]
+	# Always On Display feature.
+	# Drain battery for nothing really useful.
+	# RedSkull23 says it's unsafe to remove it. Does it bootloop ? 
+
+	"com.huawei.appmarket" 
+	# Huawei app store (AppGallery)
+	# https://www.xda-developers.com/appgallery-huawei-alternative-google-play-store-android/
+
+	"com.huawei.arengine.service" 
+	# Augmented reality service.
+
+	#"com.huawei.bluetooth" # [MORE INFO NEEDED]
+	# Still not clear about his purpose. A user said "Import contact via Bluetooth function" as a description.
+	# I need a confirmation. 
+
+	"com.huawei.browser" 
+	# Huawei Browser app.
+
+	"com.huawei.compass" 
+	# Huawei Compass app.
+
+	"com.huawei.contactscamcard" 
+	# CamCard is a business card reader app.
+
+	"com.huawei.desktop.explorer" # [MORE INFO NEEDED]
+	# From XDA thread : "Service that is been used when you wanna use your phone as an operative system on a PC."
+	# I don't understand what does it mean.
+
+	"com.huawei.fido.uafclient" 
+	# UAF client for FIDO.
+	# Fido is a set of open technical specifications for mechanisms of authenticating users to online services that do not depend on passwords.
+	# https://fidoalliance.org/specs/u2f-specs-1.0-bt-nfc-id-amendment/fido-glossary.html
+	# https://fidoalliance.org/specs/fido-v2.0-rd-20170927/fido-overview-v2.0-rd-20170927.html
+	#
+	# The UAF protocol is designed to enable online services to offer passwordless and multi-factor security by allowing users to register their device 
+	# to the online service and using a local authentication mechanism such as iris or fingerprint recognition. .
+	# https://developers.google.com/identity/fido/android/native-apps
+	# Safe to remove if you don't use password-less authentification to access online servics
+
+	"com.huawei.gameassistant" 
+	# Huawei Game Suite (HiGame).
+	# Mobile game app store.
+	# https://club.hihonor.com/in/topic/16341/detail.htm
+
+	"com.huawei.geofence" 
+	# GeofenceService.
+	# Allows you to do something when a user enters an area that has been defined as a trigger.
+	# A geofence is a virtual perimeter set on a real geographic area. Combining a user position with a geofence perimeter, 
+	# it is possible to know if the user is inside or outside the geofence or even if he is exiting or entering the area.
+
+	"com.huawei.hwid" 
+	# Huawei Mobile Services (https://play.google.com/store/apps/details?id=com.huawei.hwid)
+	# Needed to access advanced Huawei features.
+	# A Huawei ID is required to access services, like Themes, Mobile Cloud, HiCare, Huawei Wear, Huawei Health  
+
+	"com.huawei.hifolder" 
+	# Huawei Online Cloud folder service
+	# https://consumer.huawei.com/en/mobileservices/mobilecloud/
+
+	"com.huawei.himovie.overseas" 
+	# Huawei video (https://play.google.com/store/apps/details?id=com.huawei.himovie.overseas)
+
+	"com.huawei.hitouch" 
+	# Huawei HiTouch
+	# Assistant capable to recognize the objects in a photo and to search them through various shopping sites.
+	# https://consumer.huawei.com/uk/support/faq/have-you-tried-the-new-hitouch-assistant/
+
+	"com.huawei.hwasm" 
+	# FIDO UAF Autenthicator-Specific Module.
+	# See com.huawei.fido.uafclient for FIDO explaination.
+	# The UAF Authenticator-Specific Module (ASM) is a software interface on top of UAF authenticators which gives a standardized way for FIDO UAF clients 
+	# to detect and access the functionality of UAF authenticators and hides internal communication complexity from FIDO UAF Client.
+	# Source : https://fidoalliance.org/specs/fido-uaf-v1.0-ps-20141208/fido-uaf-asm-api-v1.0-ps-20141208.html
+
+	"com.huawei.hwdetectrepair" 
+	# Huawei Smart diagnosis (https://play.google.com/store/apps/details?id=com.huawei.hwdetectrepair)
+	# Useless features and run in background.
+
+	"com.huawei.HwMultiScreenShot"
+	# Scrolling screenshot feature
+
+	"com.huawei.iaware"
+	# App Prioritizer. Prioritizes apps to avoid slowdown
+	# Up to you but there is apparently no noticeable difference when deleted.
+
+	"com.huawei.ihealth" 
+	# MotionService package, it's required for actions like shaking the phone to shut off the alarm, ecc.
+
+	"com.huawei.health"
+	# Huawei Health (https://play.google.com/store/apps/details?id=com.huawei.health)
+	# Connect Huawei wearables to your phone and all sorts of stats like all fitness tracking apps.
+
+	"com.huawei.livewallpaper.paradise" 
+	# Live wallpaper service.
+
+	"com.huawei.mirror" # [MORE INFO NEEDED]
+	# Huawei Mirror app. 
+	# Mirror like "Glass" or "screen mirror" ? 
+
+	"com.huawei.parentcontrol" 
+	# Parental controls functions.
+
+	"com.huawei.pcassistant" 
+	# HiSuite service. Used by HiSuite PC software.
+	# HiSuite enables you to backup your data and restore them from/to your phone.
+	# https://consumer.huawei.com/en/support/hisuite/
+
+	"com.huawei.phoneservice" 
+	# HiCare (https://play.google.com/store/apps/details?id=com.huawei.phoneservice)
+	# Provides you with common online services including customer services, issue feedback, user guides, service centers and self-service. 
+
+	"com.huawei.screenrecorder" 
+	# Huawei Screen recorder feature.
+
+	"com.huawei.search" 
+	# HiSearch
+	# Allows you to search through settings, files, contacts and notes while keeping a record of your search history.
+	# Hi Search is really annonying because it's triggered as soon as you wipe down from the middle part of the home. 
+
+	"com.huawei.stylus.floatmenu" 
+	# Floating menu with M-Pen feature.
+
+	"com.huawei.synergy" 
+	# Huawei Cloud & Network Synergy.
+	# Seems to be related to B2B (Business To Business) cloud stuff.
+	# https://www.huawei.com/en/press-events/news/2016/10/Cloud-Network-Synergy-Whitepaper
+
+	"com.huawei.trustagent" # [MORE INFO NEEDED]
+	# Smart unlock feature.
+	# nables you to unlock your phone with a Bluetooth device, like a smart band. 
+	# When a compatible Bluetooth device is detected, you can unlock your phone with a simple swipe.
+
+	"com.huawei.vassistant" 
+	# HiVoice app.
+	# Vocal assistant like Siri or Alexa
+	# http://tadviser.com/index.php/Product:Huawei_HiAssistant_(HiVoice)
+
+	"com.huawei.videoeditor" 
+	# Huawei Video editor.
+
+	"com.huawei.wallet" 
+	# Huawei Wallet (renammed Huawei Pay)
+	# Mobile payment and e-wallet service for Huawei devices that offers the same services as Apple Pay, Samsung Pay etc...
+	# https://consumer.huawei.com/en/mobileservices/huawei-wallet/
+
+	"com.huawei.watch.sync" # [MORE INFO NEEDED]
+	# Huawei Watch sync function
+	# Is it only used to sync Huawei watch ?  
+
+	"com.iflytek.speechsuite" 
+	# Default voice input method from iflytek, a big chinese company (https://en.wikipedia.org/wiki/IFlytek)
+	# IFLytek was implicated in human rights violations : 
+	# https://asia.nikkei.com/Economy/Trade-war/US-sanctions-8-China-tech-companies-over-role-in-Xinjiang-abuses
+	# Archive: https://web.archive.org/save/https://asia.nikkei.com/Economy/Trade-war/US-sanctions-8-China-tech-companies-over-role-in-Xinjiang-abuses
+
+	"com.nuance.swype.emui" # [MORE INFO NEEDED]
+	# Huawei Swype functions.
+	# Is it the full Swype keyboard or only the Swype function on Huawei keyboard ? 
+	# NOTE : Nuance company said it would discontinue support of the Swype keyboard app.
+
+	##############################  ADVANCED DEBLOAT ##############################
+
+	"com.android.mediacenter" 	
+	# Huawei music app. (Yeah they messed up with the package name)
+
+	# "com.hisi.mapcon" 
+	# Involved in Wifi Calling. Safe to remove if you don't use this.
+	
+	# "com.huawei.hidisk" 
+	# Huawei File Manager app.
+
+	#"com.huawei.android.launcher" 
+	# Huawei launcher app.
+	# It's basically the home screen, the way icons apps are organized and displayed.
+	# DON'T REMOVE THIS IF YOU DON'T HAVE INSTALLED ANOTHER LAUNCHER ! 
 	)
