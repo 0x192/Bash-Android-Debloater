@@ -113,6 +113,12 @@ declare -a misc_bloat=(
 	# https://blog.usejournal.com/why-i-would-never-trust-booking-com-again-so-you-should-too-a2ab535ed915?gi=7ebe86eaa880
 	# https://ro-che.info/articles/2017-09-17-booking-com-manipulation
 
+	"com.caf.fmradio"
+	# caf = CodeAurora Forum, a Linux Foundation Collaborative Project (https://www.codeaurora.org/) 
+	# All their code is open-source.
+	# Provides tools to access FM radio. 
+	# OpenSource : https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/fm/tree/fmapp2/src/com/caf/fmradio
+
 	"com.cequint.ecid"
 	# Caller ID from Cequint (https://www.cequint.com/)
 	# https://www.fiercewireless.com/wireless/t-mobile-to-launch-caller-id-service-from-cequint
@@ -133,6 +139,12 @@ declare -a misc_bloat=(
 
 	"com.evernote"
 	# Evernote app (https://play.google.com/store/apps/details?id=com.evernote)
+
+	"com.generalmobi.go2pay"
+	# Go2Pay (https://play.google.com/store/apps/details?id=com.generalmobi.go2pay)
+	# Payment app that offers mobile pre-paid recharges and post-paid bill payment, data card recharges and bill payment, 
+	# DTH recharges through cashless transactions.
+	# DTH = Direct To Home Television 
 
 	"com.gotv.nflgamecenter.us.lite" 
 	# Football NFL (https://play.google.com/store/apps/details?id=com.gotv.nflgamecenter.us.lite)
@@ -193,6 +205,21 @@ declare -a misc_bloat=(
 	# BHIM = Bharat Interface for Money : https://en.wikipedia.org/wiki/BHIM
 	# UPI = Unified Payement Interface : https://en.wikipedia.org/wiki/Unified_Payments_Interface
 
+
+	"com.pure.indosat.care"
+	# myIM3 (https://play.google.com/store/apps/details?id=com.pure.indosat.care)
+	# App provided by Indosat Ooredoo, an Internet provider from Indonesia. 
+	# Enables Indosat users to manage prepaid and postpaid numbers and check their credit and payments, purchase data packs, calls, SMS...
+
+	"com.huaqin.FM"   
+	# Radio app from huaqin a chinese company
+	# NOTE : Transistor [https://f-droid.org/en/packages/org.y20k.transistor/] is much better
+
+	"com.nextradioapp.nextradio"
+	# NextRadio (https://play.google.com/store/apps/details?id=com.nextradioapp.nextradio)
+	# 3-party app which lets you experience live and local FM radio on your smartphone.
+	# https://nextradioapp.com/
+
 	"com.s.antivirus"
 	# AVG Antivirus (https://play.google.com/store/apps/details?id=com.s.antivirus) for Sony Xperia.
 
@@ -201,6 +228,10 @@ declare -a misc_bloat=(
 
 	"net.sharewire.parkmobilev2" 
 	# ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
+
+	"com.shopee.id"
+	# Shopee 2.2 (https://play.google.com/store/apps/details?id=com.shopee.id)
+	# official app from Shopee, an e-commerce online shopping platform in Southeast Asian.
 
 	"com.spotify.music"
 	# Spotify app (https://play.google.com/store/apps/details?id=com.spotify.music)
@@ -233,6 +264,10 @@ declare -a misc_bloat=(
 
 	"flipboard.boxer.app" 
 	# Briefing app (https://play.google.com/store/apps/details?id=flipboard.boxer.app)
+
+	"id.co.babe"                                 
+	# BaBe (https://play.google.com/store/apps/details?id=id.co.babe)
+	# Indonesian news app.
 
 	"in.mohalla.sharechat" 
 	# ShareChat (https://play.google.com/store/apps/details?id=in.mohalla.sharechat)
@@ -320,7 +355,8 @@ declare -a misc_bloat=(
 
 
 
-
-
+"com.trustonic.tuiservice"
+"com.vlingo.midas"
+"com.yelp.android.samsungedge"
 
 
