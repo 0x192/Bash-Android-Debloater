@@ -1,3 +1,22 @@
+# New Release (v1.8)
+
+## New : 
+- Full documentation for : 
+	- Asus packages
+	- LG packages
+
+- **26** new samsung packages added at the end of the *Samsung file*. **They are not deleted by default because I haven't documented them yet but it should be safe to debloat.**
+- 
+
+## Misc
+- Removed a duplicate Samsung package.
+- Minor improvements on documention for some packages (including evidences that Samsung Device Care sends data to China)
+- Moved *com.caf.fmradio* from *Samsung* file and *Asus* file (they were duplicates) to *Miscellaneous* file
+- Moved 5 packages from *Asus* file to *Miscellaneous* file.
+- Minor spelling corrections.
+
+
+
 # New Release (v1.7)
 
 ## New : 
@@ -14,7 +33,7 @@
 - Moved *com.phonepe.app* (PhonePe) from Xiaomi list to Miscellaneous list.
 - Removed *com.samsung.aasaservice* from Xiaomi list (dafuk ? O_O).
 - Reordered the Xiaomi list (alpabetic order + advanced debloat).
-- **Removed an extra space at the end of all package name strings in Huawei file causing the script to not finding any Huawei packages** (whoops :/)
+- **Removed an extra space at the end of all package name strings in Huawei file causing the script to not find any Huawei packages** (whoops :/)
 
 
 # New Release (v1.6)
@@ -39,7 +58,7 @@
 ## New : 
 - A bunch of new packages for Samsung devices added
 - Verizon carrier bloatwares added
-- *Beginning of the documentation* for listed packages (It takes a lot of time !) 
+- **Full documentation for listed packages** (It takes a lot of time !) : 
 	- Google 
 	- Samsung
 	- AOSP
@@ -47,7 +66,7 @@
 - When searching for packages, *grep* is now used with *-i* argument to be case insensitive.
 - Generic android packages regrouped in the appropriate list (they were spread out among the others lists). List renamed in AOSP.
 - Better categorization of packages. Somes were not in the good file.
-- *Each manufacturer has now its own file*. This idea is to document all the packages so you can choose what you want to debloat. There will still be a preselection.
+- **Each manufacturer has now its own file**. This idea is to document all the packages so you can choose what you want to debloat. There will still be a preselection.
 
 
 ### Misc 
