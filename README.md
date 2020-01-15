@@ -28,7 +28,7 @@ NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitl
 * [ ] Archos
 * [X] Asus
 * [X] LG
-* [ ] Google
+* [X] Google
 * [ ] HTC
 * [X] Huawei
 * [ ] Motorola
@@ -52,6 +52,8 @@ NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitl
 
 ## How to use it :
 - **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ) !!**
+- Enable *Developer Options* on your smartphone.
+- Turn on *USB Debugging*.
 
 ### LINUX
 - Install *Android plateform tools* with your package manager :
@@ -77,5 +79,5 @@ NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitl
 - Execute *debloat_script.sh* from the Ubuntu bash shell et voilà !
 
 
-- **Don't forget to check the debloat lists to see what are my default choices and to avoid bad surprises.**
+- **Don't forget to check the debloat lists to see what are my default choices and to avoid any bad surprises.**
 
