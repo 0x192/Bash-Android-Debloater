@@ -94,7 +94,7 @@ declare -a samsung_bloat=(
 	# You can debloat this and still create hotspot. 
 
 	"com.samsung.android.app.mirrorlink"
-	# Used to connect your phone to a car 
+	# Used to connect your phone to a car in order to provide audio streaming, GPS navigation...
 	# https://www.samsung.com/us/support/answer/ANS00048972/
 
 	#"com.samsung.android.app.motionpanoramaviewer"
@@ -131,7 +131,6 @@ declare -a samsung_bloat=(
 
 	#"com.samsung.android.app.smartcapture"
 	# Samsung screenshot
-	# Safe to remove 
 
 	"com.samsung.android.app.social"
 	# I know this has been discontinued by Samsung but that it.
@@ -284,8 +283,10 @@ declare -a samsung_bloat=(
 	#"com.samsung.android.lool" # Device maintenance
 	# Samsung Device Care (phone optimizer) (https://play.google.com/store/apps/details?id=com.samsung.android.lool)
 	# This package phone home (China, Qihoo 360)
-	# The clean feature (in storage setting) is provided by Qihoo 360
-	# Safe to remove (but you should rather use a firewall to prevent it to access internet)
+	# The clean feature (in storage setting) is provided by Qihoo 360 which is a shady company (https://en.wikipedia.org/wiki/Qihoo_360)
+	# https://www.reddit.com/r/Android/comments/ektg8u/chinese_spyware_preinstalled_on_all_samsung/
+	# https://www.virustotal.com/gui/file/048ead2be8d18bbe2b05651380069b3740dd05703e9bd66630da986026518398/details
+	# NOTE : If you don't want to delete this package, at least use a firewall (Netguard/AfWall+) to block internet access 
 
 	#"com.samsung.android.MtpApplication"
 	# Samsung overlay for MTP. 
@@ -806,10 +807,6 @@ declare -a samsung_bloat=(
 	#"com.sec.android.gallery3d.panorama360view"
 	# Let you see panoramic photos in the samsung Gallery.
 
-	#"com.sec.android.gallery3d.panorama360view"
-	# Let you see panoramic photos in the samsung Gallery.
-	# Safe to remove
-
 	"com.sec.android.mimage.avatarstickers"
 	# Samsung My Emoji Stickers
 	# Let you turn yourself into an emoji. Who What an incredible feature...
@@ -818,7 +815,7 @@ declare -a samsung_bloat=(
 	#"com.sec.android.mimage.photoretouching"
 	# Samsung Photo Editor
 	# Disabling this will disable the inbuilt photo editor accessed via the stock gallery.
-	# Safe to remove if you don't use Samsung gallery.	"com.sec.android.provider.snote"
+	# Safe to remove if you don't use Samsung gallery.	
 
 	#"com.sec.android.ofviewer"
 	# Samsung selective focus camera mode.
@@ -828,11 +825,10 @@ declare -a samsung_bloat=(
 	# Very shady apk. According to if you're chinese or not, Samsung mount an hidden partition during the first boot and install somes apps.
 	# https://nitter.net/fs0c131y/status/1046689524691218432#m
 	# Archive : https://web.archive.org/web/20200107110205/https://nitter.net/fs0c131y/status/1046689524691218432
-	# Safe to remove
 
 	#"com.sec.android.provider.emergencymode"
 	# Provider for emergency mode (com.sec.android.emergencylauncher)
-	# Reminder : Content providers helps an application manage access to data stored by itself, stored by other apps, 
+	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
 	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
 	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
 
@@ -1083,7 +1079,7 @@ declare -a samsung_bloat=(
 	)
 
 
-#####################  DO NOT REMOVE THIS (prevent core stuff to work)  #####################
+#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
 
 "com.policydm"
 # Samsung security policy update. I don't have this package and I'm not sure if it is really necessary.
@@ -1107,8 +1103,9 @@ declare -a samsung_bloat=(
 # UI when "being called/in call". It's basically the screen that shows you who is calling, lets you answer and hang up, switch to speaker, etc
 
 "com.samsung.android.provider.filterprovider" 
-# FilterProvider dependency to Samsung Camera (crash if FilterProvider is deleted)
+# FilterProvider dependency to Samsung Camera
 # It provide access to filters (when you swipe right from the camera app)
+# WARNING : Samsung camera will crash if this package is deleted.
 
 "com.samsung.networkui"
 # User interface of Mobile Network settings
@@ -1128,3 +1125,36 @@ declare -a samsung_bloat=(
 # Samsung keyboard
 # Note : used for unlocking the phone after a reboot. Third-parties keyboards cannot be used here.
 # DO NOT REMOVE THIS. NEVER ! 
+
+
+
+###################  (NORMALY) SAFE TO REMOVE BUT NO DOCUMENTATION SEARCH YET ###########################
+### These packages will be added in the default preselection when I will find time to document them.
+# Feel free to add them in the bash array if you want them deleted (it should be safe).
+
+"com.samsung.android.aircommandmanager"
+"com.samsung.android.allshare.service.fileshare"
+"com.samsung.android.app.advsounddetector"
+"com.samsung.android.app.assistantmenu"
+"com.samsung.android.app.camera.sticker.facear3d.preload"
+"com.samsung.android.app.cocktailbarservice"
+"com.samsung.android.app.simplesharing"
+"com.samsung.android.app.settings.bixby"
+"com.samsung.android.fmm"
+"com.samsung.android.mdm"
+"com.samsung.android.messaging"
+"com.samsung.android.oneconnect"
+"com.samsung.android.sdk.professionalaudio.utility.jammonitor"
+"com.samsung.android.knox.analytics.uploader"
+"com.samsung.android.stickerplugin"
+"com.samsung.android.app.camera.sticker.facearframe.preload"
+"com.samsung.android.svoiceime"
+"com.samsung.android.themestore"
+"com.samsung.android.visioncloudagent"
+"com.samsung.app.highlightplayer"
+"com.samsung.storyservice"
+"com.sec.android.app.clockpackage"
+"com.sec.android.app.desktoplauncher"
+"com.sec.android.mimage.gear360editor"
+"com.sec.android.provider.snote"
+"com.sec.smartcard.manager"

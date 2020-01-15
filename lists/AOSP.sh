@@ -221,7 +221,7 @@ declare -a AOSP_bloat=(
 	)
 
 
-#####################   DO NOT REMOVE THIS (prevent core stuff to work)  #####################
+#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
 
 "com.android.certinstaller"
 # Certificate installer. Digital certificates identify computers, phones, and apps for security. Just like you'd use your driver’s license 
