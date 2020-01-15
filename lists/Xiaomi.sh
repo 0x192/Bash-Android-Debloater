@@ -32,10 +32,6 @@ declare -a xiaomi_bloat=(
 	# bsp = Board support package
 	# Used to catch log files obviously.
 
-	"com.caf.fmradio"
-	# caf = CodeAurora Forum ? (strange)
-	# Used to access FM 
-
 	"com.duokan.phone.remotecontroller"
 	# Mi Remote Controller (https://play.google.com/store/apps/details?id=com.duokan.phone.remotecontroller)
 	# Control your electric appliances with your phone using Mi Remote.
@@ -377,7 +373,7 @@ declare -a xiaomi_bloat=(
 	# A lot of people debloat this but I'd like to know more about this one.
 
 	"org.codeaurora.gps.gpslogsave"
-	# Code Aurora Forum exists but it's strange they managed to make preinstall an app by Xiaomi.
+	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
 	# According to its name, it only saves GPS logs.
 
 	##################################  ADVANCED DEBLOAT  ##################################
@@ -397,25 +393,25 @@ declare -a xiaomi_bloat=(
 	)
 
 
-########################  DO NOT REMOVE THIS (prevent core stuff to work)  ############################
+#######################  DO NOT REMOVE THIS (will prevent core stuff to work)  #######################
 
 "com.xiaomi.finddevice"
 # Find My Device feature (in the Settings)
-# REMOVING THIS WILL BOOTLOOP YOU DEVICE !
+# REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 # 
 # NOTE : I don't have a Xiaomi phone on hand anymore but maybe only disabling it will work : adb shell 'pm disable-user com.xiaomi.finddevice'
 # Can someone try ? 
 
 "com.miui.securitycenter"
 # MIUI Security app
-# REMOVING THIS WILL BOOTLOOP YOU DEVICE !
+# REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 # 
 # NOTE : I don't have a Xiaomi phone on hand anymore but maybe only disabling it will work : adb shell 'pm disable-user com.miui.securitycenter'
 # Can someone try ? 
 
 "com.miui.securityadd"
 # Related to the MIUI Security app
-# REMOVING THIS WILL BOOTLOOP YOU DEVICE !
+# REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 # 
 # NOTE : I don't have a Xiaomi phone on hand anymore but maybe only disabling it will work : adb shell 'pm disable-user com.miui.securityadd'
 # Can someone try ? 
