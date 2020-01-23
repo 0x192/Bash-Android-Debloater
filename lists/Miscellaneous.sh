@@ -205,7 +205,6 @@ declare -a misc_bloat=(
 	# BHIM = Bharat Interface for Money : https://en.wikipedia.org/wiki/BHIM
 	# UPI = Unified Payement Interface : https://en.wikipedia.org/wiki/Unified_Payments_Interface
 
-
 	"com.pure.indosat.care"
 	# myIM3 (https://play.google.com/store/apps/details?id=com.pure.indosat.care)
 	# App provided by Indosat Ooredoo, an Internet provider from Indonesia. 
@@ -322,10 +321,15 @@ declare -a misc_bloat=(
 	# UCE shim service 
 	# UCE = Unified Communications for Enterprise ? (not sure)
 
-	#"com.qualcomm.timeservice"
+	#"com.qualcomm.timeservice" # [MORE INFO NEEDED]
 	# Qualcomm Time Service
 	# It maybe keeps the real time clock in the Qualcomm processor synchronised with Android time.
-	# Not safe to remove
+	# Seems not safe to remove. 
+
+	"com.quicinc.cne.CNEService"
+	# Qualcomm service
+	# Automatically switchs between Wifi/3G/4G depending on network performances. 
+	# https://www.qualcomm.com/news/onq/2013/07/02/qualcomms-cne-bringing-smarts-3g4g-wi-fi-seamless-interworking
 
 	#### FONTS ####
 	"com.monotype.android.font.chococooky"

@@ -71,6 +71,10 @@ declare -a AOSP_bloat=(
 	"com.android.providers.partnerbookmarks" 
 	# Provides bookmarks about partners of Google in Chrome.
 
+	"com.android.simappdialog"
+	# Sim App Dialog
+	# Used to install the carrier SIM app when the SIM is inserted.
+
 	"com.android.soundrecorder" 
 	# Sound recorder, obviously. 
 
@@ -194,7 +198,7 @@ declare -a AOSP_bloat=(
 	# Handle blocked numbers storage
 
 	"com.android.providers.calendar" 
-	# Necessary to sync stock Calendar app and let it work correctly.
+	# Necessary to sync stock Calendar app and lets it work correctly.
 
 	#"com.android.providers.userdictionary"
 	# Handle user dictionary for keyboard apps.
@@ -270,7 +274,7 @@ declare -a AOSP_bloat=(
 # Handle access to media files.
 
 "com.android.providers.settings"
-# Handle settings app datas (contentProvider)
+# Handles settings app datas (contentProvider)
 # https://android.stackexchange.com/questions/37195/why-are-there-two-settings-apps-settings-and-settings-storage
 
 "com.android.providers.telephony"

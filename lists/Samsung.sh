@@ -1065,11 +1065,13 @@ declare -a samsung_bloat=(
 	# Old Samsung Voice app (for voice recognition)
 
 	"com.wsomacp"
+	# omacp = OMA Client Provisioning. It is a protocol specified by the Open Mobile Alliance (OMA).
 	# Configuration messages parser. Used for provisioning APN settings to Samsung devices via SMS 
 	# In my case, it was automatic and I never needed configuration messages. I'm pretty sure that in France this package is useless.
-	# Maybe it's useful if carriers change their APN.
+	# Maybe it's useful if carriers change their APN. But you still can change it manually, it's not difficult.
 	# Keep in mind these special types of SMS can be abused : 
 	# https://www.csoonline.com/article/3435729/sms-based-provisioning-messages-enable-advanced-phishing-on-android-phones.html
+	# https://www.zdnet.fr/actualites/les-smartphones-samsung-huawei-lg-et-sony-vulnerables-a-des-attaques-par-provisioning-39890045.htm
 
 	"tv.peel.samsung.app"
 	# Peel Smart Remote (WatchON)
