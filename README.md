@@ -2,7 +2,7 @@
 
 **DISCLAIMER** : Use this script at your own risk. I am not responsible for anything that could happen to you. Don't eat it ! It is not comestible.
 
-But don't worry. This script *should* be safe as long as you only use my apps preselections and the last stable release. The worse thing which could happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. 
+But don't worry. This script *should* be safe as long as you only use my default apps selection and the last stable release. The worse thing which could happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. 
 
 In any case, you can NOT brick your device with this script ! That's the main thing, right ? :smiley:
 
@@ -13,7 +13,7 @@ In any case, you can NOT brick your device with this script ! That's the main th
 * [X] Uninstall any system/user package
 * [X] Reinstall system packages
 * [X] ADB backup (see FAQ)
-* [X] Brand device detection and auto-selection of the appropriate debloat list
+* [X] device brand detection and auto-selection of the appropriate debloat list
 * [ ] Installation of alternative open-source apps replacing stock apps (list in the WIKI section) (WIP)
 
 NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
@@ -22,9 +22,9 @@ NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitl
 * [X] GFAM (Google/Facebook/Amazon/Microsoft)
 * [X] Manufacturer bloat
 * [X] AOSP bloat
-* [X] Miscellaneous
+* [X] Miscellaneous bloat
 
-## Manufacturers debloat list:
+## Manufacturers debloat lists:
 * [ ] Archos
 * [X] Asus
 * [X] LG
@@ -45,6 +45,7 @@ NB : It is not a real uninstallation for system apps (see the [FAQ](https://gitl
 	* [ ] SFR
 	* [ ] Orange
 	* [ ] Bouygues Telecom
+	
 - USA
 	* [X] T-Mobile 
 	* [X] Verizon 
