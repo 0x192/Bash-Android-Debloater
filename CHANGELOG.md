@@ -1,3 +1,16 @@
+# New Release (v1.9)
+
+## New : 
+- Full documentation for **Nokia** and **Sony** packages.
+- Added a lot of country specific Nokia packages.
+
+
+## Misc
+- Added 1 new package to Sony list.
+- Moved *com.android.simappdialog* from Nokia list to AOSP list
+- Moved *com.quicinc.cne.CNEService* from Nokia list to Miscellaneous list (it's a Qualcomm package)
+
+
 # New Release (v1.8)
 
 ## New : 
@@ -5,8 +18,9 @@
 	- Asus packages
 	- LG packages
 
+
 - **26** new samsung packages added at the end of the *Samsung file*. **They are not deleted by default because I haven't documented them yet but it should be safe to debloat.**
-- 
+
 
 ## Misc
 - Removed a duplicate Samsung package.
@@ -14,7 +28,6 @@
 - Moved *com.caf.fmradio* from *Samsung* file and *Asus* file (they were duplicates) to *Miscellaneous* file
 - Moved 5 packages from *Asus* file to *Miscellaneous* file.
 - Minor spelling corrections.
-
 
 
 # New Release (v1.7)
@@ -27,7 +40,7 @@
 ## Misc
 - Fixed 2 package name (com.miui.analytics & com.huawei.hwid) that was miswritten. 
 - **Removed a lot of Xiaomi duplicates** (I think I forgot checking for duplicate after adding a list of new packages...).
-- Regrouped somes Xiaomi packages together because you may not want to delete it (but you should if you ask me).
+- Regrouped some Xiaomi packages together because you may not want to delete it (but you should if you ask me).
 - Moved *com.eterno* (Daily hunts News) from Xiaomi list to Miscellaneous list.
 - Moved *com.opera.preinstall* (Opera Max Data Saving) from Xiaomi list to Miscellaneous list.
 - Moved *com.phonepe.app* (PhonePe) from Xiaomi list to Miscellaneous list.
