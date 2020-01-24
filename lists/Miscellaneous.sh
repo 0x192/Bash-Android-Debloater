@@ -37,6 +37,10 @@ declare -a amazon_bloat=(
 	"com.amazon.avod.thirdpartyclient"
 	# Amazon Prime Video (https://play.google.com/store/apps/details?id=com.amazon.avod.thirdpartyclient)
 	# https://www.primevideo.com/
+
+	"in.amazon.mShop.android.shopping"
+	# Amazon India (https://play.google.com/store/apps/details?id=in.amazon.mShop.android.shopping)
+
 	)
 
 declare -a facebook_bloat=(
@@ -300,7 +304,7 @@ declare -a misc_bloat=(
 	# Background-Connection to tls.telemetry.swe.quicinc.com (Host/Domain belongs to Qualcomm)
 	# CURRENTLY IN TEST / MAY NOT BE SAFE
 
-	"com.qualcomm.qti.qms.service.telemetry"
+	"com.qualcomm.qti.qms.service.telemetry" 
 	# Telemetry service.
 	# Yeah obviously it phone to Qualcomm.
 
@@ -330,6 +334,19 @@ declare -a misc_bloat=(
 	# Qualcomm service
 	# Automatically switchs between Wifi/3G/4G depending on network performances. 
 	# https://www.qualcomm.com/news/onq/2013/07/02/qualcomms-cne-bringing-smarts-3g4g-wi-fi-seamless-interworking
+
+	"com.qti.snapdragon.qdcm_ff" # [MORE INFO NEEDED]
+	# Qualcomm Display Color Management tool
+	# Works in background and "enhance" the display’s appearance through an intelligent color adjustment and gamut-mapping system 
+	# "to make colors look vibrant and true to life".
+	# Not really convinced. Can someone see the difference ? 
+	# https://www.qualcomm.com/news/onq/2016/05/02/qualcomm-trupalette-brings-your-phones-display-life
+	#
+	# ff = FinFet ? (https://en.wikipedia.org/wiki/FinFET)
+
+	"com.qualcomm.uimremoteclient" # [MORE INFO NEEDED]
+	# Remote client
+	# When you see "remote" in a package name you can try to delete it.
 
 	#### FONTS ####
 	"com.monotype.android.font.chococooky"
