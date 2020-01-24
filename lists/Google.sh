@@ -159,7 +159,7 @@ declare -a google_bloat=(
 	"com.google.android.apps.translate" 
 	# Google Translate (https://play.google.com/store/apps/details?id=com.google.android.apps.translate)
 
-	"com.google.android.apps.travel.onthego" 
+	"com.google.android.apps.travel.onthego"	
 	# Google Trip (discontinued)
 
 	"com.google.android.apps.vega" 
@@ -378,6 +378,11 @@ declare -a google_bloat=(
 
 	#"com.google.android.apps.photos" 
 	# Google photos (https://play.google.com/store/apps/details?id=com.google.android.apps.photos)
+
+	#"com.google.android.apps.turbo"
+	# Device Health Services (discontinued ?)
+	# Calculates your remaining battery percentage based on your usage
+	# Reviews for this app were... funny (https://www.reddit.com/r/google/comments/ajnbmh/the_reviews_for_device_health_services_are_quite/)
 	
 	#####  GOOGLE KEYBOARD  #####
 	# I'm not sure if you can delete Google keyboard on Google phone without having issue to unlock your phone on boot.

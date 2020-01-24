@@ -215,6 +215,12 @@ declare -a AOSP_bloat=(
 	# Things have changed with Android 10. Don't know if this package is still relevant.
 	# https://blog.mindorks.com/understanding-the-scoped-storage-in-android.
 
+	"com.android.traceur"
+	# System Tracing
+	# Recording device activity over a short period of time is known as system tracing. System tracing produces a trace file that can be used to generate 
+	# a system report.
+	# Not useful if you're not a developer.
+
 	"com.android.voicedialer" 
 	# Voice search.
 
