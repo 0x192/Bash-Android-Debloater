@@ -38,10 +38,28 @@ declare -a samsung_bloat=(
 	# I don't really know the role of this package. It is obiously related to IMS, an open industry standard for 
 	# voice and multimedia communications over IP.
 
+	"com.samsung.android.aircommandmanager"
+	# AirCommandManager manager
+	# Gives you access to signature S Pen features. You can access Air command anytime you are using your phone by simply taking out the S Pen.
+	# https://www.samsung.com/global/galaxy/what-is/air-command/
+
+	"com.samsung.android.allshare.service.fileshare"
+	# Wi-Fi Direct
+	# Allows two devices to establish a direct Wi-Fi connection without requiring a wireless router.
+	# https://www.samsung.com/au/support/mobile-devices/connecting-devices-via-wifi-direct/
+	# https://en.wikipedia.org/wiki/Wi-Fi_Direct
+	
 	"com.samsung.android.allshare.service.mediashare"
 	# Samsung Allshare service (now called SmartView).
 	# Used to stream content from your phone to a Samsung smart TV.
 	# https://www.samsung.com/us/apps/smart-view-2/
+
+	"com.samsung.android.app.advsounddetector"
+	# Samsung Sound detectors
+	# Uses microphone to identify recognizable sounds. For example, if it recognizes a baby's cry, it can alert you with flashing lights so 
+	# you know to check on your baby. Or it can notify you if it hears the doorbell ring so you know to open the door.
+	#
+	# adv maybe refers to Samsung Advanced Institute of Technology 
 
 	"com.samsung.android.app.aodservice"
 	# Drain battery for nothing.
@@ -51,17 +69,37 @@ declare -a samsung_bloat=(
 	# Samsung apps edge (https://www.samsung.com/global/galaxy/what-is/apps-edge/)
 	# Displays your five most frequently used apps for you to access at a moment’s notice.
 
+	"com.samsung.android.app.assistantmenu"
+	# Assistant menu
+	# Designed for individuals with motor control or other physical impairments. 
+	# By using Assistant menu, you can access hardware buttons and all parts of the screen by simply tapping or swiping.
+	# https://www.samsung.com/uk/accessibility/mobile-assistant-menu/
+
 	"com.samsung.android.app.camera.sticker.facear.preload"
+	"com.samsung.android.app.camera.sticker.facear3d.preload" # Default 3D live stickers
 	"com.samsung.android.app.camera.sticker.stamp.preload"
 	# Annoying Stickers/stamps of the Samsung camera app. C'mon it feels like Snapshat.
 	# https://developer.samsung.com/galaxy/stickers
 	# Safe to remove
+
+	"com.samsung.android.app.camera.sticker.facearframe.preload" # [MORE INFO NEEDED]
+	# Frames sticker ? 
+	# I don't know what this sticker is and I don't have this package.
 
 	"com.samsung.android.app.camera.sticker.facearavatar.preload"
 	# Kid avatar stockers on Samsung camera ? (not sure)
 	
 	"com.samsung.android.app.clipboardedge"
 	# Clipboard edge panel
+
+	#"com.sec.android.app.clockpackage"
+	# Samsung clock 
+
+	"com.samsung.android.app.cocktailbarservice"
+	# Edge screen
+	# Enables you to open your five most used apps by simply swiping the edge of the screen.
+	# Swipe one of the edges of the screen to bring up information even when your device is locked (with the screen off). 
+	# You can also set it up to display the news or weather, for example.
 
 	"com.samsung.android.app.episodes"
 	# Samsung story album (https://www.samsung.com/in/support/mobile-devices/what-is-story-album-application-in-samsung-galaxy-s4/)
@@ -74,6 +112,10 @@ declare -a samsung_bloat=(
 	"com.samsung.android.app.galaxyfinder"
 	# S Finder is a search application that allows you to find what you want in an instant by searching the content on your 
 	# Galaxy smartphone and on the web as well. (https://www.samsung.com/global/galaxy/what-is/s-finder/)
+
+	"com.samsung.app.highlightplayer"
+	# Samsung Story Video Editor
+	# Lets you edit your videos stories 
 
 	"com.samsung.android.app.interactivepanoramaviewer" #Name : Visual. photo virt.
 	# Samsung Virtual Shot Viewer enable sharing virtual shot
@@ -128,6 +170,14 @@ declare -a samsung_bloat=(
 	# Selfie panorama viewer
 	# # Let you see the result of a selfie motion panorama
 	# https://www.samsung.com/global/galaxy/what-is/motion-panorama/
+
+	"com.samsung.android.app.settings.bixby"
+	# Bixby settings (Bixby = Samsung intelligence assistant)
+
+	"com.samsung.android.app.simplesharing"
+	# Samsung Link Sharing
+	# Lets you share large size files by using the Samsung Cloud.
+	# https://www.samsung.com/au/support/mobile-devices/what-is-link-sharing/
 
 	#"com.samsung.android.app.smartcapture"
 	# Samsung screenshot
@@ -243,6 +293,13 @@ declare -a samsung_bloat=(
 	#"com.samsung.android.fingerprint.service"
 	# Fingerprint service
 
+	"com.samsung.android.fmm"
+	# Find My Mobile
+	# Tracks down your device when it gets lost. 
+	# Lets you remotely lock your device, block access to Samsung Pay and wipe data from the entire device.
+	# https://www.samsung.com/global/galaxy/what-is/find-my-mobile/
+	# https://findmymobile.samsung.com/
+
 	"com.samsung.android.game.gamehome"
 	# Samsung Game Launcher 
 	# https://www.samsung.com/global/galaxy/apps/game-launcher/
@@ -277,6 +334,15 @@ declare -a samsung_bloat=(
 	# This package also have very stranges permissions : READ_PLACE / WRITE_PLACE. I couldn't find any explaination on the web. 
 	# So either it's a useless samsung package either it's a spyware. I delete it and I didn't notice anything bad.
 
+	"com.samsung.android.keyguardwallpaperupdator"
+	# Lets you customize your Samsung device with different images (provided by Samsung) on the lock screen. 
+
+	"com.samsung.android.kidsinstaller"
+	# Samsung Kids Home (https://www.samsung.com/global/galaxy/apps/samsung-kids-home/)
+	# Lets you shape a "safe environment" for your child.
+	# NOTE : You shouldn't give your phone to a child. That bad ! 
+	# https://ifstudies.org/blog/a-smartphone-will-change-your-child-in-ways-you-might-not-expect-or-want
+
 	"com.samsung.android.location"
 	# IMO it handles GPS needs for some samsungs apps. I have it removed on my phone and I still can use the GPS with a 3-party app.
 
@@ -288,26 +354,25 @@ declare -a samsung_bloat=(
 	# https://www.virustotal.com/gui/file/048ead2be8d18bbe2b05651380069b3740dd05703e9bd66630da986026518398/details
 	# NOTE : If you don't want to delete this package, at least use a firewall (Netguard/AfWall+) to block internet access 
 
-	#"com.samsung.android.MtpApplication"
-	# Samsung overlay for MTP. 
-
-	"com.samsung.android.keyguardwallpaperupdator"
-	# Lets you customize your Samsung device with different images (provided by Samsung) on the lock screen. 
-
-	"com.samsung.android.kidsinstaller"
-	# Samsung Kids Home (https://www.samsung.com/global/galaxy/apps/samsung-kids-home/)
-	# Lets you shape a "safe environment" for your child.
-	# NOTE : You shouldn't give your phone to a child. That bad ! 
-	# https://ifstudies.org/blog/a-smartphone-will-change-your-child-in-ways-you-might-not-expect-or-want
-
 	"com.samsung.android.mateagent"
 	# Samsung Galaxy Friends is an accessory platform service that allows the user to enjoy a variety of content quickly 
 	# and easily by simply connecting an accessory, without having to install additional applications.
 	# https://developer.samsung.com/codelab/SDC18-experiences/Galaxy-Friends
 
+	"com.samsung.android.mdm"
+	# MDMApp (Mobile Device Management app)
+	# Used to monitor and manage remotely  mobile devices.
+	# For exemple locking split-screen, blocking safe mode boot, enabling branding logo in the lock screen, remotely configuring IMAP email...
+	# Most likely related to KNOX 
+	# https://www.samsungknox.com/en/solutions/it-solutions/knox-manage
+	# https://developer.samsung.com/tech-insights/knox/mobile-device-management
+
 	"com.samsung.android.mdx"
 	# Media & Devices feature
 	# https://www.samsung.com/latin_en/support/mobile-devices/media-and-device-feature/
+
+	#"com.samsung.android.messaging"
+	# Samsung Messaging app 
 
 	"com.samsung.android.mobileservice"
 	# Samsung Experience Service (https://play.google.com/store/apps/details?id=com.samsung.android.mobileservice)
@@ -315,10 +380,18 @@ declare -a samsung_bloat=(
 	# It allows you to use multiple Samsung apps, such as Samsung Health, Samsung Pay, Galaxy Apps, Samsung Members, and SmartThings, 
 	# with your Samsung account credentials.
 
+	#"com.samsung.android.MtpApplication"
+	# Samsung overlay for MTP. 
+
 	"com.samsung.android.networkdiagnostic"
 	# Network Diagnostic
 	# Autostart after boot. 9 permissions (including ACCESS_FINE_LOCATION : precise GPS location) + 1 unknown permission : SEC_FACTORY_PHONE
 	# Seems to be telemetry.
+
+	"com.samsung.android.oneconnect"
+	# Samsung Smart Things (https://play.google.com/store/apps/details?id=com.samsung.android.oneconnect)
+	# Lets you manage all your Samsung and SmartThings-compatible devices.
+	# https://www.samsung.com/global/galaxy/apps/smartthings/
 
 	"com.samsung.android.personalpage.service"
 	# Private mode (was replaced by Secure Folder)
@@ -351,9 +424,19 @@ declare -a samsung_bloat=(
 	# Run at startup and ask for an unknown permission SEC_FACTORY_PHONE
 	# This package seems to be used for samsung apps needing location.
 
+	"com.samsung.android.sdk.professionalaudio.utility.jammonitor"
+	# Professional Audio
+	# Allows you to create virtual instrument applications with Android.
+	# https://developer.samsung.com/html/techdoc/ProgrammingGuide_ProfessionalAudio.pdf
+
 	"com.samsung.android.shortcutbackupservice"
 	# ShortcutBNR 
 	# Packages permissions suggest it is used for cloud backup.
+
+	"com.samsung.android.stickerplugin" # [MORE INFO NEEDED]
+	# StickerPlugin
+	# Not sure if this package also provide sticker for camera. I don't have it so I can't test
+	# https://developer.samsung.com/galaxy/stickers
 
 	"com.samsung.android.sm"
 	# Smart Manager
@@ -424,8 +507,23 @@ declare -a samsung_bloat=(
 	# Virtual mobile personal assistant capable of running a  basic tasks through voice command alone.
 	# https://www.samsung.com/global/galaxy/what-is/s-voice/
 
+	"com.samsung.android.svoiceime"
+	# Samsung voice input 
+	# Voice input powered by Bixby. See above.
+
+	"com.samsung.android.themestore"
+	# Galaxy Themes
+	# Official Samsung app for modifying your smartphone's theme.
+	# https://www.samsung.com/global/galaxy/apps/galaxy-themes/
+
 	"com.samsung.android.tripwidget"
 	# Discontinued package (used in Galaxy S4) handling trip wallpaper widget.
+
+	"com.samsung.android.visioncloudagent"
+	# VisionCloudAgent
+	# Cloud Agent is a service which automatically upload on the cloud the photos you take on your phone. It connects to your "Samsung account".
+	# It is related to Dropbox.
+	# Given the Vision in the package name there is a link with Bixby.
 
 	"com.samsung.android.visionintelligence"
 	# Bixby Vision
@@ -526,13 +624,17 @@ declare -a samsung_bloat=(
 	"com.samsung.ipservice"
 	# Name and permissions of this package suggest that it is used by Galaxy Finder to seek stuff on the web.
 
-	### KNOX ###
+	########## KNOX ###########
 	# Provides a list of security features—both hardware and software—that allow business and personal content to securely coexist on the same handset
 	# https://en.wikipedia.org/wiki/Samsung_Knox
 	# https://images.samsung.com/is/content/samsung/p5/ch/business/enterprise-edition/Knox_Platform_for_Enterprise_Whitepaper_2019.pdf
 
 	"com.samsung.klmsagent"
 	# Part of KNOX. Don't know more
+
+	"com.samsung.android.knox.analytics.uploader"
+	# Knox Analytics Uploader
+	# Sends analytcs to Samsung
 
 	"com.samsung.knox.knoxtrustagent"
 	# Knox Quick Access allows users to access the Knox Workspace container using wearables such as the Galaxy Gear S2.
@@ -586,6 +688,11 @@ declare -a samsung_bloat=(
 	"com.samsung.SMT"
 	# Samsung TTS (Text-to-speech)
 	# Seems discontinued.
+
+	"com.samsung.storyservice"
+	# Samsung StoryService
+	# Create stories with your pictures ans videos in the Gallery
+	# https://www.samsung.com/uk/support/mobile-devices/what-is-video-collage-and-how-do-i-use-it/
 
 	"com.samsung.svoice.sync"
 	# Samsung Voice service
@@ -649,6 +756,12 @@ declare -a samsung_bloat=(
 	#"com.sec.android.app.camera"
 	# Samsung camera app
 	# Safe to remove (but not recommanded)
+
+	"com.sec.android.app.desktoplauncher"
+	# Samsung DeX Home (launcher)
+	# Dex Enables users to extend their device into a desktop-like experience by connecting a keyboard, mouse, and monitor.
+	# "DeX" is a contraction of "Desktop eXperience".
+	# https://en.wikipedia.org/wiki/Samsung_DeX
 
 	"com.sec.android.app.dictionary"
 	# Samsung Dictionary is is an app that enables you to manage all the dictionaries stored on your Samsung device.
@@ -809,13 +922,17 @@ declare -a samsung_bloat=(
 
 	"com.sec.android.mimage.avatarstickers"
 	# Samsung My Emoji Stickers
-	# Let you turn yourself into an emoji. Who What an incredible feature...
+	# Let you turn yourself into an emoji. Woah ! What an incredible feature...
 	# https://www.samsung.com/us/support/answer/ANS00078920/
+
+	"com.sec.android.mimage.gear360editor"
+	# 360 Photo Editor
+	# Lets you edit the 360-degree photos you took.
 
 	#"com.sec.android.mimage.photoretouching"
 	# Samsung Photo Editor
 	# Disabling this will disable the inbuilt photo editor accessed via the stock gallery.
-	# Safe to remove if you don't use Samsung gallery.	
+	# Safe to remove if you don't use Samsung gallery.
 
 	#"com.sec.android.ofviewer"
 	# Samsung selective focus camera mode.
@@ -831,6 +948,12 @@ declare -a samsung_bloat=(
 	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
 	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
 	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
+
+	"com.sec.android.provider.snote"
+	# Content provider for S Note (https://www.samsung.com/global/galaxy/apps/samsung-notes/).
+	# REMINDER : Content providers help an application manage access to data stored by itself, stored by other apps, 
+	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
+	# Source : https://developer.android.com/guide/topics/providers/content-providers.html	
 
 	"com.sec.android.service.health"
 	# Samsung Health Service
@@ -1011,6 +1134,11 @@ declare -a samsung_bloat=(
 	# Samsung Books (discontinued)
 	# All-in-one e-Reading solution that offers instant access to thousands of e-reading contents.
 
+	"com.sec.smartcard.manager"
+	# Smart Card Manager
+	# Smart Card enables communication with Secure Elements (SIM card, embedded Secure Elements, Mobile Security Card...)
+	# This packages seems to be Samsung implemnentation.
+
 	"com.sec.spp.push"
 	# Samsung Push Service (https://play.google.com/store/apps/details?id=com.sec.spp.push)
 	# Provide updates and notifications for services exclusive to Samsung..
@@ -1053,7 +1181,7 @@ declare -a samsung_bloat=(
 	# The tuiService (Trusted User Interface) is a new security layer implemented by Trustonic.
 	# Allows a Trusted Application to interact directly with the user via a common display and touch screen, completely isolated from the main device OS.
 	# Seems like a good idea but it's closed source. I also don't see any real applications. Does dev uses *this* API ?
-	# Google implement their own stuff in Android Pie : https://android-developers.googleblog.com/search/label/Trusted%20User%20Interface 
+	# Google implemented their own stuff in Android Pie : https://android-developers.googleblog.com/search/label/Trusted%20User%20Interface 
 	# https://www.trustonic.com/news/blog/benefits-trusted-user-interface/
 	# https://en.wikipedia.org/wiki/Trusted_execution_environment
 
@@ -1089,7 +1217,7 @@ declare -a samsung_bloat=(
 # https://www.samsung.com/nz/support/mobile-devices/security-policy-updates/
 
 "com.samsung.android.SettingsReceiver"
-# Samsung overlay of AOSP Settings. It has 39 permissions. I guess it handle interactions with features controled by the settings.
+# Samsung overlay of AOSP Settings. It has 39 permissions. I guess it handles interactions with features controled by the settings.
 
 "com.samsung.android.app.soundpicker"
 # Let you select a sound for alarm/ringtone
@@ -1106,11 +1234,11 @@ declare -a samsung_bloat=(
 
 "com.samsung.android.provider.filterprovider" 
 # FilterProvider dependency to Samsung Camera
-# It provide access to filters (when you swipe right from the camera app)
+# Provides access to filters (when you swipe right from the camera app)
 # WARNING : Samsung camera will crash if this package is deleted.
 
 "com.samsung.networkui"
-# User interface of Mobile Network settings
+# User interface of the Mobile Network settings
 
 "com.samsung.android.sm.policy"
 # SPCM (Striped Phase Change Memory ?) client.
@@ -1130,33 +1258,7 @@ declare -a samsung_bloat=(
 
 
 
+
 ###################  (NORMALY) SAFE TO REMOVE BUT NO DOCUMENTATION SEARCH YET ###########################
 ### These packages will be added in the default preselection when I will find time to document them.
 # Feel free to add them in the bash array if you want them deleted (it should be safe).
-
-"com.samsung.android.aircommandmanager"
-"com.samsung.android.allshare.service.fileshare"
-"com.samsung.android.app.advsounddetector"
-"com.samsung.android.app.assistantmenu"
-"com.samsung.android.app.camera.sticker.facear3d.preload"
-"com.samsung.android.app.cocktailbarservice"
-"com.samsung.android.app.simplesharing"
-"com.samsung.android.app.settings.bixby"
-"com.samsung.android.fmm"
-"com.samsung.android.mdm"
-"com.samsung.android.messaging"
-"com.samsung.android.oneconnect"
-"com.samsung.android.sdk.professionalaudio.utility.jammonitor"
-"com.samsung.android.knox.analytics.uploader"
-"com.samsung.android.stickerplugin"
-"com.samsung.android.app.camera.sticker.facearframe.preload"
-"com.samsung.android.svoiceime"
-"com.samsung.android.themestore"
-"com.samsung.android.visioncloudagent"
-"com.samsung.app.highlightplayer"
-"com.samsung.storyservice"
-"com.sec.android.app.clockpackage"
-"com.sec.android.app.desktoplauncher"
-"com.sec.android.mimage.gear360editor"
-"com.sec.android.provider.snote"
-"com.sec.smartcard.manager"
