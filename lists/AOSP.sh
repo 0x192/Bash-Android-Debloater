@@ -138,7 +138,7 @@ declare -a AOSP_bloat=(
 	#"com.android.captiveportallogin"
 	# Take care of redirecting to the web page that the user of a public access network is obliged to view and interect with, before access is granted.
 
-	"com.android.cellbroadcastreceiver"
+	#"com.android.cellbroadcastreceiver"
 	# == EMERGENCY ALERTS  == 
 	# This service manages enabling and disabling ranges of message identifiers that the radio should listen for. 
 	# It operates independently of the other services and runs at boot time and after exiting airplane mode.
@@ -176,6 +176,14 @@ declare -a AOSP_bloat=(
 	#"com.android.inputmethod.latin" 
 	# AOSP keyboard. (This is not Google Keyboard).
 
+	#"com.android.internal.display.cutout.emulation.corner"
+	#"com.android.internal.display.cutout.emulation.double"
+	#"com.android.internal.display.cutout.emulation.noCutout"
+	#"com.android.internal.display.cutout.emulation.tall"
+	# Support for display cutouts
+	# https://developer.android.com/guide/topics/display-cutout
+	# https://source.android.com/devices/tech/display/display-cutouts
+
 	"com.android.keychain" 
 	# Enable apps to use system wide credential KeyChain (shared credentials between apps)
 	# https://security.stackexchange.com/questions/216716/android-keychain-what-is-a-system-wide-credential
@@ -210,10 +218,21 @@ declare -a AOSP_bloat=(
 	"com.android.quicksearchbox" 
 	# Google quick search box.
 
+	#"com.android.settings.intelligence" # [MORE INFO NEEDED]
+	# Settings tips in Settings menu ?
+	# I don't have this in my phone. It for Android Pie. Can someone check ? 
+
 	"com.android.sharedstoragebackup"
 	# Used during backup. Fetch shared storage (files accessible by every apps with STORAGE permission)
 	# Things have changed with Android 10. Don't know if this package is still relevant.
 	# https://blog.mindorks.com/understanding-the-scoped-storage-in-android.
+
+	#"com.android.systemui.theme.dark"
+	# Enable you to use Andrdoi dark theme.
+
+	"com.android.timezone.updater"
+	# Time Zone Updater
+	# Automaticaly change the time zone if needed. 
 
 	"com.android.traceur"
 	# System Tracing
