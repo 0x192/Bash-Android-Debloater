@@ -56,6 +56,7 @@ declare -a huawei_bloat=(
 
 	"com.huawei.android.wfdirect" 
 	# Wi-Fi Direct feature.
+	# Enables Wi-Fi Direct devices to establish a direct Wi-Fi connection over which the two can send and receive files. 
 
 	#"com.huawei.aod" [MORE INFO NEEDED]
 	# Always On Display feature.
