@@ -198,7 +198,11 @@ declare -a google_bloat=(
 	"com.google.android.calendar" 
 	# Google Calendar (https://play.google.com/store/apps/details?id=com.google.android.calendar)
 
-	"com.google.android.configupdater" # ??? Discontinued
+	"com.google.android.configupdater" 
+	# Related to carrier config
+	# Auto updates certificates for TLS connection, firewall configuration, time zone info...
+	# See : https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/os/ConfigUpdate.java
+	# This is configuration stuff for Google services only.
 
 	"com.google.android.contacts" 
 	# Google Contacts (https://play.google.com/store/apps/details?id=com.google.android.contacts)
@@ -317,6 +321,29 @@ declare -a google_bloat=(
 
 	####################################  ADVANCED DEBLOAT  ####################################
 
+	#"com.google.android.apps.maps" 
+	# Google maps (https://play.google.com/store/apps/details?id=com.google.android.apps.maps)
+
+	#"com.google.android.apps.photos" 
+	# Google photos (https://play.google.com/store/apps/details?id=com.google.android.apps.photos)
+
+	#"com.google.android.apps.turbo"
+	# Device Health Services (discontinued ?)
+	# Calculates your remaining battery percentage based on your usage
+	# Reviews for this app were... funny (https://www.reddit.com/r/google/comments/ajnbmh/the_reviews_for_device_health_services_are_quite/)
+
+	"com.google.android.apps.work.oobconfig" # [MORE INFO NEEDED]
+	# Needs internet to fetchs enterprise and carrier lock config via internet.
+	# Run in background and is triggered when a SIM card is added/removed/replaced. 
+	# It also has Gcm receiver (Google Cloud Messaging receiver)
+	# Has a lot of permissions (16).
+	# Talks to websites which provide SSL certificates.
+	# Needs Google Play Services to work.
+	# https://www.hybrid-analysis.com/sample/71bcaf2e71d78665fc5bc53db39df5309f24dd4ecab6402cf6ca20027dc6ecad?environmentId=200
+
+	"com.google.android.dialer"
+	# Google Dialer (https://play.google.com/store/apps/details?id=com.google.android.dialer)
+
 	"com.google.android.ext.services"
 	# Android Services Library only contains, for now, an "Android Notification Ranking Service." 
 	# It sorts notifications by "importance" based on things like freshness, app type (IM apps come first), and by contact. 
@@ -338,6 +365,13 @@ declare -a google_bloat=(
 	# - detect the lack of play services but allow you to run (not properly) by dismissing a annoying popup
 	# With some phones, removing Google Play Services bootloop the device so be careful.
 	# NOTE : Deleting this package will improve a LOT your battery life !
+
+	"com.google.android.gms.policy_sidecar_aps" # [MORE INFO NEEDED]
+	# Talks to Gmail.com and Google.com.
+	# Needs a Google Account and Google Paly Services to work correctly.
+	# I don't know much more but it's sufficient to know you can debloat it.
+	# Given its name maybe it is related to Android auto ? 
+	# https://www.hybrid-analysis.com/sample/c710b66d043026007666966d933e3a1ed29720c5009764c01b5f056232a3518a?environmentId=200
 
 	#"com.google.android.gsf"
 	# Google Services Framework
@@ -372,19 +406,8 @@ declare -a google_bloat=(
 
 	#"com.android.vending" 
 	# Google Play Store app.
-
-	#"com.google.android.apps.maps" 
-	# Google maps (https://play.google.com/store/apps/details?id=com.google.android.apps.maps)
-
-	#"com.google.android.apps.photos" 
-	# Google photos (https://play.google.com/store/apps/details?id=com.google.android.apps.photos)
-
-	#"com.google.android.apps.turbo"
-	# Device Health Services (discontinued ?)
-	# Calculates your remaining battery percentage based on your usage
-	# Reviews for this app were... funny (https://www.reddit.com/r/google/comments/ajnbmh/the_reviews_for_device_health_services_are_quite/)
 	
-	#####  GOOGLE KEYBOARD  #####
+	########  GOOGLE KEYBOARD  ########
 	# I'm not sure if you can delete Google keyboard on Google phone without having issue to unlock your phone on boot.
 	# If someone can test it, that will be great ! :D
 
@@ -410,4 +433,5 @@ declare -a google_bloat=(
 "com.google.android.packageinstaller"
 # Gives ability to install, update or remove applications on the device.
 # If you delete this package, your phone will probably bootloop.
+
 
