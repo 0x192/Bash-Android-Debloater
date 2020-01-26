@@ -372,10 +372,6 @@ declare -a xiaomi_bloat=(
 	# I believe it is a provider for the settings but I can't confirm (I don't have a Xiaomi device)
 	# A lot of people debloat this but I'd like to know more about this one.
 
-	"org.codeaurora.gps.gpslogsave"
-	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
-	# According to its name, it only saves GPS logs.
-
 	##################################  ADVANCED DEBLOAT  ##################################
 
 	#"com.xiaomi.discover"
@@ -388,7 +384,7 @@ declare -a xiaomi_bloat=(
 	#"com.miui.home"
 	# MIUI System Launcher
 	# It's basically the home screen, the way icons apps are organized and displayed.
-	# DON'T REMOVE THIS IF YOU DON'T HAVE INSTALLED ANOTHER LAUNCHER ! 
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER ! 
 
 	)
 
