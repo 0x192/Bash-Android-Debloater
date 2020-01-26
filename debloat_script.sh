@@ -36,6 +36,7 @@ function carrier_choice {
 	case $REPLY in	
 		1) clear;debloat US_carrier_bloat ;;
 		2) clear;debloat French_carrier_bloat ;;
+		3) clear;debloat German_carrier_bloat ;;
 	esac
 }
 
@@ -92,8 +93,12 @@ function brand_detection {
 				echo "huawei_bloat" ;;
 			"lg") 
 				echo "lg_bloat" ;;
+			"motorola")
+				echo "motorola_bloat"
 			"nokia") 
 				echo "nokia_bloat" ;;
+			"oneplus")
+				echo "oneplus_bloat" ;;
 			"samsung") 
 				echo "samsung_bloat" ;;
 			"sony") 	
@@ -144,7 +149,7 @@ while true; do
 	printf " 8   - Amazon\n"
 	printf " 9   - Facebook\n"
 	printf " 10  - Microsoft\n"
-	printf " 11  - Miscellaneous\n"
+	printf " 11  - Miscellaneous (Third-party)\n"
 	printf " 12  - AOSP\n"
 	printf "\n exit\n\n"
 	printf "${Bold}${ORANGE}==============================${NC}${nBold}\n\n"
