@@ -233,5 +233,5 @@ declare -a huawei_bloat=(
 	#"com.huawei.android.launcher" 
 	# Huawei launcher app.
 	# It's basically the home screen, the way icons apps are organized and displayed.
-	# DON'T REMOVE THIS IF YOU DON'T HAVE INSTALLED ANOTHER LAUNCHER ! 
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER ! 
 	)
