@@ -1,6 +1,11 @@
 #!/bin/bash
 
 declare -a amazon_bloat=(
+
+	"com.amazon.appmanager"
+	# Mobile Device Information Provider
+	# Seems related to Kindle
+
 	"com.amazon.mShop.android"
 	# Amazon Shopping (https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping)
 
@@ -102,6 +107,12 @@ declare -a microsoft_bloat=(
 	)
 
 declare -a misc_bloat=(
+
+	"cci.usage"
+	# My Consumer Cellular (https://play.google.com/store/apps/details?id=cci.usage)
+	# Lets you manage your Consumer Cellular account, track your usage, pay your bill.
+	# Consumer Cellular is an American postpaid mobile virtual network operator
+	# https://en.wikipedia.org/wiki/Consumer_Cellular
 
 	"com.audible.application"
 	# Cover Audible Audiobooks (https://play.google.com/store/apps/details?id=com.audible.application)
@@ -223,18 +234,30 @@ declare -a misc_bloat=(
 	# 3-party app which lets you experience live and local FM radio on your smartphone.
 	# https://nextradioapp.com/
 
+	"com.republicwireless.tel"
+	# Republic (https://play.google.com/store/apps/details?id=com.republicwireless.tel&hl)
+	# Lets you manage your Republic wireless account.
+	# Republic Wireless is an american mobile virtual network operator (https://en.wikipedia.org/wiki/Republic_Wireless)
+
+	"com.roaming.android.gsimbase" # [MORE INFO NEEDED]
+	"com.roaming.android.gsimcontentprovider"
+	# GSIM = Generic Statistical Information Model ? I don't think so but I can't find anything.
+
+
 	"com.s.antivirus"
 	# AVG Antivirus (https://play.google.com/store/apps/details?id=com.s.antivirus) for Sony Xperia.
 
 	"com.slacker.radio" 
 	# LiveXLive - Streaming Music and Live Events (https://play.google.com/store/apps/details?id=com.slacker.radio)
 
-	"net.sharewire.parkmobilev2" 
-	# ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
-
 	"com.shopee.id"
 	# Shopee 2.2 (https://play.google.com/store/apps/details?id=com.shopee.id)
 	# official app from Shopee, an e-commerce online shopping platform in Southeast Asian.
+
+	"com.smithmicro.netwise.director.comcast.oem"
+	# XFINITY Wifi settings (https://play.google.com/store/apps/details?id=com.smithmicro.netwise.director.comcast.oem)
+	# Auto-connects you to XFINITY WiFi hotspot.
+	# XFINITY is a subsidiary of the Comcast Corporation (https://en.wikipedia.org/wiki/Xfinity)
 
 	"com.spotify.music"
 	# Spotify app (https://play.google.com/store/apps/details?id=com.spotify.music)
@@ -276,7 +299,16 @@ declare -a misc_bloat=(
 	# ShareChat (https://play.google.com/store/apps/details?id=in.mohalla.sharechat)
 
 	"net.sharewire.parkmobilev2" 
-	# ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)	
+	# ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
+
+	"org.codeaurora.gps.gpslogsave"
+	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
+	# According to its name, it only saves GPS logs.	
+
+	"org.codeaurora.ims"
+	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
+	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling)
+	# There is high chances this package is needed for Volte/VoIP/Wifi calling. 
 
 	#### QUALCOMM ####
 	# QTI = Qualcomm Technologies Inc
@@ -284,9 +316,60 @@ declare -a misc_bloat=(
 	# that designs and markets wireless telecommunications products and services.
 	# Qualcomm tracking : https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179/20
 
+	"com.qti.qualcomm.datastatusnotification" # [MORE INFO NEEDED]
+	# Maybe it displays data status notification (network data usage)
+	# Asks for sending SMS permission.
+
+	"com.qti.service.colorservice" # [MORE INFO NEEDED]
+	# Don't know why but it uses mobiledata.
+	# It most likely does something to colors on your display. Can someone see the difference ? Is it accessbility feature ?
+
+	"com.qti.snapdragon.qdcm_ff" # [MORE INFO NEEDED]
+	# Qualcomm Display Color Management tool
+	# Works in background and "enhance" the display’s appearance through an intelligent color adjustment and gamut-mapping system 
+	# "to make colors look vibrant and true to life".
+	# Not really convinced. Can someone see the difference ? 
+	# https://www.qualcomm.com/news/onq/2016/05/02/qualcomm-trupalette-brings-your-phones-display-life
+	#
+	# ff = FinFet ? (https://en.wikipedia.org/wiki/FinFET)
+
 	"com.qualcomm.atfwd"
 	# Qualcomm's WiFi display. It allows you to mirror your devices display on a TV 
 	# Seems to be used by Mircast. Need to be confirmed tho.
+
+	"com.qualcomm.embms"
+	# Run in background.
+	# I guess it add support to LTE Broadcast or eMBMS (evolved Multimedia Broadcast Multicast Service) 
+	# Enables carriers to sends stuff using multicast (same content to be delivered to a large number of users at the same time) instead of LTE.
+	# It is a more efficient use of network resources when compared to each user receiving the same content individually.
+	# Personally I don't want my carrier to send me stuff.
+	#
+	# FYI : https://en.wikipedia.org/wiki/Multimedia_Broadcast_Multicast_Service
+	# 		https://www.one2many.eu/en/lte-broadcast/what-is-embms
+
+	#"com.qualcomm.fastdormancy"
+	# Provide Fast Dormancy feature/setting in the dialer (reduce battery consumption and network utilization during periods of data inactivity) 
+	# https://en.wikipedia.org/wiki/Fast_Dormancy
+
+	"com.qualcomm.location"
+	# May enable your device to determine its location more quickly and accurately, even when your device is unable to get a strong GPS signal. 
+	# **May** also help your device conserve battery power when you use applications or services requiring location data
+	# It will eriodically downloads data to your device regarding the locations of nearby cellular towers and WiFi access points
+	#
+	# Qualcomm Location periodically sends a unique software ID, the location of your device (longitude, latitude and altitude, and its uncertainty) 
+	# and nearby cellular towers and Wi-Fi hotspots, signal strength, and time (collectively, “Location Data”) to Qualcomm servers. 
+	# As with any Internet communication, they also receive the IP address your device uses. 
+	# https://www.qualcomm.com/site/privacy/services
+
+	#"com.qualcomm.qcrilmsgtunnel" # [MORE INFO NEEDED]
+	# Tunnel between modem and android framework. Related to SMS ? 
+	# FYI : ril = Radio Interface layer. It's the bridge between Android phone framework services and the hardware.
+	# There is no noticeable immediate consequences after disabling it but it'd better to know more about.
+
+	"com.qualcomm.uimremoteclient" # [MORE INFO NEEDED]
+	# UIM Remote client
+	# When you see "remote" in a package name you can try to delete it.
+	# See "com.qualcomm.qti.uim" for more information.
 
 	"com.qualcomm.qti.auth.fidocryptoservice"
 	# Qualcomm FIDO implementation. 
@@ -335,18 +418,35 @@ declare -a misc_bloat=(
 	# Automatically switchs between Wifi/3G/4G depending on network performances. 
 	# https://www.qualcomm.com/news/onq/2013/07/02/qualcomms-cne-bringing-smarts-3g4g-wi-fi-seamless-interworking
 
-	"com.qti.snapdragon.qdcm_ff" # [MORE INFO NEEDED]
-	# Qualcomm Display Color Management tool
-	# Works in background and "enhance" the display’s appearance through an intelligent color adjustment and gamut-mapping system 
-	# "to make colors look vibrant and true to life".
-	# Not really convinced. Can someone see the difference ? 
-	# https://www.qualcomm.com/news/onq/2016/05/02/qualcomm-trupalette-brings-your-phones-display-life
-	#
-	# ff = FinFet ? (https://en.wikipedia.org/wiki/FinFET)
+	"com.qualcomm.qti.dynamicddsservice"
+	# Dynamic DDS Service
+	# DDS = Direct Digital Synthesizer
+	# To make this very simple, it enables frequencies to be changed quickly without settling time.
+	# It is very useful for testing, communications and frequency sweep applications. Not sure you need this in your phone.
+	# https://www.qualcomm.com/news/releases/1996/05/07/qualcomm-introduces-new-high-speed-dual-direct-digital-synthesizer
+	# If you want to know more about the use of a DDS : https://www.allaboutcircuits.com/technical-articles/direct-digital-synthesis/
 
-	"com.qualcomm.uimremoteclient" # [MORE INFO NEEDED]
-	# Remote client
-	# When you see "remote" in a package name you can try to delete it.
+	"com.qualcomm.qti.lpa"
+	# Only useful if you use an esim (virtual sim)
+	# lpa = Local Profile Assistants. It is a software that allows consumers to choose and change their subscription data when switching between 
+	# network operators/carriers.
+	# https://developer.qualcomm.com/blog/rise-esims-and-isims-and-their-impact-iot
+	# https://source.android.com/devices/tech/connect/esim-overview
+
+	"com.qualcomm.qti.remoteSimlockAuth" # [MORE INFO NEEDED]
+	# Enable you to lock/unlock your eSIM remotely.
+	# Seems more of a security risk to me than anything else.
+	# Is it related to Safeswitch ? https://www.qualcomm.com/products/features/security/safeswitch
+
+	"com.qualcomm.qti.telephonyservice" # [MORE INFO NEEDED]
+	# Sincerely I don't know what it is.
+	# It runs in background.
+	# It seems there is no issue with telephony if removed. I need to keep an eye on this.
+
+	"com.qualcomm.qti.uim"
+	# Related to RUIM I guess. It is a king of SIM card
+	# https://en.wikipedia.org/wiki/Removable_User_Identity_Module
+	# Still used in China it seems. 
 
 	#### FONTS ####
 	"com.monotype.android.font.chococooky"
