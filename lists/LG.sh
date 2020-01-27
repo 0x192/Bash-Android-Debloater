@@ -382,14 +382,14 @@ declare -a lg_bloat=(
 	# LG Home (v2)
 	# Stock launcher
 	# It's basically the home screen, the way icons apps are organized and displayed.
-	# DON'T REMOVE THIS IF YOU DON'T HAVE INSTALLED ANOTHER LAUNCHER !
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER!
 	# NOTE : Yeah there is another package described as "launcher". Normally, you only have one of them on your phone. 
 
 	#"com.lge.launcher3"
 	# LG Home (v3)
 	# Stock launcher
 	# It's basically the home screen, the way icons apps are organized and displayed.
-	# DON'T REMOVE THIS IF YOU DON'T HAVE INSTALLED ANOTHER LAUNCHER !
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER!
 	# NOTE : Yeah there is 3 packages described as "launcher". Normally, you only have one of them on your phone. 
 
 	"com.lge.music"
