@@ -94,7 +94,7 @@ function brand_detection {
 			"lg") 
 				echo "lg_bloat" ;;
 			"motorola")
-				echo "motorola_bloat"
+				echo "motorola_bloat" ;;
 			"nokia") 
 				echo "nokia_bloat" ;;
 			"oneplus")
