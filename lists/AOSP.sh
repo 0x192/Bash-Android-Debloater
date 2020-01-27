@@ -252,82 +252,84 @@ declare -a AOSP_bloat=(
 
 #####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
 
-"com.android.certinstaller"
+
+#"com.android.certinstaller"
 # Certificate installer. Digital certificates identify computers, phones, and apps for security. Just like you'd use your driver’s license 
 # to show that you can legally drive, a digital certificate identifies your device and confirms that it should be able to access something.
 # Here it is used for accepting and revoking of Internet certificates. Break wifi if removed.
 
-"com.android.companiondevicemanager"
+#"com.android.companiondevicemanager"
 # Companion Device Manager that comes by default in every Oreo+ device. 
 # This handles connections to other devices, like Bluetooth Headphones, desktop Operative Systems, ecc. 
 
-"com.android.defcontainer"
+#"com.android.defcontainer"
 # Needed during apps installation.
 
-"com.android.documentsui" # Files picker
+#"com.android.documentsui" # Files picker
 # Interface for apps wishing to access access files outside of their own storage area.
 
-"com.android.musicfx" 
+#"com.android.musicfx" 
 # Audio equalizer. Some 3-party music apps can use it to provide you equalizing features.
 
-"com.android.externalstorage"
+#"com.android.externalstorage"
 # Needed by apps to access external storage (SD card)
 
-"com.android.location.fused"
+#"com.android.location.fused"
 # Manages the underlying location technologies, such as GPS and Wi-Fi.
 
-"com.android.mms.service"
+#"com.android.mms.service"
 # Provides support for sending MMS.
 
-"com.android.mtp" #MTP Host
+#"com.android.mtp" #MTP Host
 # Handle MTP (protocol allowing files to be transferred to and from your PC)
 
-"com.android.phone"
+#"com.android.phone"
 # AOSP code for dialer app features
 # SIM card will also not be detected if deleted.
 
-"com.android.providers.contacts"
+#"com.android.providers.contacts"
 # Handle interaction with contacts data
 
-"com.android.providers.downloads"
+#"com.android.providers.downloads"
 # Provider for downloads manager.
 
-"com.android.providers.downloads.ui"
+#"com.android.providers.downloads.ui"
 # User interface for listing downloads.
 
-"com.android.providers.media"
+#"com.android.providers.media"
 # Handle access to media files.
 
-"com.android.providers.settings"
+#"com.android.providers.settings"
 # Handles settings app datas (contentProvider)
 # https://android.stackexchange.com/questions/37195/why-are-there-two-settings-apps-settings-and-settings-storage
 
-"com.android.providers.telephony"
+#"com.android.providers.telephony"
 # [AOSP] Telephony provider. Handle access to telephony database.
 
-"com.android.server.telecom"
+#"com.android.server.telecom"
 # Management your calls via your network provider or SIM and controls the phone modem.
 
-"com.android.settings"
+#"com.android.settings"
 # AOSP Settings app features
 
-"com.android.shell"
+#"com.android.shell"
 # Unix shell to communicate via ADB commands through PC.
 
-"com.android.statementservice"
+#"com.android.statementservice"
 # Intent Filter Verification Service
 # Intent : https://developer.android.com/reference/android/content/Intent
 # Intent Filters : https://developer.android.com/guide/components/intents-filters
 # https://android.stackexchange.com/questions/191163/what-does-the-intent-filter-verification-service-app-from-google-do
 
-"com.android.storagemanager"
+#"com.android.storagemanager"
 # Storage manager (Maintenance/Storage panel in the settings)
 # Clean up unused files, show size of files regrouped by categories...
 
-"com.android.systemui"
+#"com.android.systemui"
 # Everything you see in Android that's not an app. User interface of Android
 
-"com.android.vpndialogs"
+#"com.android.vpndialogs"
 # Handle VPN dialogs (UI boxes)
 # https://en.wikipedia.org/wiki/Dialog_(software)
 # Safe to remove if you don't plan to use a VPN.
+

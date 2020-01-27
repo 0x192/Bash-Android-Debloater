@@ -430,7 +430,7 @@ declare -a google_bloat=(
 
 #####################  DO NOT REMOVE THIS (prevent core stuff to work)  #####################
 
-"com.google.android.packageinstaller"
+#"com.google.android.packageinstaller"
 # Gives ability to install, update or remove applications on the device.
 # If you delete this package, your phone will probably bootloop.
 

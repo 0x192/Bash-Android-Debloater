@@ -1177,14 +1177,6 @@ declare -a samsung_bloat=(
 	# KMS = Key Management System
 	# KNOX feature (https://en.wikipedia.org/wiki/Samsung_Knox)
 
-	#"com.trustonic.tuiservice"
-	# The tuiService (Trusted User Interface) is a new security layer implemented by Trustonic.
-	# Allows a Trusted Application to interact directly with the user via a common display and touch screen, completely isolated from the main device OS.
-	# Seems like a good idea but it's closed source. I also don't see any real applications. Does dev uses *this* API ?
-	# Google implemented their own stuff in Android Pie : https://android-developers.googleblog.com/search/label/Trusted%20User%20Interface 
-	# https://www.trustonic.com/news/blog/benefits-trusted-user-interface/
-	# https://en.wikipedia.org/wiki/Trusted_execution_environment
-
 	"com.sec.usbsettings"
 	# USB Settings seems to manage preferences and permissions for USB devices.
 	# Run at startup
@@ -1211,47 +1203,47 @@ declare -a samsung_bloat=(
 
 #####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
 
-"com.policydm"
+#"com.policydm"
 # Samsung security policy update. I don't have this package and I'm not sure if it is really necessary.
 # Can someone disable it and test if he/she still receives security updates ? 
 # https://www.samsung.com/nz/support/mobile-devices/security-policy-updates/
 
-"com.samsung.android.SettingsReceiver"
+#"com.samsung.android.SettingsReceiver"
 # Samsung overlay of AOSP Settings. It has 39 permissions. I guess it handles interactions with features controled by the settings.
 
-"com.samsung.android.app.soundpicker"
+#"com.samsung.android.app.soundpicker"
 # Let you select a sound for alarm/ringtone
 
-"com.samsung.android.clipboarduiservice"
+#"com.samsung.android.clipboarduiservice"
 # User interface for clipboard 
 
-"com.samsung.android.communicationservice"
+#"com.samsung.android.communicationservice"
 # Message Service.
 # Needed for SMS/MMS communication
 
-"com.samsung.android.incallui"
+#"com.samsung.android.incallui"
 # UI when "being called/in call". It's basically the screen that shows you who is calling, lets you answer and hang up, switch to speaker, etc
 
-"com.samsung.android.provider.filterprovider" 
+#"com.samsung.android.provider.filterprovider" 
 # FilterProvider dependency to Samsung Camera
 # Provides access to filters (when you swipe right from the camera app)
 # WARNING : Samsung camera will crash if this package is deleted.
 
-"com.samsung.networkui"
+#"com.samsung.networkui"
 # User interface of the Mobile Network settings
 
-"com.samsung.android.sm.policy"
+#"com.samsung.android.sm.policy"
 # SPCM (Striped Phase Change Memory ?) client.
 # It kills rarely used apps running in background.
 # Surely linked to Smart Manager. I think it can have a very bad impact on battery performance if deleted. I'm testing.
 
-"com.sec.android.RilServiceModeApp"
+#"com.sec.android.RilServiceModeApp"
 # Samsung RIL. RIL means Radio Interface Layer. It's the bridge between Android phone framework services and the hardware.
 # https://wladimir-tm4pda.github.io/porting/telephony.html
 # https://stackoverflow.com/questions/11111067/how-does-modem-code-talk-to-android-code
 # Samsung RIL is a add on from Samsung : Modem <=> Linux kernel <=> libsamsung-ipc <=> Samsung-RIL <=> Android framework <=> Android applications
 
-"com.sec.android.inputmethod"
+#"com.sec.android.inputmethod"
 # Samsung keyboard
 # Note : used for unlocking the phone after a reboot. Third-parties keyboards cannot be used here.
 # DO NOT REMOVE THIS. NEVER ! 

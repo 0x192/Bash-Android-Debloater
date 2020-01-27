@@ -391,21 +391,21 @@ declare -a xiaomi_bloat=(
 
 #######################  DO NOT REMOVE THIS (will prevent core stuff to work)  #######################
 
-"com.xiaomi.finddevice"
+#"com.xiaomi.finddevice"
 # Find My Device feature (in the Settings)
 # REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 # 
 # NOTE : I don't have a Xiaomi phone on hand anymore but maybe only disabling it will work : adb shell 'pm disable-user com.xiaomi.finddevice'
 # Can someone try ? 
 
-"com.miui.securitycenter"
+#"com.miui.securitycenter"
 # MIUI Security app
 # REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 # 
 # NOTE : I don't have a Xiaomi phone on hand anymore but maybe only disabling it will work : adb shell 'pm disable-user com.miui.securitycenter'
 # Can someone try ? 
 
-"com.miui.securityadd"
+#"com.miui.securityadd"
 # Related to the MIUI Security app
 # REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 # 
