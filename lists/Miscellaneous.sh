@@ -243,7 +243,6 @@ declare -a misc_bloat=(
 	"com.roaming.android.gsimcontentprovider"
 	# GSIM = Generic Statistical Information Model ? I don't think so but I can't find anything.
 
-
 	"com.s.antivirus"
 	# AVG Antivirus (https://play.google.com/store/apps/details?id=com.s.antivirus) for Sony Xperia.
 
@@ -274,11 +273,45 @@ declare -a misc_bloat=(
 	# https://en.wikipedia.org/wiki/TripAdvisor (see 'Controversy and fraudulent reviews' section)
 	# https://nypost.com/2016/03/01/why-you-should-never-ever-trust-tripadvisor/
 
+	"com.trustonic.tuiservice"
+	# The tuiService (Trusted User Interface) is a new security layer implemented by Trustonic.
+	# Allows a Trusted Application to interact directly with the user via a common display and touch screen, completely isolated from the main device OS.
+	# Seems like a good idea but it's closed source and "normal" devs can't use it for their apps. 
+	# https://stackoverflow.com/questions/16909576/how-to-make-use-of-arm-trust-zone-in-android-application
+	# It is basically only used by manufacter sapps like Samsung Pay and for DRM stuff.
+	# Google implemented their own TUI in Android Pie : https://android-developers.googleblog.com/search/label/Trusted%20User%20Interface
+	# 
+	# https://www.trustonic.com/news/blog/benefits-trusted-user-interface/
+	# https://en.wikipedia.org/wiki/Trusted_execution_environment
+	#
+	# If you're wondering, deleting this package will not cause security issues and will not break ARM TrustZone. It will break Trustonic TEE for sure
+	# but if you don't use Trusted Apps. You won't need this ! 
+	# Deleting this **may** reduce attack surface because yeah, Trustonic TEE isn't foolproof (as it was claimed)
+	# https://en.wikipedia.org/wiki/ARM_architecture#Security_extensions
+	# https://googleprojectzero.blogspot.com/2017/07/trust-issues-exploiting-trustzone-tees.html
+	# https://www.synacktiv.com/posts/exploit/kinibi-tee-trusted-application-exploitation.html
+	# https://blog.quarkslab.com/introduction-to-trusted-execution-environment-arms-trustzone.html
+	#
+	# Good ressources : 
+	# https://medium.com/@nimronagy/arm-trustzone-on-android-975bfe7497d2
+	# https://www.gsd.inesc-id.pt/~nsantos/papers/pinto_acsur19.pdf
+	# https://blog.quarkslab.com/introduction-to-trusted-execution-environment-arms-trustzone.html
+	# https://medium.com/taszksec/unbox-your-phone-part-i-331bbf44c30c
+	#
+	# NOTE : Trustonic TEE (called Kinibi) is used in Samsung, Vivo, Oppo, Xiaomi, Meizu and LG devices.
+
 	"com.UCMobile.intl"
 	# UC Browser by Alibaba (https://play.google.com/store/apps/details?id=com.UCMobile.intl)
 	# !! Unsecure chinese web browser !!
 	# https://www.quora.com/Whats-wrong-with-UC-Browser
 	# https://www.digitalinformationworld.com/2019/05/url-spoofing-uc-browser-android.html
+
+	"com.vlingo.midas"
+	# Speech recognition app forthe personal assistant by Vlingo 
+	# Vlingo : https://en.wikipedia.org/wiki/Vlingo
+	# FYI : In January 2012 AndroidPit discovered that Vlingo sended packets of information containing the users GPS co-ordinates,
+	# IMEI (unique device identifier), contact list and the title of every song stored on the device back to Nuance without.
+	# Source : https://www.androidpit.com/Vlingo-Privacy-Breach
 
 	"com.yahoo.mobile.client.android.liveweather" 
 	# Yahoo Weather (https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather)
@@ -474,10 +507,5 @@ declare -a misc_bloat=(
 	# it is NOT related to Radio FM !
 	)
 
-
-
-"com.trustonic.tuiservice"
-"com.vlingo.midas"
-"com.yelp.android.samsungedge"
 
 
