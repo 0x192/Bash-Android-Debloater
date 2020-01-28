@@ -403,7 +403,7 @@ declare -a lg_bloat=(
 	#"com.lge.updatecenter" # [MORE INFO NEEDED]
 	# LG Update Center
 	# Provide Android upgrade and LG updates (Settings --> System --> Update Center)
-	# It believe you won't receive any updates if this packages is deleted.
+	# I believe you won't receive any updates if this packages is deleted.
 	
 	
 	)

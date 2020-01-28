@@ -485,6 +485,7 @@ declare -a samsung_bloat=(
 	# and other Samsung-produced devices
 	# https://en.wikipedia.org/wiki/Samsung_Pay
 	# NOTE : Samsung Pay is KNOX dependant and will never work again if you root your phone.
+	# FYI : Your data are sold (https://www.sammobile.com/news/samsung-pay-new-privacy-policy-your-data-sold/)
 
 	"com.samsung.android.spayfw" 
 	# Samsung Pay Framework needed for Samsung Pay
