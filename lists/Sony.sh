@@ -319,5 +319,15 @@ declare -a sony_bloat=(
 
 	#"com.sonymobile.android.contacts"
 	# Sony contacts
-	
+
+	# "com.sonymobile.home"
+	# "com.sonymobile.launcher"
+	# Sony launcher
+	# It's basically the home screen, the way icons apps are organized and displayed.
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
+	# You normally only have one of these two in your phone
+
 	)
+
+
+
