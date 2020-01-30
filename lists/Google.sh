@@ -433,5 +433,3 @@ declare -a google_bloat=(
 #"com.google.android.packageinstaller"
 # Gives ability to install, update or remove applications on the device.
 # If you delete this package, your phone will probably bootloop.
-
-

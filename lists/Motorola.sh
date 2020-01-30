@@ -295,7 +295,7 @@ declare -a motorola_bloat=(
 	# OMADM  = OMA Device Management
 	# Basically, it handles configuration of the device (including first time use), enabling and disabling features provided by carriers.
 	# https://en.wikipedia.org/wiki/OMA_Device_Management
-	# Usecase seems very limited : https://www.androidpolice.com/2015/03/10/android-5-1-includes-new-carrier-provisioning-api-allows-carriers-easier-methods-of-setting-up-services-on-devices-they-dont-control/
+	# Use case seems very limited : https://www.androidpolice.com/2015/03/10/android-5-1-includes-new-carrier-provisioning-api-allows-carriers-easier-methods-of-setting-up-services-on-devices-they-dont-control/
 	# Can someone test to remove it ? :)
 
 	#"com.motorola.pgmsystem2" # [MORE INFO NEEDED]
@@ -306,7 +306,6 @@ declare -a motorola_bloat=(
 	#"com.motorola.systemserver"
 	# ???
 	# At first sight it seems not safe to remove. But maybe it's only needed for Motorola apps.
-
 
 	#"com.motorola.VirtualUiccPayment"
 	# Virtual UICC Payment

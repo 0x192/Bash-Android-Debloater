@@ -15,7 +15,7 @@ declare -a samsung_bloat=(
 	# Third-party that provides caller profile information to help consumers identify incoming calls and block unwanted ones.
 	# https://hiya.com/ 
 	# NOTE : Never trust a company which promotes spam blocking features 
-	# https://techcrunch.com/2019/08/09/many-robocall-blocking-apps-send-your-private-data-without-permission/
+	# https://itmunch.com/robocall-caught-sending-customers-confidential-data-without-consent/
 	
 	"com.knox.vpn.proxyhandler" # KNOX stuff
 	# Samsung Knox allows business and personal content to "securely" coexist on the same handset. 
@@ -1252,6 +1252,4 @@ declare -a samsung_bloat=(
 
 
 
-###################  (NORMALY) SAFE TO REMOVE BUT NO DOCUMENTATION SEARCH YET ###########################
-### These packages will be added in the default preselection when I will find time to document them.
-# Feel free to add them in the bash array if you want them deleted (it should be safe).
+
