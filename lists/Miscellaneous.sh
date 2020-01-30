@@ -1,10 +1,20 @@
 #!/bin/bash
 
+# FYI : Exodus (https://reports.exodus-privacy.eu.org/en/) lets you see all permissions and trackers in Google Play Store apps. 
+
+# HELP ME : I got mad seeking for the meaning of VPL. A lot of people use it on Reddit (https://www.reddit.com/r/Bestbuy/search/?q=vpl&restrict_sr=1)
+# and I'm sure it's the good abbreviation but I don't know what V.P.L means !! It seems to refer to a special job for vendors.
+
 declare -a amazon_bloat=(
 
 	"com.amazon.appmanager"
 	# Mobile Device Information Provider
 	# Seems related to Kindle
+
+	"com.amazon.avod.thirdpartyclient"
+	# Amazon Prime Video (https://play.google.com/store/apps/details?id=com.amazon.avod.thirdpartyclient)
+	# VOD service from Amazon.
+	# https://en.wikipedia.org/wiki/Prime_Video
 
 	"com.amazon.mShop.android"
 	# Amazon Shopping (https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping)
@@ -33,15 +43,12 @@ declare -a amazon_bloat=(
 	# https://www.repricerexpress.com/amazon-attribution/
 
 	"com.amazon.mShop.android.shopping"
+	"com.amazon.mShop.android.shopping.vpl" # for VPL phones
 	# Amazon Shopping (https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping)
 	# Same package as com.amazon.mShop.android.
 
 	"com.amazon.clouddrive.photos"
 	# Amazon Photos (https://play.google.com/store/apps/details?id=com.amazon.clouddrive.photos)
-
-	"com.amazon.avod.thirdpartyclient"
-	# Amazon Prime Video (https://play.google.com/store/apps/details?id=com.amazon.avod.thirdpartyclient)
-	# https://www.primevideo.com/
 
 	"in.amazon.mShop.android.shopping"
 	# Amazon India (https://play.google.com/store/apps/details?id=in.amazon.mShop.android.shopping)
@@ -114,6 +121,11 @@ declare -a misc_bloat=(
 	# Consumer Cellular is an American postpaid mobile virtual network operator
 	# https://en.wikipedia.org/wiki/Consumer_Cellular
 
+	"com.aspiro.tidal.vpl" # for VPL mobiles/employees ? 
+	"com.aspiro.tidal"
+	# Tidal Music (https://play.google.com/store/apps/details?id=com.aspiro.tidal)
+	# Music streaming app
+
 	"com.audible.application"
 	# Cover Audible Audiobooks (https://play.google.com/store/apps/details?id=com.audible.application)
 
@@ -138,6 +150,8 @@ declare -a misc_bloat=(
 	# Caller ID from Cequint (https://www.cequint.com/)
 	# https://www.fiercewireless.com/wireless/t-mobile-to-launch-caller-id-service-from-cequint
 	# NOTE : Never trust a company which promotes call ID/spam blocking features.
+	# https://itmunch.com/robocall-caught-sending-customers-confidential-data-without-consent/
+	#
 	# Cequint was acquired by TNS (https://tnsi.com/)
 	# That was not a good thing : https://www.geekwire.com/2013/earnouts-bad-cequint-execs-sue-parent-company/
 
@@ -148,6 +162,9 @@ declare -a misc_bloat=(
 
 	"com.ebay.mobile"
 	# Ebay app (https://play.google.com/store/apps/details?id=com.ebay.mobile)
+
+	"com.ebay.carrier"
+	# Kind of weird ebay apps preinstalled by carriers.
 
 	"com.eterno"
 	# Daily hunts News. (https://play.google.com/store/apps/details?id=com.eterno&hl=en)
@@ -164,8 +181,20 @@ declare -a misc_bloat=(
 	"com.gotv.nflgamecenter.us.lite" 
 	# Football NFL (https://play.google.com/store/apps/details?id=com.gotv.nflgamecenter.us.lite)
 
+	"com.groupon"
+	# Groupon (https://play.google.com/store/apps/details?id=com.groupon)
+	# Online shopping deals and coupons.
+	# Worth reading : https://en.wikipedia.org/wiki/Groupon#Reception
+
 	"com.hancom.office.editor.hidden"
 	# Legacy Hancom Office Editor (Korean alternative to Microsoft Office). Featured in Samsung and LG phones
+
+	"com.hulu.plus"
+	# Hulu (https://play.google.com/store/apps/details?id=com.hulu.plus&hl)
+	# Netflix competitor.
+	# FYI : Hulu is owned by Disney.
+	# https://en.wikipedia.org/wiki/Hulu
+	# https://www.digitaltrends.com/home-theater/hulu-vs-disney-plus/
 
 	"com.imdb.mobile"
 	# IMDb mobile app (https://play.google.com/store/apps/details?id=com.imdb.mobile)
@@ -174,6 +203,16 @@ declare -a misc_bloat=(
 	# Polaris Office from US Infraware Inc company (Microsoft Office like)
 	# https://en.wikipedia.org/wiki/Polaris_Office
 	# https://play.google.com/store/apps/details?id=com.infraware.office.link
+
+	"com.king.candycrush4"
+	# Candy Crush Friends Saga (https://play.google.com/store/apps/details?id=com.king.candycrush4)
+
+	"com.king.candycrushsodasaga"
+	# Candy Crush Soda Saga (https://play.google.com/store/apps/details?id=com.king.candycrushsodasaga)
+
+	"com.king.candycrushsaga"
+	# Candy Crush Saga (https://play.google.com/store/apps/details?id=com.king.candycrushsaga)
+	# I don't understand why this game is so popular (I guess the fact it is preinstalled in a lot of phone helps)
 
 	"com.linkedin.android"
 	# Linkedin app (https://play.google.com/store/apps/details?id=com.linkedin.android)
@@ -233,6 +272,12 @@ declare -a misc_bloat=(
 	# NextRadio (https://play.google.com/store/apps/details?id=com.nextradioapp.nextradio)
 	# 3-party app which lets you experience live and local FM radio on your smartphone.
 	# https://nextradioapp.com/
+
+	"com.pinsight.dw"
+	# App Stack 
+	# Force-installed app by Sprint. Pinsight is an advertising company (https://pinsightmedia.com/)
+	# Note : Sprint sold Pinsight to InMobi in 2018.
+	# https://www.fiercewireless.com/wireless/sprint-sells-mobile-ad-biz-pinsight-media-to-inmobi
 
 	"com.republicwireless.tel"
 	# Republic (https://play.google.com/store/apps/details?id=com.republicwireless.tel&hl)
@@ -506,6 +551,3 @@ declare -a misc_bloat=(
 	# ANT Radio Service (https://play.google.com/store/apps/details?id=com.dsi.ant.service.socket)
 	# it is NOT related to Radio FM !
 	)
-
-
-
