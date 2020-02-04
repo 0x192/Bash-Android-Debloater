@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a AOSP_bloat=(
+declare -a aosp_bloat=(
 
 	#####################  SAFE TO DEBLOAT (useless features)  #####################
 
