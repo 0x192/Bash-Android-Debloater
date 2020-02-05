@@ -1,4 +1,4 @@
-declare -a US_carrier_bloat=(
+declare -a us_carriers_bloat=(
 
 	######  You REALLY should delete ALL carriers packages you can. US mobile carriers are really sc*mbags. I think you already know it.
 	# There are so many scandals that I can't all post here but if you are not aware here is some : 
@@ -416,7 +416,7 @@ declare -a US_carrier_bloat=(
 	)
 
 
-declare -a French_carrier_bloat=(
+declare -a french_carriers_bloat=(
 
 	########################  Bouygues  ###########################
 
@@ -513,7 +513,7 @@ declare -a French_carrier_bloat=(
 
 	)
 
-declare -a Deutsh_carrier_bloat=(
+declare -a german_carriers_bloat=(
 
 	####### TELEKOM #######
 
