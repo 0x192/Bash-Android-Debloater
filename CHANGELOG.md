@@ -1,9 +1,63 @@
+# New Release (v2.0)
+
+I worked hard for this release ! This is a big one ! Enjoy ! :rocket:
+
+## Major overhaul of the script
+- Improved UI/UX.
+- Performance improvement (you will not feel it but still local variables are used and packages arrays are passed by reference to avoid useless copy).
+- Miscellaneous code improvement.
+
+## New features
+ - You can now select (restore/debloat) several lists at once 
+ - Debloated packages are now listed in a file called `debloated_packages.txt`.
+ - A list of all your packages (after debloat) is automatically exported in a file called `remaining_packages.txt`.
+
+## New manufacturers supported
+- **OnePlus**: 32 new packages.
+- **Motorola** : 60 new packages.
+
+## New mobiles carriers supported
+- `[FR]` **Orange/Sosh** : 13 new packages.
+- `[FR]` **Bouygues** : 3 new packages** (not much bloat it seems).
+- `[FR]` **SFR** : 5 new packages (not much bloat neither).
+- `[DE]` **Telekom**: 1 new package (idem).
+- `[US]` **Sprint** : 25 new packages.
+- `[US]` **AT&T** : 15 new packages.
+
+## Always more packages ! 
+- **AOSP** : 8 new packages.
+- **Google** : 5 new packages.
+- **Miscellaneous** : 30 new packages including 13 new *Qualcomm* packages.
+- **Carriers** : 14 new *Verizon* packages.
+- **Sony** : 2 new packages (commented-out by default).
+
+## Pending list
+New list added in the main menu (`-1 - Pending list`). Packages are located in `lists/0 - Pending.sh` file. 
+
+**List packages are undocumented. This mean I did no proper search yet so it's not impossible that some packages are unsafe to delete.**
+Currentlty this means that I either found them in debloat lists lying around on XDA forums or that I preselected them from a full packages list of a phone I had on hand.
+
+In the future, when some nice users will help me, packages will get off the pending list faster ! ;)
+
+## Miscellaneous
+- Commented out all the packages I put outside of the arrays (because you should never delete them) to remove (harmless) bash errors at the script startup.
+- Documentation and official support for the 26 new Samsung packages added in *v1.8*.
+- Improved the documentation for some packages.
+- Added some worth reading stuff about US mobile carriers scandals.
+- Fixed 2 bad package name.
+- Fixed some spelling mistakes.
+- Moved *com.trustonic.tuiservice* from Samsung list to Miscellaneous file.
+- Moved *org.codeaurora.gps.gpslogsave* from Xiaomi list to Miscellaneous list.
+- Deleted some leftover duplicates.
+- Android 4.4 (API level 19) is now supported. `--user 0` is removed when API is < 21 because it causes error (unknown option)
+
+
+
 # New Release (v1.9)
 
-## New : 
+## Added : 
 - Full documentation for **Nokia** and **Sony** packages.
-- Added a lot of country specific Nokia packages.
-
+- **A lot** of country specific Nokia packages.
 
 ## Misc
 - Added 1 new package to Sony list.
@@ -13,13 +67,9 @@
 
 # New Release (v1.8)
 
-## New : 
-- Full documentation for : 
-	- Asus packages
-	- LG packages
-
-
-- **26** new samsung packages added at the end of the *Samsung file*. **They are not deleted by default because I haven't documented them yet but it should be safe to debloat.**
+## Added : 
+- Full documentation for *Asus* & *LG* packages.
+- **26** new samsung packages at the end of the *Samsung file*. **They are not deleted by default because I haven't documented them yet but it should be safe to debloat.**
 
 
 ## Misc
