@@ -61,9 +61,9 @@ declare -a samsung_bloat=(
 	#
 	# adv maybe refers to Samsung Advanced Institute of Technology 
 
-	"com.samsung.android.app.aodservice"
-	# Drain battery for nothing.
+	#"com.samsung.android.app.aodservice"
 	# Always On Display (https://play.google.com/store/apps/details?id=com.samsung.android.app.aodservice&hl=en)
+	# Display stuff when the screen is off (useless) but also handle the clock on the lockscreen.
 
 	"com.samsung.android.app.appsedge"
 	# Samsung apps edge (https://www.samsung.com/global/galaxy/what-is/apps-edge/)
