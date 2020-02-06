@@ -50,7 +50,7 @@ In the future, when some nice users will help me, packages will get off the pend
 - Moved *org.codeaurora.gps.gpslogsave* from Xiaomi list to Miscellaneous list.
 - Deleted some leftover duplicates.
 - Android 4.4 (API level 19) is now supported. `--user 0` is removed when API is < 21 because it causes error (unknown option)
-
+- Commented out some packages after testing.
 
 
 # New Release (v1.9)
