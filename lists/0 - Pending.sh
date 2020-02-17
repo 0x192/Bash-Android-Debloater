@@ -5,15 +5,7 @@
 # These packages can definitely break features (but you can easily reinstall them with my script)
 
 declare -a pending=(
-	###### THIRD PARTY APPS ######
-	"com.aaa.android.discounts"
-	"com.aaa.android.discounts.vpl"
-	"com.aetherpal.attdh.se"
-	"com.aetherpal.attdh.zte"
-	"com.android.bio.face.service"
-	"com.asurion.android.mobilerecovery.att"
-	"com.asurion.android.mobilerecovery.sprint.vpl"
-	"com.att.mobiletransfer"
+	###### THIRD PARTY APPS ######	
 	"com.cnn.mobile.android.phone"
 	"com.contextlogic.wish"
 	"com.cootek.smartinputv5.language.englishgb"
@@ -21,6 +13,7 @@ declare -a pending=(
 	"com.diotek.sec.lookup.dictionary"
 	"com.directv.dvrscheduler"
 	"com.dna.solitaireapp"
+
 	"com.draftkings.dknativermgGP.vpl"
 	"com.drivemode"
 	"com.ehernandez.radiolainolvidable"
@@ -31,6 +24,7 @@ declare -a pending=(
 	"com.handmark.expressweather.vpl"
 	"com.ironsource.appcloud.oobe"
 	"com.locationlabs.cni.att"
+
 	"com.locationlabs.finder.sprint.vpl"
 	"com.matchboxmobile.wisp"
 	"com.mobitv.client.sprinttvng"
@@ -41,6 +35,7 @@ declare -a pending=(
 	"com.playphone.gamestore.loot"
 	"com.qti.qualcomm.datastatusnotification"
 	"com.qualcomm.qti.simsettings"
+
 	"com.qualcomm.qti.telephony.vodafonepack"
 	"com.quicinc.fmradio"
 	"com.remotefairy4"
@@ -51,6 +46,7 @@ declare -a pending=(
 	"com.servicemagic.consumer"
 	"com.sharecare.askmd"
 	"com.swiftkey.swiftkeyconfigurator"
+
 	"com.synchronoss.dcs.att.r2g"
 	"com.telenav.app.android.cingular"
 	"com.telenav.app.android.scout_us"
@@ -61,6 +57,7 @@ declare -a pending=(
 	"com.ubercab.driver"
 	"com.ubercab.eats"
 	"com.ume.browser.northamerica"
+
 	"com.wavemarket.waplauncher"
 	"com.yellowpages.android.ypmobile"
 	"com.yelp.android"
@@ -71,6 +68,7 @@ declare -a pending=(
 	"in.playsimple.wordtrip"
 	"jp.gocro.smartnews.android"
 	"msgplus.jibe.sca.vpl"
+
 	"net.aetherpal.device"
 	"tv.fubo.mobile.vpl"
 	"tv.peel.app"
@@ -79,11 +77,13 @@ declare -a pending=(
 
 	###### SAMSUNG ######
 	"com.samsung.android.app.amcagent"
+
 	"com.samsung.android.app.omcagent"
 	"com.samsung.android.app.vrsetupwizards"
 	"com.samsung.android.app.withtc"
 	"com.samsung.android.bio.face.service"
 	"com.samsung.android.bixby.agent"
+
 	"com.samsung.android.bixby.agent.dummy"
 	"com.samsung.android.bixby.wakeup"
 	"com.samsung.android.dlp.service"
@@ -95,6 +95,7 @@ declare -a pending=(
 	"com.samsung.android.slinkcloud"
 	"com.samsung.android.smartcallprovider"
 	"com.samsung.android.smartface"
+
 	"com.samsung.android.sm.devicesecurity"
 	"com.samsung.android.sm.policy"
 	"com.samsung.android.unifiedprofile"
@@ -105,6 +106,7 @@ declare -a pending=(
 	"com.samsung.know.securefolder.setuppage"
 	"com.samsung.knox.securefolder.setuppage"
 	"com.samsung.sec.android.application.csc"
+
 	"com.sec.android.app.easysetup"
 	"com.sec.android.app.scloud"
 	"com.sec.android.game.gamehome"
@@ -118,6 +120,7 @@ declare -a pending=(
 	"com.sonymobile.android.externalkeyboard"
 	"com.sonymobile.apnupdater.res.overlay_305"
 	"com.sonymobile.devicesecurity.service"
+
 	"com.sonymobile.home.product.res.overlay"
 	"com.sonymobile.indeviceintelligence"
 	"com.sonymobile.intelligent.iengine"
@@ -127,4 +130,39 @@ declare -a pending=(
 	"com.sonymobile.themes.xperialoops2"
 	"com.sonymobile.xperiaxlivewallpaper"
 	"com.sonymobile.xperiaxlivewallpaper.product.res.overlay"
+
+
+	### OPPO ####
+	"com.coloros.cloud"
+	"com.coloros.gamespace"
+	"com.coloros.soundrecorder"
+	"com.coloros.speechassist"
+	"com.nearme.atlas"
+	"com.nearme.instant.platform"
+	"com.oppo.logkitservice"
+	"com.oppo.logkit"
+	"com.oppo.ovoicemanager"
+	"com.oppo.oppopowermonitor"
+	"com.oppo.quicksearchbox "
+	"com.oppo.securepay "
+	"com.oppo.webview"
+	"com.coloros.appmanager "
+	"com.coloros.childrenspace"
+	"com.coloros.healthcheck "
+	"com.coloros.weather.service "
+	"com.coloros.widget.smallweather"
+	"com.mobiletools.systemhelper "
+	"com.oppo.fingerprints.fingerprintsensortest"
+	"com.coloros.oppomultiapp"
+	"com.coloros.backuprestore"
+	"com.coloros.assistantscreen"
+
+	# com.coloros.securitypermission 
+	# Handles app permission management. DO NOT REMOVE THIS
+
+	# com.coloros.pictorial (Lockscreen Magazine)
+	# Removal will result in no longer being able to access Lockscreen settings.
+
+	# com.OppoFreeFallingMonitor.apk
+	# Provides protection for camera slider in the event of a fall. Best described here: https://www.gizchina.com/2018/06/20/...5-years-usage/
 	)
