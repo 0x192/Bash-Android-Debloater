@@ -365,6 +365,8 @@ declare -a google_bloat=(
 	# - detect the lack of play services but allow you to run (not properly) by dismissing a annoying popup
 	# With some phones, removing Google Play Services bootloop the device so be careful.
 	# NOTE : Deleting this package will improve a LOT your battery life !
+	#
+	# IMPORTANT : You need to uncheck Find My Device from the "Device admin apps" settings panel to be able to uninstall this package
 
 	"com.google.android.gms.policy_sidecar_aps" # [MORE INFO NEEDED]
 	# Talks to Gmail.com and Google.com.

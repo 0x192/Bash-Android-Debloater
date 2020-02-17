@@ -63,7 +63,7 @@ declare -a samsung_bloat=(
 
 	#"com.samsung.android.app.aodservice"
 	# Always On Display (https://play.google.com/store/apps/details?id=com.samsung.android.app.aodservice&hl=en)
-	# Display stuff when the screen is off (useless) but also handle the clock on the lockscreen.
+	# Displays stuff when the screen is off (useless) but also handle the clock on the lockscreen.
 
 	"com.samsung.android.app.appsedge"
 	# Samsung apps edge (https://www.samsung.com/global/galaxy/what-is/apps-edge/)
@@ -1023,7 +1023,7 @@ declare -a samsung_bloat=(
 	# See above for MDM signification
 
 	#"com.sec.epdg"
-	# Huh... that hard to explain quickly. Let's try : 
+	# Huh... that's hard to explain quickly. Let's try : 
 	# First you need to know that there is a standards organization which develops protocols for mobile telephony called 3GPP (mobile network : 2G/3G/4G/5G).
 	# RAT (physical connection method to a wireless communication network) non specified by the 3GPP is called non-3GPP. RAT Wifi is non-3GPP.
 	# 
