@@ -121,6 +121,13 @@ declare -a misc_bloat=(
 	# Consumer Cellular is an American postpaid mobile virtual network operator
 	# https://en.wikipedia.org/wiki/Consumer_Cellular
 
+	"com.aaa.android.discounts"
+	"com.aaa.android.discounts.vpl"
+	# AAA Mobile (https://play.google.com/store/apps/details?id=com.aaa.android.discounts)
+	# Kind of GPS that helps you find Point of interest (POI) like hotels, restaurants, and car repair facilities from the AAA databases.
+	# NOTE : You’ll have to sign up for an AAA membership to enjoy all of the features and functionality of the Android app.
+	# AAA = American Automobile Association
+
 	"com.aspiro.tidal.vpl" # for VPL mobiles/employees ? 
 	"com.aspiro.tidal"
 	# Tidal Music (https://play.google.com/store/apps/details?id=com.aspiro.tidal)

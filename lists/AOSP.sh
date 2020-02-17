@@ -114,6 +114,9 @@ declare -a aosp_bloat=(
 	# Restore google settings with Google Backup restore function.
 	# Also display confirmation popup when doing ADB backup. If you remove this package you couldn't do ADB Backup.
 
+	#"com.android.bio.face.service"
+	# Handles facial regognition. 
+
 	#"com.android.bluetooth"
 	# Bluetooth service
 

@@ -220,6 +220,11 @@ declare -a us_carriers_bloat=(
 	# Now "Sprint Complete" (see below).
 	# Note : This app is developped by Asurion, a US company whose business is to sell insurances.
 	# All US carriers use Asurion for the phone insurances.
+
+	"com.asurion.android.mobilerecovery.sprint.vpl"
+	"com.asurion.android.mobilerecovery.sprint"
+	# Sprint Protect
+	# Support app (see com.asurion.android.protech.att)
 	
 	"com.asurion.home.sprint"
 	# Sprint Complete (https://play.google.com/store/apps/details?id=com.asurion.home.sprint)
@@ -335,9 +340,25 @@ declare -a us_carriers_bloat=(
 
 	######## AT&T #######
 
+	"com.aetherpal.attdh.se"
+	# Device Help for AT&T Samsung device
+	# Developed by Aetherpal, a company which sells smart remote controls tools (https://en.wikipedia.org/wiki/AetherPal)
+	# I guess this app is used for tech support.
+
+	"com.aetherpal.attdh.zte"
+	# Device Help for AT&T ZTE devices.
+	# Developed by Aetherpal, a company which sells smart remote controls tools (https://en.wikipedia.org/wiki/AetherPal)
+	# I guess this app is used for tech support.
+
+	"com.asurion.android.mobilerecovery.att"
+	# AT&T Protect Plus (discontinued. Replaced by AT&T ProTech : com.asurion.android.protech.att)
+	# Help and support app. Lets you call or chat with a live U.S.-based AT&T ProTech support expert
+	# Note : This app is developped by Asurion, a US company whose business is to sell insurances.
+	# All US carriers use Asurion for the phone insurances.
+
 	"com.asurion.android.protech.att"
 	# AT&T ProTech (https://play.google.com/store/apps/details?id=com.asurion.android.protech.att)
-	# Help and support app.
+	# Help and support app. Lets you call or chat with a live U.S.-based AT&T ProTech support "expert".
 	# Note : This app is developped by Asurion, a US company whose business is to sell insurances.
 	# All US carriers use Asurion for the phone insurances.
 
@@ -361,12 +382,6 @@ declare -a us_carriers_bloat=(
 	# Device Help (https://play.google.com/store/apps/details?id=com.att.dh)
 	# Troubleshooting app.
 
-	"com.dti.att" # [MORE INFO NEEDED]
-	# AT&T App Select
-	# I guess it lets you choose AT&T apps to install.
-	# It has a LOT of permissions : https://knowledge.protektoid.com/apps/com.dti.att/7a36d4f5f00bae044566221400719c75ea2f4f33bc2578a7f8210f36d718a8d6
-	# Someone knows what "dti" is/means ?
-
 	"com.att.dtv.shaderemote"
 	# DIRECTV Remote App (https://play.google.com/store/apps/details?id=com.att.dtv.shaderemote)
 	# Lets you control DIRECTV HD receivers in your home that are connected to Internet, from your phone.
@@ -377,6 +392,10 @@ declare -a us_carriers_bloat=(
 	# Carrier IQ / Device Health 
 	# Gathers, stores and forwards diagnostic measurements on its behalf (see https://en.wikipedia.org/wiki/Carrier_IQ)
 	# Great ! A rootkit : https://en.wikipedia.org/wiki/Carrier_IQ#Rootkit_discovery_and_media_attention
+
+	"com.att.mobiletransfer"
+	# AT&T Mobile Transfer
+	# Lets you transfert user data from an older AT&T phone to a new one.
 
 	"com.att.myWireless"
 	# My AT&T (https://play.google.com/store/apps/details?id=com.att.myWireless)
@@ -404,6 +423,12 @@ declare -a us_carriers_bloat=(
 	# AT&T Hotspot 
 	# Provides Hotspot functionnality I guess
 	# Note : MatchBoxMobile is a UK Software company.
+
+	"com.dti.att" # [MORE INFO NEEDED]
+	# AT&T App Select
+	# I guess it lets you choose AT&T apps to install.
+	# It has a LOT of permissions : https://knowledge.protektoid.com/apps/com.dti.att/7a36d4f5f00bae044566221400719c75ea2f4f33bc2578a7f8210f36d718a8d6
+	# Someone knows what "dti" is/means ?
 
 	"com.motorola.att.phone.extensions" # [MORE INFO NEEDED]
 	# Provide acess to AT&T extensions in you dialer. I'm not sure tho. It's only a supposition.
