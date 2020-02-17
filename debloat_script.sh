@@ -17,14 +17,22 @@ nBold=$(tput sgr0)
 
 
 function debloat {
-	local option_needed=""
-	if [[ $(adb shell getprop ro.build.version.sdk) > 20 ]]; then option_needed="--user 0"; fi
+
+	# user choice : restore/debloat
+	local user_choice=""
+	[[ $action_arg = 'r' ]] && user_choice='cmd package install-existing $package' || user_choice='pm uninstall $option_needed $package'
+
+	# Android 7.1 and older can't reinstall packages
+	if [[ $(adb shell getprop ro.build.version.release) < 8.0 && "$force_uninstall" = "0" ]]; then
+		[[ $action_arg = 'r' ]] && user_choice='pm enable $package' || user_choice='pm disable-user $package && am force-stop $package && pm clear $package'
+	fi
+
 	local -n list=$1 # list is a nameref. Array is passed by reference.
 	clear
-	printf "\n${RED}${Bold}=== $1 debloat list ===${nBold}${NC}\n"
+	printf "\n${RED}${Bold}=== $brand debloat list ===${nBold}${NC}\n"
 	for package in "${list[@]}"; do
 		printf "${RED}$package${NC} --> "
-		output=$([[ $2 = 'r' ]] && adb shell "cmd package install-existing $package" || adb shell "pm uninstall $option_needed $package")
+		local output=$(eval adb shell $user_choice)
 		echo "$output"
 		if [[ "$output" != "Failure" ]]; then echo "$package" >> "debloated_packages.txt"; fi 
 	done
@@ -38,9 +46,9 @@ function carrier_choice {
 	printf "\n${RED}${Bold}Your choice : ${nBold}${NC}"
 	read -n 1 
 	case $REPLY in	
-		1) [[ $1 = 'r' ]] && debloat us_carriers_bloat 'r'     || debloat us_carriers_bloat ;;
-		2) [[ $1 = 'r' ]] && debloat french_carriers_bloat 'r' || debloat french_carriers_bloat ;;
-		3) [[ $1 = 'r' ]] && debloat german_carriers_bloat 'r' || debloat german_carriers_bloat ;;
+		1) [[ $action_arg = 'r' ]] && debloat us_carriers_bloat      || debloat us_carriers_bloat ;;
+		2) [[ $action_arg = 'r' ]] && debloat french_carriers_bloat  || debloat french_carriers_bloat ;;
+		3) [[ $action_arg = 'r' ]] && debloat german_carriers_bloat  || debloat german_carriers_bloat ;;
 	esac
 }
 
@@ -56,19 +64,31 @@ function list {
 }
 
 function remove_or_install_one {
-	[[ $1 = 'r' ]] && choice="restore" || choice="uninstall"
+	local choice=""
+	local user_choice=''
+	if [[ $action_arg = 'r' ]]; 
+	then choice="restore"; user_choice='cmd package install-existing $REPLY';
+	else choice="uninstall"; user_choice='pm uninstall $option_needed $REPLY';
+	fi
+
+	# Android 7.1 and older can't reinstall packages
+	if [[ $(adb shell getprop ro.build.version.release) < 8.0 && "$force_uninstall" = "0" ]]; then
+		[[ $action_arg = 'r' ]] && user_choice='pm enable $REPLY' || user_choice='pm disable-user $REPLY && am force-stop $REPLY && pm clear $REPLY'
+	fi
+
 	clear
-	printf "\n${RED}${Bold}Package name to $choice : ${nBold}${NC} "
+	printf "\n${RED}${Bold}Package name to $choice :${nBold}${NC} "
 	read
-	[[ $1 = 'r' ]] && adb shell "pm uninstall --user 0 $REPLY" || adb shell "cmd package install-existing $REPLY";
+	local output=$(eval adb shell $user_choice)
+	echo "$output"
+	if [[ "$output" != "Failure" ]]; then echo "$REPLY" >> "debloated_packages.txt"; fi 
 }
 
 function restore {
 	clear
-	printf "${RED}${Bold}Enter the path of the backup to restore : ${nBold}${NC} "
+	printf "${RED}${Bold}Enter the path of the backup to restore :${nBold}${NC}"
 	read
-	${integrity} = "$(check_backup_integrity)"
-	[[ "${integrity}" = "${GREEN}${Bold}OK${nBold}${NC}\n" ]] && adb restore $REPLY || printf "${RED}${Bold}The backup is corrupted${nBold}${NC}\n"
+	[[ "$(check_backup_integrity $REPLY)" = "${GREEN}${Bold}OK${nBold}${NC}\n" ]] && adb restore $REPLY || printf "${RED}${Bold}The backup is corrupted${nBold}${NC}\n"
 }
 
 function check_backup_integrity {
@@ -135,8 +155,20 @@ brand=$(brand_detection)
 space=$((25-${#brand}))
 if [[ $space =~ "-" ]]; then space="0"; fi
 
+# --user 0 option doesn't exist in Android SDK API version < 20
+option_needed="" 
+if [[ $(adb shell getprop ro.build.version.sdk) > 20 ]]; then option_needed="--user 0"; fi
 
 while true; do
+
+	clear;
+	if [[ $(adb shell getprop ro.build.version.release) < 8.0 ]]; then 
+	printf "${RED}${Bold}WARNING : Your android version is too old (< 8.0). Uninstalled packages can't be restored.\n";
+	printf "By default the script will force-disable the apps instead of uninstalling them so that you can restore them if needed\n\n"
+	printf "If you still want to force-uninstall the apps, type '1' ('0' otherwise): ${NC}"
+	read $force_uninstall
+	fi
+	
 	clear;
 	printf "\n${Bold}${ORANGE}===================  MAIN MENU  ===================\n"
 	printf "#                                               ${ORANGE}  #\n"
@@ -159,7 +191,7 @@ while true; do
 		clear
 		title="DEBLOAT"
 		action_arg=''
-			if [[ $action = 1 ]]; then title="RESTORE"; fi
+			if [[ $action = 1 ]]; then title="RESTORE"; action_arg='r'; fi
 
 		printf "\n${Bold}${ORANGE}====================  $title  ====================\n"
 		printf "#                                               ${ORANGE}  #\n"
@@ -176,18 +208,15 @@ while true; do
 		read -p "${Bold}Your selection (e.g: 2 3 4 5 6): ${nBold}" action
 		echo
 
-		if [[ "$action" =~ 4 ]]; then carrier_choice $action_arg; fi
-		if [[ "$action" =~ -1 ]]; then debloat pending $action_arg; fi
-		if [[ "$action" =~ 1 ]]; then remove_or_install_one $action_arg; fi
-		if [[ "$action" =~ 2 ]]; then debloat $brand $action_arg; fi
-		if [[ "$action" =~ 3 ]]; then 
-			debloat google_bloat $action_arg && debloat microsoft_bloat $action_arg && 
-			debloat amazon_bloat $action_arg && debloat facebook_bloat $action_arg
-		fi
-		if [[ "$action" =~ 5 ]]; then debloat misc_bloat $action_arg; fi
-		if [[ "$action" =~ 6 ]]; then debloat aosp_bloat $action_arg; fi	
+		if [[ "$action" =~ 4 ]]; then carrier_choice; fi
+		if [[ "$action" =~ -1 ]]; then debloat pending; fi
+		if [[ "$action" =~ 1 ]]; then remove_or_install_one; fi
+		if [[ "$action" =~ 2 ]]; then debloat; fi
+		if [[ "$action" =~ 3 ]]; then debloat google_bloat && debloat microsoft_bloat && debloat amazon_bloat && debloat facebook_bloat; fi
+		if [[ "$action" =~ 5 ]]; then debloat misc_bloat; fi
+		if [[ "$action" =~ 6 ]]; then debloat aosp_bloat; fi	
 	fi
 
-adb shell 'pm list packages' | sed -r 's/package://g' | sort > packages_list.txt
+adb shell 'pm list packages' | sed -r 's/package://g' | sort > remaining_packages.txt
 
 done
