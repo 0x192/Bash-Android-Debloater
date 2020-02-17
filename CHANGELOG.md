@@ -1,3 +1,22 @@
+# New Release (v2.1)
+
+## Alternative method for Android 8.0 and older
+Older Android versions can't reinstall uninstalled packages. The script now detects this case and proposes disabling the apps and clearing data instead of uninstalling them.
+Concretely, the script will use : `pm disable-user $package && am force-stop $package && pm clear $package`. Restore will use `pm enable $package`.
+
+## More packages added
+- **AOSP** : 3 new packages
+- **Miscellaneous** : 2 new packages
+- **Carriers** : 6 new packages (4 AT&T packages + 2 Sprint packages)
+- **Pending** : 26 new packages (Oppo packages)
+
+## Miscellaneous
+- Fixed a (dumb) bug that forced *uninstall* choice even if the user choosed *restore*.
+- Fixed a (dumb again) bug that prevented the backup integrity check function to find the backup. 
+- Improved the debloat/restore function to avoid checking redondant if statements.
+- Added a step for people who can't uninstall the Google Play services.
+- Minor spelling corrections.
+
 # New Release (v2.0)
 
 I worked hard for this release ! This is a big one ! Enjoy ! :rocket:
