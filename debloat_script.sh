@@ -29,7 +29,7 @@ function debloat {
 
 	local -n list=$1 # list is a nameref. Array is passed by reference.
 	clear
-	printf "\n${RED}${Bold}=== $brand debloat list ===${nBold}${NC}\n"
+	printf "\n${RED}${Bold}=== $1 debloat list ===${nBold}${NC}\n"
 	for package in "${list[@]}"; do
 		printf "${RED}$package${NC} --> "
 		local output=$(eval adb shell $user_choice)
