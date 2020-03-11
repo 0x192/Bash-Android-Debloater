@@ -5,7 +5,7 @@
 # HELP ME : I got mad seeking for the meaning of VPL. A lot of people use it on Reddit (https://www.reddit.com/r/Bestbuy/search/?q=vpl&restrict_sr=1)
 # and I'm sure it's the good abbreviation but I don't know what V.P.L means !! It seems to refer to a special job for vendors.
 
-declare -a amazon_bloat=(
+declare -a amazon=(
 
 	"com.amazon.appmanager"
 	# Mobile Device Information Provider
@@ -55,7 +55,7 @@ declare -a amazon_bloat=(
 
 	)
 
-declare -a facebook_bloat=(
+declare -a facebook=(
 	# Facebook packages always run in background and send data to Facebook even if you don't have a Facebook account.
 
 	"com.facebook.katana"
@@ -82,7 +82,7 @@ declare -a facebook_bloat=(
 	# Whatsapp (https://play.google.com/store/apps/details?id=com.whatsapp")
 	)
 
-declare -a microsoft_bloat=(
+declare -a microsoft=(
 	"com.microsoft.skydrive"
 	# Microsoft OneDrive (Cloud) (https://play.google.com/store/apps/details?id=com.microsoft.skydrive)
 
@@ -113,7 +113,7 @@ declare -a microsoft_bloat=(
 	# Microsoft app for synchronising your phone with a W10 PC.
 	)
 
-declare -a misc_bloat=(
+declare -a misc=(
 
 	"cci.usage"
 	# My Consumer Cellular (https://play.google.com/store/apps/details?id=cci.usage)
@@ -162,16 +162,61 @@ declare -a misc_bloat=(
 	# Cequint was acquired by TNS (https://tnsi.com/)
 	# That was not a good thing : https://www.geekwire.com/2013/earnouts-bad-cequint-execs-sue-parent-company/
 
+	"com.cnn.mobile.android.phone"
+	# CNN Breaking US & World News app (https://play.google.com/store/apps/details?id=com.cnn.mobile.android.phone)
+
+	"com.contextlogic.wish"
+	# Wish Shopping (https://play.google.com/store/apps/details?id=com.contextlogic.wish)
+	# You should not buy with Wish if you want my opinion.
+
+	"com.cootek.smartinputv5.language.englishgb"
+	"com.cootek.smartinputv5.language.spanishus"
+	# TouchPal Keyboard by Cootek a chinese company.
+	# Adware (lots lots of ads)
+	# Worth reading : https://www.buzzfeednews.com/article/craigsilverman/google-banned-cootek-adware
+
+	"com.diotek.sec.lookup.dictionary"
+	# Samsung dictionary from Diotek (Korean company)
+	# http://en.diotek.com/
+
+	"com.directv.dvrscheduler"
+	# DIRECTV (https://play.google.com/store/apps/details?id=com.directv.dvrscheduler)
+	# Offical app from DIRECTV (subsidiary of AT&T)
+	# Lets you watch Live TV, recorded shows, VODs and schedule recordings on your DVR
+	# Worth reading : https://en.wikipedia.org/wiki/DirecTV#Consumer_protection_lawsuits_and_violations
+
 	"com.discoveryscreen"
 	# Appflash (https://play.google.com/store/apps/details?id=com.discoveryscreen)
 	# Verizon Spyware.
 	# https://www.eff.org/deeplinks/2017/04/update-verizons-appflash-pre-installed-spyware-still-spyware
+
+	"com.dna.solitaireapp"
+	# Solitaire Game app from DNA ompany ? 
+
+	"com.draftkings.dknativermgGP.vpl"
+	# DraftKings - Daily Fantasy Sports for Cash
+	# App has been removed from the Playstore.
+	# Worth reading : https://en.wikipedia.org/wiki/DraftKings
+	
+	"com.drivemode"
+	# Drivemode (https://play.google.com/store/apps/details?id=com.drivemode.android)
+	# Simplifies how you manage calls and messages while driving.
+	# https://drivemode.com/privacy-2/
 
 	"com.ebay.mobile"
 	# Ebay app (https://play.google.com/store/apps/details?id=com.ebay.mobile)
 
 	"com.ebay.carrier"
 	# Kind of weird ebay apps preinstalled by carriers.
+
+	"com.ehernandez.radiolainolvidable"
+	# Radio La Inolvidable Peru (no longer exist)
+	# Spanish Radio app.
+
+	"com.emoji.keyboard.touchpal"
+	# TouchPal Emoji Keyboard by Cootek a chinese company
+	# Adware (lots lots of ads)
+	# Worth reading : https://www.buzzfeednews.com/article/craigsilverman/google-banned-cootek-adware
 
 	"com.eterno"
 	# Daily hunts News. (https://play.google.com/store/apps/details?id=com.eterno&hl=en)
@@ -196,6 +241,11 @@ declare -a misc_bloat=(
 	"com.hancom.office.editor.hidden"
 	# Legacy Hancom Office Editor (Korean alternative to Microsoft Office). Featured in Samsung and LG phones
 
+	"com.handmark.expressweather"
+	"com.handmark.expressweather.vpl"
+	# 1Weather (https://play.google.com/store/apps/details?id=com.handmark.expressweather)
+	# Forecasts alerts app (contain ads)
+
 	"com.hulu.plus"
 	# Hulu (https://play.google.com/store/apps/details?id=com.hulu.plus&hl)
 	# Netflix competitor.
@@ -210,6 +260,10 @@ declare -a misc_bloat=(
 	# Polaris Office from US Infraware Inc company (Microsoft Office like)
 	# https://en.wikipedia.org/wiki/Polaris_Office
 	# https://play.google.com/store/apps/details?id=com.infraware.office.link
+
+	"com.ironsource.appcloud.oobe"
+	# AppCloud (discontinued) from ironSource, an advertising company.
+	# Worth reading : https://en.wikipedia.org/wiki/IronSource.
 
 	"com.king.candycrush4"
 	# Candy Crush Friends Saga (https://play.google.com/store/apps/details?id=com.king.candycrush4)
