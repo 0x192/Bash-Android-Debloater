@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a samsung_bloat=(
+declare -a samsung=(
 
 	#####################  SAFE TO DEBLOAT (useless features)  #####################
 	

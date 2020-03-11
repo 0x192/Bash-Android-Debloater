@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a xiaomi_bloat=(
+declare -a xiaomi=(
 
 	"android.autoinstalls.config.Xiaomi.cepheus"
 	# Used to **auto** install stuff (Cepheus phone model) !

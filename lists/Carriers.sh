@@ -430,6 +430,11 @@ declare -a us_carriers_bloat=(
 	# It has a LOT of permissions : https://knowledge.protektoid.com/apps/com.dti.att/7a36d4f5f00bae044566221400719c75ea2f4f33bc2578a7f8210f36d718a8d6
 	# Someone knows what "dti" is/means ?
 
+	"com.locationlabs.cni.att"
+	# AT&T Smart Limits
+	# Parental Control tool.
+	# https://m.att.com/shopmobile/wireless/features/smart-limits.html
+
 	"com.motorola.att.phone.extensions" # [MORE INFO NEEDED]
 	# Provide acess to AT&T extensions in you dialer. I'm not sure tho. It's only a supposition.
 	# https://asecare.att.com/tutorials/adding-and-deleting-an-extension-on-your-officehand-mobile-app-2990/?product=AT&T%20Office@Hand

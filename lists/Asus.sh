@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a asus_bloat=(
+declare -a asus=(
 
 	"com.asus.calculator"
 	# Asus calculator app

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a google_bloat=(
+declare -a google=(
 
 	"com.android.hotwordenrollment.okgoogle" 
 	# "OK Google" detection service.
@@ -210,11 +210,16 @@ declare -a google_bloat=(
 	#"com.google.android.deskclock" 
 	# Google clock app (https://play.google.com/store/apps/details?id=com.google.android.deskclock)
 
+
 	"com.google.android.feedback" 
 	# When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
 
 	"com.google.android.googlequicksearchbox" 
 	# Google Search box (https://play.google.com/store/apps/details?id=com.google.android.googlequicksearchbox)
+
+	"com.google.android.instantapps.supervisor"
+	# Lets you try new games directly on Google Play.
+	# https://www.zdnet.com/article/googles-instant-apps-goes-live-now-you-can-try-android-apps-before-installing-them/
 
 	"com.google.android.keep" 
 	# Google Keep (https://play.google.com/store/apps/details?id=com.google.android.keep)

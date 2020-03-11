@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a sony_bloat=(
+declare -a sony=(
 	# I NEVER HAD A SONY DEVICE ON HAND. 
 	# I did some intensive searches on the web to find a list and I try my best to document it but I need Nokia users to really improve it.
 	# I use [MORE INFO NEEDED] tag as a marker.

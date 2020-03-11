@@ -1,6 +1,6 @@
 # !/bin/bash
 
-declare -a huawei_bloat=(
+declare -a huawei=(
 	# I NEVER HAD AN HUAWEI DEVICE ON HAND. THIS LIST WAS MADE POSSIBLE BY @REDSKULL23 
 	# https://forum.xda-developers.com/honor-6x/how-to/guide-list-bloat-software-emui-safe-to-t3700814
 	# Yet, his documentation is not enough precise to me.
