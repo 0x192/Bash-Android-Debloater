@@ -189,9 +189,9 @@ while true; do
 		if [[ "$action" =~ -1 ]]; then debloat pending; fi
 		if [[ "$action" =~ 1 ]]; then remove_or_install_one; fi
 		if [[ "$action" =~ 2 ]]; then debloat $brand; fi
-		if [[ "$action" =~ 3 ]]; then debloat google_bloat && debloat microsoft_bloat && debloat amazon_bloat && debloat facebook_bloat; fi
-		if [[ "$action" =~ 5 ]]; then debloat misc_bloat; fi
-		if [[ "$action" =~ 6 ]]; then debloat aosp_bloat; fi	
+		if [[ "$action" =~ 3 ]]; then debloat google && debloat microsoft && debloat amazon && debloat facebook; fi
+		if [[ "$action" =~ 5 ]]; then debloat misc; fi
+		if [[ "$action" =~ 6 ]]; then debloat aosp; fi	
 	fi
 
 adb shell 'pm list packages' | sed -r 's/package://g' | sort > remaining_packages.txt
