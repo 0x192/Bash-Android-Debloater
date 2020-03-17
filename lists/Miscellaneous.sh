@@ -312,6 +312,12 @@ declare -a misc=(
 	"com.opera.preinstall"
 	# It seems to be Opera Max Data saving (discontinued)
 
+	"com.particlenews.newsbreak"
+	# News Break: Local & Breaking (https://play.google.com/store/apps/details?id=com.particlenews.newsbreak)
+	# News provided by NewsBreak (https://www.newsbreak.com/)
+	#
+	# FYI : https://reports.exodus-privacy.eu.org/en/reports/com.particlenews.newsbreak/latest/
+
 	"com.phonepe.app"
 	# PhonePe (https://play.google.com/store/apps/details?id=com.phonepe.app)
 	# PhonePe is a payments app that allows indian users to use BHIM UPI, your credit card and debit card or wallet to recharge your mobile phone, 
@@ -319,6 +325,18 @@ declare -a misc=(
 	# PhonePe is an indian company (https://en.wikipedia.org/wiki/PhonePe)
 	# BHIM = Bharat Interface for Money : https://en.wikipedia.org/wiki/BHIM
 	# UPI = Unified Payement Interface : https://en.wikipedia.org/wiki/Unified_Payments_Interface
+
+	"com.pinsight.v1"
+	# App Spotlight
+	# Makes you discover new apps from the Google Play store. The selection criteria are unkown.
+
+	"com.playphone.gamestore"
+	# Playphone Gamestore (https://www.playphone.com/)
+	# "Helps" you discover the "best" Android games and connects you to a global gaming community. Sounds Amazing !
+
+	"com.playphone.gamestore.loot"
+	# Loot 
+	# Premium service from playphone ? 
 
 	"com.pure.indosat.care"
 	# myIM3 (https://play.google.com/store/apps/details?id=com.pure.indosat.care)
@@ -340,17 +358,41 @@ declare -a misc=(
 	# Note : Sprint sold Pinsight to InMobi in 2018.
 	# https://www.fiercewireless.com/wireless/sprint-sells-mobile-ad-biz-pinsight-media-to-inmobi
 
+	"com.remotefairy4"
+	# AnyMote Universal Remote + Wifi Smart Home Control (https://play.google.com/store/apps/details?id=com.remotefairy4)
+	# IR Remote control app 
+	# Lots of trackers and permissions : https://reports.exodus-privacy.eu.org/en/reports/com.remotefairy4/latest/
+
 	"com.republicwireless.tel"
 	# Republic (https://play.google.com/store/apps/details?id=com.republicwireless.tel&hl)
 	# Lets you manage your Republic wireless account.
 	# Republic Wireless is an american mobile virtual network operator (https://en.wikipedia.org/wiki/Republic_Wireless)
 
+	"com.rhapsody"
+	"com.rhapsody.vpl"
+	# Napster Music (https://play.google.com/store/apps/details?id=com.rhapsody)
+	# Napster streaming app
+	# https://en.wikipedia.org/wiki/Napster
+
 	"com.roaming.android.gsimbase" # [MORE INFO NEEDED]
 	"com.roaming.android.gsimcontentprovider"
 	# GSIM = Generic Statistical Information Model ? I don't think so but I can't find anything.
 
-	"com.s.antivirus"
-	# AVG Antivirus (https://play.google.com/store/apps/details?id=com.s.antivirus) for Sony Xperia.
+	"com.sem.factoryapp"
+	# SEMFactoryApp
+	# Call home (172.217.168.14 --> Google IP). Need NFC permission.
+	# This package is maybe used to test NFC.
+
+	"com.servicemagic.consumer"
+	# HomeAdvisor: Contractors for Home Improvement (https://play.google.com/store/apps/details?id=com.servicemagic.consumer)
+	# Help you find local contractors from the service Home Advisor network
+	# HomeAdvisor collects users data when a request is made and then sells that data to local contractors in exchange for money.
+	# Worth Reading : https://en.wikipedia.org/wiki/HomeAdvisor#Critism
+
+	"com.sharecare.askmd"
+	# AskMD (discontinued) provided by Sharecare
+	# Symptom checker app. Lets you see what might be causing your symptoms and helps you find a nearby physician 
+	# Worth Reading : https://en.wikipedia.org/wiki/Sharecare#Criticisms
 
 	"com.slacker.radio" 
 	# LiveXLive - Streaming Music and Live Events (https://play.google.com/store/apps/details?id=com.slacker.radio)
@@ -367,9 +409,44 @@ declare -a misc=(
 	"com.spotify.music"
 	# Spotify app (https://play.google.com/store/apps/details?id=com.spotify.music)
 
+	"com.swiftkey.swiftkeyconfigurator"
+	# SwiftKey factory settings
+	# Used by commercial swiftkey partners to configure the SwiftKey app.
+	# Swiftkey is a keyboard developed by TouchType, a Microsoft subsidiary (https://en.wikipedia.org/wiki/SwiftKey)
+
+	"com.synchronoss.dcs.att.r2g"
+	# AT&T Ready2Go (discontinued)
+	# Its purpose was to help you migrating your data to your new Android device.
+
+	"com.s.antivirus"
+	# AVG Antivirus (https://play.google.com/store/apps/details?id=com.s.antivirus) for Sony Xperia.
+
+	"com.telenav.app.android.cingular"
+	# AT&T Navigator (https://play.google.com/store/apps/details?id=com.telenav.app.android.cingular)
+	# Crappy GPS app provided by Telenav and rebranded by AT&T.
+	# Worth reading : https://www.telenav.com/legal/policies-privacy-policy
+
+	"com.telenav.app.android.scout_us"
+	# Scout GPS Navigation & Meet Up (https://play.google.com/store/apps/details?id=com.telenav.app.android.scout_us)
+	# Bad GPS with bad chat features on top of that. 
+	# https://www.scoutgps.com/
+
 	"com.til.timesnews"
 	# India News (https://play.google.com/store/apps/details?id=com.til.timesnews)
-	# 
+	
+	"com.touchtype.swiftkey"
+	# Swiftkey Keyboard (https://play.google.com/store/apps/details?id=com.touchtype.swiftkey)
+	# Keyboard app developed by TouchType, a Microsoft subsidiary (https://en.wikipedia.org/wiki/SwiftKey)
+	# Sends "anonymous" to Microsoft.
+	# 4 Trackers + 11 Permissions : https://reports.exodus-privacy.eu.org/en/reports/com.touchtype.swiftkey/latest/
+
+	"com.touchtype.swiftkey.res.overlay"
+	# Overlay for Swiftkey keyboard.
+	# REMINDER : A screen overlay in Android, also referred to as “Draw On Top”, allows an app to display content over another app
+
+	"com.tracker.t"
+	# WTF is this ?? Given its name I think you can take the risk to delete it.
+
 	"com.turner.cnvideoapp" 
 	# Cartoon network App (https://play.google.com/store/apps/details?id=com.turner.cnvideoapp)
 
@@ -406,11 +483,25 @@ declare -a misc=(
 	#
 	# NOTE : Trustonic TEE (called Kinibi) is used in Samsung, Vivo, Oppo, Xiaomi, Meizu and LG devices.
 
+	"com.ubercab"
+	"com.ubercab.driver"
+	"com.ubercab.eats"
+	# Uber (https://play.google.com/store/apps/details?id=com.ubercab)
+	# Uber Driver (https://play.google.com/store/apps/details?id=com.ubercab.driver)
+	# Uber Eats (https://play.google.com/store/apps/details?id=com.ubercab.eats)
+	# Uber does not protect personal user data and has a questionable ethic.
+	# Worth reading : https://en.wikipedia.org/wiki/Uber#Criticism
+
 	"com.UCMobile.intl"
 	# UC Browser by Alibaba (https://play.google.com/store/apps/details?id=com.UCMobile.intl)
 	# !! Unsecure chinese web browser !!
 	# https://www.quora.com/Whats-wrong-with-UC-Browser
 	# https://www.digitalinformationworld.com/2019/05/url-spoofing-uc-browser-android.html
+
+	"com.ume.browser.northamerica"
+	# UME Web Browser (https://play.google.com/store/apps/details?id=com.ume.browser.northamerica)
+	# Trackers and a LOT of permissions (https://reports.exodus-privacy.eu.org/en/reports/com.ume.browser.cust/latest/)
+
 
 	"com.vlingo.midas"
 	# Speech recognition app forthe personal assistant by Vlingo 
@@ -423,6 +514,21 @@ declare -a misc=(
 	# Yahoo Weather (https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.weather)
 	# Please boycott Yahoo ! (all of their services are crappy so it's not so difficult)
 	# If you're not aware : https://en.wikipedia.org/wiki/Criticism_of_Yahoo!
+
+	"com.yellowpages.android.ypmobile"
+	# Yellow Pages (https://play.google.com/store/apps/details?id=com.yellowpages.android.ypmobile)
+
+	"com.yelp.android"
+	# Yelp (https://play.google.com/store/apps/details?id=com.yelp.android)
+	# Yelp lets users post reviews and rate businesses. 
+	# Worth reading : https://en.wikipedia.org/wiki/Yelp#Controversy_and_litigation
+	
+	"com.zhiliaoapp.musically"
+	# TikTok App 
+	# Worth reading : https://en.wikipedia.org/wiki/TikTok#Privacy,_cyberbullying_and_addiction_concerns
+
+	"de.axelspringer.yana.zeropage"
+	# Upday news for Samsung (https://play.google.com/store/apps/details?id=de.axelspringer.yana)
 
 	"flipboard.app" 
 	# Flipboard News App (https://play.google.com/store/apps/details?id=flipboard.app)
@@ -437,6 +543,20 @@ declare -a misc=(
 	"in.mohalla.sharechat" 
 	# ShareChat (https://play.google.com/store/apps/details?id=in.mohalla.sharechat)
 
+	"in.playsimple.wordtrip"
+	# World Trip (https://play.google.com/store/apps/details?id=in.playsimple.wordtrip)
+	# Word Count & word streak puzzle game
+	# 19 trackers + 11 permissions (https://reports.exodus-privacy.eu.org/en/reports/in.playsimple.wordtrip/latest/)
+
+	"jp.gocro.smartnews.android"
+	# SmartNews: Local Breaking News (https://play.google.com/store/apps/details?id=jp.gocro.smartnews.android)
+	# Delivers the top trending news stories from others publishers (NBC News, The Verges etc...)
+	# 7 Trackers + 10 permissions (https://reports.exodus-privacy.eu.org/en/reports/jp.gocro.smartnews.android/latest/)
+
+	"msgplus.jibe.sca.vpl"
+	# Messaging Plus. Messings using the RCS protocol (https://en.wikipedia.org/wiki/Rich_Communication_Services)
+ 	# Related to Google Jibe (https://jibe.google.com/)
+
 	"net.sharewire.parkmobilev2" 
 	# ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
 
@@ -447,7 +567,18 @@ declare -a misc=(
 	"org.codeaurora.ims"
 	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
 	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling)
-	# There is high chances this package is needed for Volte/VoIP/Wifi calling. 
+	# There is high chances this package is needed for Volte/VoIP/Wifi calling.
+
+	"tv.fubo.mobile.vpl"
+	# fuboTV (https://play.google.com/store/apps/details?id=tv.fubo.mobile)	
+	# Lets you Watch live Sports, TV Shows, Movies & News
+
+	"tv.peel.app"
+	# Peel Universal Smart TV Remote Control (discontinued)
+	# Lets you remotely control devices like your TV, DVD or Blu-ray player.
+
+	"zpub.res" # [MORE INFO NEEDED]
+	# 3-party app preinstalled in ZTE phone.
 
 	#### QUALCOMM ####
 	# QTI = Qualcomm Technologies Inc
@@ -460,8 +591,9 @@ declare -a misc=(
 	# Asks for sending SMS permission.
 
 	"com.qti.service.colorservice" # [MORE INFO NEEDED]
-	# Don't know why but it uses mobiledata.
+	# Don't know why but it uses mobile data.
 	# It most likely does something to colors on your display. Can someone see the difference ? Is it accessbility feature ?
+	# Needed for Blue screen feature ?
 
 	"com.qti.snapdragon.qdcm_ff" # [MORE INFO NEEDED]
 	# Qualcomm Display Color Management tool
@@ -557,6 +689,10 @@ declare -a misc=(
 	# Automatically switchs between Wifi/3G/4G depending on network performances. 
 	# https://www.qualcomm.com/news/onq/2013/07/02/qualcomms-cne-bringing-smarts-3g4g-wi-fi-seamless-interworking
 
+	"com.qti.qualcomm.datastatusnotification" # [MORE INFO NEEDED]
+	# Can read/send SMS
+	# Allows to cap data when you've reached the limit of your plan (not 100% sure)
+
 	"com.qualcomm.qti.dynamicddsservice"
 	# Dynamic DDS Service
 	# DDS = Direct Digital Synthesizer
@@ -577,15 +713,27 @@ declare -a misc=(
 	# Seems more of a security risk to me than anything else.
 	# Is it related to Safeswitch ? https://www.qualcomm.com/products/features/security/safeswitch
 
+	#"com.qualcomm.qti.simsettings" # [MORE INFO NEEDED]
+	# Obviously related to SIM settings
+
 	"com.qualcomm.qti.telephonyservice" # [MORE INFO NEEDED]
 	# Sincerely I don't know what it is.
 	# It runs in background.
 	# It seems there is no issue with telephony if removed. I need to keep an eye on this.
 
+	#"com.qualcomm.qti.telephony.vodafonepack" # [MORE INFO NEEDED]
+	# Related to Vodafone Prepaid Recharge Plan
+	# If you're not a Vodafone client but still has this package on your phone you can delete it.
+	# For Vodafon client, I don't know what this package does.
+	# https://en.wikipedia.org/wiki/Vodafone
+
 	"com.qualcomm.qti.uim"
 	# Related to RUIM I guess. It is a king of SIM card
 	# https://en.wikipedia.org/wiki/Removable_User_Identity_Module
 	# Still used in China it seems. 
+
+	"com.quicinc.fmradio"
+	# FM Radio app by Qualcomm
 
 	#### FONTS ####
 	"com.monotype.android.font.chococooky"

@@ -297,9 +297,8 @@ declare -a xiaomi=(
 	# Surely used to "improve" game performance
 
 	"com.xiaomi.joyose"
-	# Impossible to find precises info about this package.
-	# Some people received joyose error notifications after receiving SMS on the stock app.
-	# Safe to remove tho (according to a lot of users)
+	# Joyse Analytics and advertising
+	# Run in background and can't be stopped. 
 
 	"com.xiaomi.jr"
 	# Help you getting loans when shopping.

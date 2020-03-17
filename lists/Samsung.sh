@@ -662,7 +662,11 @@ declare -a samsung=(
 	# to query location information from a wireless network, regardless of its underlying network technology and positioning methods.
 	# https://en.wikipedia.org/wiki/Mobile_Location_Protocol
 	# As it's a samsung package there is big chances that it only serve Samsung stuff.
-	# I'm testing if it's safe to remove (January 2020)
+
+	"com.samsung.mdl.radio.radiostub"
+	# Milk Music (shut down by Samsung)
+	# It was a music streaming app
+	# https://en.wikipedia.org/wiki/Milk_Music_(streaming_service)
 
 	"com.samsung.oh"
 	# Samsung Members (https://play.google.com/store/apps/details?id=com.samsung.oh)

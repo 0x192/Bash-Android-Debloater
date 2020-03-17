@@ -1,13 +1,13 @@
-declare -a us_carriers_bloat=(
+declare -a us_carriers=(
 
 	######  You REALLY should delete ALL carriers packages you can. US mobile carriers are really sc*mbags. I think you already know it.
-	# There are so many scandals that I can't all post here but if you are not aware here is some : 
+	# There are so many scandals that I can't mention all of them here but if you are not aware here is some : 
 	#
 	# 1) They have been discovered to sell the real-time location of your phone to shady third parties (like data-bounty-hunters)
 	# https://www.zdnet.com/article/us-cell-carriers-selling-access-to-real-time-location-data/
 	# https://www.theverge.com/2019/2/6/18214667/att-t-mobile-sprint-location-tracking-data-bounty-hunters
 
-	# 2) In 2016, Verizon struck a $1.35M settlement with the FCC for modifying wireless user data packets to covertly track users around the internet 
+	# 2) In 2016, Verizon strucked a $1.35M settlement with the FCC for modifying wireless user data packets to covertly track users around the internet 
 	# without telling them
 	# https://www.theregister.co.uk/2016/12/20/turn_inc_verizon_supercookies/
 	# Others stuff for Verizon : https://www.vice.com/en_ca/article/jgem57/verizon-launches-private-search-engine-after-years-of-violating-its-customers-privacy
@@ -35,7 +35,7 @@ declare -a us_carriers_bloat=(
 	# https://www.theverge.com/2018/3/20/17142246/t-mobile-bloatware-customer-apps-android
 
 	"com.mobitv.client.tmobiletvhd"
-	# T-Mobile TV (discontinued, replaced by nl.tmobiletv.vinson)
+	# T-Mobile TV (discontinued, replaced by nl.tmobiletv.vinson) provided by mobitv (https://en.wikipedia.org/wiki/MobiTV)
 	# https://play.google.com/store/apps/details?id=nl.tmobiletv.vinson&hl=en
 
 	"com.tmobile.pr.adapt"
@@ -242,12 +242,19 @@ declare -a us_carriers_bloat=(
 	# Hub for all you cloud accounts.
 	# See package above.
 
+	"com.locationlabs.finder.sprint.vpl"
 	"com.locationlabs.finder.sprint"
 	# Sprint Family Locator (https://play.google.com/store/apps/details?id=com.locationlabs.finder.sprint)
+	# Lets you locate any phone registered under the Sprint family plan
 	# Location labs is owned by AGV which is owned by Avast.
 	# You shouldn't trust Avast.
-	# FYI : https://www.vice.com/en_us/article/qjdkq7/avast-antivirus-sells-user-browsing-data-investigation
-	# https://www.pcmag.com/news/the-cost-of-avasts-free-antivirus-companies-can-spy-on-your-clicks
+	# FYI : https://www.google.com/search?hl=en&q=avast+privacy+nightmare
+	# 		https://www.vice.com/en_us/article/qjdkq7/avast-antivirus-sells-user-browsing-data-investigation
+	# 		https://www.pcmag.com/news/the-cost-of-avasts-free-antivirus-companies-can-spy-on-your-clicks
+
+	"com.mobitv.client.sprinttvng"
+	# Sprint TV & Movies provided by mobitv (https://en.wikipedia.org/wiki/MobiTV)
+	# Lets you watch live TV and VOD.
 
 	"com.mobolize.sprint.securewifi"
 	# Secure Wifi (https://play.google.com/store/apps/details?id=com.mobolize.sprint.securewifi)
@@ -267,6 +274,9 @@ declare -a us_carriers_bloat=(
 	#"com.motorola.sprintwfc"
 	# Sprint Wifi Calling
 	# Provides wifi calling to Sprint customers.
+
+	#"com.sec.sprint.wfcstub" # [MORE INFO NEEDED]
+	# Seems to be related to Wifi-Calling on Samsung phone.
 
 	"com.sprint.android.musicplus2033"
 	"com.sprint.android.musicplus2033.vpl" # for VPL phones
@@ -349,6 +359,10 @@ declare -a us_carriers_bloat=(
 	# Device Help for AT&T ZTE devices.
 	# Developed by Aetherpal, a company which sells smart remote controls tools (https://en.wikipedia.org/wiki/AetherPal)
 	# I guess this app is used for tech support.
+
+	"net.aetherpal.device"
+	# AT&T Remote Support provided by aetherpal (was acquired by VMware)
+	# Allows an AT&T Advanced Support representative to assist you by accessing your device remotely.
 
 	"com.asurion.android.mobilerecovery.att"
 	# AT&T Protect Plus (discontinued. Replaced by AT&T ProTech : com.asurion.android.protech.att)
@@ -435,6 +449,11 @@ declare -a us_carriers_bloat=(
 	# Parental Control tool.
 	# https://m.att.com/shopmobile/wireless/features/smart-limits.html
 
+	"com.matchboxmobile.wisp" # [MORE INFO NEEDED]
+	# AT&T Hot Spots
+	# Run in background. Automatically connects you to a free AT&T wifi hotspot at one of their participating partner locations 
+	# such as Starbucks.
+
 	"com.motorola.att.phone.extensions" # [MORE INFO NEEDED]
 	# Provide acess to AT&T extensions in you dialer. I'm not sure tho. It's only a supposition.
 	# https://asecare.att.com/tutorials/adding-and-deleting-an-extension-on-your-officehand-mobile-app-2990/?product=AT&T%20Office@Hand
@@ -443,10 +462,14 @@ declare -a us_carriers_bloat=(
 	# AT&T Wifi-calling
 	# https://www.att.com/shop/wireless/features/wifi-calling.html
 
+	"com.wavemarket.waplauncher"
+	# AT&T Secure Family (https://play.google.com/store/apps/details?id=com.wavemarket.waplauncher)
+	# Parental control app.
+	# 7 trackers + 16 permissions (https://reports.exodus-privacy.eu.org/en/reports/com.wavemarket.waplauncher/latest/)
+
 	)
 
-
-declare -a french_carriers_bloat=(
+declare -a french_carriers=(
 
 	########################  Bouygues  ###########################
 
@@ -543,7 +566,7 @@ declare -a french_carriers_bloat=(
 
 	)
 
-declare -a german_carriers_bloat=(
+declare -a german_carriers=(
 
 	####### TELEKOM #######
 
