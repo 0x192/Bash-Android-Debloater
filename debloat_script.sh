@@ -21,10 +21,10 @@ nBold=$(tput sgr0)
 
 function debloat {
 	local action="" # restore/debloat
-	(($restore)) && action='cmd package install-existing $package' || action='pm uninstall $option_needed $package'
-
+	(($restore)) && action='cmd package install-existing $package' || action='pm uninstall ${option_needed:=""} $package'
+	
 	# Android 7.1 and older can't reinstall packages
-	if (( $(echo "$(adb shell getprop ro.build.version.release) < 8.0" | bc -l) && !${force_uninstall:=0})); then
+	if [[ $old_android -eq 1 ]] && [[ ${force_uninstall:=0} -eq 0 ]]; then
 		(($restore)) && action='pm enable $package' || action='pm disable-user $package && am force-stop $package && pm clear $package'
 	fi
 
@@ -35,7 +35,7 @@ function debloat {
 		printf "${BRED}$package${NC} --> "
 		local output=$(eval adb shell $action)
 		echo "$output"
-		if ! [[ "$output" =~ "Failure" ]] && [[ $restore -eq 1 ]]; then echo "$package" >> "debloated_packages.txt"; fi
+		if ! [[ "$output" =~ "Failure" ]] && [[ $restore -eq 0 ]]; then echo "$package" >> "debloated_packages.txt"; fi
 	done
 }
 
@@ -49,7 +49,7 @@ function lists_selection {
 	read -a REPLY
 
 	for list in ${REPLY[@]}; do
-		if ([[ $list -gt ${#REPLY[@]} ]] || [[ $list -lt 1 ]]); then continue; fi
+		if [[ $list -gt $# ]] || [[ $list -lt 1 ]]; then continue; fi
 		debloat ${!list}
 	done
 }
@@ -69,11 +69,11 @@ function remove_or_install_one {
 	local choice=""
 	local action=''
 	if (($restore)); then choice="restore"; action='cmd package install-existing $REPLY';
-	else choice="uninstall"; action='pm uninstall $option_needed $REPLY';
+	else choice="uninstall"; action='pm uninstall ${option_needed:=""} $REPLY';
 	fi
 
 	# Android 7.1 and older can't reinstall packages
-	if (( $(echo "$(adb shell getprop ro.build.version.release) < 8.0" | bc -l) && !${force_uninstall:=0} )); then
+	if [[ $old_android -eq 1 ]] && [[ ${force_uninstall:=0} -eq 0 ]]; then
 		(($restore)) && action='pm enable $REPLY' || action='pm disable-user $REPLY && am force-stop $REPLY && pm clear $REPLY'
 	fi
 
@@ -82,7 +82,7 @@ function remove_or_install_one {
 	read
 	local output=$(eval adb shell $action)
 	echo "$output"
-	if ! [[ "$output" =~ "Failure" ]] && [[ $restore -eq 1 ]]; then echo "$REPLY" >> "debloated_packages.txt"; fi
+	if ! [[ "$output" =~ "Failure" ]] && [[ $restore -eq 0 ]]; then echo "$REPLY" >> "debloated_packages.txt"; fi
 	echo
 	printf "\e[5mPress any key to continue\033[0m"
 	read -n 1 -s
@@ -110,8 +110,9 @@ function check_backup_integrity {
 set -euo pipefail # Safer bash script
 
 brand=$(adb shell getprop ro.product.brand | awk '{print tolower($0)}')
+old_android=$(echo "$(adb shell getprop ro.build.version.release) < 8.0" | bc -l)
 
-option_needed="" # '--user 0' option doesn't exist in Android SDK API version < 20
+# '--user 0' option doesn't exist in Android SDK API version < 20
 if [[ $(adb shell getprop ro.build.version.sdk) > 20 ]]; then option_needed="--user 0"; fi
 
 clear
@@ -137,7 +138,7 @@ if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
 	check_backup_integrity "${PHONE:-phone}-${backup}.adb";
 fi
 
-if (( $(echo "$(adb shell getprop ro.build.version.release) < 8.0" | bc -l) )); then 
+if (( $old_android )); then 
 	printf "${BRED}WARNING : Your android version is too old (< 8.0). Uninstalled packages can't be restoBRED.\n";
 	printf "By default the script will force-disable the apps instead of uninstalling them so that you can restore them if needed\n\n"
 	printf "If you still want to force-uninstall the apps, type '1' ('0' otherwise): ${NC}"
@@ -194,6 +195,6 @@ while true; do
 		if [[ "$action" =~ 0 ]]; then debloat pending; fi
 	fi
 
-adb shell 'pm list packages' | sed -r 's/package://g' | sort > remaining_packages.txt
+adb shell 'pm list packages -s' | sed -r 's/package://g' | sort > remaining_packages.txt
 
 done
