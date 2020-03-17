@@ -1,3 +1,8 @@
+# Hotfix (v2.2.1)
+
+- 2 small nasty bugs fixed.
+- `remaining_packages.txt` now only logs system packages.
+
 # New Release (v2.2)
 
 ## Bugfixes
