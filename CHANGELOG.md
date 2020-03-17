@@ -1,3 +1,27 @@
+# New Release (v2.2)
+
+## Bugfixes
+- Android version checking (fixed #2).
+- Fixed empty list bug when choosing "manufacturer debloat".
+- Pending list selection.
+- Misc bugs nobody saw because I'm the only user of this script ! :D
+
+## New manufacturers supported
+- **Zte**: 2 new packages. (yeah it's not great)
+
+## Pending --> Official lists
+- **Miscellaneous** : 47 new packages (including 3 new *Qualcomm* packages)
+- **Carriers** : 7 new packages (3 Sprint packages + 4 AT&T Packages)
+- **Samsung** : 1 new package 
+
+## Miscellaneous
+- Code improvements and cleaning.
+- Some minor UI/UX improvements.
+- Improved documentation for some packages.
+- Better error handling. Script should now exit with a useful error output if something went wrong.
+- You can now choose separately `Google`, `Facebook`, `Amazon` and `Microsoft` lists.
+
+
 # New Release (v2.1)
 
 ## Alternative method for Android 8.0 and older
