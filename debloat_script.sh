@@ -2,199 +2,218 @@
 #
 # BASH 4.3 or newer is needed ! (use of locale -n)
 
+set -euo pipefail # Safer bash script
+
+# Include debloat lists
 for file in ./lists/* ; do
   if [ -f "$file" ] ; then . "$file"; fi
 done
 
-# Script version 
-VERSION="v2.2 (March 17th 2020)"
+
+### GLOBAL VARIABLES ###
+readonly VERSION="v2.2 (March 17th 2020)"
+readonly PAD=$(((48-${#VERSION})/2))
+readonly BRAND=$(adb shell getprop ro.product.brand | awk '{print tolower($0)}')
+readonly BRAND_SUPPORTED=$( declare -p "$BRAND" &>/dev/null && echo "1" || echo "0") # Check if a $BRAND array is set
+
+# Legacy support
+readonly OLDER_THAN_ANDROID_7_1=$(( $(adb shell getprop ro.build.version.sdk | tr '\r' ' ') < 26))   # < Android 7.1 
+readonly OLDER_THAN_ANDROID_5=$((   $(adb shell getprop ro.build.version.sdk | tr '\r' ' ') < 21))   # < Android 5.0
+readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0") # '--user 0' option doesn't work sometimes
+
+FORCE_UNINSTALL=0
+RESTORE=0
 
 # Colors used for printing
-BRED='\033[1;31m' # Bold + Red
-BBLUE='\033[1;34m' # Bold + Blue
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-NC='\033[0m' # No Color
-Bold=$(tput bold) 
-nBold=$(tput sgr0)
-
-
-function debloat {
-	local action="" # restore/debloat
-	(($restore)) && action='cmd package install-existing $package' || action='pm uninstall ${option_needed:=""} $package'
-	
-	# Android 7.1 and older can't reinstall packages
-	if [[ $old_android -eq 1 ]] && [[ ${force_uninstall:=0} -eq 0 ]]; then
-		(($restore)) && action='pm enable $package' || action='pm disable-user $package && am force-stop $package && pm clear $package'
-	fi
-
-	local -n list=$1 # list is a nameref. Array is passed by reference.
-	clear
-	printf "\n${BRED}${Bold}=== $1 debloat list ===${nBold}${NC}\n"
-	for package in "${list[@]}"; do
-		printf "${BRED}$package${NC} --> "
-		local output=$(eval adb shell $action)
-		echo "$output"
-		if ! [[ "$output" =~ "Failure" ]] && [[ $restore -eq 0 ]]; then echo "$package" >> "debloated_packages.txt"; fi
-	done
-}
-
-function lists_selection {
-	clear
-	for ((i=1; i<=$#; i++)); do
-		echo "$i - ${!i}"
-	done
-
-	printf "\n${BRED}${Bold}Your choice (e.g 1 2 3) : ${nBold}${NC}"
-	read -a REPLY
-
-	for list in ${REPLY[@]}; do
-		if [[ $list -gt $# ]] || [[ $list -lt 1 ]]; then continue; fi
-		debloat ${!list}
-	done
-}
-
-function list {
-	clear
-	printf "\n${BRED}${Bold}Search for packages (grep used):${nBold}${NC} "
-	read
-	echo
-	adb shell "pm list packages | grep -i $REPLY" | sed -r 's/package://g' | sort
-	echo
-	printf "\e[5mPress any key to continue\033[0m"
-	read -n 1 -s
-}
-
-function remove_or_install_one {
-	local choice=""
-	local action=''
-	if (($restore)); then choice="restore"; action='cmd package install-existing $REPLY';
-	else choice="uninstall"; action='pm uninstall ${option_needed:=""} $REPLY';
-	fi
-
-	# Android 7.1 and older can't reinstall packages
-	if [[ $old_android -eq 1 ]] && [[ ${force_uninstall:=0} -eq 0 ]]; then
-		(($restore)) && action='pm enable $REPLY' || action='pm disable-user $REPLY && am force-stop $REPLY && pm clear $REPLY'
-	fi
-
-	clear
-	printf "\n${BRED}${Bold}Package name to $choice :${nBold}${NC} "
-	read
-	local output=$(eval adb shell $action)
-	echo "$output"
-	if ! [[ "$output" =~ "Failure" ]] && [[ $restore -eq 0 ]]; then echo "$REPLY" >> "debloated_packages.txt"; fi
-	echo
-	printf "\e[5mPress any key to continue\033[0m"
-	read -n 1 -s
-}
-
-function restore {
-	clear
-	printf "${BRED}Enter the path of the backup to restore :${NC} "
-	read
-	check_backup_integrity $REPLY && adb restore $REPLY || printf "\n${BRED}${Bold}The backup is corrupted. Abort!${nBold}${NC}\n"
-	echo
-	printf "\e[5mPress any key to continue\033[0m"
-	read -n 1 -s
-}
-
-function check_backup_integrity {
-	printf "\n${BBLUE}\n[($1)] Backup integrity checking :${NC} ";
-	[[ -f $1 ]] || { printf "${BRED}Backup not found${NC}\n\n"; return 1;}
-	{ dd if="$1" bs=24 skip=1 | zlib-flate -uncompress | tar tf - >/dev/null; } ||:
-	(( $? )) && printf "${BRED}FAILED$${NC}\n\n" >&2
-}
+readonly BRED='\033[1;31m' # Bold + Red
+readonly BBLUE='\033[1;34m' # Bold + Blue
+readonly GREEN='\033[0;32m'
+readonly BORANGE='\033[1;33m'
+readonly NC='\033[0m' # No Color
+readonly Bold=$(tput bold) 
+readonly nBold=$(tput sgr0)
 
 ###############################################  MAIN SCRIPT  ##########################################################
 
-set -euo pipefail # Safer bash script
+main() {
+    clear
 
-brand=$(adb shell getprop ro.product.brand | awk '{print tolower($0)}')
-old_android=$(echo "$(adb shell getprop ro.build.version.release) < 8.0" | bc -l)
+    echo                                            " ================================================"
+    echo                                            " #                                              #"
+    echo                                            " #       UNIVERSAL ANDROID DEBLOAT SCRIPT       #"
+    echo                                            " #                                              #"
+    printf " %-${PAD}s${BRED}%s${NC}%${PAD}s\n"      "#"               "${VERSION}"                 "#"
+    echo                                            " #                                              #"
+    echo                                            " ================================================"
+    echo
 
-# '--user 0' option doesn't exist in Android SDK API version < 20
-if [[ $(adb shell getprop ro.build.version.sdk) > 20 ]]; then option_needed="--user 0"; fi
+    adb devices
+    printf "${BRED}%s\n\n"                          "Please carefully read the FAQ before using this script!"
+    printf "%s${NC} "                               "Do you want to do an ADB backup ? [Y/N]"
+    
+    read -r
+    if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then backup; fi
 
-clear
-echo   " ================================================"
-echo   " #                                              #"
-echo   " #       UNIVERSAL ANDROID DEBLOAT SCRIPT       #"
-echo   " #                                              #"
-printf " #${BRED}%$(((46-${#VERSION})/2))s${VERSION}%$(((47-${#VERSION})/2))s${NC}#\n"
-echo   " #                                              #"
-echo   " ================================================"
-echo
+    if (( OLDER_THAN_ANDROID_7_1 )); then
+        clear
+        printf "\n${BRED}%s "                       "WARNING : Your android version is too old (< 8.0)."
+        printf "%s${NC}\n\n"                        "Uninstalled packages can't be restored."
+        printf "%s"                                 "The script will force-disable the apps instead of uninstalling them"
+        printf "%s\n\n"                             "so that you can restore them if needed"
+        printf "%s "                                "If you still want to force-uninstall the apps, type '1' ('0' otherwise):"
 
-adb devices
-printf "${BRED}Please carefully read the FAQ before using this script!\n\n${NC}"
-printf "Do you want to do an ADB backup ? [Yes/No] ?\n\n"
-read -r
-if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then
-	clear;
-	backup=$(date +%Y-%m-%d-%H:%M:%S)
-	adb backup -apk -all -system -f "${PHONE:-phone}-${backup}.adb"  # -noshare option is default
-	echo 
-	read -n 1 -s -p "Press a key when the backup is done (your phone will tell you) "
-	check_backup_integrity "${PHONE:-phone}-${backup}.adb";
-fi
+        read -r -n 1 FORCE_UNINSTALL
+    fi
 
-if (( $old_android )); then 
-	printf "${BRED}WARNING : Your android version is too old (< 8.0). Uninstalled packages can't be restoBRED.\n";
-	printf "By default the script will force-disable the apps instead of uninstalling them so that you can restore them if needed\n\n"
-	printf "If you still want to force-uninstall the apps, type '1' ('0' otherwise): ${NC}"
-	read $force_uninstall
-fi
+    while true; do
+        clear
+        
+        printf "\n${BORANGE}%s\n"                   "===================  MAIN MENU  ==================="
+        printf "%s\n"                               "#                                                 #"
+        printf "%-14s${NC}%s${BORANGE}%18s\n"       "#"            "0  -  List packages"              "#"
+        printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "1  -  Restore a backup"           "#"
+        printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "2  -  Restore packages"           "#"
+        printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "3  -  Debloat packages"           "#"
+        printf "%s\n"                               "#                                                 #"
+        printf "%s${NC}\n\n"                        "==================================================="
 
-while true; do
-	clear
-	
-	printf "\n${Bold}${ORANGE}===================  MAIN MENU  ===================\n"
-	printf "#                                               ${ORANGE}  #\n"
-	printf "#${nBold}${NC}%12s 0  -  List packages               ${ORANGE}  #\n"
-	printf "#${NC}             1  -  Restore a save              ${ORANGE}  #\n"
-	printf "#${NC}             2  -  Restore packages            ${ORANGE}  #\n"
-	printf "#${NC}             3  -  Debloat packages            ${ORANGE}  #\n"
-	printf "#${NC}                                               ${ORANGE}  #\n"
-	printf "${Bold}===================================================${NC}${nBold}\n\n"
+        printf "${BRED}%s${NC}\n\n"                 "DON'T FORGET TO REBOOT YOUR PHONE ONCE THE DEBLOAT IS OVER."   
+        read -r -p "Choose an action : "
 
-	printf "${BRED}DON'T FORGET TO REBOOT YOUR PHONE ONCE THE DEBLOAT IS OVER.${NC}\n\n"
-	read -p "${Bold}Choose an action : ${nBold}" action
-	echo
+        if [[ $REPLY = 0 ]]; then list_installed_packages; fi
 
-	if [[ $action = 0 ]]; then list; fi
-	if [[ $action = 1 ]]; then restore; fi
+        if [[ $REPLY = 1 ]]; then restore_backup; fi
 
-	if [[ $action = 2 || $action = 3 ]]; then
-		clear
+        if [[ $REPLY = 2 || $REPLY = 3 ]]; then
+            clear
 
-		declare -p $brand &>/dev/null || printf "\n${BRED}No $brand debloat list found. Feel free to contribute ! :)\n"
+            (( !BRAND_SUPPORTED )) && printf "\n${BRED}%s\n" "No $BRAND debloat list found. Feel free to contribute ! :)"
 
-		[[ $action = 2 ]] && { title="RESTORE"; restore=1; } || { title="DEBLOAT"; restore=0; }
+            [[ $REPLY = 2 ]] && { title="RESTORE"; RESTORE=1; } || { title="DEBLOAT"; RESTORE=0; }
 
-		printf "\n${Bold}${ORANGE}====================  $title  ====================\n"
-		printf "#                                               ${ORANGE}  #\n"
-		printf "#${NC}             1  -  $title a package     ${ORANGE}  %-6s#\n" | awk '{print tolower($0)}'
-		declare -p $brand &>/dev/null && printf "#${nBold}${NC}%12s 2  -  ${brand} %$((25-${#brand}))s  ${ORANGE}  #\n"
-		printf "#${NC}             3  -  GFAM                        ${ORANGE}  #\n"
-		printf "#${NC}             4  -  Carriers                    ${ORANGE}  #\n"
-		printf "#${NC}             5  -  Others                      ${ORANGE}  #\n"
-		printf "#${NC}             6  -  AOSP                        ${ORANGE}  #\n"
-		printf "#${NC}                                               ${ORANGE}  #\n"
-		printf "#${NC}             0  -  Pending list /!\\    %4s    ${ORANGE}  #\n"
-		printf "#${NC}                                               ${ORANGE}  #\n"
-		printf "${Bold}===================================================${NC}${nBold}\n\n"
-		read -p "${Bold}Your selection (e.g: 2 3 4 5 6): ${nBold}" action
-		echo
+            printf "\n${BORANGE}%s\n"               "====================  $title  ===================="
+            printf "%s\n"                           "#                                                 #"
+            printf "%-14s${NC}%s${BORANGE}%14s\n"   "#"          "1  -  $title a package"             "#" | awk '{print tolower($0)}'
+            (( BRAND_SUPPORTED )) && printf         "#${NC}%12s 2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
+            printf "%-14s${NC}%s${BORANGE}%27s\n"   "#"          "3  -  GFAM"                         "#"
+            printf "%-14s${NC}%s${BORANGE}%23s\n"   "#"          "4  -  Carriers"                     "#"
+            printf "%-14s${NC}%s${BORANGE}%25s\n"   "#"          "5  -  Others"                       "#"
+            printf "%-14s${NC}%s${BORANGE}%27s\n"   "#"          "6  -  AOSP"                         "#"
+            printf "%s\n"                           "#                                                 #"
+            printf "%-14s${NC}%s${BORANGE}%15s\n"   "#"          "0  -  Pending list /!\\"            "#"
+            printf "%s\n"                           "#                                                 #"
+            printf "%s\n"                           "==================================================="
 
-		if [[ "$action" =~ 4 ]]; then lists_selection us_carriers french_carriers german_carriers; fi
-		if [[ "$action" =~ 3 ]]; then lists_selection google facebook amazon microsoft; fi
-		if [[ "$action" =~ 1 ]]; then remove_or_install_one; fi
-		if [[ "$action" =~ 2 ]]; then debloat $brand; fi
-		if [[ "$action" =~ 5 ]]; then debloat misc; fi
-		if [[ "$action" =~ 6 ]]; then debloat aosp; fi
-		if [[ "$action" =~ 0 ]]; then debloat pending; fi
-	fi
+            read -r -p "Your selection (e.g: 2 3 4 5 6): "
+            echo
 
-adb shell 'pm list packages -s' | sed -r 's/package://g' | sort > remaining_packages.txt
+            if [[ "$REPLY" =~ 4 ]]; then lists_selection us_carriers french_carriers german_carriers; fi
+            if [[ "$REPLY" =~ 3 ]]; then lists_selection google facebook amazon microsoft; fi
+            if [[ "$REPLY" =~ 1 ]]; then debloat_or_restore; fi
+            if [[ "$REPLY" =~ 2 ]]; then debloat_or_restore "$BRAND"; fi
+            if [[ "$REPLY" =~ 5 ]]; then debloat_or_restore misc; fi
+            if [[ "$REPLY" =~ 6 ]]; then debloat_or_restore aosp; fi
+            if [[ "$REPLY" =~ 0 ]]; then debloat_or_restore pending; fi
+        fi
 
-done
+    adb shell 'pm list packages -s' | sed -r 's/package://g' | sort > remaining_packages.txt &
+
+    done
+}
+
+############################################  END OF MAIN SCRIPT  ######################################################
+
+
+debloat_or_restore() {
+    local action="" # restore or debloat
+    local output=""
+    [[ -n ${1+x} ]] && local -n list=$1 # list is a nameref. Array is passed by reference.
+
+    (( RESTORE )) && action="cmd package install-existing \$package" || action="pm uninstall $OPTION_NEEDED \$package"
+
+    # Android 7.1 and older can't reinstall packages
+    if (( OLDER_THAN_ANDROID_7_1 )) && (( !FORCE_UNINSTALL )); then
+        (( RESTORE )) && action="pm enable \$package" || action="am force-stop \$package \&\& pm disable-user \$package \&\& pm clear \$package"
+    fi
+
+    clear
+
+    if [[ -n ${1+x} ]]; then
+        printf "\n${BRED}%s${NC}\n"             "==== $1 debloat list ===="
+
+        for package in "${list[@]}"; do
+            printf "${BRED}%s${NC} "            "$package -->"
+            output=$(eval adb shell "$action") && echo "$output"
+            if ! [[ "$output" =~ "Failure" ]] && [[ $RESTORE -eq 0 ]]; then echo "$package" >> "debloated_packages.txt"; fi
+        done
+
+    else
+        printf "\n${BRED}%s${NC}"               "Package name to $title : " | tr '[:upper:]' '[:lower:]'
+        read -r package
+        printf "${BRED}%s${NC}"                 "$package --> "
+        output=$(eval adb shell "$action") && echo "$output"
+        if ! [[ "$output" =~ Failure|Error ]] && (( !RESTORE )); then echo "$package" >> "debloated_packages.txt"; fi
+        sleep 2
+    fi
+}
+
+lists_selection() {
+    clear
+
+    for ((i=1; i<=$#; i++)); do
+        echo "$i - ${!i}"
+    done
+
+    printf "${BRED}%s${NC} "                    "Your choice (e.g 1 2 3) :"
+    read -a -r
+
+    for list in "${REPLY[@]}"; do
+        if (( list > $# )) || (( list < 1 )); then continue; fi
+        debloat_or_restore "${!list}"
+    done
+}
+
+list_installed_packages() {
+    clear
+
+    printf "\n${BRED}%s${NC}"                   "Search for packages (regex accepted): "
+    read -r
+
+    echo
+    adb shell "pm list packages | grep -i $REPLY" | sed -r 's/package://g' | sort
+
+    printf "\n\e[5m%s\033[0m"                   "Press any key to continue"
+    read -n 1 -r -s
+}
+
+restore_backup() {
+    clear
+
+    printf "${BRED}%s${NC}"                     "Enter the path of the backup to restore : "
+    read -r
+    check_backup_integrity "$REPLY" && adb restore "$REPLY" || printf "\n${BRED}%s${NC}\n" "The backup is corrupted. Abort!"
+    echo
+    printf "\e[5m%s\033[0m"                     "Press any key to continue"
+    read -n 1 -r -s
+}
+
+backup() {
+    clear
+    local backup=$(date +%Y-%m-%d-%H:%M:%S)
+
+    adb backup -apk -all -system -f "${PHONE:-phone}-${backup}.adb"  # -noshare option is default
+    echo
+    printf "\n\e[5m%s\033[0m"                   "Press a key when the backup is done (your phone will tell you) "
+    read -n 1 -r -s
+    check_backup_integrity "${PHONE:-phone}-${backup}.adb";
+} 
+
+check_backup_integrity() {
+    printf "\n\n${BBLUE}%s${NC}"                "[($1)] Backup integrity checking : "
+    [[ -f $1 ]] || { printf "${BRED}Backup not found${NC}\n\n"; return 1;}
+
+    # first 24 bytes are skipped (adb backup are modified compressed tar files with a 24B custom header)
+    { dd if="$1" bs=1M skip=24 iflag=skip_bytes | zlib-flate -uncompress | tar tf - >/dev/null; } || printf "${BRED}%s${NC}\n\n" "FAILED" >&2
+}
+
+main "$@"; exit
