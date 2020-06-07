@@ -73,28 +73,28 @@ bash debloat_script.sh
 
 #### LINUX
 Debian Base :
-```console
+```bash
 foo@bar:~$ sudo apt install android-sdk-platform-tools qpdf
 ```
 Arch-Linux Base :
-```console
+```bash
 foo@bar:~$ sudo pacman -S android-tools qpdf
 ```
 Fedora :
-```console
+```bash
 foo@bar:~$ sudo yum install android-tools qpdf
 ```
 
 #### MAC OS
 - Install [Homebrew](https://brew.sh/)
-```console
+```bash
 foo@bar:~$ brew install android-platform-tools qpdf
 ```
 
 ### WINDOWS
 - Install [WSL (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to run bash scripts.
 - Install *Android plateform tools* and *qpdf* :
-```console
+```bash
 foo@bar:~$ sudo apt install android-sdk-platform-tools qpdf
 ```
 
