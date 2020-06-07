@@ -39,7 +39,7 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 * [X] Motorola
 * [X] Nokia
 * [X] OnePlus
-* [ ] Oppo  
+* [X] Oppo  
 * [X] Samsung
 * [X] Sony
 * [ ] Wiko
@@ -65,8 +65,8 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 - Download [the lastest release of the script](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
 - Check the debloat lists to be sure the default selection suits you.
 - Run `debloat_script.sh` from a Unix terminal 
-```console
-bash debloat_script.sh
+```bash
+$ bash debloat_script.sh
 ```
 
 ### Installation of plateform tools and qpdf
@@ -74,28 +74,28 @@ bash debloat_script.sh
 #### LINUX
 Debian Base :
 ```bash
-foo@bar:~$ sudo apt install android-sdk-platform-tools qpdf
+$ sudo apt install android-sdk-platform-tools qpdf
 ```
 Arch-Linux Base :
 ```bash
-foo@bar:~$ sudo pacman -S android-tools qpdf
+$ sudo pacman -S android-tools qpdf
 ```
 Fedora :
 ```bash
-foo@bar:~$ sudo yum install android-tools qpdf
+$ sudo yum install android-tools qpdf
 ```
 
 #### MAC OS
 - Install [Homebrew](https://brew.sh/)
 ```bash
-foo@bar:~$ brew install android-platform-tools qpdf
+$ brew install android-platform-tools qpdf
 ```
 
 ### WINDOWS
 - Install [WSL (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to run bash scripts.
 - Install *Android plateform tools* and *qpdf* :
 ```bash
-foo@bar:~$ sudo apt install android-sdk-platform-tools qpdf
+$ sudo apt install android-sdk-platform-tools qpdf
 ```
 
 
