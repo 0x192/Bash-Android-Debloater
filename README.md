@@ -61,17 +61,12 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 - **Do a proper backup of your data ! You can never be too careful !**
 - Enable *Developer Options* on your smartphone.
 - Turn on *USB Debugging* from the developper panel.
-- Install *Android plateform tools* and *qpdf* on your PC.
-- Download [the lastest release of the script](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
-- Check the debloat lists to be sure the default selection suits you.
-- Run `debloat_script.sh` from a Unix terminal 
-```bash
-$ bash debloat_script.sh
-```
+<p>
+<details>
+<summary>LINUX</summary>
 
-### Installation of plateform tools and qpdf
+- Install *Android plateform tools* and *qpdf* on your PC :
 
-#### LINUX
 Debian Base :
 ```bash
 $ sudo apt install android-sdk-platform-tools qpdf
@@ -84,19 +79,72 @@ Fedora :
 ```bash
 $ sudo yum install android-tools qpdf
 ```
+</details>
+</p>
 
-#### MAC OS
+<p>
+<details>
+<summary>MAC OS</summary>
+
 - Install [Homebrew](https://brew.sh/)
+- Install *Android plateform tools* and *qpdf*
 ```bash
 $ brew install android-platform-tools qpdf
 ```
+</details>
+</p>
 
-### WINDOWS
-- Install [WSL (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to run bash scripts.
-- Install *Android plateform tools* and *qpdf* :
-```bash
-$ sudo apt install android-sdk-platform-tools qpdf
+<p>
+<details>
+<summary>WINDOWS</summary>
+
+For now, there is no USB support in the WSL. This means you need to install both Windows and linux plateform-tools and force using adb server.
+- Download [android platefrom tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
+- [Install USB drivers of your device](https://developer.android.com/studio/run/oem-usb#Drivers)
+- Check your device is detected :
+```batch
+> adb devices
 ```
 
+- Install [WSL2 (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to run bash scripts.
+- Install *Android plateform tools* and *qpdf* from the Debian/Ubuntu shell
+- Download the last version of the script
+```bash
+$ sudo apt update && sudo apt upgrade
+$ sudo apt install android-sdk-platform-tools qpdf
+$ wget 
+```
+- Check the version of ADB on linux & windows
+```bash
+adb version
+```
+You need the same version otherwise it will not work. It's very likely your Ubuntu/Debian ADB version is older than the Windows one. 
+Download the lastest linux plateform tools from Google and replace your adb binaries with the new ones :
+```bash
+$ wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+$ sudo cp plateform-tools/adb /usr/bin/adb
+$ sudo chmod 755 /usr/bin/adb
+$ adb version
+```
+kill the WSL adb server and start the ADB server on Windows.
+```bash
+$ adb kill-server
+```
+From a windows console : 
+```batch
+> adb kill-server
+> adb start-server
+> adb devices
+```
+Note : You can access your Windows files under `/mnt/c/`
+
+</details>
+</p>
 
 
+- Download [the lastest release of the script](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
+- Check the debloat lists to be sure the default selection suits you.
+- Run `debloat_script.sh` from a Unix terminal 
+```bash
+$ bash debloat_script.sh
+```
