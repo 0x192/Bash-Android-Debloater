@@ -1,3 +1,36 @@
+# New Release (v2.3)
+
+## Code improvement
+- Refactored much of the script for a cleaner code base. 
+- Improved maintainability & readability
+- Added an error trap
+
+## New manufacturers supported
+- **Oppo**: 15 new packages (+ 25 from the pending list)
+
+## New packages added
+- **AOSP** : 7
+- **Miscellaneous** : 4
+- **Google** : 3
+- **Sony** : 1
+
+## Pending --> Official lists
+- **Samsung** : 16
+- **Sony** : 5
+- **Oppo** : 26
+
+## Bugfixes
+- Force uninstall impossible in legacy mode.
+- Some old Kobo devices returned `\t` causing an issue when comparing SDK API version.
+- Legacy debloat was broken
+- Minor text bug
+
+## Miscellaneous
+- Default debloat packages selection adjusted (less breakage for "normal people")
+- Remaining packages list (`remaining_packages.txt`) now processed in background
+- Improved some packages description
+
+
 # Hotfix (v2.2.1)
 
 - 2 small nasty bugs fixed.
