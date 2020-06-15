@@ -4,11 +4,28 @@
 
 set -euo pipefail # Safer bash script
 
+# Colors used for printing
+readonly BRED='\033[1;31m' # Bold + Red
+readonly BBLUE='\033[0;34m' # Bold + Blue
+readonly BGREEN='\033[1;32m'
+readonly BORANGE='\033[1;33m'
+readonly NC='\033[0m' # No Color
+readonly Bold=$(tput bold) 
+readonly nBold=$(tput sgr0)
+
+# Trap error
+trap 'catch' EXIT
+
+catch() {
+  printf "\n${BRED}%s\n" "[EXIT ERROR TRAP] Hum... something is wrong."
+  printf "\n%s\n" "Unless you interrupted yourself the script bravo, you found a bug. Please report it :"
+  printf "%s${NC}\n\n" "https://gitlab.com/W1nst0n/universal-android-debloater/-/issues :)"
+}
+
 # Include debloat lists
 for file in ./lists/* ; do
   if [ -f "$file" ] ; then . "$file"; fi
 done
-
 
 ### GLOBAL VARIABLES ###
 readonly VERSION="v2.2 (March 17th 2020)"
@@ -24,15 +41,6 @@ readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0"
 FORCE_UNINSTALL=0
 RESTORE=0
 
-# Colors used for printing
-readonly BRED='\033[1;31m' # Bold + Red
-readonly BBLUE='\033[1;34m' # Bold + Blue
-readonly GREEN='\033[0;32m'
-readonly BORANGE='\033[1;33m'
-readonly NC='\033[0m' # No Color
-readonly Bold=$(tput bold) 
-readonly nBold=$(tput sgr0)
-
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
@@ -46,10 +54,9 @@ main() {
     echo                                            " #                                              #"
     echo                                            " ================================================"
     echo
-
     adb devices
-    printf "${BRED}%s\n\n"                          "Please carefully read the FAQ before using this script!"
-    printf "%s${NC} "                               "Do you want to do an ADB backup ? [Y/N]"
+    printf "${Bold}%s\n\n"                          "Please carefully read the FAQ before using this script!"
+    printf "%s${nBold} "                            "Do you want to do an ADB backup ? [Y/N]"
     
     read -r
     if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then backup; fi
@@ -102,9 +109,9 @@ main() {
             printf "%s\n"                           "#                                                 #"
             printf "%-14s${NC}%s${BORANGE}%15s\n"   "#"          "0  -  Pending list /!\\"            "#"
             printf "%s\n"                           "#                                                 #"
-            printf "%s\n"                           "==================================================="
+            printf "%s\n${NC}"                      "==================================================="
 
-            read -r -p "Your selection (e.g: 2 3 4 5 6): "
+            read -r -p "Your selection (e.g: 2 3 4 5): "
             echo
 
             if [[ "$REPLY" =~ 4 ]]; then lists_selection us_carriers french_carriers german_carriers; fi
@@ -127,7 +134,7 @@ main() {
 debloat_or_restore() {
     local action="" # restore or debloat
     local output=""
-    [[ -n ${1+x} ]] && local -n list=$1 # list is a nameref. Array is passed by reference.
+    [[ -v "$1" ]] && local -n list=$1 # list is a nameref. Array is passed by reference.
 
     (( RESTORE )) && action="cmd package install-existing \$package" || action="pm uninstall $OPTION_NEEDED \$package"
 
@@ -138,7 +145,7 @@ debloat_or_restore() {
 
     clear
 
-    if [[ -n ${1+x} ]]; then
+    if [[ -v "$1" ]]; then
         printf "\n${BRED}%s${NC}\n"             "==== $1 debloat list ===="
 
         for package in "${list[@]}"; do
@@ -165,9 +172,8 @@ lists_selection() {
     done
 
     printf "${BRED}%s${NC} "                    "Your choice (e.g 1 2 3) :"
-    read -a -r
-
-    for list in "${REPLY[@]}"; do
+    read -r -a selection
+    for list in "${selection[@]}"; do
         if (( list > $# )) || (( list < 1 )); then continue; fi
         debloat_or_restore "${!list}"
     done
@@ -210,10 +216,15 @@ backup() {
 
 check_backup_integrity() {
     printf "\n\n${BBLUE}%s${NC}"                "[($1)] Backup integrity checking : "
-    [[ -f $1 ]] || { printf "${BRED}Backup not found${NC}\n\n"; return 1;}
+    
+    ! [[ -f $1 ]] && printf "${BRED}%s${NC}\n\n" "Backup not found" && return 1
 
     # first 24 bytes are skipped (adb backup are modified compressed tar files with a 24B custom header)
-    { dd if="$1" bs=1M skip=24 iflag=skip_bytes | zlib-flate -uncompress | tar tf - >/dev/null; } || printf "${BRED}%s${NC}\n\n" "FAILED" >&2
+    if ! dd if="$1" bs=1M skip=24 iflag=skip_bytes &>/dev/null | zlib-flate -uncompress | tar tf - &>/dev/null; then 
+        printf "${BRED}%s${NC}\n\n" "FAILED" && return 1
+    
+    else printf "${BGREEN}%s${NC}\n\n" "OK"
+    fi
 }
 
 main "$@"; exit
