@@ -87,7 +87,7 @@ declare -a microsoft=(
 	# Microsoft OneDrive (Cloud) (https://play.google.com/store/apps/details?id=com.microsoft.skydrive)
 
 	"com.skype.raider"
-	# Skpype (https://play.google.com/store/apps/details?id=com.skype.raider)
+	# Skype (https://play.google.com/store/apps/details?id=com.skype.raider)
 
 	"com.microsoft.office.excel" # Excel
 	"com.microsoft.office.word" # Word
@@ -175,6 +175,20 @@ declare -a misc=(
 	# Adware (lots lots of ads)
 	# Worth reading : https://www.buzzfeednews.com/article/craigsilverman/google-banned-cootek-adware
 
+	"com.crowdcare.agent.k"
+	# Crowdcare is now Wysdom.AI (https://nitter.42l.fr/wysdomai)
+	# From their Twitter description : The easiest way for businesses to improve customer satisfaction, contain costs, 
+	# and generate revenue by using #AI to power customer experiences.
+	# Wysdom.AI has joined the Microsoft Partner Network in 2018
+	# https://wysdom.ai/privacy-policy/ (not good)
+
+	"com.devhd.feedly"
+	# Feedly (https://play.google.com/store/apps/details?id=com.devhd.feedly)
+	# News aggregator application (RSS)
+	# RSS aggregator are great but Feedly is really bad, especially privacy-wise.
+	# https://feedly.com/i/legal/privacy
+	# Better Alternative : https://github.com/FreshRSS/FreshRSS
+
 	"com.diotek.sec.lookup.dictionary"
 	# Samsung dictionary from Diotek (Korean company)
 	# http://en.diotek.com/
@@ -191,7 +205,7 @@ declare -a misc=(
 	# https://www.eff.org/deeplinks/2017/04/update-verizons-appflash-pre-installed-spyware-still-spyware
 
 	"com.dna.solitaireapp"
-	# Solitaire Game app from DNA ompany ? 
+	# Solitaire Game app from DNA company ? 
 
 	"com.draftkings.dknativermgGP.vpl"
 	# DraftKings - Daily Fantasy Sports for Cash
@@ -252,6 +266,13 @@ declare -a misc=(
 	# FYI : Hulu is owned by Disney.
 	# https://en.wikipedia.org/wiki/Hulu
 	# https://www.digitaltrends.com/home-theater/hulu-vs-disney-plus/
+
+	"com.ideashower.readitlater.pro"
+	# Pocket (https://play.google.com/store/apps/details?id=com.ideashower.readitlater.pro)
+	# Allows you to save an article or web page to remote servers for later reading
+	# Was purchased by Mozilla in 2017 but is still close source for now.
+	# https://getpocket.com/privacy
+	# Open-source alternative : https://wallabag.org/
 
 	"com.imdb.mobile"
 	# IMDb mobile app (https://play.google.com/store/apps/details?id=com.imdb.mobile)
@@ -548,6 +569,10 @@ declare -a misc=(
 	# Word Count & word streak puzzle game
 	# 19 trackers + 11 permissions (https://reports.exodus-privacy.eu.org/en/reports/in.playsimple.wordtrip/latest/)
 
+	"jp.co.omronsoft.openwnn"
+	# Japanese keyboard/IME (Don't know why it's preinstalled on US/european devices)
+	# Note : IME = input method editor 
+
 	"jp.gocro.smartnews.android"
 	# SmartNews: Local Breaking News (https://play.google.com/store/apps/details?id=jp.gocro.smartnews.android)
 	# Delivers the top trending news stories from others publishers (NBC News, The Verges etc...)
@@ -660,7 +685,7 @@ declare -a misc=(
 
 	"com.qualcomm.qti.qms.service.telemetry" 
 	# Telemetry service.
-	# Yeah obviously it phone to Qualcomm.
+	# Yeah obviously it phones to Qualcomm.
 
 	"com.qualcomm.qti.rcsbootstraputil"
 	"com.qualcomm.qti.rcsimsbootstraputil"
@@ -728,7 +753,7 @@ declare -a misc=(
 	# https://en.wikipedia.org/wiki/Vodafone
 
 	"com.qualcomm.qti.uim"
-	# Related to RUIM I guess. It is a king of SIM card
+	# Related to RUIM I guess. It is a kind of SIM card
 	# https://en.wikipedia.org/wiki/Removable_User_Identity_Module
 	# Still used in China it seems. 
 

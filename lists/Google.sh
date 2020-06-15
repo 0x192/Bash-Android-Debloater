@@ -162,6 +162,9 @@ declare -a google=(
 	"com.google.android.apps.travel.onthego"	
 	# Google Trip (discontinued)
 
+	"com.google.android.apps.uploader"
+	# Picasa Uploader (discontinued)
+
 	"com.google.android.apps.vega" 
 	# Google My Business (https://play.google.com/store/apps/details?id=com.google.android.apps.vega)
 
@@ -189,6 +192,7 @@ declare -a google=(
 	"com.google.android.apps.youtube.vr" 
 	# Youtube VR (https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.vr)
 
+	"com.google.android.backup" # On Android 4.2
 	"com.google.android.backuptransport" 
 	# Allows Android apps to back up their data on Google servers.
 
@@ -260,6 +264,9 @@ declare -a google=(
 	"com.google.android.street" 
 	# Google Street View (https://play.google.com/store/apps/details?id=com.google.android.street)
 
+	"com.google.android.syncadapters.bookmarks"
+	# Synchronisation for Google Chrome bookmarks
+
 	"com.google.android.syncadapters.calendar" 
 	# Synchronisation for Google Calendar.
 
@@ -276,8 +283,14 @@ declare -a google=(
 	"com.google.android.tv.remote" 
 	# Android TV remote control (https://play.google.com/store/apps/details?id=com.google.android.tv.remote)
 
+	"com.google.android.videoeditor"
+	# Google Movie Studio (discontinued)
+
 	"com.google.android.videos" 
 	# Google Play Movies & TV (https://play.google.com/store/apps/details?id=com.google.android.videos)
+
+	"com.google.android.voicesearch"
+	# Google Voice Search (Speech-To-Text)
 
 	"com.google.android.vr.home" 
 	# Daydream (VR stuff) (https://play.google.com/store/apps/details?id=com.google.android.vr.home)
@@ -372,6 +385,7 @@ declare -a google=(
 	# NOTE : Deleting this package will improve a LOT your battery life !
 	#
 	# IMPORTANT : You need to uncheck Find My Device from the "Device admin apps" settings panel to be able to uninstall this package
+	# Search "admin" in the settings search bar.
 
 	"com.google.android.gms.policy_sidecar_aps" # [MORE INFO NEEDED]
 	# Talks to Gmail.com and Google.com.
@@ -390,6 +404,10 @@ declare -a google=(
 	#"com.google.android.gsf.login" 
 	# Support for managing Google accounts
 	# Safe to remove if you don't use a Google account.
+
+	#"com.google.android.location"
+	# Handles location services on older devices. On newer ones Google location services is part of Google Play Services and
+	# Android location service is provided by com.android.location.fused or com.android.location.
 
 	#"com.google.android.partnersetup"
 	# Enables applications to perform functionality that requires access to your Google account information

@@ -2,8 +2,6 @@
 
 declare -a aosp_bloat=(
 
-	#####################  SAFE TO DEBLOAT (useless features)  #####################
-
 	"com.android.apps.tag"
 	# NFC Tagging (5 permissions : Contacts/Phone On by default).
 	# https://en.wikipedia.org/wiki/TecTile
@@ -20,8 +18,11 @@ declare -a aosp_bloat=(
 	"com.android.bookmarkprovider" 
 	# Only exist for compatibility reasons to prevent apps querying it from getting null cursors they do not expect and crash.
 
-	"com.android.carrierconfig"
-	# Provides access to telephony configuration values that are carrier-specific.
+	#"com.android.carrierconfig"
+	# Gives carriers and OEMs the ability to dynamically provide carrier configuration (APN settings) trough their app.
+	# NOTE : The probability that your carrier's APN change is very low. If you change your carrier and insert a new SIM card
+	# This package will be triggered to automatically choose the suitable APN.
+	# https://source.android.com/devices/tech/config/carrier
 
 	"com.android.carrierdefaultapp"
 	# Allows carrier customization. Carrier action upon specific signal.
@@ -54,6 +55,9 @@ declare -a aosp_bloat=(
 	# Manage separate profile on devices. The typical example is setting up a corporate profile that is controlled by their employer on a
 	# users personal device to keep personal and work data separate.
 	# Safe to remove
+
+	"com.android.musicvis"
+	# Music Visualization Wallpapers
 
 	"com.android.noisefield" 
 	# "Noise filed" live wallpaper.
@@ -173,6 +177,9 @@ declare -a aosp_bloat=(
 	#"com.android.facelock" 
 	# Essential if you wanna use Face Unlock features, removable if you don't want to.
 
+	"com.android.galaxy4"
+	# built-in Dynamic wallpaper
+
 	"com.android.gallery3d" 
 	# AOSP Gallery app.
 
@@ -191,6 +198,9 @@ declare -a aosp_bloat=(
 	# Enable apps to use system wide credential KeyChain (shared credentials between apps)
 	# https://security.stackexchange.com/questions/216716/android-keychain-what-is-a-system-wide-credential
 
+	#"com.android.musicfx" 
+	# Audio equalizer. Some 3-party music apps can use it to provide you equalizing features.
+
 	#"com.android.mms" 
 	# Stock SMS app.
 
@@ -208,8 +218,13 @@ declare -a aosp_bloat=(
 	#"com.android.providers.blockednumber"
 	# Handle blocked numbers storage
 
-	"com.android.providers.calendar" 
+	#"com.android.providers.calendar" 
 	# Necessary to sync stock Calendar app and lets it work correctly.
+
+	#"com.android.providers.drm"
+	# DRM Protected Content Storage 
+	# Provides DRM functions to stop you from copying things like ringtones, live wallpapers, etc.
+	# May be needed to access media files (to be verified)
 
 	#"com.android.providers.userdictionary"
 	# Handle user dictionary for keyboard apps.
@@ -225,7 +240,7 @@ declare -a aosp_bloat=(
 	# Settings tips in Settings menu ?
 	# I don't have this in my phone. It for Android Pie. Can someone check ? 
 
-	"com.android.sharedstoragebackup"
+	#"com.android.sharedstoragebackup"
 	# Used during backup. Fetch shared storage (files accessible by every apps with STORAGE permission)
 	# Things have changed with Android 10. Don't know if this package is still relevant.
 	# https://blog.mindorks.com/understanding-the-scoped-storage-in-android.
@@ -233,7 +248,7 @@ declare -a aosp_bloat=(
 	#"com.android.systemui.theme.dark"
 	# Enable you to use Andrdoi dark theme.
 
-	"com.android.timezone.updater"
+	#"com.android.timezone.updater"
 	# Time Zone Updater
 	# Automaticaly change the time zone if needed. 
 
@@ -246,19 +261,17 @@ declare -a aosp_bloat=(
 	"com.android.voicedialer" 
 	# Voice search.
 
-	"com.android.wallpaperbackup"
+	#"com.android.wallpaperbackup"
 	# Backup your wallapaper and load this backup instead of the original file in case you delete it.
-	# Safe to remove but it's not worth it.
+	# Safe to remove if you really want to.
 
 	)
 
 
 #####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
 
-
 #"com.android.certinstaller"
-# Certificate installer. Digital certificates identify computers, phones, and apps for security. Just like you'd use your driver’s license 
-# to show that you can legally drive, a digital certificate identifies your device and confirms that it should be able to access something.
+# Certificate installer. Identifies your device and confirms that it should be able to access something.
 # Here it is used for accepting and revoking of Internet certificates. Break wifi if removed.
 
 #"com.android.companiondevicemanager"
@@ -270,9 +283,6 @@ declare -a aosp_bloat=(
 
 #"com.android.documentsui" # Files picker
 # Interface for apps wishing to access access files outside of their own storage area.
-
-#"com.android.musicfx" 
-# Audio equalizer. Some 3-party music apps can use it to provide you equalizing features.
 
 #"com.android.externalstorage"
 # Needed by apps to access external storage (SD card)
@@ -286,9 +296,19 @@ declare -a aosp_bloat=(
 #"com.android.mtp" #MTP Host
 # Handle MTP (protocol allowing files to be transferred to and from your PC)
 
+#"com.android.packageinstaller"
+# Handles installation, upgrade, and removal of applications.
+
+#"com.android.provision"
+# Application that sets the provisioned bit, like SetupWizard does.
+# Add a persistent setting to allow other apps to know the device has been provisioned.
+
 #"com.android.phone"
 # AOSP code for dialer app features
 # SIM card will also not be detected if deleted.
+
+#"com.android.providers.applications"
+# Fetches the list of applications installed on the phone to provide search suggestions.
 
 #"com.android.providers.contacts"
 # Handle interaction with contacts data
@@ -332,7 +352,7 @@ declare -a aosp_bloat=(
 # Everything you see in Android that's not an app. User interface of Android
 
 #"com.android.vpndialogs"
-# Handle VPN dialogs (UI boxes)
+# Provide VPN support to Android
 # https://en.wikipedia.org/wiki/Dialog_(software)
 # Safe to remove if you don't plan to use a VPN.
 

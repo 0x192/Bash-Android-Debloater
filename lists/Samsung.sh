@@ -13,9 +13,13 @@ declare -a samsung=(
 
 	"com.hiya.star" # also called android-ss-service-lib (Samsung-exclusive)
 	# Third-party that provides caller profile information to help consumers identify incoming calls and block unwanted ones.
+	# https://en.wikipedia.org/wiki/Hiya_(company)
 	# https://hiya.com/ 
 	# NOTE : Never trust a company which promotes spam blocking features 
 	# https://itmunch.com/robocall-caught-sending-customers-confidential-data-without-consent/
+	#
+	# Have a look at their privacy policy. That's... pretty scary : https://hiya.com/fr/hiya-data-policy	
+	# Needed for Samsung Smart Call (com.samsung.android.smartcallprovider)
 	
 	"com.knox.vpn.proxyhandler" # KNOX stuff
 	# Samsung Knox allows business and personal content to "securely" coexist on the same handset. 
@@ -35,7 +39,8 @@ declare -a samsung=(
 
 	#"com.samsung.advp.imssettings"
 	# Needed for VoLTE, a standard for high-speed wireless communication (https://en.wikipedia.org/wiki/Voice_over_LTE)
-	# I don't really know the role of this package. It is obiously related to IMS, an open industry standard for 
+	# I don't really know the role of this package. It is obiously related to IMS, an open industry standard for
+
 	# voice and multimedia communications over IP.
 
 	"com.samsung.android.aircommandmanager"
@@ -43,7 +48,7 @@ declare -a samsung=(
 	# Gives you access to signature S Pen features. You can access Air command anytime you are using your phone by simply taking out the S Pen.
 	# https://www.samsung.com/global/galaxy/what-is/air-command/
 
-	"com.samsung.android.allshare.service.fileshare"
+	#"com.samsung.android.allshare.service.fileshare"
 	# Wi-Fi Direct
 	# Allows two devices to establish a direct Wi-Fi connection without requiring a wireless router.
 	# https://www.samsung.com/au/support/mobile-devices/connecting-devices-via-wifi-direct/
@@ -61,6 +66,10 @@ declare -a samsung=(
 	#
 	# adv maybe refers to Samsung Advanced Institute of Technology 
 
+	#"com.samsung.android.app.amcagent" # [NEED MORE INFO] [NEED APK]
+	# Advanced Management Console Agent
+	# Entreprise feature I guess.
+
 	#"com.samsung.android.app.aodservice"
 	# Always On Display (https://play.google.com/store/apps/details?id=com.samsung.android.app.aodservice&hl=en)
 	# Displays stuff when the screen is off (useless) but also handle the clock on the lockscreen.
@@ -68,6 +77,7 @@ declare -a samsung=(
 	"com.samsung.android.app.appsedge"
 	# Samsung apps edge (https://www.samsung.com/global/galaxy/what-is/apps-edge/)
 	# Displays your five most frequently used apps for you to access at a moment’s notice.
+
 
 	"com.samsung.android.app.assistantmenu"
 	# Assistant menu
@@ -126,6 +136,11 @@ declare -a samsung=(
 	# I think it enable doing things with LEDs on the cover
 	# https://www.samsung.com/hk_en/mobile-accessories/led-cover-for-galaxy-s10/EF-KG973CBEGWW/
 	# HOW IT WORKS : https://forum.xda-developers.com/galaxy-note-8/accessories/how-led-cover-t3686694
+
+	"com.samsung.android.app.omcagent"
+	# Open Market Customization Agent
+	# By default, the device prevents from being customized by a source other than Knox Configure.
+	# https://docs.samsungknox.com/admin/knox-configure/normal-mode.html
 
 	"com.samsung.android.app.memo"
 	# Samsung Memo (was replaced by Samsung Notes app :	com.samsung.android.app.notes)
@@ -204,6 +219,7 @@ declare -a samsung=(
 	# Through Tasks edge, you can quickly perform frequently used tasks, such as composing messages and creating events.
 	# https://www.samsung.com/levant/support/mobile-devices/galaxy-s7-edge-how-do-i-add-tasks-edge/
 
+	"com.samsung.android.app.vrsetupwizards"
 	"com.samsung.android.app.vrsetupwizardstub"
 	# Samsung Gear VR (Virtual Reality) setup wizard (https://en.wikipedia.org/wiki/Samsung_Gear_VR)
 	# https://360samsungvr.com/portal/content/about_samsung_vr
@@ -250,6 +266,10 @@ declare -a samsung=(
 	# Allows users to control, automate, and monitor their home environment via mobile device. 
 	# https://en.wikipedia.org/wiki/SmartThings
 
+	# "com.samsung.android.bio.face.service"
+	# Handle Face recognition unlock 
+	# https://kp-cdn.samsungknox.com/b60a7f0f59df8f466e8054f783fbbfe2.pdf
+
 	# Bixby (Samsung intelligence assistant)
 	# Enable or Disable access to S-Voice or Bixby voice controls. 
 	# This does not prevent access to other voice-controlled apps, only the Samsung-provided ones.
@@ -278,14 +298,36 @@ declare -a samsung=(
 	# Samsung dual messenger (https://www.samsung.com/global/galaxy/what-is/dual-messenger/)
 	# Allows you to use two separate accounts for the same app.
 
+	"com.samsung.android.dlp.service"
+	# SamsungDLPService (KNOX). Old feature. Was replaced by SDP (Sensitive Data Protection)
+	# Data Loss Prevention (DLP) feature
+	# Good security feature but only works with Samsung apps.
+	# https://docs.samsungknox.com/admin/whitepaper/kpe/sensitive-data-protection.htm 
+	# https://docs.samsungknox.com/knox-platform-for-enterprise/admin-guide/sensitive-data-protection.htm
+
+	"com.samsung.android.dqagent"
+	# Samsung Device Quality Agent
+	# Monitors how the device uses wifi. Has the ability to identify network operator related data.
+	# Find mention of some packages in the Java code : 
+	#  - com.samsung.android.app.mobiledoctor (https://play.google.com/store/apps/details?id=com.samsung.heartwiseVcr)
+	#  - com.samsung.android.dhr (Device Health Report)
+	#  - om.salab.act (https://play.google.com/store/apps/details?id=com.jquiz.act)
+	#  - kr.co.avad.diagnostictool (unkown stuff from South Korea)
+	# 
+	#  2 hard-coded URL strings : PRD="https://dc.dqa.samsung.com" | STG="https://stg-dc.dqa.samsung.com"
+	#  PRD = Portable recording devices and STG = Security Threat Group 2 terms related to law enforcment.
+
 	"com.samsung.android.drivelink.stub"
 	# Stub for car mode 
 	# REMINDER : Stub = https://stackoverflow.com/questions/10648280/what-is-stub-and-aidl-for-in-java
 
 	"com.samsung.android.easysetup"
-	# Samsung Connect Easy Setup
+	# Samsung Connect Easy Setup (now SmartThings)
 	# Used to connect every Samsung device you have in your house.
-	# Need "com.samsung.android.beaconmanager" to be useful.
+	# What's weird is that Galaxy S10 has this package (available nowhere) but S9 has com.samsung.android.oneconnect
+	# available on the Playstore (https://play.google.com/store/apps/details?id=com.samsung.android.oneconnect)
+	#
+	# Needs "com.samsung.android.beaconmanager" to be useful.
 
 	"com.samsung.android.email.provider"
 	# Samsung email app (https://play.google.com/store/apps/details?id=com.samsung.android.email.provider)
@@ -343,6 +385,18 @@ declare -a samsung=(
 	# NOTE : You shouldn't give your phone to a child. That bad ! 
 	# https://ifstudies.org/blog/a-smartphone-will-change-your-child-in-ways-you-might-not-expect-or-want
 
+	"com.samsung.android.knox.containeragent" # Older version of "com.sec.knox.containeragent2" ?
+	"com.samsung.android.knox.containercore"
+	# KNOX Work profile/space
+	# Providess an isolated environment to store data (see Secure Folder)
+	# 
+	# Note : With Knox 3.4, Knox containers are now deprecated and replaced by Android work profiles.
+	# Comunicate with Samsung servers :
+	# - https://vas.samsungapps.com (App updates)
+	# - http://cn-ms.samsungapps.com (APK Server)
+	#
+	# https://support.samsungknox.com/hc/en-us/articles/115012547907-What-URLs-do-I-have-to-whitelist-to-make-Samsung-apps-work-with-an-authenticated-proxy-
+
 	"com.samsung.android.location"
 	# IMO it handles GPS needs for some samsungs apps. I have it removed on my phone and I still can use the GPS with a 3-party app.
 
@@ -392,6 +446,8 @@ declare -a samsung=(
 	# Samsung Smart Things (https://play.google.com/store/apps/details?id=com.samsung.android.oneconnect)
 	# Lets you manage all your Samsung and SmartThings-compatible devices.
 	# https://www.samsung.com/global/galaxy/apps/smartthings/
+	# 
+	# Probably needs com.samsung.android.beaconmanager
 
 	"com.samsung.android.personalpage.service"
 	# Private mode (was replaced by Secure Folder)
@@ -429,20 +485,57 @@ declare -a samsung=(
 	# Allows you to create virtual instrument applications with Android.
 	# https://developer.samsung.com/html/techdoc/ProgrammingGuide_ProfessionalAudio.pdf
 
+	"com.samsung.android.sdk.professionalaudio.app.audioconnectionservice" # [MORE INFO NEEDED]
+	# AudioConnectionService
+	# I believe it allows to modulate an audio signal. I didn't find a lot of apps using this package.
+	# Nothing really worrying but safe to remove if you want.
+
 	"com.samsung.android.shortcutbackupservice"
 	# ShortcutBNR 
 	# Packages permissions suggest it is used for cloud backup.
 
+	"com.samsung.android.slinkcloud"
+	# Samsung Cloud Gateway
+	# NEEDED FOR Scloud app
+	# A cloud storage gateway is designed to provide interoperability between different data protocols used 
+	# in a client (Scloud app)/server cloud architecture. 
+	# MORE INFO : https://searchstorage.techtarget.com/definition/cloud-storage-gateway
+	#
+	# Needs a lot of permission (including the dangerous one : READ_PHONE_STATE)
+	# It means the app has the ability to read the device ID (e.g. IMEI or ESN) and phone number.
+	# https://developer.android.com/reference/android/Manifest.permission#READ_PHONE_STATE
+	#
+	# Hardcoded Alibaba (chinese) server IP (42.120.153.17) 
+	# https://www.hybrid-analysis.com/sample/2ef5367f700d2644fc51d2cdd8dd0ce97e9a6594cb5b89052537037c5a7aac56?environmentId=200
+	# https://web.archive.org/web/20200604093347/https://www.hybrid-analysis.com/sample/2ef5367f700d2644fc51d2cdd8dd0ce97e9a6594cb5b89052537037c5a7aac56?environmentId=200
+
+	"com.samsung.android.smartface"
+	# SmartFaceService
+	# Used to automatically detects faces when using the Samsung camera
+	# NOTE : This package has nothing to do with face unlock (com.samsung.android.bio.face.service)
+
 	"com.samsung.android.stickerplugin" # [MORE INFO NEEDED]
 	# StickerPlugin
-	# Not sure if this package also provide sticker for camera. I don't have it so I can't test
+	# Not sure if this package also provides stickers for camera. I don't have it so I can't test
 	# https://developer.samsung.com/galaxy/stickers
 
 	"com.samsung.android.sm"
-	# Smart Manager
-	# I don't understand why I have this package because I don't have Smart Manager
+	# Smart Manager app 
+	# Provides pretty useless optimizing features using Chinese company Qihoo database.
+	# Automatically scans and optimizes data usage to preserve battery levels, manage storage and RAM
+	# https://www.privateinternetaccess.com/blog/android-community-worried-about-presence-of-chinese-spyware-by-qihoo-360-in-samsung-smartphones-and-tablets/
 	# https://forum.xda-developers.com/galaxy-note-9/help/samsung-services-dialling-home-to-china-t3894033
-	# Safe to remove ? 
+
+	#"com.samsung.android.sm.devicesecurity"
+	# Samsung Device security for the Smart Manager app using McAfee antivirus engine.
+	# Privacy nightmare (holy moly there is a LOT of permissions!) for a bit of security. 
+	# https://www.hybrid-analysis.com/sample/05dab93ee2102a2fb6edf16e85750eb1f0189d7b82703c6a00c92cd08d62bb28?environmentId=200
+	# ARCHIVE : https://web.archive.org/web/20200607140002/https://www.hybrid-analysis.com/sample/05dab93ee2102a2fb6edf16e85750eb1f0189d7b82703c6a00c92cd08d62bb28?environmentId=200
+	# 
+	# There is always a trade-off between security and privacy.
+	# Some people reported that without this package they weren't able to install apps anymore BUT I personnally removed this and
+	# I still can install apps.
+	# I think (but I'm not sure at all) that you can remove this safely if you also remove com.samsung.aasaservice and com.samsung.android.sm
 
 	# Samsung Cloud (https://www.samsung.com/us/support/owners/app/samsung-cloud)
 	"com.samsung.android.scloud" # Samsung Cloud app
@@ -466,13 +559,20 @@ declare -a samsung=(
 	# https://www.samsung.com/global/galaxy/what-is/live-message/
 
 	"com.samsung.android.service.peoplestripe"
-	# People Edge 
+	# People Edge
+	# Gives you immediate access to your favorite contacts from the edge of your phone.
 	# https://www.samsung.com/global/galaxy/what-is/people-edge/
 	# https://videotron.tmtx.ca/en/topic/samsung_galaxys9/using_people_edge.html
 	# It gives you immediate access to your favorite contacts from the edge panel.
 
 	"com.samsung.android.service.travel"
 	# Samsung Travel Wallpaper (discontinued)
+
+	"com.samsung.android.smartcallprovider"
+	# Samsung Smart Call
+	# Provides caller profile information to help consumers identify incoming calls and block unwanted ones.
+	# Relies on Hiya (see com.hiya.star)
+	# TL;DR : Really bad for privacy.
 
 	"com.samsung.android.smartmirroring"
 	# Samsung Smart View
@@ -592,7 +692,7 @@ declare -a samsung=(
 	# https://developer.samsung.com/samsung-dex/how-it-works
 
 	#"com.samsung.dcmservice"
-	# Hard to find what it really does but I do know what is DCM in telecommunication. It's mean Dual Carrier Modulation.
+	# Hard to find what it really does but I do know what DCM is in telecommunication. It means Dual Carrier Modulation.
 	# To stay simple, we use signal modulation to transfer information. DCM can be seen as an enhancement to conventional QPSK modulation
 	# that expand the coverage and robustness of an outdoor hotspot.
 	# https://www.ekahau.com/wp-content/uploads/2017/03/Webinar-slides-802.11ax-Sneak-Peek-%E2%80%93-The-Next-Generation-Wi-Fi.pdf
@@ -771,6 +871,10 @@ declare -a samsung=(
 	"com.sec.android.app.dictionary"
 	# Samsung Dictionary is is an app that enables you to manage all the dictionaries stored on your Samsung device.
 
+	"com.sec.android.app.easysetup"
+	# Core of Samsung SmartThings (formerly Samsung Easy Setup)
+	# See com.samsung.android.easysetup
+
 	"com.sec.android.app.gamehub"
 	# Samsung Game Hub
 	# Was replaced by "com.samsung.android.game.gamehome"
@@ -817,6 +921,9 @@ declare -a samsung=(
 
 	"com.sec.android.app.sbrowser"
 	# Samsung web browser (https://play.google.com/store/apps/details?id=com.sec.android.app.sbrowser)
+
+	"com.sec.android.app.scloud" # [APK_NEEDED]
+	# I guess it's the core of Samsung scloud.
 
 	#"com.sec.android.app.simsettingmgr"
 	# Samsung SIM Mananger provide settings when dual SIM cards
@@ -924,6 +1031,12 @@ declare -a samsung=(
 
 	#"com.sec.android.gallery3d.panorama360view"
 	# Let you see panoramic photos in the samsung Gallery.
+
+	"com.sec.android.game.gamehome"
+	# Samsung Game launcher
+	# Centralizes all your android games. This app can track all your games, how many hours you've spent playing each one, and which genres you play the most.
+	# Recommends games based on your profile.
+	# https://galaxystore.samsung.com/prepost/000004906980?appId=com.samsung.android.game.gamehome 
 
 	"com.sec.android.mimage.avatarstickers"
 	# Samsung My Emoji Stickers
@@ -1217,7 +1330,7 @@ declare -a samsung=(
 # Samsung overlay of AOSP Settings. It has 39 permissions. I guess it handles interactions with features controled by the settings.
 
 #"com.samsung.android.app.soundpicker"
-# Let you select a sound for alarm/ringtone
+# Lets you select a sound for alarm/ringtone
 
 #"com.samsung.android.clipboarduiservice"
 # User interface for clipboard 

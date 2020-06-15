@@ -1,6 +1,6 @@
 declare -a us_carriers=(
 
-	######  You REALLY should delete ALL carriers packages you can. US mobile carriers are really sc*mbags. I think you already know it.
+	######  You REALLY should delete as much carriers packages as possible. US mobile carriers are really sc*mbags. I think you already know this.
 	# There are so many scandals that I can't mention all of them here but if you are not aware here is some : 
 	#
 	# 1) They have been discovered to sell the real-time location of your phone to shady third parties (like data-bounty-hunters)

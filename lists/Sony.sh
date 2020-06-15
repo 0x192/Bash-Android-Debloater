@@ -50,6 +50,9 @@ declare -a sony=(
 	"com.sonyericsson.music"
 	# Sony music player (https://play.google.com/store/apps/details?id=com.sonyericsson.music)
 
+	"com.sonyericsson.settings.res.overlay_305" # [MORE INFO NEEDED]
+	# Some people removed this package. I guess it's only an (useless) overlay the the settings ? 
+
 	"com.sonyericsson.startupflagservice" # [MORE INFO NEEDED]
 	# Startup Flag Service
 	# Used during the production of the phone to verify that the touch input works. 
@@ -105,6 +108,10 @@ declare -a sony=(
 	# Old package for AR Effect (https://play.google.com/store/apps/details?id=com.sonymobile.androidapp.cameraaddon.areffect)
 	# Lets you add AR (Augmented Reality) effects to your pictures and videos.
 
+	"com.sonymobile.android.externalkeyboard"
+	# International keyboard layouts
+	# Useless if you use latin keyboard
+
 	"com.sonymobile.android.contacts.res.overlay_305"
 	# Overlay for Sony contacts.
 	# REMINDER : An overlay allows apps to display content on top of other apps.
@@ -116,6 +123,15 @@ declare -a sony=(
 	# Anonymous Usage Stats (yes just as com.sonyericsson.idd.agent but it's for other phones)
 	# Used to send "anonymous" information about how you use your Sony Smartphone to Sony servers.
 	# Nobody knows how these info are anonymized...
+
+	#"com.sonymobile.apnupdater" # [MORE INFO NEEDED]
+	# I guess it automatically updates your APN settings if your carrier changes it ?
+	# I thought it was the role of com.android.carrierconfig.
+	# NOTE : The probability that your carrier's APN change is very low.
+	# APN : https://tamingthedroid.com/what-apn-settings-mean
+
+	#"com.sonymobile.apnupdater.res.overlay_305" # [MORE INFO NEEDED]
+	# Overlay for APN Updater. Useful ? 
 
 	"com.sonymobile.aptx.notifier"
 	# Aptx Notifier
@@ -141,7 +157,6 @@ declare -a sony=(
 	# It is often used for regional emergency alerts.
 	# I think this package only handles notifications for broadcast cell, not the implementation.
 	# It seems to me that broadcast SMS use normal notifications so there is chances that this package provide special notification for Sony SMS app ? 
-
 
 	"com.sonymobile.coverapp2"
 	# Style Cover
@@ -314,6 +329,7 @@ declare -a sony=(
 	#"com.sonyericsson.album"
 	# Sony gallery app (https://play.google.com/store/apps/details?id=com.sonyericsson.album)
 
+	#"com.sonyericsson.android.camera3d" # on older phones
 	#"com.sonymobile.camera"
 	# Sony camera app
 
