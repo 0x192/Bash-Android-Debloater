@@ -122,7 +122,7 @@ You need the same version otherwise it will not work. It's very likely your Ubun
 Download the lastest linux plateform tools from Google and replace your adb binaries with the new ones :
 ```bash
 $ wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-$ sudo cp plateform-tools/adb /usr/bin/adb
+$ sudo cp platform-tools/adb /usr/bin/adb
 $ sudo chmod 755 /usr/bin/adb
 $ adb version
 ```
