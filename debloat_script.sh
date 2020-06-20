@@ -1,6 +1,7 @@
-#!/bin/bash
-#
-# BASH 4.3 or newer is needed ! (use of locale -n)
+#!/usr/bin/env bash
+
+# BASH 4.3 or newer is needed ! (use of local -n)
+(( BASH_VERSINFO < 5 )) && echo "Please upgrade to a bash version >= 4.3"
 
 set -euo pipefail # Safer bash script
 
@@ -28,7 +29,7 @@ for file in ./lists/* ; do
 done
 
 ### GLOBAL VARIABLES ###
-readonly VERSION="v2.2 (March 17th 2020)"
+readonly VERSION="v2.3.1 (June 20th 2020)"
 readonly PAD=$(((48-${#VERSION})/2))
 readonly BRAND=$(adb shell getprop ro.product.brand | awk '{print tolower($0)}')
 readonly BRAND_SUPPORTED=$( declare -p "$BRAND" &>/dev/null && echo "1" || echo "0") # Check if a $BRAND array is set
@@ -45,7 +46,6 @@ RESTORE=0
 
 main() {
     clear
-
     echo                                            " ================================================"
     echo                                            " #                                              #"
     echo                                            " #       UNIVERSAL ANDROID DEBLOAT SCRIPT       #"
