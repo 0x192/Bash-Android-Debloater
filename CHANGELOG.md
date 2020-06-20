@@ -1,3 +1,8 @@
+# Hotfix (v2.3.1)
+
+- Changed the shebang to `#!/usr/bin/env bash` for better portability. MacOS users needs to use an newer bash version. (see #5)
+
+
 # New Release (v2.3)
 
 ## Code improvement
