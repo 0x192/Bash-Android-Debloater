@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a aosp_bloat=(
+declare -a aosp=(
 
 	"com.android.apps.tag"
 	# NFC Tagging (5 permissions : Contacts/Phone On by default).
@@ -18,12 +18,6 @@ declare -a aosp_bloat=(
 	"com.android.bookmarkprovider" 
 	# Only exist for compatibility reasons to prevent apps querying it from getting null cursors they do not expect and crash.
 
-	#"com.android.carrierconfig"
-	# Gives carriers and OEMs the ability to dynamically provide carrier configuration (APN settings) trough their app.
-	# NOTE : The probability that your carrier's APN change is very low. If you change your carrier and insert a new SIM card
-	# This package will be triggered to automatically choose the suitable APN.
-	# https://source.android.com/devices/tech/config/carrier
-
 	"com.android.carrierdefaultapp"
 	# Allows carrier customization. Carrier action upon specific signal.
 
@@ -40,13 +34,12 @@ declare -a aosp_bloat=(
 	"com.android.egg" 
 	# Android build's easter egg feature (when you click 5 times on the android version in the settings)
 
+	"com.android.galaxy4"
+	# built-in Dynamic wallpaper
+
 	"com.android.htmlviewer" 
 	# In-built HTML viewer. Basically lets you read HTML files stored on your device.
 	# REMINDER : A web-browser can also read HTML files...
-
-	"com.android.inputdevices"
-	# Empty package ? 
-	# https://android.googlesource.com/platform/frameworks/base/+/master/packages/InputDevices/src/com/android/inputdevices/InputDeviceReceiver.java
 
 	"com.android.magicsmoke" 
 	# "Magic smoke" Live wallpaper.
@@ -54,7 +47,8 @@ declare -a aosp_bloat=(
 	"com.android.managedprovisioning"
 	# Manage separate profile on devices. The typical example is setting up a corporate profile that is controlled by their employer on a
 	# users personal device to keep personal and work data separate.
-	# Safe to remove
+	# https://support.google.com/work/android/answer/6191949?
+	# https://developers.google.com/android/work/requirements/work-profile
 
 	"com.android.musicvis"
 	# Music Visualization Wallpapers
@@ -80,7 +74,8 @@ declare -a aosp_bloat=(
 	# Used to install the carrier SIM app when the SIM is inserted.
 
 	"com.android.soundrecorder" 
-	# Sound recorder, obviously. 
+	# AOSP Sound recorder. OEM often use their own solution
+	# There are better apps (on F-droid) anyway 
 
 	"com.android.stk" 
 	# SIM toolkit app. Enable carriers to make SIM cards initiate "value-added services" (== some crappy stuff)
@@ -89,6 +84,12 @@ declare -a aosp_bloat=(
 	# Has already be abused : 
 	# - SimJacker : https://thehackernews.com/2019/09/simjacker-mobile-hacking.html
 	# - WIBattack : https://www.zdnet.com/article/new-sim-card-attack-disclosed-similar-to-simjacker/
+
+	"com.android.traceur"
+	# System Tracing
+	# Recording device activity over a short period of time is known as system tracing. System tracing produces a trace file that can be used to generate 
+	# a system report.
+	# Not useful if you're not a developer.
 
 	"com.android.wallpaper.holospiral" 
 	# "Holo spiral" Live wallpaper.
@@ -101,15 +102,6 @@ declare -a aosp_bloat=(
 
 	"com.example.android.notepad" 
 	# (Bad) notepad app.
-
-	"org.simalliance.openmobileapi.service"
-	# Smart Card Service by Simalliance
-	# https://simalliance.org/about-us/mission-objectives/
-	# 
-	# The SmartCard API is a reference implementation of the SIMalliance Open Mobile API specification that enables Android applications 
-	# to communicate with Secure Elements, (SIM card, embedded Secure Elements, Mobile Security Card or others)
-	# https://github.com/seek-for-android/pool/wiki/SmartcardAPI
-	# Safe to remove if you don't think you need this
 
 
 	#####################   UP TO YOU (can be useful features but safe to remove)   #####################
@@ -125,25 +117,33 @@ declare -a aosp_bloat=(
 	# Bluetooth service
 
 	"com.android.browser" 
-	# Stock Browser
+	# AOSP Browser. You honeslty shoud use something else. It is no longer maintained and lack a lot of features.
+	# If you have this package you most likely have an old android version (< Android KitKat v4.4) so you can't really install
+	# another browser. 
+	# You android device is insecure so you really shouldn't use this device to browse the web.
 
 	"com.android.browser.provider" 
-	# Strange package. It is old (2014) and there is a Picasa URL hardcoded.
+	# Strange package. It is old (2014) and there is a hardcoded Picasa URL in the code
 	# https://android.googlesource.com/platform/packages/apps/Browser/+/refs/heads/master/src/com/android/browser/provider/BrowserProvider.java
 	# Related to bookmarks but removing it doesn't seems to affect anything visible.
 
 	"com.android.calendar" 
-	# Access to events from the calendar.
-	# Safe to remove if you don't use built-in calendar
+	# old AOSP Calendar app
 
 	#"com.android.calculator2" 
 	# Stock calculator app.
 
 	"com.android.calllogbackup"
-	# Call Logs Backup/Restore
+	# Call Logs Backup/Restore feature.
 
 	#"com.android.captiveportallogin"
 	# Take care of redirecting to the web page that the user of a public access network is obliged to view and interect with, before access is granted.
+
+	#"com.android.carrierconfig"
+	# Gives carriers and OEMs the ability to dynamically provide carrier configuration (APN settings) trough their app.
+	# NOTE : The probability that your carrier's APN change is very low. If you change your carrier and insert a new SIM card
+	# This package will be triggered to automatically choose the suitable APN.
+	# https://source.android.com/devices/tech/config/carrier
 
 	#"com.android.cellbroadcastreceiver"
 	# == EMERGENCY ALERTS  == 
@@ -152,17 +152,16 @@ declare -a aosp_bloat=(
 	# https://www.androidcentral.com/amber-alerts-and-android-what-you-need-know
 
 	#"com.android.contacts" 
-	# Stock contacts app (it is not Google contact)
+	# AOSP contacts app (it is not Google contacts)
 
-	#"com.android.cts.ctsshim"
+	#"com.android.cts.ctsshim" # [MORE INFO NEEDED]
 	#"com.android.cts.priv.ctsshim"
 	# Compatibilty Test Service. The CTS shim is a package that resides on a device's /system partition in order
-	# to verify certain upgrade scenarios. Could mess up OTA. 
-	# Don't really know what happens with custom ROM if disabled. Should be safe. 
+	# to verify certain upgrade scenarios. Could mess up witch OTA updates.
 	# https://android.googlesource.com/platform/frameworks/base/+/51e458e/packages/CtsShim
 
 	#"com.android.deskclock" 
-	# Clock stock app 
+	# AOSP Clock app 
 
 	"com.android.email" 
 	# AOSP Email app (it is NOT gmail).
@@ -170,18 +169,19 @@ declare -a aosp_bloat=(
 	"com.android.emergency"
 	# Emergency informations. Safe to remove if you don't want this feature.
 
-	# com.android.exchange" 
+	#"com.android.exchange" # [MORE INFO NEEDED]
 	# The ExchangeService handles all aspects of starting, maintaining, and stopping the various sync adapters for email.
-	# [WARNING] I need to know to test if it only concerns stock mail app.
+	# [WARNING] I need to know if it only concerns stock mail app.
 
 	#"com.android.facelock" 
 	# Essential if you wanna use Face Unlock features, removable if you don't want to.
 
-	"com.android.galaxy4"
-	# built-in Dynamic wallpaper
-
 	"com.android.gallery3d" 
 	# AOSP Gallery app.
+
+	#"com.android.inputdevices"
+	# The input manager service locates available keyboard layouts. 
+	# An application can offer additional keyboard layouts to the user by declaring a suitable broadcast receiver in its manifest.
 
 	#"com.android.inputmethod.latin" 
 	# AOSP keyboard. (This is not Google Keyboard).
@@ -194,7 +194,7 @@ declare -a aosp_bloat=(
 	# https://developer.android.com/guide/topics/display-cutout
 	# https://source.android.com/devices/tech/display/display-cutouts
 
-	"com.android.keychain" 
+	#"com.android.keychain" 
 	# Enable apps to use system wide credential KeyChain (shared credentials between apps)
 	# https://security.stackexchange.com/questions/216716/android-keychain-what-is-a-system-wide-credential
 
@@ -202,18 +202,18 @@ declare -a aosp_bloat=(
 	# Audio equalizer. Some 3-party music apps can use it to provide you equalizing features.
 
 	#"com.android.mms" 
-	# Stock SMS app.
+	# AOSP SMS app.
 
 	#"com.android.nfc"
 	# NFC service
 
-	"com.android.pacprocessor"
+	#"com.android.pacprocessor"
 	# A PAC (Proxy Auto-Config) is a file which defines how an app can automatically define the correct proxy server for fetching an URL. 
 	# Should be safe to remove if you don't use Auto-proxy (with PAC file config)
 	# https://en.wikipedia.org/wiki/Proxy_auto-config
 
 	#"com.android.phone.recorder" 
-	# Call recorder function.
+	# AOSP Call recorder function. Most of the time OEM use their own code for this.
 
 	#"com.android.providers.blockednumber"
 	# Handle blocked numbers storage
@@ -221,16 +221,16 @@ declare -a aosp_bloat=(
 	#"com.android.providers.calendar" 
 	# Necessary to sync stock Calendar app and lets it work correctly.
 
-	#"com.android.providers.drm"
+	#"com.android.providers.drm" # [MORE INFO NEEDED]
 	# DRM Protected Content Storage 
 	# Provides DRM functions to stop you from copying things like ringtones, live wallpapers, etc.
 	# May be needed to access media files (to be verified)
 
 	#"com.android.providers.userdictionary"
-	# Handle user dictionary for keyboard apps.
+	# Handles user dictionary for keyboard apps.
 
 	#"com.android.proxyhandler"
-	# Handle proxy config
+	# Handles proxy config
 	# Safe to remove if you don't use a proxy.
 
 	"com.android.quicksearchbox" 
@@ -242,28 +242,32 @@ declare -a aosp_bloat=(
 
 	#"com.android.sharedstoragebackup"
 	# Used during backup. Fetch shared storage (files accessible by every apps with STORAGE permission)
-	# Things have changed with Android 10. Don't know if this package is still relevant.
+	# Things have changed with Android 10. Don't know if this package is still relevant for new phones.
 	# https://blog.mindorks.com/understanding-the-scoped-storage-in-android.
 
 	#"com.android.systemui.theme.dark"
-	# Enable you to use Andrdoi dark theme.
+	# Enables you to use Android dark theme.
 
 	#"com.android.timezone.updater"
 	# Time Zone Updater
 	# Automaticaly change the time zone if needed. 
 
-	"com.android.traceur"
-	# System Tracing
-	# Recording device activity over a short period of time is known as system tracing. System tracing produces a trace file that can be used to generate 
-	# a system report.
-	# Not useful if you're not a developer.
-
-	"com.android.voicedialer" 
-	# Voice search.
+	#"com.android.voicedialer" 
+	# AOSP Voice dialer. Let's you call someone or open an app with your voice from the dialer.
+	# OEM often use their own code (embeded in their voice-controlled digital assistant)
 
 	#"com.android.wallpaperbackup"
 	# Backup your wallapaper and load this backup instead of the original file in case you delete it.
 	# Safe to remove if you really want to.
+
+	#"org.simalliance.openmobileapi.service"
+	# Smart Card Service by Simalliance
+	# https://simalliance.org/about-us/mission-objectives/
+	# 
+	# The SmartCard API is a reference implementation of the SIMalliance Open Mobile API specification that enables Android applications 
+	# to communicate with Secure Elements, (SIM card, embedded Secure Elements, Mobile Security Card or others)
+	# https://github.com/seek-for-android/pool/wiki/SmartcardAPI
+	# Safe to remove if you don't think you need this
 
 	)
 
