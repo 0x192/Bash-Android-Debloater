@@ -3,13 +3,13 @@
 **DISCLAIMER**: Use this script at your own risk. I am not responsible for anything that could happen to your phone. 
 
 ## Summary
-I try to provide and maintain a universal tool which remove bloatwares on any (non-rooted) Android phones. 
+I try to maintain a universal tool which removes bloatwares on any Android phones by using ADB.
 
 The main goal is to improve battery performance and privacy by removing unnecessary and obscure system apps. This can also contribute to improve security by reducing [the attack surface](https://en.wikipedia.org/wiki/Attack_surface). The script has a menu that lets you choose what debloat list you want to use. I strongly encourage you to take a look at the lists because the default selection may not suit you. All packages are as well documented as possible in order to provide a better understanding of what you can delete or not.
 
-This script *should* be safe with the default selection. The worse thing which could happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. So make a backup ! 
+This script *should* be safe with the default selection. The worse thing which could happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. So make a backup! 
 
-In any case, you can NOT brick your device with this script ! That's the main thing, right ? :smiley:
+In any case, you can NOT brick your device with this script! That's the main thing, right?
 
 ## Features 
 * [X] Quick search among all the packages of your phone
@@ -24,10 +24,10 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 
 ## Universal debloat lists 
 * [X] GFAM (Google/Facebook/Amazon/Microsoft)
-* [X] AOSP bloat
-* [X] Manufacturers bloat
-* [X] Mobile carriers bloat
-* [X] Miscellaneous bloat
+* [X] AOSP
+* [X] Manufacturers (OEM)
+* [X] Mobile carriers
+* [X] Others / Miscellaneous
 
 ## Manufacturers debloat lists
 * [ ] Archos
@@ -47,14 +47,12 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 * [ ] ZTE
 
 ## Mobile carriers debloat lists 
-
-|**France**       | **USA**  |**Germany** |
+|France           | USA      |Germany     |
 |:---------------:|:--------:|:----------:|
 | Orange          | T-Mobile |  Telekom   |
 | SFR             | Verizon  |            |
 | Free            | Sprint   |            |
 | Bouygues / Sosh | AT&T     |            |
-
 
 ## How to use it 
 - **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ) !**
@@ -87,9 +85,9 @@ $ sudo yum install android-tools qpdf
 <summary>MAC OS</summary>
 
 - Install [Homebrew](https://brew.sh/)
-- Install *Android plateform tools* and *qpdf*
+- Install *Android platform tools* and *qpdf*
 
-You will also need to upgrade your bash package because Apple ships a very old bash version (3.2.57) due to licencing issues.
+You will also need to upgrade bash because Apple ships a very old bash version (3.2.57) due to licencing issues.
 
 ```bash
 $ brew install android-platform-tools qpdf bash
@@ -113,7 +111,7 @@ $ echo $BASH_VERSION
 <details>
 <summary>WINDOWS</summary>
 
-For now, there is no USB support in the WSL. This means you need to install both Windows and linux plateform-tools and force using adb server.
+For now, there is no USB support in the WSL. This means you need to install both Windows and Linux platform-tools and force the use of Windows adb server.
 - Download [android platefrom tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 - [Install USB drivers of your device](https://developer.android.com/studio/run/oem-usb#Drivers)
 - Check your device is detected :
@@ -123,13 +121,12 @@ For now, there is no USB support in the WSL. This means you need to install both
 
 - Install [WSL2 (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to run bash scripts.
 - Install *Android plateform tools* and *qpdf* from the Debian/Ubuntu shell
-- Download the last version of the script
 ```bash
 $ sudo apt update && sudo apt upgrade
 $ sudo apt install android-sdk-platform-tools qpdf
 $ wget 
 ```
-- Check the version of ADB on linux & windows
+- Check the version of ADB on Linux & Windows
 ```bash
 adb version
 ```
@@ -141,25 +138,31 @@ $ sudo cp platform-tools/adb /usr/bin/adb
 $ sudo chmod 755 /usr/bin/adb
 $ adb version
 ```
-kill the WSL adb server and start the ADB server on Windows.
+Kill the WSL adb server:
 ```bash
 $ adb kill-server
 ```
-From a windows console : 
+And start the ADB server on Windows: 
 ```batch
 > adb kill-server
 > adb start-server
 > adb devices
 ```
-Note : You can access your Windows files under `/mnt/c/`
+Note: You can access your Windows files under `/mnt/c/`
 
 </details>
 </p>
 
 
-- Download [the lastest release of the script](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
+- Download [the lastest release of Android Universal Debloater](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
 - Check the debloat lists to be sure the default selection suits you.
 - Run `debloat_script.sh` from a Unix terminal 
 ```bash
 $ bash debloat_script.sh
 ```
+
+## How to contribute
+
+Hey-hey-hey! Don't go away so fast! This is a community project. That's mean I need you! I'm sure you want to make this project better anyway
+
+==> [How to contribute](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/home#how-to-contribute)
