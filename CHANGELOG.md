@@ -1,6 +1,12 @@
+# Hotfix (v2.3.2)
+
+- Fixed LG list not being available for LG devices (#7)
+- Fixed AOSP list not being detected (#7)
+- AOSP list revamp (including documentation improvement and default selections change)
+
 # Hotfix (v2.3.1)
 
-- Changed the shebang to `#!/usr/bin/env bash` for better portability. MacOS users needs to use an newer bash version. (see #5)
+- Changed the shebang to `#!/usr/bin/env bash` for better portability. MacOS users needs to use a newer bash version. (see #5)
 
 
 # New Release (v2.3)
