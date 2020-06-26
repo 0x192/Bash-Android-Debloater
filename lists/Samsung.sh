@@ -650,6 +650,10 @@ declare -a samsung=(
 	# Universal Switch lets you designate certain touches or gestures to control specific actions on your phone. 
 	# https://www.samsung.com/uk/accessibility/mobile-universal-switch/
 
+	"com.samsung.android.voc"
+	# Samsung Members (https://play.google.com/store/apps/details?id=com.samsung.android.voc)
+	# The other version is "com.samsung.oh".
+
 	"com.samsung.android.voicewakeup"
 	# Voice wake-up for using Bixby
 	# https://www.samsung.com/us/support/answer/ANS00080448/
@@ -773,6 +777,7 @@ declare -a samsung=(
 	# Samsung community. It's a kind of social media app for Samsung users.
 	# https://www.samsung.com/global/galaxy/apps/samsung-members/
 	# OOOPS ! https://bgr.com/2019/10/31/samsung-members-dong-pic-oops/
+	# The other version is "com.samsung.android.voc".
 
 	"com.samsung.safetyinformation"
 	# Safety information for the hardware ? 
