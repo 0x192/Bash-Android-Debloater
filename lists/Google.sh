@@ -1,8 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a google=(
 
-	"com.android.hotwordenrollment.okgoogle" 
+	"com.android.hotwordenrollment.okgoogle"
+	"com.android.hotwordenrollment.xgoogle"
 	# "OK Google" detection service.
 
 	"com.android.partnerbrowsercustomizations.chromeHomepage" 
@@ -208,12 +209,8 @@ declare -a google=(
 	# See : https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/os/ConfigUpdate.java
 	# This is configuration stuff for Google services only.
 
-	"com.google.android.contacts" 
-	# Google Contacts (https://play.google.com/store/apps/details?id=com.google.android.contacts)
-
 	#"com.google.android.deskclock" 
 	# Google clock app (https://play.google.com/store/apps/details?id=com.google.android.deskclock)
-
 
 	"com.google.android.feedback" 
 	# When an app crashes, this is the app that briefly asks you if you want to feedback the crash on the market, Google Play Store.
@@ -342,6 +339,11 @@ declare -a google=(
 	#"com.google.android.apps.maps" 
 	# Google maps (https://play.google.com/store/apps/details?id=com.google.android.apps.maps)
 
+	#"com.google.android.apps.nexuslauncher"
+	# Nexus Launcher (https://play.google.com/store/apps/details?id=com.google.android.apps.nexuslauncher)
+	# It's basically the home screen, the way icons apps are organized and displayed.
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER ! 
+
 	#"com.google.android.apps.photos" 
 	# Google photos (https://play.google.com/store/apps/details?id=com.google.android.apps.photos)
 
@@ -359,7 +361,10 @@ declare -a google=(
 	# Needs Google Play Services to work.
 	# https://www.hybrid-analysis.com/sample/71bcaf2e71d78665fc5bc53db39df5309f24dd4ecab6402cf6ca20027dc6ecad?environmentId=200
 
-	"com.google.android.dialer"
+	#"com.google.android.contacts" 
+	# Google Contacts (https://play.google.com/store/apps/details?id=com.google.android.contacts)
+	
+	#"com.google.android.dialer"
 	# Google Dialer (https://play.google.com/store/apps/details?id=com.google.android.dialer)
 
 	"com.google.android.ext.services"
@@ -373,6 +378,9 @@ declare -a google=(
 	## Google shared library (used to share common code between apps)
 	# For now the library (android.ext.shared is empty). So this apk is useless. 
 	# This apk has the same role than the one above.
+
+	#"com.google.android.GoogleCamera" 
+	# Google Camera (https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera)
 
 	#"com.google.android.gms" 
 	# Google Play Services
@@ -391,7 +399,7 @@ declare -a google=(
 	# Talks to Gmail.com and Google.com.
 	# Needs a Google Account and Google Paly Services to work correctly.
 	# I don't know much more but it's sufficient to know you can debloat it.
-	# Given its name maybe it is related to Android auto ? 
+	# Given its name maybe it is related to Android auto? 
 	# https://www.hybrid-analysis.com/sample/c710b66d043026007666966d933e3a1ed29720c5009764c01b5f056232a3518a?environmentId=200
 
 	#"com.google.android.gsf"

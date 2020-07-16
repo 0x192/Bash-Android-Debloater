@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a aosp=(
 
@@ -77,7 +77,9 @@ declare -a aosp=(
 	# AOSP Sound recorder. OEM often use their own solution
 	# There are better apps (on F-droid) anyway 
 
-	"com.android.stk" 
+	"com.android.stk"
+	"com.android.stk2" # (special package for dual-sim devices?)
+	# SIM toolkit 
 	# SIM toolkit app. Enable carriers to make SIM cards initiate "value-added services" (== some crappy stuff)
 	# Basically, Some operators give SIMs which has applications installed in it. 
 	# https://en.wikipedia.org/wiki/SIM_Application_Toolkit#cite_note-CellularZA-1
@@ -120,7 +122,7 @@ declare -a aosp=(
 	# AOSP Browser. You honeslty shoud use something else. It is no longer maintained and lack a lot of features.
 	# If you have this package you most likely have an old android version (< Android KitKat v4.4) so you can't really install
 	# another browser. 
-	# You android device is insecure so you really shouldn't use this device to browse the web.
+	# Your android device is insecure so you really shouldn't use this device to browse the web.
 
 	"com.android.browser.provider" 
 	# Strange package. It is old (2014) and there is a hardcoded Picasa URL in the code
@@ -128,7 +130,7 @@ declare -a aosp=(
 	# Related to bookmarks but removing it doesn't seems to affect anything visible.
 
 	"com.android.calendar" 
-	# old AOSP Calendar app
+	# Old AOSP Calendar app
 
 	#"com.android.calculator2" 
 	# Stock calculator app.
@@ -180,7 +182,8 @@ declare -a aosp=(
 	# AOSP Gallery app.
 
 	#"com.android.inputdevices"
-	# The input manager service locates available keyboard layouts. 
+	# Only contains a receiver named "Android keyboard", possibly for an external keyboard.
+	# Locates available keyboard layouts. 
 	# An application can offer additional keyboard layouts to the user by declaring a suitable broadcast receiver in its manifest.
 
 	#"com.android.inputmethod.latin" 
@@ -216,7 +219,8 @@ declare -a aosp=(
 	# AOSP Call recorder function. Most of the time OEM use their own code for this.
 
 	#"com.android.providers.blockednumber"
-	# Handle blocked numbers storage
+	# Handles blocked numbers storage
+	# On some devices this packages seems to be tied to recent apps menu (see https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/6)
 
 	#"com.android.providers.calendar" 
 	# Necessary to sync stock Calendar app and lets it work correctly.
@@ -227,7 +231,7 @@ declare -a aosp=(
 	# May be needed to access media files (to be verified)
 
 	#"com.android.providers.userdictionary"
-	# Handles user dictionary for keyboard apps.
+	# Handles user dictionary for keyboard apps. 
 
 	#"com.android.proxyhandler"
 	# Handles proxy config
@@ -250,7 +254,7 @@ declare -a aosp=(
 
 	#"com.android.timezone.updater"
 	# Time Zone Updater
-	# Automaticaly change the time zone if needed. 
+	# Automatically updates the clock to correspond to your current time zone
 
 	#"com.android.voicedialer" 
 	# AOSP Voice dialer. Let's you call someone or open an app with your voice from the dialer.
@@ -283,7 +287,8 @@ declare -a aosp=(
 # This handles connections to other devices, like Bluetooth Headphones, desktop Operative Systems, ecc. 
 
 #"com.android.defcontainer"
-# Needed during apps installation.
+# Package Access Helper 
+# Determine the recommended install location for packages and if there is enough free space for the package.
 
 #"com.android.documentsui" # Files picker
 # Interface for apps wishing to access access files outside of their own storage area.
@@ -297,8 +302,9 @@ declare -a aosp=(
 #"com.android.mms.service"
 # Provides support for sending MMS.
 
-#"com.android.mtp" #MTP Host
-# Handle MTP (protocol allowing files to be transferred to and from your PC)
+#"com.android.mtp" 
+# MTP Host
+# Handles MTP (protocol allowing files to be transferred to and from your PC)
 
 #"com.android.packageinstaller"
 # Handles installation, upgrade, and removal of applications.

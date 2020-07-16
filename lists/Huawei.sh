@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/usr/bin/env bash
 
 declare -a huawei=(
 	# I NEVER HAD AN HUAWEI DEVICE ON HAND. THIS LIST WAS MADE POSSIBLE BY @REDSKULL23 
@@ -34,7 +34,7 @@ declare -a huawei=(
 	# File transfer tool between Huawei mobiles, using Bluetooth connection and WiFi Direct technology.
 
 	#"com.huawei.android.internal.app" 
-	# Component of Huawei sharing. A read someone saying "Do not remove or you won't be able to send files to apps".
+	# Component of Huawei sharing. I read someone saying "Do not remove or you won't be able to send files to apps".
 	# Can someone test it ? 
 
 	"com.huawei.android.karaoke" 
@@ -172,12 +172,7 @@ declare -a huawei=(
 
 	"com.huawei.screenrecorder" 
 	# Huawei Screen recorder feature.
-
-	"com.huawei.search" 
-	# HiSearch
-	# Allows you to search through settings, files, contacts and notes while keeping a record of your search history.
-	# Hi Search is really annonying because it's triggered as soon as you wipe down from the middle part of the home. 
-
+ 
 	"com.huawei.stylus.floatmenu" 
 	# Floating menu with M-Pen feature.
 
@@ -188,7 +183,7 @@ declare -a huawei=(
 
 	"com.huawei.trustagent" # [MORE INFO NEEDED]
 	# Smart unlock feature.
-	# nables you to unlock your phone with a Bluetooth device, like a smart band. 
+	# Enables you to unlock your phone with a Bluetooth device, like a smart band. 
 	# When a compatible Bluetooth device is detected, you can unlock your phone with a simple swipe.
 
 	"com.huawei.vassistant" 
@@ -221,6 +216,11 @@ declare -a huawei=(
 
 	##############################  ADVANCED DEBLOAT ##############################
 
+	#"com.huawei.android.launcher" 
+	# Huawei launcher app.
+	# It's basically the home screen, the way icons apps are organized and displayed.
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
+
 	"com.android.mediacenter" 	
 	# Huawei music app. (Yeah they messed up with the package name)
 
@@ -230,8 +230,15 @@ declare -a huawei=(
 	# "com.huawei.hidisk" 
 	# Huawei File Manager app.
 
-	#"com.huawei.android.launcher" 
-	# Huawei launcher app.
-	# It's basically the home screen, the way icons apps are organized and displayed.
-	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER ! 
+	#"com.huawei.search" 
+	# HiSearch
+	# Allows you to search through settings, files, contacts and notes while keeping a record of your search history.
+	# Hi Search is really annonying because it's triggered as soon as you wipe down from the middle part of the home.
 	)
+
+
+#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
+
+# "com.huawei.systemmanager"
+# Huawei System Manager app
+# Manage apps behavior and authorize them to run (or not) in background.

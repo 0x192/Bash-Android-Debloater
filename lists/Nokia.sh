@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a nokia=(
 	# I NEVER HAD A NOKIA DEVICE ON HAND. 
@@ -14,15 +14,9 @@ declare -a nokia=(
 	# REMINDER : A screen overlay in Android, also referred to as “Draw On Top”, allows an app to display content over another app
 	
 	# blt = Bell Telephone Laboratories owned by Nokia (https://en.wikipedia.org/wiki/Bell_Labs)
-	
-	"com.android.cellbroadcastreceiver.overlay.base.s600ww"
-	# Cell broadcast is a method of sending messages to multiple mobile telephone users in a defined area at the same time.
-	# It is often used for regional emergency alerts. 
-	# I think this package only handles notifications overlay for broadcast cell, not the implementation.
-	# It seems to me that broadcast SMS use normal notifications so there is chances that this package provide special overlay for Nokia SMS app ?
 
 	"com.android.partnerbrowsercustomizations.btl.s600ww.overlay"
-	# Add Nokia (annoying) stuff in your browser ? 
+	# Add Nokia pinned bookmarks in your chromium based browser
 	# btl = Bell Telephone Laboratories
 
 	"com.android.providers.calendar.overlay.base.s600ww" # [MORE INFO NEEDED]
@@ -146,9 +140,6 @@ declare -a nokia=(
 	# Most likely a configuration setup after a factory reset (and/or after first boot)
 	# Guides you through the basics of setting up your device.
 
-	"com.evenwell.fmradio"
-	"com.evenwell.fmradio.overlay.base.s600ww"
-	# Nokia radio app 
 
 	"com.evenwell.foxlauncher.partner" # [MORE INFO NEEDED]
 	# Partner Launcher Customization
@@ -178,11 +169,6 @@ declare -a nokia=(
 	"com.evenwell.nps.overlay.base.s600ww"
 	# Net Promoter Score
 	# Preinstalled survey.
-
-	#"com.evenwell.OTAUpdate" # [MORE INFO NEEDED]
-	#"com.evenwell.OTAUpdate.overlay.base.s600ww"
-	# Related to OTA Update (Over-The-Air updates, updates from Nokia)
-	# May not be safe if you still receive updates. 
 
 	"com.evenwell.pandorasbox" # [MORE INFO NEEDED]
 	"com.evenwell.pandorasbox.app"
@@ -247,10 +233,11 @@ declare -a nokia=(
 	"com.evenwell.settings.data.overlay.base.s600ww" # [MORE INFO NEEDED]
 	# Overlay related to settings
 
-	"com.evenwell.SettingsUtils" # [MORE INFO NEEDED]
+	"com.evenwell.SettingsUtils"
 	"com.evenwell.SettingsUtils.overlay.base.s600ww"
 	# Settings utils
-	# ???
+	# (crapy) Audio rendering. 
+	# See https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/9#note_369056538
 
 	"com.evenwell.SetupWizard"
 	"com.evenwell.setupwizard.btl.s600ww.overlay"
@@ -300,14 +287,29 @@ declare -a nokia=(
 
 	##############################  ADVANCED DEBLOAT ##############################
 
-	"com.hmdglobal.camera2"
+	#"com.android.cellbroadcastreceiver.overlay.base.s600ww"
+	# Cell broadcast is a method of sending messages to multiple mobile telephone users in a defined area at the same time.
+	# It is often used for regional emergency alerts. 
+	# I think this package only handles notifications overlay for broadcast cell, not the implementation.
+	# It seems to me that broadcast SMS use normal notifications so there is chances that this package provide special overlay for Nokia SMS app ?
+
+	#"com.hmdglobal.camera2"
 	# Nokia camera (https://play.google.com/store/apps/details?id=com.hmdglobal.camera2)
 
-	"com.evenwell.camera2"
+	#"com.evenwell.camera2"
 	# Nokia camera by evenwell (https://play.google.com/store/apps/details?id=com.evenwell.camera2)
 
-	"com.evenwell.hdrservice"
+	#"com.evenwell.fmradio"
+	#"com.evenwell.fmradio.overlay.base.s600ww"
+	# Nokia radio app 
+
+	#"com.evenwell.hdrservice"
 	# HDR Service (https://play.google.com/store/apps/details?id=com.evenwell.hdrservice)
 	# Enhances contrast and sharpness for normal photos, games and videos dynamically.
+
+	#"com.evenwell.OTAUpdate" # [MORE INFO NEEDED]
+	#"com.evenwell.OTAUpdate.overlay.base.s600ww"
+	# Related to OTA Update (Over-The-Air updates, updates from Nokia)
+	# May not be safe if you still receive updates.
 
 	)
