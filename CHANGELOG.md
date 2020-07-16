@@ -1,3 +1,25 @@
+# New Release (v2.4)
+
+Big thanks to @yawnoc, @gsurrel, @vasudev_gmk & @gafarma89 ! :+1:
+
+## New packages added
+- **AOSP** : 1
+- **Google** : 2
+- **Samsung** : 23
+- **Pending** : 102
+
+## Pending --> Official lists
+- **Samsung** : 12
+
+## Miscellaneous
+- Nokia list revamp (including documentation improvement and default selections change) (thanks )
+- Documentation improvement of several packages
+- Support for Xiaomi devices with `ro.product.brand=redmi` instead of `xiaomi`
+
+## Bugfixes
+- Fixed a bug preventing the use of the `1 - debloat/restore a package` menu entry
+- Fixed a minor display bug occuring when restoring a package manually
+
 # Hotfix (v2.3.2)
 
 - Fixed LG list not being available for LG devices (#7)
