@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a lge=(
 	# I NEVER HAD A LG DEVICE ON HAND. 

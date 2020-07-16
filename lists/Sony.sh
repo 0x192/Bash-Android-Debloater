@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a sony=(
 	# I NEVER HAD A SONY DEVICE ON HAND. 

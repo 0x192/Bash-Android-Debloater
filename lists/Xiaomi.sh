@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a xiaomi=(
 
@@ -128,9 +128,6 @@ declare -a xiaomi=(
 	"com.miui.bugreport" 
 	# Mi Feedback
 	# Used to seend bug report to devs
-
-	"com.miui.calculator" 
-	# MIUI Calculator (https://play.google.com/store/apps/details?id=com.miui.calculator)
 
 	"com.miui.cleanmaster"
 	# Mi Cleaner
@@ -372,6 +369,9 @@ declare -a xiaomi=(
 	# A lot of people debloat this but I'd like to know more about this one.
 
 	##################################  ADVANCED DEBLOAT  ##################################
+
+	#"com.miui.calculator" 
+	# MIUI Calculator (https://play.google.com/store/apps/details?id=com.miui.calculator)
 
 	#"com.xiaomi.discover"
 	# System Apps Updater

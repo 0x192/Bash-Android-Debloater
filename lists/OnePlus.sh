@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a oneplus=(
 	# I NEVER HAD A ONEPLUS DEVICE ON HAND. 
@@ -157,7 +157,7 @@ declare -a oneplus=(
 
 	########## ADVANCED DEBLOAT ##########
 
-	"cn.oneplus.oem_tcma"
+	#"cn.oneplus.oem_tcma"
 	# TCMA stands for Tiered Contention Multiple Access, which is a cellular traffic management protocol.
 	# TCMA is a CSMA/CA protocol which schedules transmission of different types of traffic. 
 	# I don't know if it's a good idea to remove given a CSMA/CA protocol improve QoS (https://en.wikipedia.org/wiki/Quality_of_service)

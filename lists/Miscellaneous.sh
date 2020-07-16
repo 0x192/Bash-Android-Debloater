@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # FYI : Exodus (https://reports.exodus-privacy.eu.org/en/) lets you see all permissions and trackers in Google Play Store apps. 
 
@@ -79,7 +79,7 @@ declare -a facebook=(
 	# Instagram  (https://play.google.com/store/apps/details?id=com.instagram.android)
 
 	"com.whatsapp"
-	# Whatsapp (https://play.google.com/store/apps/details?id=com.whatsapp")
+	# Whatsapp (https://play.google.com/store/apps/details?id=com.whatsapp)
 	)
 
 declare -a microsoft=(
@@ -688,12 +688,22 @@ declare -a misc=(
 	# Yeah obviously it phones to Qualcomm.
 
 	"com.qualcomm.qti.rcsbootstraputil"
-	"com.qualcomm.qti.rcsimsbootstraputil"
+	"com.qualcomm.qti.rcsimsbootstraputil" # [MORE INFO NEEDED]
 	# RCS Service 
-	# RCS = Rich Communicatin Services. 
-	# It's a communication protocol between mobile telephone carriers and between phone and carrier, aiming at replacing SMS messages 
+	# RCS = Rich Communication Services. 
+	# RCS is a communication protocol between mobile telephone carriers and between phone and carrier, aiming at replacing SMS.
 	# https://en.wikipedia.org/wiki/Rich_Communication_Services
-	# Used vorte VolTE and VoWifi.
+	# Note that it uses IP protocol so you need to connect to Wifi/3G/4G...  to take advantage of it.
+	#
+	# It's a hot mess right now. It aims at being universal but you still need to have a Samsung Messages 
+	# or Google Message. 3-party apps can't support it because google hasn't released a public API yet.
+	# 
+	# In a lot of country messages go through Google's Jibe servers.
+	# https://jibe.google.com/policies/terms/	
+	#
+	# https://pocketnow.com/why-you-should-probably-avoid-googles-rcs-text-messaging-chat-feature
+	#
+	# Does this packages is really needed for VolTE/VoWifi?
 
 	#"com.qualcomm.qti.services.secureui"
 	# Qualcomm Secure UI Service.

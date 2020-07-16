@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 declare -a motorola=(
 	# I NEVER HAD A MOTOROLA DEVICE ON HAND. 
