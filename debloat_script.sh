@@ -18,7 +18,7 @@ readonly nBold=$(tput sgr0)
 trap 'catch' EXIT
 
 catch() {
-  printf "\n${BRED}%s\n" "[EXIT ERROR TRAP] Hum... something is wrong."
+  printf "\n\n${BRED}%s\n" "[EXIT ERROR TRAP] Hum... something is wrong."
   printf "\n%s\n" "Unless you interrupted yourself the script bravo, you found a bug. Please report it :"
   printf "%s${NC}\n\n" "https://gitlab.com/W1nst0n/universal-android-debloater/-/issues :)"
 }
@@ -28,23 +28,24 @@ for file in ./lists/* ; do
   if [ -f "$file" ] ; then . "$file"; fi
 done
 
-### GLOBAL VARIABLES ###
-readonly VERSION="v2.3.1 (June 20th 2020)"
-readonly PAD=$(((48-${#VERSION})/2))
-readonly BRAND=$(adb shell getprop ro.product.brand | awk '{print tolower($0)}')
-readonly BRAND_SUPPORTED=$( declare -p "$BRAND" &>/dev/null && echo "1" || echo "0") # Check if a $BRAND array is set
-
-# Legacy support
-readonly OLDER_THAN_ANDROID_7_1=$(( $(adb shell getprop ro.build.version.sdk | tr '\r' ' ') < 26))   # < Android 7.1 
-readonly OLDER_THAN_ANDROID_5=$((   $(adb shell getprop ro.build.version.sdk | tr '\r' ' ') < 21))   # < Android 5.0
-readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0") # '--user 0' option doesn't work sometimes
-
-FORCE_UNINSTALL=0
-RESTORE=0
-
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
+
+    readonly VERSION="v2.4 (July 16th 2020)"
+    readonly PAD=$(((48-${#VERSION})/2))
+
+    readonly BRAND="$(get_brand)"
+    readonly BRAND_SUPPORTED=$( declare -p "$BRAND" &>/dev/null && echo "1" || echo "0")
+
+    # Legacy support
+    readonly OLDER_THAN_ANDROID_7_1=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))   # < Android 7.1
+    readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))   # < Android 5.0
+    readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0" ) # '--user 0' option doesn't work sometimes
+
+    FORCE_UNINSTALL=0
+    RESTORE=0
+
     clear
     echo                                            " ================================================"
     echo                                            " #                                              #"
@@ -134,7 +135,6 @@ main() {
 debloat_or_restore() {
     local action="" # restore or debloat
     local output=""
-    [[ -v "$1" ]] && local -n list=$1 # list is a nameref. Array is passed by reference.
 
     (( RESTORE )) && action="cmd package install-existing \$package" || action="pm uninstall $OPTION_NEEDED \$package"
 
@@ -145,9 +145,12 @@ debloat_or_restore() {
 
     clear
 
-    if [[ -v "$1" ]]; then
-        printf "\n${BRED}%s${NC}\n"             "==== $1 debloat list ===="
+    if [[ $# -gt 0 ]]; then
 
+        # list is a nameref. Array is passed by reference.
+        [[ -v "$1" ]] && local -n list=$1
+
+        printf "\n${BORANGE}%s${NC}\n"             "==== $1 debloat list ===="
         for package in "${list[@]}"; do
             printf "${BRED}%s${NC} "            "$package -->"
             output=$(eval adb shell "$action") && echo "$output"
@@ -158,9 +161,11 @@ debloat_or_restore() {
         printf "\n${BRED}%s${NC}"               "Package name to $title : " | tr '[:upper:]' '[:lower:]'
         read -r package
         printf "${BRED}%s${NC}"                 "$package --> "
-        output=$(eval adb shell "$action") && echo "$output"
+        output="$(eval adb shell "$action")" || true
+        echo "$output"
         if ! [[ "$output" =~ Failure|Error ]] && (( !RESTORE )); then echo "$package" >> "debloated_packages.txt"; fi
         sleep 2
+
     fi
 }
 
@@ -225,6 +230,17 @@ check_backup_integrity() {
     
     else printf "${BGREEN}%s${NC}\n\n" "OK"
     fi
+}
+
+get_brand() {
+    local brand
+    brand=$(adb shell getprop ro.product.brand | tr -d '\r' | awk '{print tolower($0)}')
+
+    # Support for alternative name
+    case "$brand" in
+    "redmi") echo "xiaomi" ;;
+    *) echo "$brand"
+    esac
 }
 
 main "$@"; exit
