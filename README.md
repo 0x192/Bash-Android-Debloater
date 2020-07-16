@@ -15,7 +15,7 @@ In any case, you can NOT brick your device with this script! That's the main thi
 * [X] Quick search among all the packages of your phone
 * [X] Uninstallation of system/user packages (manually or with the debloat lists)
 * [X] Reinstallation of system packages (manually or with the debloat lists)
-* [X] ADB backup (not really reliable, see the FAQ)
+* [X] ADB backup (not really reliable, see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
 * [X] Device brand detection and auto-selection of the appropriate manufacturer debloat list
 * [X] Logs in `debloated_packages.txt` and `remaining_packages.txt`.
 * [ ] Installation of alternative open-source apps replacing stock apps (list in the WIKI section) (WIP)
@@ -124,7 +124,6 @@ For now, there is no USB support in the WSL. This means you need to install both
 ```bash
 $ sudo apt update && sudo apt upgrade
 $ sudo apt install android-sdk-platform-tools qpdf
-$ wget 
 ```
 - Check the version of ADB on Linux & Windows
 ```bash
@@ -163,6 +162,6 @@ $ bash debloat_script.sh
 
 ## How to contribute
 
-Hey-hey-hey! Don't go away so fast! This is a community project. That's mean I need you! I'm sure you want to make this project better anyway
+Hey-hey-hey! Don't go away so fast! This is a community project. That's mean I need you! I'm sure you want to make this project better anyway.
 
 ==> [How to contribute](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/home#how-to-contribute)
