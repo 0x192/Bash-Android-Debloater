@@ -634,27 +634,25 @@ declare -a samsung=(
 	# Samsung voice input 
 	# Voice input powered by Bixby. See above.
 
-	"com.samsung.android.themestore"
-	# Galaxy Themes
-	# Official Samsung app for modifying your smartphone's theme.
-	# https://www.samsung.com/global/galaxy/apps/galaxy-themes/
-
-	"com.samsung.android.timezone.updater" 
-	# Samsung Time Zone Updater
-	# Automatically updates the clock to correspond to your current time zone
-
-	"com.samsung.android.tripwidget"
-	# Discontinued package (used in Galaxy S4) handling trip wallpaper widget.
-
 	"com.samsung.android.themecenter"
 	# Samsung theme center
 	# Run at startup and enable you to download theme from samsung
 	# Safe to remove
 
-	#"com.samsung.android.timezone.autoupdate_O"
-	# Time Zone Update used to automatically detect appropriate timezone
+	"com.samsung.android.themestore"
+	# Galaxy Themes
+	# Official Samsung app for modifying your smartphone's theme.
+	# https://www.samsung.com/global/galaxy/apps/galaxy-themes/
+
+	#"com.samsung.android.timezone.updater"
+	#"com.samsung.android.timezone.autoupdate_O" 
+	# Samsung Time Zone Updater
+	# Used to automatically detect appropriate timezone
 	# If you delete this you'll still be able to select the timezone manually.
 	# Safe to remove (but not recommanded)
+
+	"com.samsung.android.tripwidget"
+	# Discontinued package (used in Galaxy S4) handling trip wallpaper widget.
 
 	"com.samsung.android.universalswitch"
 	# Universal Switch lets you designate certain touches or gestures to control specific actions on your phone. 
