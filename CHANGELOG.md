@@ -1,3 +1,7 @@
+# Hotfix (v2.4.1)
+
+- Fixed a mistake causing bootloop on some samsung devices (#16)
+
 # New Release (v2.4)
 
 Big thanks to @yawnoc, @gsurrel, @vasudev_gmk & @gafarma89 ! :+1:
