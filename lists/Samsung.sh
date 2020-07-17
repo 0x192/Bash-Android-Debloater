@@ -644,13 +644,6 @@ declare -a samsung=(
 	# Official Samsung app for modifying your smartphone's theme.
 	# https://www.samsung.com/global/galaxy/apps/galaxy-themes/
 
-	#"com.samsung.android.timezone.updater"
-	#"com.samsung.android.timezone.autoupdate_O" 
-	# Samsung Time Zone Updater
-	# Used to automatically detect appropriate timezone
-	# If you delete this you'll still be able to select the timezone manually.
-	# Safe to remove (but not recommanded)
-
 	"com.samsung.android.tripwidget"
 	# Discontinued package (used in Galaxy S4) handling trip wallpaper widget.
 
@@ -1474,6 +1467,12 @@ declare -a samsung=(
 
 #"com.samsung.android.SettingsReceiver"
 # Samsung overlay of AOSP Settings. It has 39 permissions. I guess it handles interactions with features controled by the settings.
+
+#"com.samsung.android.timezone.updater"
+#"com.samsung.android.timezone.autoupdate_O" 
+# Samsung Time Zone Updater
+# Used to automatically detect appropriate timezone
+# REMOVING THIS WILL BOOTLOOP YOUR DEVICE 
 
 #"com.samsung.android.app.soundpicker"
 # Lets you select a sound for alarm/ringtone
