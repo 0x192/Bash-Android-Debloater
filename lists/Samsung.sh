@@ -42,11 +42,12 @@ declare -a samsung=(
 
 	#"com.samsung.advp.imssettings"
 	# Needed for VoLTE, a standard for high-speed wireless communication (https://en.wikipedia.org/wiki/Voice_over_LTE)
-	# I don't really know the role of this package. It is obiously related to IMS, an open industry standard for
-	# voice and multimedia communications over IP.
+	# IMS id an open industry standard for voice and multimedia communications over IP.
+	# NOTE: this package is needed for messaging apps that sends SMS/RCS code to verify your phone number (see issue #17)
 
-	"com.samsung.accessibility" 
+	#"com.samsung.accessibility" 
 	# Accessibility settings (useful for apps creating virtual buttons such as a pie-menu)
+	# Weirdly, it can cause bootloop when removed if you set a lock code on your phone. (see issue #20)
 
 	"com.samsung.android.aircommandmanager"
 	# AirCommandManager manager
@@ -766,7 +767,11 @@ declare -a samsung=(
 	# https://images.samsung.com/is/content/samsung/p5/ch/business/enterprise-edition/Knox_Platform_for_Enterprise_Whitepaper_2019.pdf
 
 	"com.samsung.klmsagent"
-	# Part of KNOX. Don't know more
+	# Checks the validity of your KLM/KPE (Knox Licence Manager) licence.
+	# This packages is needed for Samsung Health (com.sec.android.app.shealth) and probably all Knox related apps (like secure folder, samsung Pay...)
+	# 
+	# Note: KLM licences are depreciated. Samsung now only support KPE (Knox Platform for Enterprise) keys.
+	# KPE keys are provided by Samsung and enable app's developers to access knox features.
 
 	"com.samsung.android.knox.analytics.uploader"
 	# Knox Analytics Uploader
@@ -825,7 +830,7 @@ declare -a samsung=(
 	# Some safety information telling you not to put your phone in your eyes (it's not a joke)
 
 	#"com.samsung.sdm"
-	# Handle OTA system Updates. 
+	# Handles OTA system Updates. 
 
 	#"com.samsung.sdm.sdmviewer" # [MORE INFO NEEDED]
 	# Lets you view installed updates?
@@ -863,7 +868,7 @@ declare -a samsung=(
 	# Boot agent
 	# UCS is a company which has partnered with Samsung to provide licenses for Samsung Knox
 	# https://www.ucssolutions.com/blog/samsung-knox/
-	# I don't have precise information about the package itself but there is chances that it verify some files on boot. If theses files are not verified
+	# I don't have precise information about the package itself but there are chances that it verifies some files on boot. If theses files are not verified
 	# then it prevent the phone to boot 
 
 	"com.samsung.ucs.agent.ese"
