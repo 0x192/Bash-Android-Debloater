@@ -32,7 +32,7 @@ done
 
 main() {
 
-    readonly VERSION="v2.4.1 (July 17th 2020)"
+    readonly VERSION="v2.4.2 (July 30th 2020)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"

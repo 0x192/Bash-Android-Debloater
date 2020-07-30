@@ -1,3 +1,8 @@
+# Hotfix (v2.4.2)
+
+- Fixed a potential bootloop on samsung phone (#20)
+- Improved `com.samsung.klmsagent` description according to #19
+
 # Hotfix (v2.4.1)
 
 - Fixed a mistake causing bootloop on some samsung devices (#16)
