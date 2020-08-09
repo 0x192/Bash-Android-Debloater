@@ -32,6 +32,7 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 ## Manufacturers debloat lists
 * [ ] Archos
 * [X] Asus
+* [ ] Blackberry
 * [X] LG
 * [X] Google
 * [ ] HTC
@@ -63,7 +64,7 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 <details>
 <summary>LINUX</summary>
 
-- Install *Android plateform tools* and *qpdf* on your PC :
+- Install *Android platform tools* and *qpdf* on your PC :
 
 Debian Base :
 ```bash
@@ -112,7 +113,7 @@ $ echo $BASH_VERSION
 <summary>WINDOWS</summary>
 
 For now, there is no USB support in the WSL. This means you need to install both Windows and Linux platform-tools and force the use of Windows adb server.
-- Download [android platefrom tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
+- Download [android platfrom tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 - [Install USB drivers of your device](https://developer.android.com/studio/run/oem-usb#Drivers)
 - Check your device is detected :
 ```batch
@@ -120,7 +121,7 @@ For now, there is no USB support in the WSL. This means you need to install both
 ```
 
 - Install [WSL2 (Windows Subsystem for Linux)](https://itsfoss.com/install-bash-on-windows/) in order to be able to run bash scripts.
-- Install *Android plateform tools* and *qpdf* from the Debian/Ubuntu shell
+- Install *Android platform tools* and *qpdf* from the Debian/Ubuntu shell
 ```bash
 $ sudo apt update && sudo apt upgrade
 $ sudo apt install android-sdk-platform-tools qpdf
@@ -130,7 +131,7 @@ $ sudo apt install android-sdk-platform-tools qpdf
 adb version
 ```
 You need the same version otherwise it will not work. It's very likely your Ubuntu/Debian ADB version is older than the Windows one. 
-Download the lastest linux plateform tools from Google and replace your adb binaries with the new ones :
+Download the lastest linux platform tools from Google and replace your adb binaries with the new ones :
 ```bash
 $ wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 $ unzip platform-tools-latest-linux.zip
