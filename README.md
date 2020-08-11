@@ -1,4 +1,4 @@
-# Universal Android Debloater [![Awesome Humane Tech](https://raw.githubusercontent.com/humanetech-community/awesome-humane-tech/main/humane-tech-badge.svg?sanitize=true)](https://github.com/humanetech-community/awesome-humane-tech)
+# Universal Android Debloater
 
 **DISCLAIMER**: Use this script at your own risk. I am not responsible for anything that could happen to your phone. 
 
@@ -56,8 +56,8 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 | Bouygues / Sosh | AT&T     |            |
 
 ## How to use it 
-- **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ) !**
-- **Do a proper backup of your data ! You can never be too careful !**
+- **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ)!**
+- **Do a proper backup of your data! You can never be too careful!**
 - Enable *Developer Options* on your smartphone.
 - Turn on *USB Debugging* from the developper panel.
 - From the settings, disconnect from any OEM accounts (when you delete OEM account package it could lock you on the lockscreen because the phone can't associate your identity anymore)
