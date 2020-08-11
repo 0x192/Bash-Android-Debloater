@@ -211,6 +211,14 @@ declare -a misc=(
 	# DraftKings - Daily Fantasy Sports for Cash
 	# App has been removed from the Playstore.
 	# Worth reading : https://en.wikipedia.org/wiki/DraftKings
+
+	"com.bleacherreport.android.teamstream"
+	# Bleacher Report (https://play.google.com/store/apps/details?id=com.bleacherreport.android.teamstream)
+	# Sports news site
+
+	"com.wb.goog.got.conquest"
+	# Game of Thrones: Conquest (https://play.google.com/store/apps/details?id=com.wb.goog.got.conquest)
+	# Mobile game
 	
 	"com.drivemode"
 	# Drivemode (https://play.google.com/store/apps/details?id=com.drivemode.android)
