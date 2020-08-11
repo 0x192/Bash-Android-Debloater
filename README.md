@@ -1,4 +1,4 @@
-# Universal Android Debloater
+# Universal Android Debloater [![Awesome Humane Tech](https://raw.githubusercontent.com/humanetech-community/awesome-humane-tech/main/humane-tech-badge.svg?sanitize=true)](https://github.com/humanetech-community/awesome-humane-tech)
 
 **DISCLAIMER**: Use this script at your own risk. I am not responsible for anything that could happen to your phone. 
 
@@ -60,6 +60,7 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 - **Do a proper backup of your data ! You can never be too careful !**
 - Enable *Developer Options* on your smartphone.
 - Turn on *USB Debugging* from the developper panel.
+- From the settings, disconnect from any OEM accounts (when you delete OEM account package it could lock you on the lockscreen because the phone can't associate your identity anymore)
 <p>
 <details>
 <summary>LINUX</summary>
@@ -113,7 +114,7 @@ $ echo $BASH_VERSION
 <summary>WINDOWS</summary>
 
 For now, there is no USB support in the WSL. This means you need to install both Windows and Linux platform-tools and force the use of Windows adb server.
-- Download [android platfrom tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
+- Download [android platform tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 - [Install USB drivers of your device](https://developer.android.com/studio/run/oem-usb#Drivers)
 - Check your device is detected :
 ```batch
@@ -164,6 +165,6 @@ $ bash debloat_script.sh
 
 ## How to contribute
 
-Hey-hey-hey! Don't go away so fast! This is a community project. That's mean I need you! I'm sure you want to make this project better anyway.
+Hey-hey-hey! Don't go away so fast! This is a community project. That means I need you! I'm sure you want to make this project better anyway.
 
 ==> [How to contribute](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/home#how-to-contribute)
