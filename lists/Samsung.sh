@@ -48,6 +48,14 @@ declare -a samsung=(
 	#"com.samsung.accessibility" 
 	# Accessibility settings (useful for apps creating virtual buttons such as a pie-menu)
 	# Weirdly, it can cause bootloop when removed if you set a lock code on your phone. (see issue #20)
+	
+	"com.samsung.android.app.tips"
+	# Tips on how to use your phone"
+
+	"com.samsung.android.net.wifi.wifiguider"
+	# Wi-Fi Tips
+	# I've never seen any "wifi tips" so I'm not sure if this app has any other functionality
+	# Upon reinstalling a notification pops up saying "Analyzing Wi-Fi" for a few seconds, no idea what it's doing
 
 	"com.samsung.android.aircommandmanager"
 	# AirCommandManager manager
@@ -96,6 +104,27 @@ declare -a samsung=(
 	# Annoying Stickers/stamps of the Samsung camera app. C'mon it feels like Snapshat.
 	# https://developer.samsung.com/galaxy/stickers
 	# Safe to remove
+
+	"com.samsung.android.arzone"
+	# AR Zone
+	# Lets you access other AR apps.
+
+	"com.samsung.android.aremojieditor"
+	# AR Emoji Editor
+	# Edits those AR people emoji things
+
+	"com.samsung.android.livestickers"
+	# Deco Pic (accessible through AR Zone)
+	# Camera app with stickers and snapchat-like filters
+
+	"com.samsung.android.ardrawing"
+	# AR Doodles (accessible through AR Zone)
+	# Lets you draw on your face using the front camera and uses AR Core for drawing on the environment with the rear camera.
+	# Only Sasmung AR app (afaik) that requests location access, and it refuses to run without it
+
+	"com.samsung.android.visionarapps"
+	# "AR apps"
+	# Not really sure what this is, but the icon is Bixby as an eye so I assume it's for accessing AR stuff through Bixby.
 
 	"com.samsung.android.app.camera.sticker.facearframe.preload" # [MORE INFO NEEDED]
 	# Frames sticker ? 
@@ -1054,6 +1083,7 @@ declare -a samsung=(
 	"com.sec.android.desktopcommunity" # [MORE INFO NEEDED]
 	# Samsung DeX panel
 
+	"com.sec.android.app.dexonpc"
 	"com.sec.android.desktopmode.uiservice"
 	# Samsung DeX
 	# Extends your smartphone into a "desktop computing experience".
@@ -1445,6 +1475,9 @@ declare -a samsung=(
 	# Software update
 	# Fetch System OTA updates
 	# Works along com.sec.android.soagent
+	
+	"com.monotype.android.font.samsungone"
+	# SamsungOne font
 
 	"com.wsomacp"
 	# omacp = OMA Client Provisioning. It is a protocol specified by the Open Mobile Alliance (OMA).

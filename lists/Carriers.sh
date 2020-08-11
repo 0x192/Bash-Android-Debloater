@@ -411,6 +411,10 @@ declare -a us_carriers=(
    "com.att.mobiletransfer"
    # AT&T Mobile Transfer
    # Lets you transfert user data from an older AT&T phone to a new one.
+   
+   "com.synchronoss.dcs.att.r2g"
+   # Setup & Transfer
+   # App for transferring "contacts, photos, videos, music, call logs, and documents" from another device
 
    "com.att.myWireless"
    # My AT&T (https://play.google.com/store/apps/details?id=com.att.myWireless)
@@ -468,6 +472,9 @@ declare -a us_carriers=(
    # Parental control app.
    # 7 trackers + 16 permissions (https://reports.exodus-privacy.eu.org/en/reports/com.wavemarket.waplauncher/latest/)
 
+   "com.samsung.attvvm"
+   # Visual Voicemail
+   # Simple GUI for voicemail
    )
 
 declare -a french_carriers=(
