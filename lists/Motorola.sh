@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-declare -a motorola=(
-	# I NEVER HAD A MOTOROLA DEVICE ON HAND. 
-	# I did some intensive searches on the web to find a list and I try my best to document it but I need Motorola users to really improve it.
-	# I use [MORE INFO NEEDED] tag as a marker.
+# List compiled by "W1nst0n". Tested and improved by "Plan 10" on an unlocked Moto G7 Power in Australia.
+# Improvement from other Motorola users still needed to improve it.
+# [MORE INFO NEEDED] tag used as a marker, where information is lacking.
 
+declare -a motorola=(
+	
 	"android.autoinstalls.config.motorola.layout" # [MORE INFO NEEDED]
 	# Device configuration for Motorola 
 	# AutoInstall allows manufacturers to force installation of apps.
 	# Just a layout ? 
 
-	"com.lenovo.lsf.user" # [MORE INFO NEEDED]
-	# Lenovo ID 
-	# Lenovo ID (Lenovo account) gives you access to additional or exclusive features directly from Lenovo and its partners. 
-	# I guess this package enables you to log in to lenovo account.
+	"com.lenovo.lsf.user"
+	# Lenovo ID adds an option in Settings>Accounts where you can login to a Lenovo ID account.
+	# Features include "exclusive features directly from Lenovo and our partners" and "syncing users information across devices"
 	# lsf = Lenovo Service Framework
 
 	"com.lmi.motorola.rescuesecurity"
@@ -22,8 +22,8 @@ declare -a motorola=(
 	# It enables motorola representatives to login and remotely control the device for technical support.
 
 	"com.motorola.android.fmradio"
-	# FM Radio Service 
-	# Seems to have been replaced by "com.motorola.fmplayer"
+	# FMRadioService 
+	# Required by "com.motorola.fmplayer"
 
 	"com.motorola.android.jvtcmd"
 	# Java Tcmd Helper
@@ -40,7 +40,7 @@ declare -a motorola=(
 	# https://forum.xda-developers.com/android/apps-games/app-chrome-homepage-t3695804
 
 	# "com.motorola.android.providers.settings"
-	# I'm not sure about this one. Sometimes, settings providers cause bootloop.
+	# Removal causes bootloop. Which is fairly common with settings providers.
 	# REMINDER : Content providers help an application manage access to data stored by itself, stored by other apps, 
 	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
 	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
@@ -52,22 +52,25 @@ declare -a motorola=(
 	# In my case, it was automatic and I never needed configuration messages. I'm pretty sure that in France this package is useless.
 	# Maybe it's useful if carriers change their APN... but you still can change it manually, it's not difficult.
 	#
-	# Npte : These special "confirguration SMS" can be abused : 
+	# Note : These special "confirguration SMS" can be abused : 
 	# https://www.zdnet.fr/actualites/les-smartphones-samsung-huawei-lg-et-sony-vulnerables-a-des-attaques-par-provisioning-39890045.htm
 	# https://www.csoonline.com/article/3435729/sms-based-provisioning-messages-enable-advanced-phishing-on-android-phones.html
 
 	"com.motorola.android.settings.diag_mdlog"
 	# diag_mdlog is a small proprietary Qualcomm program which can store DIAG logs on the filesystem.
+	# No longer in Android 10 image
 
 	"com.motorola.android.settings.modemdebug" # [MORE INFO NEEDED]
-	# Provide modem debug settings menu ? 
+	# Provide modem debug settings menu ?
+	# No longer in Android 10 image
 
 	"com.motorola.appdirectedsmsproxy" # [MORE INFO NEEDED]
 	# An Application directed SMS (or rather a Port directed SMS) is an SMS directed to a specific port. 
 	# Apps need to listen to this port to get the SMS message.
 	# I don't know if this package allows port directed SMS or if it just provide a proxy feature.
 
-	"com.motorola.audiofx"
+	#"com.motorola.audiofx"
+	# Removal causes bootloop since Android 10!
 	# Audio effects
 	# Provide features like Equalizer, Surround sound...
 
@@ -134,8 +137,11 @@ declare -a motorola=(
 	# https://support.motorola.com/us/en/documents/MS116403/
 
 	"com.motorola.genie"
-	# Device Help (https://play.google.com/store/apps/details?id=com.motorola.genie)
-	# Provide support features.
+	# Device Help (previously Moto Help) (https://play.google.com/store/apps/details?id=com.motorola.genie)
+	# An app that checks hardware status and gives the user contacts for support.
+
+	"com.motorola.help"
+	# Moto feedback. Safe to remove.
 
 	"com.motorola.lifetimedata"
 	# Not 100% sure but it's most likely the Total Call Timer or more generally it handles info like the date of manufacture of your device,
@@ -143,17 +149,19 @@ declare -a motorola=(
 	# Total Call Timer gives you the time you spent calling.
 	# I don't know how to access to these info. It's surely a hidden menu (and may be accessible through the dialer with a special code)
 
+	"com.motorola.hiddenmenuapp" # [MORE INFO NEEDED]
+	# Added in Android 10. Safe to remove.
+
 	"com.motorola.moto"
 	# Moto (https://play.google.com/store/apps/details?id=com.motorola.moto)
 	# App providing Moto Actions, Moto Display, and other feature families that let you customize the way you interact with your device. 
-	# I don't really understand because Moto Actions is another app (https://play.google.com/store/apps/details?id=com.motorola.actions)
+	# Moto Actions is another app (https://play.google.com/store/apps/details?id=com.motorola.actions). Gestures set with "Moto" prior will continue to work provided "Moto Actions" remains installed.
 
 	"com.motorola.motocare" # [MORE INFO NEEDED]
 	# Moto Care was renamed in "Moto Help" and then in "Device Help"
 	# Provide support features.
 	# https://mobile.softpedia.com/blog/Moto-Care-App-Gets-Updated-Now-Called-Motorola-Help-432827.shtml
 	# However you can both have com.motorola.genie (Device Help) and this package so it's strange. 
-
 	"com.motorola.motocare.internal" # [MORE INFO NEEDED]
 	# Core stuff for the package above I guess.
 	
@@ -167,11 +175,12 @@ declare -a motorola=(
 	# Displays notifications with the screen off (it's like the Always On Display feature from Samsung)
 	# https://support.motorola.com/uk/en/solution/ms108519
 
-	"com.motorola.msimsettings"
+	#"com.motorola.msimsettings"
 	# Dual SIM Settings
 	# Provides Dual SIM feature.
 
-	"com.motorola.paks" # [MORE INFO NEEDED]
+	#"com.motorola.paks" # [MORE INFO NEEDED]
+	# ADB: Package Protected
 	# My Q Paks ? 
 	# Third-party application bundles
 	# https://www.financialmirror.com/2007/10/31/motorola-packs-moto-q-9h-global-smart-device-with-third-party-applications/
@@ -186,6 +195,7 @@ declare -a motorola=(
 	# It offers unlimited calling between other users and Nextel phone owners, rather than universal calling credit, 
 	# and works on a monthly subscription basis.
 	# https://prip.me/#get
+	# No longer in Android 10 image
 
 	"com.motorola.setup" # [MORE INFO NEEDED]
 	# Related to Motorola Account setup (only during first boot ?)
@@ -202,7 +212,8 @@ declare -a motorola=(
 	# Provides time/weather widget on the home screen.
 	# https://en.wikipedia.org/wiki/Widget
 
-	"com.motorola.timezonedata"
+	#"com.motorola.timezonedata"
+	# Removal causes bootloop since Android 9!
 	# Time Zone Data (https://play.google.com/store/apps/details?id=com.motorola.timezonedata)
 	# Update timezone when traveling to foreign countries.
 	# According to reviews this app works really badly.
@@ -215,34 +226,45 @@ declare -a motorola=(
 
 	"com.motorola.actions"
 	# Moto Actions (https://play.google.com/store/apps/details?id=com.motorola.actions)
-	# Allows you to perform specific gestures to perform certain tasks.
+	# Allows you to perform specific gestures to perform certain tasks. Frontend to change settings provided by "com.motorola.moto".
 
-	#"com.motorola.carriersettingsext" # [MORE INFO NEEDED]
+	"com.motorola.gesture"
+	# Gesture navigation tutorial added in Android 10.
+
+	"com.motorola.carriersettingsext" # [MORE INFO NEEDED]
+	# Seems safe to remove for now.
 	# Carrier settings ext
 	# ext = extension ?
 	# Carrier settings contains APN settings for instance.
-	# I couldn't find any info about this package. I don't think it's safe to remove.
+
+	#"com.motorola.callredirectionservice" # [MORE INFO NEEDED]
+	# Added in Android 10. Safe to remove.
 
 	#"com.motorola.ccc.ota"
 	# Motorola Update Services
 	# Provide OTA system updates.
 	# OTA (Over-The-Air) updates allow manufacturers to remotely install new software updates, features and services.
 
-	#"com.motorola.comcast.settings.extensions" # [MORE INFO NEEDED]
+	"com.motorola.comcast.settings.extensions" # [MORE INFO NEEDED]
 	# Most likely provides a special settings menu for Comcast stuff.
-	# I think it's safe to delete given it's surely a comcast addon but I need confirmation. 
 	# I think it's installed on Xfinity branded phones.
+	# Safe to remove (tested only on non-Comcast phone).
 
-	#"com.motorola.comcastext" # [MORE INFO NEEDED]
-	# Provide special (useless) features from Comcast ?
-	# See above.
+	"com.motorola.comcastext" # [MORE INFO NEEDED]
+	# See above. Provide special (useless) features from Comcast? App title is "Activation".
+	# Safe to remove (tested only on non-Comcast phone).
+	
+	#"com.motorola.visualvoicemail"
+	# ADB: Marked as non-disable
+	# Verizon Visual Voicemail (https://play.google.com/store/apps/details?id=com.motorola.visualvoicemail)
+	# On non-Verizon phones it has a generic "Voicemail" name and icon, and doesn't seem to active.
 
 	# "com.motorola.entitlement"
 	# Enable WiFi tethering/hotspot functionality. 
 	# What you can do is preventing the phone from notifying the carrier about when you use hotspot. It will bypass mobile carriers tethering restrictions.
 	# From an ADB shell : settings put global tether_dun_required 0
 
-	#"com.motorola.faceunlock"
+	"com.motorola.faceunlock"
 	# Moto Face Unlock (https://play.google.com/store/apps/details?id=com.motorola.faceunlock)
 	# Lets you conveniently unlock your device by simply looking at the display. 
 	# Note : Using face unlock is a really bad idea (security and privacy wise) : 
@@ -250,7 +272,7 @@ declare -a motorola=(
 	# https://www.kaspersky.com/blog/face-unlock-insecurity/21618/
 	# https://www.freecodecamp.org/news/why-you-should-never-unlock-your-phone-with-your-face-79c07772a28/
 
-	#"com.motorola.faceunlocktrustagent"
+	"com.motorola.faceunlocktrustagent"
 	# Motorola Face Unlock Agent
 	# Trust agent is a service that notifies the system about whether it believes the environment of the device to be trusted.
 	# The exact meaning of 'trusted' is up to the trust agent to define. 
@@ -258,13 +280,15 @@ declare -a motorola=(
 	# (e.g detection of a trusted face)
 	# https://nelenkov.blogspot.com/2014/12/dissecting-lollipops-smart-lock.html
 
+	#"com.motorola.imagertuning_athene"
 	#"com.motorola.imagertuning_ocean"
+	#"com.motorola.imagertuning_lake"
 	# Imager Tuning (https://play.google.com/store/apps/details?id=com.motorola.imagertuning_athene)
-	# ocean is a model name of a Motorola G7.
+	# Naming convention: imagertuning_[PHONE CODENAME]
 	# It's supposed to improve color, sharpness, noise when taking photo with the stock camera. 
 	# The results are not that good (see reviews). I let you see the difference with/without the camera tuning.
 
-	#"com.motorola.invisiblenet" # [MORE INFO NEEDED]
+	"com.motorola.invisiblenet" # [MORE INFO NEEDED]
 	# Invisible net
 	# Hard to find info about this one. I only found something from a patent (http://www.freepatentsonline.com/5469497.html).
 	# It's a Google patent and Google owned Motorola so maybe it is that's it.
@@ -281,7 +305,12 @@ declare -a motorola=(
 	# I guess launcher will not work anymore if you delete this package. Can someone confirm ?
 	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
 
-	#"com.motorola.motosignature.app" # [MORE INFO NEEDED]
+	#"com.motorola.launcher.secondarydisplay" [MORE INFO NEEDED]
+	# ADB: package is non-disable
+	# Appears to enable support for a secondary display with Moto's launcher.
+
+	"com.motorola.motosignature.app" # [MORE INFO NEEDED]
+	# Appears safe to remove.
 	# Maybe it's the service which check whether app's signature is trusted or not.
 	# Not useful if you know what you're doing (malwares apps are in PlayStore. This package will not protect you)
 	# Maybe I'm mistaken and this package does not handles app signatures. Can someone test it.
@@ -289,23 +318,23 @@ declare -a motorola=(
 	#"com.motorola.nfc"
 	# Support for NFC protocol.
 
-	#"com.motorola.omadm.service" # [MORE INFO NEEDED]
+	"com.motorola.omadm.service" # [MORE INFO NEEDED]
+	# Appears safe to remove.
 	# Carrier Provisioning Service
 	# Provisioning involves the process of preparing and equipping a network to allow it to provide new services to its users.
 	# OMADM  = OMA Device Management
 	# Basically, it handles configuration of the device (including first time use), enabling and disabling features provided by carriers.
 	# https://en.wikipedia.org/wiki/OMA_Device_Management
 	# Use case seems very limited : https://www.androidpolice.com/2015/03/10/android-5-1-includes-new-carrier-provisioning-api-allows-carriers-easier-methods-of-setting-up-services-on-devices-they-dont-control/
-	# Can someone test to remove it ? :)
 
-	#"com.motorola.pgmsystem2" # [MORE INFO NEEDED]
+	"com.motorola.pgmsystem2" # [MORE INFO NEEDED]
+	# Appears safe to remove
 	# PGM System
 	# I didn't find info about this package. 
 	# For Me PGM = Peak Gate Power (for MOSFET transistor) but I'm not convinced it has this meaning here.
 
-	#"com.motorola.systemserver"
-	# ???
-	# At first sight it seems not safe to remove. But maybe it's only needed for Motorola apps.
+	"com.motorola.systemserver" # [MORE INFO NEEDED]
+	# Appears safe to remove. Maybe it's only needed for Motorola apps?
 
 	#"com.motorola.VirtualUiccPayment"
 	# Virtual UICC Payment
@@ -314,15 +343,16 @@ declare -a motorola=(
 	# Note: The term SIM is widely used in the industry and especially with consumers to mean both SIMs and UICCs.
 	# https://www.justaskgemalto.com/us/what-uicc-and-how-it-different-sim-card/
 
+	"com.motorola.config.wifi" # [MORE INFO NEEDED]
+	# Appears safe to remove.
+	# WPA config App
+	# Wi-Fi not affected after removal.
+
+	"com.motorola.coresettingsext" # [MORE INFO NEEDED]
+	# Appears safe to remove.
+	# Core Settings ext
+	# ext = extension 
+	# I don't know but it's rarely a good idea to remove "core" stuff. I'm curious tho. Can someone delete it to see what happens ?
+
 	)
 
-############# DO NOT REMOVE THIS (will prevent core stuff to work) ###################
-
-#"com.motorola.config.wifi" # [MORE INFO NEEDED]
-# WPA config App
-# I'm pretty sure it's needed to connect the device to wifi network but maybe not... can someone test ? 
-
-#"com.motorola.coresettingsext" # [MORE INFO NEEDED]
-# Core Settings ext
-# ext = extension 
-# I don't know but it's rarely a good idea to remove "core" stuff. I'm curious tho. Can someone delete it to see what happens ?
