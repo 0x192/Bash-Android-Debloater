@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-# List compiled by "W1nst0n". Tested and improved by "Plan 10" on an unlocked Moto G7 Power in Australia.
-# Improvement from other Motorola users still needed to improve it.
 # [MORE INFO NEEDED] tag used as a marker, where information is lacking.
+# List (with default selection) officially tested and improved with a Moto G7 Power (Android 9 & 10) by @plan10
 
 declare -a motorola=(
 	
@@ -39,12 +38,6 @@ declare -a motorola=(
 	# Seems to only prodive the "home" symbol in Chrome.
 	# https://forum.xda-developers.com/android/apps-games/app-chrome-homepage-t3695804
 
-	# "com.motorola.android.providers.settings"
-	# Removal causes bootloop. Which is fairly common with settings providers.
-	# REMINDER : Content providers help an application manage access to data stored by itself, stored by other apps, 
-	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
-	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
-
 	"com.motorola.android.provisioning"
 	# OMA Client Provisioning
 	# It is a protocol specified by the Open Mobile Alliance (OMA).
@@ -68,11 +61,6 @@ declare -a motorola=(
 	# An Application directed SMS (or rather a Port directed SMS) is an SMS directed to a specific port. 
 	# Apps need to listen to this port to get the SMS message.
 	# I don't know if this package allows port directed SMS or if it just provide a proxy feature.
-
-	#"com.motorola.audiofx"
-	# Removal causes bootloop since Android 10!
-	# Audio effects
-	# Provide features like Equalizer, Surround sound...
 
 	"com.motorola.bach.modemstats"
 	# ModemStatsService
@@ -140,8 +128,12 @@ declare -a motorola=(
 	# Device Help (previously Moto Help) (https://play.google.com/store/apps/details?id=com.motorola.genie)
 	# An app that checks hardware status and gives the user contacts for support.
 
+	"com.motorola.gesture"
+	# Gesture navigation tutorial added in Android 10.
+
 	"com.motorola.help"
-	# Moto feedback. Safe to remove.
+	# Moto feedback (https://play.google.com/store/apps/details?id=com.motorola.help)
+	# Lets you rate your device and share feedback with Motorola.
 
 	"com.motorola.lifetimedata"
 	# Not 100% sure but it's most likely the Total Call Timer or more generally it handles info like the date of manufacture of your device,
@@ -161,7 +153,8 @@ declare -a motorola=(
 	# Moto Care was renamed in "Moto Help" and then in "Device Help"
 	# Provide support features.
 	# https://mobile.softpedia.com/blog/Moto-Care-App-Gets-Updated-Now-Called-Motorola-Help-432827.shtml
-	# However you can both have com.motorola.genie (Device Help) and this package so it's strange. 
+	# However you can both have com.motorola.genie (Device Help) and this package so it's strange.
+
 	"com.motorola.motocare.internal" # [MORE INFO NEEDED]
 	# Core stuff for the package above I guess.
 	
@@ -175,13 +168,9 @@ declare -a motorola=(
 	# Displays notifications with the screen off (it's like the Always On Display feature from Samsung)
 	# https://support.motorola.com/uk/en/solution/ms108519
 
-	#"com.motorola.msimsettings"
-	# Dual SIM Settings
-	# Provides Dual SIM feature.
-
-	#"com.motorola.paks" # [MORE INFO NEEDED]
-	# ADB: Package Protected
-	# My Q Paks ? 
+	"com.motorola.paks" # [MORE INFO NEEDED]
+	# ADB: Package Protected.
+	# My Q Paks 
 	# Third-party application bundles
 	# https://www.financialmirror.com/2007/10/31/motorola-packs-moto-q-9h-global-smart-device-with-third-party-applications/
 
@@ -212,13 +201,6 @@ declare -a motorola=(
 	# Provides time/weather widget on the home screen.
 	# https://en.wikipedia.org/wiki/Widget
 
-	#"com.motorola.timezonedata"
-	# Removal causes bootloop since Android 9!
-	# Time Zone Data (https://play.google.com/store/apps/details?id=com.motorola.timezonedata)
-	# Update timezone when traveling to foreign countries.
-	# According to reviews this app works really badly.
-
-
 	################## ADVANCED DEBLOAT ################
 
 	#"com.motorola.camera2"
@@ -227,9 +209,6 @@ declare -a motorola=(
 	"com.motorola.actions"
 	# Moto Actions (https://play.google.com/store/apps/details?id=com.motorola.actions)
 	# Allows you to perform specific gestures to perform certain tasks. Frontend to change settings provided by "com.motorola.moto".
-
-	"com.motorola.gesture"
-	# Gesture navigation tutorial added in Android 10.
 
 	"com.motorola.carriersettingsext" # [MORE INFO NEEDED]
 	# Seems safe to remove for now.
@@ -259,7 +238,7 @@ declare -a motorola=(
 	# Verizon Visual Voicemail (https://play.google.com/store/apps/details?id=com.motorola.visualvoicemail)
 	# On non-Verizon phones it has a generic "Voicemail" name and icon, and doesn't seem to active.
 
-	# "com.motorola.entitlement"
+	#"com.motorola.entitlement"
 	# Enable WiFi tethering/hotspot functionality. 
 	# What you can do is preventing the phone from notifying the carrier about when you use hotspot. It will bypass mobile carriers tethering restrictions.
 	# From an ADB shell : settings put global tether_dun_required 0
@@ -349,10 +328,30 @@ declare -a motorola=(
 	# Wi-Fi not affected after removal.
 
 	"com.motorola.coresettingsext" # [MORE INFO NEEDED]
-	# Appears safe to remove.
-	# Core Settings ext
-	# ext = extension 
-	# I don't know but it's rarely a good idea to remove "core" stuff. I'm curious tho. Can someone delete it to see what happens ?
+	# Core Settings extension
+	# Safe to remove (no bootloop) but its usefulness remains unkown.
 
 	)
 
+
+#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
+
+#"com.motorola.android.providers.settings"
+# Removal causes bootloop. Which is fairly common with settings providers.
+# REMINDER : Content providers help an application manage access to data stored by itself, stored by other apps, 
+# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
+# Source : https://developer.android.com/guide/topics/providers/content-providers.html
+
+#"com.motorola.msimsettings"
+# Dual SIM Settings
+# Provides Dual SIM feature.
+
+#"com.motorola.timezonedata"
+# /!\ Causes bootloop on Moto G7 Power (Android 9/10)
+# Time Zone Data (https://play.google.com/store/apps/details?id=com.motorola.timezonedata)
+# Update timezone when traveling to foreign countries.
+
+#"com.motorola.audiofx"
+# /!\ Removal causes bootloop on Moto G7 Power (Android 10)
+# Audio effects
+# Provide features like Equalizer, Surround sound...
