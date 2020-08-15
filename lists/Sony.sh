@@ -311,6 +311,11 @@ declare -a sony=(
 	# such as exclusive Xperia Themes and wallpapers, as well as competitions.
 	# https://www.phonearena.com/news/Sony-Xperia-Lounge-shutting-down_id118252
 
+	"com.sonymobile.xperiaxlivewallpaper"
+	"com.sonymobile.xperiaxlivewallpaper.product.res.overlay"
+	# Xperia Loops
+	# Useless and ugly live wallaper from Sony.
+
 	"com.sonymobile.xperiaservices" # [MORE INFO NEEDED]
 	# Xperia services
 	# I guess it provides things for Sony apps but I don't know what.
