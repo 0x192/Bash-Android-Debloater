@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ### These packages will be added in the default selection when I will find time to document them.
-# It should be safe but you still need to be **VERY** careful.
+# It should be safe but you still need to be **VERY** careful. 
 
 # REMINDER : "Safe" only means "does not cause bootloop". 
 # These packages can definitely break features (but you can easily reinstall them with the script)
@@ -25,34 +25,31 @@ declare -a pending=(
 	"com.factory.mmigroup"
 
 	########## THIRD PARTY ###########
-	"com.microsoft.translator"
+
 	"com.realvnc.android.remote"
 	"com.hicloud.android.clone"
 	#"com.hisi.mapcon" # "wi-fi calling" feature
 	"com.ironsource.appcloud.oobe.huawei"
 	"com.qti.confuridialer"
+	"co.sitic.pp"
 	#"com.qualcomm.cabl"
 	#"com.qualcomm.svi"
 	#"com.qualcomm.uimremoteserver"
 	#"com.qualcomm.wfd.service"
 	#"com.trustonic.teeservice"
 	#"com.wssnps"
+	#"com.gti.qualcomm.datastatusnotification"
 
 
 	############# SAMSUNG #############
-	
-	"com.galaxyfirsatlari"
-	"com.gd.mobicore.pa"
-
 	"com.samsung.accessory"
 	"com.samsung.accessory.beansmgr"
 	"com.samsung.accessory.safiletransfer"
 	"com.samsung.android.app.accesscontrol"
 	"com.samsung.android.app.color"
-	"com.samsung.android.app.multiwindow"
+	#"com.samsung.android.app.multiwindow"
 	"com.samsung.android.app.panel.naver.v"
-	"com.samsung.android.coreapps"
-	"com.samsung.android.emojiupdater"
+	#"com.samsung.android.coreapps"
 	"com.samsung.android.gearoplugin"
 	"com.samsung.android.knox.containerdesktop" # KnowContainerDesktop
 	"com.samsung.android.rubin.app"
@@ -91,6 +88,10 @@ declare -a pending=(
 	"com.sec.hiddenmenu"
 	#"com.sec.phone"
 	"com.setk.widget"
+	#"com.samsung.vvm.se"
+	#"com.sansumg.SMT"
+	#"com.sec.android.app.setupwizard"
+	#"com.sec.android.inputmethod.beta"
 
 	############### SONY ##############	
 	"com.sonymobile.devicesecurity.service"
@@ -98,9 +99,6 @@ declare -a pending=(
 	"com.sonymobile.indeviceintelligence"
 	"com.sonymobile.swiqisystemservice"
 	"com.sonymobile.themes.xperialoops2"
-	"com.sonymobile.xperiaxlivewallpaper"
-	"com.sonymobile.xperiaxlivewallpaper.product.res.overlay"
-
 
 	############# HUAWAI ##############
 	"com.huawei.android.pushagent"
@@ -110,18 +108,23 @@ declare -a pending=(
 	"com.huawei.android.wfdft"
 	"com.huawei.bd"
 	"com.huawei.contacts.sync"
-	"com.huawei.HwMultiScreenShot" # screenshot with scroll
 	"com.huawei.KoBackup"
-	"com.huawei.livewallpaper.artflower"
-	"com.huawei.livewallpaper.flowersbloom"
-	"com.huawei.livewallpaper.mountaincloud"
-	"com.huawei.livewallpaper.naturalgarden"
-	"com.huawei.livewallpaper.ripplestone"
 	"com.huawei.mirrorlink"
-	"com.huawei.phoneservice" # HiCare app.
 	"com.huawei.securitymgr"
-	"com.huawei.tips"
-	"com.huawei.vassistant" # HiVoice app
+
+	############## NOKIA ##############
+	"com.evenwell.batteryprotect.overlay.d.base.s600e0"
+	"com.evenwell.factorywizard.overlay.base"
+	"com.evenwell.phone.overlay.base"
+	"com.evenwell.powersaving.g3.overlay.d.base.s600e0"
+	"com.evenwell.settings.data.overlay.base"
+	"com.evenwell.SetupWizard.overlay.base"
+	"com.evenwell.SetupWizard.overlay.d.base.s600ww"
+	"com.evenwell.whitebalance"
+	"com.evenwell.whitebalance.overlay.base"
+	"com.hmdglobal.datago"
+	"com.hmdglobal.datago.overlay.base"
+	"com.hmdglobal.enterprise.api"
 
 
 	########## XIAOMI ###############
@@ -187,3 +190,4 @@ declare -a pending=(
 	"com.mediatek.providers.drm"
 	"com.mediatek.wfo.impl"
 	)
+	
