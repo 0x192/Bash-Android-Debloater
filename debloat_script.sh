@@ -3,12 +3,14 @@
 # BASH 4.3 or newer is needed ! (use of local -n)
 (( BASH_VERSINFO < 5 )) && echo "Please upgrade to a bash version >= 4.3"
 
+if ! $(adb get-state &>/dev/null); then echo "Your phone is not detected by ADB." && exit 1; fi
+
 set -euo pipefail # Safer bash script
 
 # Colors used for printing
 readonly BRED='\033[1;31m' # Bold + Red
 readonly BBLUE='\033[0;34m' # Bold + Blue
-readonly BGREEN='\033[1;32m'
+readonly BGREEN='\033[1;32m'²
 readonly BORANGE='\033[1;33m'
 readonly NC='\033[0m' # No Color
 readonly Bold=$(tput bold) 
