@@ -135,8 +135,9 @@ declare -a lge=(
 	# IFTTT = “if this, then that.”. Smart Settings can be seens as IFTTT.
 	# Some events automatically triggers actions.
 
-	"com.lge.ime"
+	#"com.lge.ime"
 	# LG Stock Keyboard
+	# Do not remove if you don't have an alternate keyboard available. Personally, I keep the stock keyboard just in case the keyboard app crash/fails (this happened to me once) locking me out of entering password.
 
 	"com.lge.ime.solution.handwriting"
 	# Handwriting feature on the LG keyboard
@@ -170,6 +171,7 @@ declare -a lge=(
 	# User Interface (UI) for displaying location tracking reccord on the Health app (com.lge.lifetracker) ? 
 
 	"com.lge.lgsetupview"
+	"com.lge.LGSetupView"
 	# Setup View
 	# LG first setup (related to com.android.LGSetupWizard). 
 	# The first time you turn your device on, a Welcome screen is displayed. It guides you through the basics of setting up your device.
@@ -360,23 +362,45 @@ declare -a lge=(
 	# REMINDER : Hotspot enable you to share the phone’s 4G data connection with any Wi-Fi capable devices.
 	# It is not the Hotspot feature. Only the widget ! 
 	
+	"com.lge.appwidget.dualsimstatus"
+	# Dual SIM status widget
+	# Probably only present in dual sim LG phone variants. Does not remove the persistent notification or dual SIM functionality.
+	
+	"com.lge.hiddenpersomenu"
+	"com.lge.hiddenmenu"
+	"com.lge.operator.hiddenmenu"
+	"com.lge.servicemenu"
+	# Service menus. I believe if you remove the last one the secret code you can dial doesn't work anymore (who needs it anyway..?)
+	
+	"com.rsupport.rs.activity.lge.allinone"
+	# LG support App remote access
+	# You probably don't want that to happen
+	
+	"com.lge.laot"
+	# LAOP test [MORE INFO NEEDED]
+	# I don't know what LAOP is. I could not find information about it. It's a test so it's probably fine. I have removed it.
+	
+	"com.lge.lgfmservice"
+	# Radio
+	
 	####################### UP TO YOU #######################
 
-	#"com.lge.bnr.launcher" [MORE INFO NEEDED]
+	"com.lge.bnr.launcher"
 	# LG Mobile Switch Launcher
-	# My supposition is that bnr = backup and restore. So this package should not be the launcher itself but just a backup tool for the LG backup.
-	# Can someone confirm ? 
+	# This doesn't remove the default launchers.
+	# It is most likely to backup/restore the user's launcher configuration.
 
 	#"com.lge.clock"
-	# LG Clock ap
+	# LG Clock app
 
 	#"com.lge.filemanager"  
 	# Stock file manager
 
-	#"com.lge.homeselector" # [MORE INFO NEEDED]
+	"com.lge.homeselector"
 	# LG Home selector
-	# I believe it is used to switch between launchers.
-	# It would be nice if someone test it.
+	# This is the settings menu for the home launcher (present in the settings app as "Home launcher")
+	# If you remove this app, the Home screen settings menu is gone from settings app. (not needed if you use external launcher)
+    # You can still switch between installed launchers, the package name is a bit misleading.
 
 	#"com.lge.launcher2"
 	# LG Home (v2)
@@ -405,7 +429,51 @@ declare -a lge=(
 	# Provide Android upgrade and LG updates (Settings --> System --> Update Center)
 	# I believe you won't receive any updates if this packages is deleted.
 	
-	
+	#"com.lge.theme.black"
+	#"com.lge.theme.white"
+	#"com.lge.theme.titan" # This one is labelled 'Platinum' in themes app
+    #"com.lge.theme.highcontrast"
+	# Various themes. Safe to remove any you don't want/use. I could not find the package for the default (LG) theme.
+	# Make sure you don't delete the package for the theme you're currently using. I don't know what will happen then.
+
+    #"com.lge.signboard"
+    # Always on display. Probably a battery killer if used with OLED devices.
+    # You will lose the menu in the settings app that allows you to set the always on display. From the top of my head I remember the default ones as clock, kitkat easter egg.
+
+    #"com.lge.equalizer" # [MORE INFO NEEDED]
+    # Equalizer settings.
+    
+    #"com.lge.exchange" # [MORE INFO NEEDED]
+    # It looks like the Microsoft outlook/email in the logo. Believe this is some sort of microsoft integration.
+    # I don't 100% remember if I was able to add accounts to the phone still (eg. Nextcloud), I need to test that soon.
+    
+    #"com.lge.gametuner"
+    # Settings/features for games, such as resolution and frame rate limiting.
+    # A little side note, any games installed in the work profile can't use gametuner (maybe if you install this package into the work profile it'll work)
+    
+    #"com.lge.task"
+    # Task storage
+    # Probably related to the task app (another bloatware). I say its safe to remove if you don't use it.
+    
+    #"com.lge.touchcontrol"
+    # I have never seen this menu in the settings app. I say its safe to remove. I can't think of any use case for this setting, it just allows you to change where you're allowed to touch the screen
+    
+    #"com.lge.wapservice"
+    # Icon looks like email configuration. I say its safe to remove. Probably related to the stock email app.
+    
+    #"com.lge.rcs.sharedsketch" [MORE INFO NEEDED]
+    # I have no idea what it is, maybe some drawing program related to rcs. I removed it.
+    
+    #"com.lge.faceglance.trustagent"
+    #"com.lge.faceglance.enrollment"
+    # Face Recognition
+    # Remove if you don't need it. If you want security I don't think this is a good idea to use it.
+    
+    #"com.lge.app.floating.res"
+    # Multitasking framework
+    # Allows you to use multitasking features like multiple apps in one screen.
+    # Does not remove screen pinning feature.
+    # I don't know if this removes the floating windows feature that you have to enable with ADB (to make it look more like a desktop)
 	)
 
 

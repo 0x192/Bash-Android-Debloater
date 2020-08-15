@@ -778,6 +778,19 @@ declare -a misc=(
 	"com.quicinc.fmradio"
 	# FM Radio app by Qualcomm
 
+    "com.qualcomm.qti.qmmi"
+    # QMMI is a test app made by Qualcomm. It is used by service center to test the working of the various device components.
+    # More info: https://community.phones.nokia.com/discussion/52566/android-10-on-nokia-8-1/p19
+    # TL;DR another service menu app you don't need.
+
+    #"com.qualcomm.svi"
+    # Sunlight Visibility Improvement
+    # I've heard vaguely that some phones use it for the above purpose? On my LG Q6 there was no effect on functionality after removing.
+
+    "com.qti.confuridialer"
+    # Conference URI dialer. Also a conference call service, for digital signal only, as SIP / VoIP
+    # https://devcondition.com/article/removing-unneeded-miui-applications/
+
 	#### FONTS ####
 	"com.monotype.android.font.chococooky"
 	"com.monotype.android.font.cooljazz"
