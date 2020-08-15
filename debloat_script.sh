@@ -119,7 +119,7 @@ main() {
             if [[ "$REPLY" =~ 3 ]]; then lists_selection google facebook amazon microsoft; fi
             if [[ "$REPLY" =~ 1 ]]; then debloat_or_restore; fi
             if [[ "$REPLY" =~ 2 ]]; then debloat_or_restore "$BRAND"; fi
-            if [[ "$REPLY" =~ 5 ]]; then debloat_or_restore misc; fi
+            if [[ "$REPLY" =~ 5 ]]; then lists_selection qualcomm misc; fi
             if [[ "$REPLY" =~ 6 ]]; then debloat_or_restore aosp; fi
             if [[ "$REPLY" =~ 0 ]]; then debloat_or_restore pending; fi
         fi
