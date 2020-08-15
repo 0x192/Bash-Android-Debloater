@@ -5,7 +5,7 @@ declare -a oneplus=(
 	# I did some intensive searches on the web to find a list and I try my best to document it but I need OnePlus users to really improve it.
 	# I use [MORE INFO NEEDED] tag as a marker.
 	#
-	# In any case, OnePlus has a lot of shady logging app ! 
+	# In any case, OnePlus has a lot of shady logging apps ! 
 
 	"cn.oneplus.photos"
 	# Shot On OnePlus
@@ -26,7 +26,7 @@ declare -a oneplus=(
 	# Used to test the hardware of your device and change hidden settings.
 
 	"com.oem.logkitsdservice"
-	# Used by a Shady logging app (com.oem.oemlogkit) which can be activated a bit to easily.
+	# Used by a Shady logging app (com.oem.oemlogkit) which can be activated a bit too easily.
 	# No good reason why this app is on customer devices.
 	# It can log WiFi traffic, Bluetooth traffic, NFC activity, GPS coordinates over time, power consumption, modem signal/data details, "lag issues," and more.
 	# https://thehackernews.com/2017/11/oneplus-logkit-app.html
@@ -52,7 +52,7 @@ declare -a oneplus=(
 
 	"com.oneplus.bttestmode"
 	# OnePlus Bluetooth test mode
-	# Type *#*#232339#*#* in the OnePlus dialer to access hidden test menu.
+	# Type *#*#232339#*#* in the OnePlus dialer to access this hidden test menu.
 
 	"com.oneplus.card"
 	# Card Package
@@ -82,15 +82,6 @@ declare -a oneplus=(
 	# OnePlus Game Space
 	# Useless. Game launcher.
 	# Allows you to launch your game library as well as checking out several stats about the game, such as how long you have played.
-
-	"com.oneplus.iconpack.circle"
-	# OnePlus Icon Pack - Round (https://play.google.com/store/apps/details?id=com.oneplus.iconpack.circle)
-
-	"com.oneplus.iconpack.oneplus"
-	# OnePlus Icon Pack (https://play.google.com/store/apps/details?id=com.oneplus.iconpack.oneplus)
-
-	"com.oneplus.iconpack.square"
-	# OnePlus Icon Pack - Square (https://play.google.com/store/apps/details?id=com.oneplus.iconpack.square)
 
 	"com.oneplus.note"
 	# OnePlus Notes app
@@ -156,6 +147,15 @@ declare -a oneplus=(
 	# Lets you use OnePlus widgets on the home screen.
 
 	########## ADVANCED DEBLOAT ##########
+
+	#"com.oneplus.iconpack.circle"
+	# OnePlus Icon Pack - Round (https://play.google.com/store/apps/details?id=com.oneplus.iconpack.circle)
+
+	#"com.oneplus.iconpack.oneplus"
+	# OnePlus Icon Pack (https://play.google.com/store/apps/details?id=com.oneplus.iconpack.oneplus)
+
+	#"com.oneplus.iconpack.square"
+	# OnePlus Icon Pack - Square (https://play.google.com/store/apps/details?id=com.oneplus.iconpack.square)
 
 	#"cn.oneplus.oem_tcma"
 	# TCMA stands for Tiered Contention Multiple Access, which is a cellular traffic management protocol.
