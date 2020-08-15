@@ -1,3 +1,28 @@
+# New Release (v2.5)
+
+Big thanks to @plan10, @thekgg and @zxh30b for their nice contributions! :rocket:
+
+## Notable changes
+- Big revamp and improvement of the LG list (@zxh30b) 
+- Big revamp and improvement of the Motorola list (@plan10)
+- Revamp of the Samsung list with a proper distinction between default selection and advanced debloat.
+- Commented out a motorola package causing a bootloop on a Moto G7 Power
+- Qualcomm has now its own list (in `Miscellaneous.sh`) that you can choose inside the `5 - Others` submenu.
+
+## New packages added
+- **Carriers** : 2 (AT&T)
+- **LG** : 24
+- **Miscellaneous** : 7
+- **Morotola** : 10
+- **Samsung** : 9
+- **Pending** : 18
+
+## Pending --> Official lists
+- **Samsung** : 1
+- **Sony** : 2
+- **Huawei** : 6
+
+
 # Hotfix (v2.4.2)
 
 - Fixed a potential bootloop on samsung phone (#20)
@@ -21,7 +46,7 @@ Big thanks to @yawnoc, @gsurrel, @vasudev_gmk & @gafarma89 ! :+1:
 - **Samsung** : 12
 
 ## Miscellaneous
-- Nokia list revamp (including documentation improvement and default selections change) (thanks )
+- Nokia list revamp (including documentation improvement and default selections change)
 - Documentation improvement of several packages
 - Support for Xiaomi devices with `ro.product.brand=redmi` instead of `xiaomi`
 
