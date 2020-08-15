@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 declare -a samsung=(
-
-	#####################  SAFE TO DEBLOAT (useless features)  #####################
 	
 	"android.autoinstalls.config.samsung"
 	# Samsung's implementation of the "necessary apps" that need to be downloaded upon first setting up the device.
@@ -40,33 +38,10 @@ declare -a samsung=(
 	# Sometimes, eat a LOT of battery.
 	# Security policy apps (kind of things which prevents installation of applications)
 
-	#"com.samsung.advp.imssettings"
-	# Needed for VoLTE, a standard for high-speed wireless communication (https://en.wikipedia.org/wiki/Voice_over_LTE)
-	# IMS id an open industry standard for voice and multimedia communications over IP.
-	# NOTE: this package is needed for messaging apps that sends SMS/RCS code to verify your phone number (see issue #17)
-
-	#"com.samsung.accessibility" 
-	# Accessibility settings (useful for apps creating virtual buttons such as a pie-menu)
-	# Weirdly, it can cause bootloop when removed if you set a lock code on your phone. (see issue #20)
-	
-	"com.samsung.android.app.tips"
-	# Tips on how to use your phone"
-
-	"com.samsung.android.net.wifi.wifiguider"
-	# Wi-Fi Tips
-	# I've never seen any "wifi tips" so I'm not sure if this app has any other functionality
-	# Upon reinstalling a notification pops up saying "Analyzing Wi-Fi" for a few seconds, no idea what it's doing
-
 	"com.samsung.android.aircommandmanager"
 	# AirCommandManager manager
 	# Gives you access to signature S Pen features. You can access Air command anytime you are using your phone by simply taking out the S Pen.
 	# https://www.samsung.com/global/galaxy/what-is/air-command/
-
-	#"com.samsung.android.allshare.service.fileshare"
-	# Wi-Fi Direct
-	# Allows two devices to establish a direct Wi-Fi connection without requiring a wireless router.
-	# https://www.samsung.com/au/support/mobile-devices/connecting-devices-via-wifi-direct/
-	# https://en.wikipedia.org/wiki/Wi-Fi_Direct
 	
 	"com.samsung.android.allshare.service.mediashare"
 	# Samsung Allshare service (now called SmartView).
@@ -79,14 +54,6 @@ declare -a samsung=(
 	# you know to check on your baby. Or it can notify you if it hears the doorbell ring so you know to open the door.
 	#
 	# adv maybe refers to Samsung Advanced Institute of Technology 
-
-	#"com.samsung.android.app.amcagent" # [NEED MORE INFO] [NEED APK]
-	# Advanced Management Console Agent
-	# Entreprise feature I guess.
-
-	#"com.samsung.android.app.aodservice"
-	# Always On Display (https://play.google.com/store/apps/details?id=com.samsung.android.app.aodservice&hl=en)
-	# Displays stuff when the screen is off (useless) but also handle the clock on the lockscreen.
 
 	"com.samsung.android.app.appsedge"
 	# Samsung apps edge (https://www.samsung.com/global/galaxy/what-is/apps-edge/)
@@ -105,27 +72,6 @@ declare -a samsung=(
 	# https://developer.samsung.com/galaxy/stickers
 	# Safe to remove
 
-	"com.samsung.android.arzone"
-	# AR Zone
-	# Lets you access other AR apps.
-
-	"com.samsung.android.aremojieditor"
-	# AR Emoji Editor
-	# Edits those AR people emoji things
-
-	"com.samsung.android.livestickers"
-	# Deco Pic (accessible through AR Zone)
-	# Camera app with stickers and snapchat-like filters
-
-	"com.samsung.android.ardrawing"
-	# AR Doodles (accessible through AR Zone)
-	# Lets you draw on your face using the front camera and uses AR Core for drawing on the environment with the rear camera.
-	# Only Sasmung AR app (afaik) that requests location access, and it refuses to run without it
-
-	"com.samsung.android.visionarapps"
-	# "AR apps"
-	# Not really sure what this is, but the icon is Bixby as an eye so I assume it's for accessing AR stuff through Bixby.
-
 	"com.samsung.android.app.camera.sticker.facearframe.preload" # [MORE INFO NEEDED]
 	# Frames sticker ? 
 	# I don't know what this sticker is and I don't have this package.
@@ -135,9 +81,6 @@ declare -a samsung=(
 	
 	"com.samsung.android.app.clipboardedge"
 	# Clipboard edge panel
-
-	#"com.sec.android.app.clockpackage"
-	# Samsung clock 
 
 	"com.samsung.android.app.cocktailbarservice"
 	# Edge screen
@@ -151,12 +94,7 @@ declare -a samsung=(
 	"com.samsung.android.app.filterinstaller"
 	# Filter installer
 	# I have no clue about the usefulness of this package. Maybe it filters apps that are not compatible with the phone.
-	# This package is only triggered when you install an app (private class PackageIntentReceiver)
-
-	#"com.samsung.android.app.galaxyfinder" # [MORE INFO NEEDED]
-	# S Finder is a search application that allows you to find what you want in an instant by searching the content on your 
-	# Galaxy smartphone and on the web as well. (https://www.samsung.com/global/galaxy/what-is/s-finder/)
-	# NOTE : Removing this seems to also remove the search bar in the settings and the dialer. Can someone confirm? 
+	# This package is only triggered when you install an app (private class PackageIntentReceiver) 
 
 	"com.samsung.app.highlightplayer"
 	# Samsung Story Video Editor
@@ -189,11 +127,6 @@ declare -a samsung=(
 	# Used to connect your phone to a car in order to provide audio streaming, GPS navigation...
 	# https://www.samsung.com/us/support/answer/ANS00048972/
 
-	#"com.samsung.android.app.motionpanoramaviewer"
-	# Motion panorama viewer
-	# Let you see the result of a motion panorama
-	# https://www.samsung.com/global/galaxy/what-is/motion-panorama/
-
 	"com.samsung.android.app.news"
 	# News Samsung app
 	# Doesn't exist anymore ? 
@@ -217,11 +150,6 @@ declare -a samsung=(
 	"com.samsung.android.app.sbrowseredge"
 	# Related to internet browser. For Galaxy Edge ? 	
 
-	#"com.samsung.android.app.selfmotionpanoramaviewer"
-	# Selfie panorama viewer
-	# # Let you see the result of a selfie motion panorama
-	# https://www.samsung.com/global/galaxy/what-is/motion-panorama/
-
 	"com.samsung.android.app.settings.bixby"
 	# Bixby settings (Bixby = Samsung intelligence assistant)
 
@@ -229,9 +157,6 @@ declare -a samsung=(
 	# Samsung Link Sharing
 	# Lets you share large size files by using the Samsung Cloud.
 	# https://www.samsung.com/au/support/mobile-devices/what-is-link-sharing/
-
-	#"com.samsung.android.app.smartcapture"
-	# Samsung screenshot
 
 	"com.samsung.android.app.social"
 	# I know this has been discontinued by Samsung but that it.
@@ -255,6 +180,9 @@ declare -a samsung=(
 	# Through Tasks edge, you can quickly perform frequently used tasks, such as composing messages and creating events.
 	# https://www.samsung.com/levant/support/mobile-devices/galaxy-s7-edge-how-do-i-add-tasks-edge/
 
+	"com.samsung.android.app.tips"
+	# Tips on how to use your phone"
+
 	"com.samsung.android.app.vrsetupwizards"
 	"com.samsung.android.app.vrsetupwizardstub"
 	# Samsung Gear VR (Virtual Reality) setup wizard (https://en.wikipedia.org/wiki/Samsung_Gear_VR)
@@ -275,9 +203,23 @@ declare -a samsung=(
 	# Used to stream content from your phone to a Samsung smart TV.
 	# https://www.samsung.com/us/apps/smart-view-2/
 
+	"com.samsung.android.ardrawing"
+	# AR Doodles (accessible through AR Zone)
+	# Lets you draw on your face using the front camera and uses AR Core for drawing on the environment with the rear camera.
+	# Only Sasmung AR app (afaik) that requests location access, and it refuses to run without it
+
+	"com.samsung.android.arzone"
+	# AR Zone
+	# https://www.samsung.com/levant/support/mobile-devices/which-features-are-available-in-the-ar-zone-in-the-galaxy-z-flip/
+	# Lets you access other AR apps.
+
 	"com.samsung.android.aremoji"
 	# AR Emoji mode for Samsung camera 
 	# https://www.samsung.com/global/galaxy/what-is/ar-emoji/
+
+	"com.samsung.android.aremojieditor"
+	# AR Emoji Editor
+	# Edits those AR people emoji things
 
 	"com.samsung.android.asksmanager"
 	# Samsung device protection manager.
@@ -302,10 +244,6 @@ declare -a samsung=(
 	# Allows users to control, automate, and monitor their home environment via mobile device. 
 	# https://en.wikipedia.org/wiki/SmartThings
 
-	# "com.samsung.android.bio.face.service"
-	# Handle Face recognition unlock 
-	# https://kp-cdn.samsungknox.com/b60a7f0f59df8f466e8054f783fbbfe2.pdf
-
 	# Bixby (Samsung intelligence assistant)
 	# Enable or Disable access to S-Voice or Bixby voice controls. 
 	# This does not prevent access to other voice-controlled apps, only the Samsung-provided ones.
@@ -318,17 +256,8 @@ declare -a samsung=(
 	"com.samsung.android.bixby.wakeup" # Bixby voice wake-up
 	"com.samsung.android.bixbyvision.framework" # BixbyVision Framework
 
-	#"com.samsung.android.bluelightfilter"
-	# Blue ligth filter
-	# You should use it, it's great)
-
 	"com.samsung.android.calendar"
 	# Samsung Calendar App
-
-	#"com.samsung.android.contacts"
-	# Samsung contacts app
-	# Safe to debloat if you use another contacts app
-	# NOTE : If you do, you will no longer be able to access Contacts from the Samsung dialer app.
 
 	"com.samsung.android.da.daagent"
 	# Samsung dual messenger (https://www.samsung.com/global/galaxy/what-is/dual-messenger/)
@@ -368,8 +297,10 @@ declare -a samsung=(
 	"com.samsung.android.email.provider"
 	# Samsung email app (https://play.google.com/store/apps/details?id=com.samsung.android.email.provider)
 
-	#"com.samsung.android.fingerprint.service"
-	# Fingerprint service
+	"com.samsung.android.emojiupdater" # [MORE INFO NEEDED]
+	# AR Emoji updater
+	# This package has no permission so I wonder how it can update anything.
+	# See com.samsung.android.aremoji
 
 	"com.samsung.android.fmm"
 	# Find My Mobile
@@ -433,16 +364,12 @@ declare -a samsung=(
 	#
 	# https://support.samsungknox.com/hc/en-us/articles/115012547907-What-URLs-do-I-have-to-whitelist-to-make-Samsung-apps-work-with-an-authenticated-proxy-
 
-	"com.samsung.android.location"
-	# IMO it handles GPS needs for some samsungs apps. I have it removed on my phone and I still can use the GPS with a 3-party app.
+	"com.samsung.android.livestickers"
+	# Deco Pic (accessible through AR Zone)
+	# Camera app with stickers and snapchat-like filters
 
-	#"com.samsung.android.lool" # Device maintenance
-	# Samsung Device Care (phone optimizer) (https://play.google.com/store/apps/details?id=com.samsung.android.lool)
-	# This package phone home (China, Qihoo 360)
-	# The clean feature (in storage setting) is provided by Qihoo 360 which is a shady company (https://en.wikipedia.org/wiki/Qihoo_360)
-	# https://www.reddit.com/r/Android/comments/ektg8u/chinese_spyware_preinstalled_on_all_samsung/
-	# https://www.virustotal.com/gui/file/048ead2be8d18bbe2b05651380069b3740dd05703e9bd66630da986026518398/details
-	# NOTE : If you don't want to delete this package, at least use a firewall (Netguard/AfWall+) to block internet access 
+	"com.samsung.android.location"
+	# IMO it handles GPS needs for some samsungs apps. I have it removed on my phone and I still can use the GPS with a 3-party app. 
 
 	"com.samsung.android.mateagent"
 	# Samsung Galaxy Friends is an accessory platform service that allows the user to enjoy a variety of content quickly 
@@ -461,18 +388,16 @@ declare -a samsung=(
 	# Media & Devices feature
 	# https://www.samsung.com/latin_en/support/mobile-devices/media-and-device-feature/
 
-	#"com.samsung.android.messaging"
-	# Samsung Messaging app 
-
 	"com.samsung.android.mobileservice"
 	# Samsung Experience Service (https://play.google.com/store/apps/details?id=com.samsung.android.mobileservice)
 	# Handle you samsung account and is needed to use some samsung apps features.
 	# It allows you to use multiple Samsung apps, such as Samsung Health, Samsung Pay, Galaxy Apps, Samsung Members, and SmartThings, 
 	# with your Samsung account credentials.
 
-	#"com.samsung.android.MtpApplication"
-	# Samsung overlay for MTP. Talks to com.android.mtp
-	# Needed to access to your phone from a computer.
+	"com.samsung.android.net.wifi.wifiguider"
+	# Wi-Fi Tips
+	# I've never seen any "wifi tips" so I'm not sure if this app has any other functionality
+	# Upon reinstalling a notification pops up saying "Analyzing Wi-Fi" for a few seconds, no idea what it's doing
 
 	"com.samsung.android.networkdiagnostic"
 	# Network Diagnostic
@@ -492,11 +417,6 @@ declare -a samsung=(
 	#"com.samsung.android.provider.shootingmodeprovider"
 	# Provide camera modes (when you swipe left fromt the camera app)
 	# Safe to remove (but it is quite useful)
-
-	#"com.samsung.android.provider.stickerprovider" 
-	# One more package related to camera stickers.
-	# DO NOT REMOVE THIS IF YOU USE STOCK CAMERA (Samsung camera-app closes after about 4s!) 
-	# adb shell 'pm disable-user com.samsung.android.provider.stickerprovider' can be used as a workaround if you want to stop this running in the background.
 
 	"com.samsung.android.providers.context"
 	# Spyware 
@@ -562,18 +482,6 @@ declare -a samsung=(
 	# https://www.privateinternetaccess.com/blog/android-community-worried-about-presence-of-chinese-spyware-by-qihoo-360-in-samsung-smartphones-and-tablets/
 	# https://forum.xda-developers.com/galaxy-note-9/help/samsung-services-dialling-home-to-china-t3894033
 
-	#"com.samsung.android.sm.devicesecurity"
-	# Samsung Device security for the Smart Manager app using McAfee antivirus engine.
-	# This is the antivirus in Settings -> Device care -> Security
-	# Privacy nightmare (holy moly there is a LOT of permissions!) for a bit of security. 
-	# https://www.hybrid-analysis.com/sample/05dab93ee2102a2fb6edf16e85750eb1f0189d7b82703c6a00c92cd08d62bb28?environmentId=200
-	# ARCHIVE : https://web.archive.org/web/20200607140002/https://www.hybrid-analysis.com/sample/05dab93ee2102a2fb6edf16e85750eb1f0189d7b82703c6a00c92cd08d62bb28?environmentId=200
-	# 
-	# There is always a trade-off between security and privacy.
-	# Some people reported that without this package they weren't able to install apps anymore BUT I personnally removed this and
-	# I still can install apps.
-	# I think (but I'm not sure at all) that you can remove this safely if you also remove com.samsung.aasaservice and com.samsung.android.sm
-
 	# Samsung Cloud (https://www.samsung.com/us/support/owners/app/samsung-cloud)
 	"com.samsung.android.scloud" # Samsung Cloud app
 	"com.samsung.android.scloud.auth" # Handle authentifcation for Samsung cloud
@@ -629,15 +537,6 @@ declare -a samsung=(
 	# Samsung Pay Framework needed for Samsung Pay
 	# See above
 
-	#"com.samsung.android.spdclient"
-	# Security policy updates (part of KNOX)
-	# Updates the SELinux policies according to Security Enhancements for Android (SE for Android)
-	# There are privacy implications to the data collected by Samsung
-	# https://security.stackexchange.com/questions/161190/does-samsungs-security-enhancements-for-android-offer-anything-for-consumers
-	# Not mandatory if you know what you are doing and if you don't install software from unknown sources.
-	# Needs confirmation but removing this package should change SELinux mode (enforcing by default)
-	# https://source.android.com/security/selinux
-
 	"com.samsung.android.spdfnote"
 	# Write on PDF (https://play.google.com/store/apps/details?id=com.samsung.android.spdfnote)
 	# PDF annotator
@@ -681,6 +580,10 @@ declare -a samsung=(
 	# Universal Switch lets you designate certain touches or gestures to control specific actions on your phone. 
 	# https://www.samsung.com/uk/accessibility/mobile-universal-switch/
 
+	"com.samsung.android.visionarapps"
+	# "AR apps"
+	# Not really sure what this is, but the icon is Bixby as an eye so I assume it's for accessing AR stuff through Bixby.
+
 	"com.samsung.android.visioncloudagent"
 	# VisionCloudAgent
 	# Cloud Agent is a service which automatically upload on the cloud the photos you take on your phone. It connects to your "Samsung account".
@@ -715,22 +618,6 @@ declare -a samsung=(
 	"com.samsung.android.widgetapp.yahooedge.sport"
 	# Samsung Sport provided by Yahoo 
 
-	#"com.samsung.app.slowmotion"
-	# Slowmotion mode in camera app
-
-	#"com.samsung.clipboardsaveservice"
-	# Clipboard Save service save all the content you saved in the clipboard (clipboard history)
-	# If you remove this you will still be able to copy/cust/past but a new content in clipboard will replace the current content.
-	# In short : there will no longer be a history.
-
-	#"com.samsung.cmh" # [MORE INFO NEEDED]
-	# CMH Provider is a dependency for the the samsung gallery app. This pacakge asks for a lot of permissions. 
-	# It seems to be be used for cloud and story stuff in the gallery and also seems needed for content recognition.
-	# Has the same shared user id than com.samsung.faceservice, com.samsung.mlp, com.samsung.mpl
-	#  
-	# NOTE : Deleting this package will also prevent to preview photos from the camera app.
-	# Seems to trigger com.samsung.faceservice, com.samsung.mlp, com.samsung.mpl when needed.
-
 	"com.samsung.crane"
 	# Call+ (https://support.vodafone.co.uk/Vodafone-apps/Call-and-Message/60900956/What-is-Call.htm)
 	# Call+ features on Samsung dialer
@@ -744,13 +631,6 @@ declare -a samsung=(
 	# Samsung DEX UI
 	# Extends your smartphone into a "desktop computing experience".
 	# https://developer.samsung.com/samsung-dex/how-it-works
-
-	#"com.samsung.dcmservice"
-	# Hard to find what it really does but I do know what DCM is in telecommunication. It means Dual Carrier Modulation.
-	# To stay simple, we use signal modulation to transfer information. DCM can be seen as an enhancement to conventional QPSK modulation
-	# that expand the coverage and robustness of an outdoor hotspot.
-	# https://www.ekahau.com/wp-content/uploads/2017/03/Webinar-slides-802.11ax-Sneak-Peek-%E2%80%93-The-Next-Generation-Wi-Fi.pdf
-	# Not a good idea to remove this unless it only impacts samsung apps. I will test.
 
 	"com.samsung.ecomm"
 	# Shop Samsung (https://play.google.com/store/apps/details?id=com.samsung.ecomm)
@@ -858,19 +738,6 @@ declare -a samsung=(
 	"com.samsung.safetyinformation"
 	# Some safety information telling you not to put your phone in your eyes (it's not a joke)
 
-	#"com.samsung.sdm"
-	# Handles OTA system Updates. 
-
-	#"com.samsung.sdm.sdmviewer" # [MORE INFO NEEDED]
-	# Lets you view installed updates?
-
-	#"com.samsung.sec.android.application.csc"
-	# Do something related to Country Specific Code (CSC). Maybe it only let you change your CSC
-	# Every Android device from Samsung has a folder called CSC.
-	# This folder contains some XML files that keep the configuration codes for the country and carrier-based customization options.
-	# Maybe it's safe to remove if you'll never change your CSC but it needs testing and I lack time for this.
-	# (I already have plenty of other packages uninstallation to test)
-
 	"com.samsung.SMT"
 	# Samsung TTS (Text-to-speech)
 	# Seems discontinued.
@@ -906,10 +773,6 @@ declare -a samsung=(
 	# https://docs.samsungknox.com/dev/knox-sdk/faqs/general/what-is-universal-credential-management_-ucm.htm
 	# https://www.samsung.com/semiconductor/security/ese/
 	# See above
-
-	#"com.samsung.upsmtheme"
-	# Handle the theme of UPSM (Ultra Power Saving Mode)
-	# Safe to remove
 
 	"com.samsung.voiceserviceplatform"
 	# Samsung Voice (for Galaxy S7)
@@ -1002,13 +865,6 @@ declare -a samsung=(
 	# Secret code parser
 	# Support for hidden samsung apps launched via secret codes
 
-	#"com.sec.android.app.personalization"
-	# Without a doubt this package is involved in personalization of something but It's hard to find what.
-	# 2 permissions : READ_PHONE_STATE and CHANGE_PHONE_STATE
-
-	#"com.sec.android.app.popupcalculator"
-	# Samsung calculator app (https://play.google.com/store/apps/details?id=com.sec.android.app.popupcalculator)
-
 	"com.sec.android.app.quicktool"
 	# The Quick Tools panel includes a ruler, a compass and a torch. To add this to the Edge Panel (com.samsung.android.app.clipboardedge)
 
@@ -1044,10 +900,6 @@ declare -a samsung=(
 	# Samsung Health (https://play.google.com/store/apps/details?id=com.sec.android.app.shealth)
 	# Serves to track various aspects of daily life contributing to well being such as physical activity, diet, and sleep.
 	# https://en.wikipedia.org/wiki/Samsung_Health
-
-	#"com.sec.android.app.soundalive" 
-	# Responsible for Dobly Atmos and other pre-programmed equalizer stuff (accessible from the Settings app)
-	# Needed by Adapt Sound (com.sec.hearingadjust) which a pretty useful but little known feature.
 
 	"com.sec.android.app.sns3"
 	# Samsung Galaxy (Only installed on older phone before Galaxy S7)
@@ -1105,19 +957,6 @@ declare -a samsung=(
 	"com.sec.android.easyonehand"
 	# Samsung Easy One Hand mode (replaced by One Hand Operation + : com.samsung.android.sidegesturepad)
 
-	#"com.sec.android.emergencylauncher"
-	# Samsung Launcher when in emergency mode. 
-	# Here, emergency = low battery 
-	# See below
-
-	#"com.sec.android.emergencymode.service"
-	# Emergency mode enables you to extend your device’s standby time when you are in an emergency situation and you want your device to 
-	# conserve power for as long as possible. When this mode is activated, the screen’s brightness will decrease and some of  
-	# the device's functionality will be limited in order to conserve your battery's charge. The home screen will be changed to a black theme 
-	# to reduce battery consumption.
-	# It is NOT related to SOS messages/911.
-	# https://www.samsung.com/uk/support/mobile-devices/what-is-emergency-mode/
-
 	"com.sec.android.fido.uaf.asm"
 	# Fido is a set of open technical specifications for mechanisms of authenticating users to online services that do not depend on passwords.
 	# https://fidoalliance.org/specs/u2f-specs-1.0-bt-nfc-id-amendment/fido-glossary.html
@@ -1140,16 +979,6 @@ declare -a samsung=(
 	# 
 	# Safe to remove if you don't use password-less authentification to acess online servics
 
-	#"com.sec.android.gallery3d"
-	# Samsung Gallery app (https://play.google.com/store/apps/details?id=com.sec.android.gallery3d)
-	# Note: Samsung Gallery is a dependency for the camera so it's not a good idea to delete it.
-	# Note : Good to know. When the original version of the image is deleted, the copy of it within the com.sec.android.gallery3d  folder is not removed.
-	# https://athenaforensics.co.uk/com-sec-android-gallery3d-mobile-phone-forensics/
-	# NOTE : Deleting this package will also prevent to preview photos from the camera app.
-
-	#"com.sec.android.gallery3d.panorama360view"
-	# Let you see panoramic photos in the samsung Gallery.
-
 	"com.sec.android.game.gamehome"
 	# Samsung Game launcher
 	# Centralizes all your android games. This app can track all your games, how many hours you've spent playing each one, and which genres you play the most.
@@ -1165,25 +994,10 @@ declare -a samsung=(
 	# 360 Photo Editor
 	# Lets you edit the 360-degree photos you took.
 
-	#"com.sec.android.mimage.photoretouching"
-	# Samsung Photo Editor
-	# Disabling this will disable the inbuilt photo editor accessed via the stock gallery.
-	# Safe to remove if you don't use Samsung gallery.
-
-	#"com.sec.android.ofviewer"
-	# Samsung selective focus camera mode.
-	# Safe to remove (but it's pretty useful)
-
 	"com.sec.android.preloadinstaller"
 	# Very shady apk. According to if you're chinese or not, Samsung mount an hidden partition during the first boot and install some apps.
 	# https://nitter.net/fs0c131y/status/1046689524691218432#m
 	# Archive : https://web.archive.org/web/20200107110205/https://nitter.net/fs0c131y/status/1046689524691218432
-
-	#"com.sec.android.provider.emergencymode"
-	# Provider for emergency mode (com.sec.android.emergencylauncher)
-	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
-	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
-	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
 
 	"com.sec.android.provider.snote"
 	# Content provider for S Note (https://www.samsung.com/global/galaxy/apps/samsung-notes/).
@@ -1200,13 +1014,6 @@ declare -a samsung=(
 	# https://stackoverflow.com/questions/11111067/how-does-modem-code-talk-to-android-code
 	# Samsung RIL is a add on from Samsung : Modem <=> Linux kernel <=> libsamsung-ipc <=> Samsung-RIL <=> Android framework <=> Android applications
 
-	#"com.sec.android.sdhms"
-	# Samsung Device Health Manager Service
-	# Battery estimation service for Samsung Care/Device maintenance (com.samsung.android.lool)
-	# There is some weird stuff in the java code. I don't understand why there is a need to parse torrent files for instance
-	# or why there is a string "googleapis.com/drive"
-	# https://developers.google.com/drive/api/v3/reference
-
 	"com.sec.android.service.health"
 	# Samsung Health Service
 	# Needed for Samsung Health (com.sec.android.app.shealth)
@@ -1217,11 +1024,6 @@ declare -a samsung=(
 	# Receive alarms of your phone through PC and use various features of your phone on the computer.
 	# https://www.samsung.com/levant/support/side-sync/
 
-	#"com.sec.android.soagent"
-	# SOAgent
-	# Responsible for checking software/security OTA updates, readying, alerting the user and downloading such updates 
-	# Software update, works along com.wssyncmldm
-
 	"com.sec.android.splitsound" 
 	# SplitSoundService
 	# Provides ability to play music on the smartphone and an external speaker at the same time
@@ -1230,12 +1032,7 @@ declare -a samsung=(
 	"com.sec.android.uibcvirtualsoftkey"
 	# UIBC (User input back channel) 
 	# Allows users to experience the dual monitor function, with the keyboard and mouse having the ability to control your smartphone device.
-	# Either discontinued (for the benefit of Smart View : com.samsung.android.smartmirroring) or related to Smart View.
-
-	#"com.sec.android.wallpapercropper2"
-	# Samsung Wallpaper. Needed for choosing a wallpaper.
-	# Note : it is technically possible to change the wallpaper and then delete this package. 
-	# Used wallpaper are stored in /data/data/com.sec.android.wallpapercropper2/ 
+	# Either discontinued (for the benefit of Smart View : com.samsung.android.smartmirroring) or related to Smart View. 
 
 	"com.sec.android.widgetapp.diotek.smemo"
 	# Samsung Memo widget (was replaced by Samsung Note : com.samsung.android.app.notes)
@@ -1252,10 +1049,6 @@ declare -a samsung=(
 	# Galaxy Essentials is a collection of specially chosen applications available through Samsung Apps. 
 	# From the Galaxy Essentials widget you can access and download a collection of premium content, free of charge.
 	# https://www.samsung.com/my/support/mobile-devices/what-is-galaxy-essentials-and-how-can-i-add-or-remove-it-from-my-smartphone-home-screen/
-
-	#"com.sec.automation"
-	# Tethering Automation enable sharing phone internet to the PC with a usb cable.
-	# Safe to remove (but it's a useful feature)
 
 	"com.sec.bcservice"
 	# Broadcast Service
@@ -1320,28 +1113,9 @@ declare -a samsung=(
 	"com.sec.factory.iris.usercamera" 
 	# Camera Iris User Test (by dialing *#0*#)
 
-	#"com.sec.hearingadjust" 
-	# Samsung Adapt Sound
-	# Configures a sound profile according to your ears.
-	# Improve audio experience in the end (even with headphones)
-	# https://www.howtogeek.com/316375/how-to-use-adapt-sound-on-the-galaxy-s7-and-s8-for-better-sound-quality/
-	#
-	# Settings > Sound  and vibration > Sound Quality and effects > Adapt Sound
-	# NOTE : com.sec.android.app.soundalive is needed
-
-	#"com.sec.ims" # [MORE INFO NEEDED]
-	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling).
-	# Don't really know the difference with com.sec.imsservice. Anyway, there is obviously strong interactions between them.
-	# May be unsafe to uninstall it. I need some more testing. 
-
 	"com.sec.imslogger"
 	# IMS Logger provide logging optins.
-	# Security flaw : https://nitter.net/fs0c131y/status/1115889065285562368
-
-	#"com.sec.imsservice"
-	# This service allows calls and text messages to be delivered via an IP network (Volte/VoIP/Wifi calling). Video calling are obviously also concerned.
-	# Note : Samsung Dialer will crash if you delete this package and have wifi-calling activated in the Dialer's settings.
-	# May be unsafe to uninstall it. I need some more testing. 
+	# Security flaw : https://nitter.net/fs0c131y/status/1115889065285562368 
 
 	"com.sec.kidsplat.installer"
 	# Kids Mode (replaced by Kids Home : com.samsung.android.kidsinstaller)
@@ -1430,15 +1204,6 @@ declare -a samsung=(
 	# 3 permissions : RECORD_AUDIO, CAMERA, INTERACT_ACROSS_USERS_FULL
 	# Safe to remove.
 
-	#Language Pack for S-voice, the Samsung assistant (com.samsung.android.svoice)
-	#"com.sec.svoice.lang.en_US" # English (US)
-	#"com.sec.svoice.lang.es_US" # Spanish
-	#"com.sec.svoice.lang.fr_US" # French
-	#"com.sec.svoice.lang.de_US" # German
-	#"com.sec.svoice.lang.it_US" # Italian
-	#"com.sec.svoice.lang.ru_US" # Russian
-	#"com.sec.svoice.lang.it_GB" # English (GB)
-
 	"com.sec.vsimservice"
 	# VSim Service 
 	# Something related to virtual SIM. I didn't find what Samsung does with this.
@@ -1468,16 +1233,11 @@ declare -a samsung=(
 	# Hidden settings. Lets you choose from ADB, MTP, RNDIS, ACM, DM (dial *#0808# to open)
 	# Run at startup
 
+	"com.monotype.android.font.samsungone"
+	# Samsung One font
+
 	"com.vlingo.midas"
 	# Old Samsung Voice app (for voice recognition)
-
-	#"com.wssyncmldm" 
-	# Software update
-	# Fetch System OTA updates
-	# Works along com.sec.android.soagent
-	
-	"com.monotype.android.font.samsungone"
-	# SamsungOne font
 
 	"com.wsomacp"
 	# omacp = OMA Client Provisioning. It is a protocol specified by the Open Mobile Alliance (OMA).
@@ -1493,18 +1253,262 @@ declare -a samsung=(
 	# Application is an application that turns your smart phone or tablet into a TV remote. 
 	# The app uses the IR Blaster of your device, so devices not equipped with that feature will not be able to use all of Peel Smart Remote's functions. 
 	# https://www.samsung.com/za/support/mobile-devices/what-is-the-peel-smart-remote-application/
+
+	
+	#########################  ADVANCED DEBLOAT  #########################
+
+	#"com.policydm"
+	# Samsung security policy update (https://play.google.com/store/apps/details?id=com.policydm)
+	# Updatable policy files designed to increase android security and detect malicious behaviour.
+	# Has nothing to do with OTA updates or Android Security patches.
+	# See "com.samsung.android.spdclient" for more information.
+
+	#"com.samsung.advp.imssettings"
+	# Needed for VoLTE, a standard for high-speed wireless communication (https://en.wikipedia.org/wiki/Voice_over_LTE)
+	# IMS id an open industry standard for voice and multimedia communications over IP.
+	# NOTE: this package could be needed for messaging apps that sends SMS/RCS code to verify your phone number (see issue #17)
+
+	#"com.samsung.accessibility" 
+	# Accessibility settings (useful for apps creating virtual buttons such as a pie-menu)
+	# Weirdly, removing this package can cause a bootloop if you set a lock code on your phone. (see issue #20)
+
+	#"com.samsung.android.allshare.service.fileshare"
+	# Wi-Fi Direct
+	# Allows two devices to establish a direct Wi-Fi connection without requiring a wireless router.
+	# https://www.samsung.com/au/support/mobile-devices/connecting-devices-via-wifi-direct/
+	# https://en.wikipedia.org/wiki/Wi-Fi_Direct
+
+	#"com.samsung.android.app.amcagent" # [NEED MORE INFO] [NEED APK]
+	# Advanced Management Console Agent
+	# Entreprise feature I guess.
+
+	#"com.samsung.android.app.aodservice"
+	# Always On Display (https://play.google.com/store/apps/details?id=com.samsung.android.app.aodservice&hl=en)
+	# Displays stuff when the screen is off (useless) but also handles the clock on the lockscreen.
+
+	#"com.samsung.android.app.galaxyfinder" # [MORE INFO NEEDED]
+	# S Finder is a search application that allows you to find what you want in an instant by searching the content on your 
+	# Galaxy smartphone and on the web as well. (https://www.samsung.com/global/galaxy/what-is/s-finder/)
+	# NOTE : Removing this seems to also remove the search bar in the settings and the dialer. Can someone confirm?
+
+	#"com.samsung.android.app.motionpanoramaviewer"
+	# Motion panorama viewer
+	# Let you see the result of a motion panorama
+	# https://www.samsung.com/global/galaxy/what-is/motion-panorama/
+
+	#"com.samsung.android.app.selfmotionpanoramaviewer"
+	# Selfie panorama viewer
+	# Let you see the result of a selfie motion panorama
+	# https://www.samsung.com/global/galaxy/what-is/motion-panorama/
+
+	#"com.samsung.android.app.smartcapture"
+	# Samsung screenshot
+
+	#"com.sec.android.app.soundalive" 
+	# Responsible for Dobly Atmos and other pre-programmed equalizer stuff (accessible from the Settings app)
+	# Needed by Adapt Sound (com.sec.hearingadjust) which a pretty useful but little known feature.
+
+	#"com.samsung.android.bio.face.service"
+	# Handle Face recognition unlock 
+	# https://kp-cdn.samsungknox.com/b60a7f0f59df8f466e8054f783fbbfe2.pdf
+
+	#"com.samsung.android.bluelightfilter"
+	# Blue ligth filter
+	# You should use it, it's great
+
+	#"com.samsung.android.contacts"
+	# Samsung contacts app
+	# Safe to debloat if you use another contacts app
+	# NOTE : If you do, you will no longer be able to access Contacts from the Samsung dialer app.
+
+	#"com.samsung.android.fingerprint.service"
+	# Fingerprint service
+
+	#"com.samsung.android.lool" # Device maintenance
+	# Samsung Device Care (phone optimizer) (https://play.google.com/store/apps/details?id=com.samsung.android.lool)
+	# This package phone home (China, Qihoo 360)
+	# The clean feature (in storage setting) is provided by Qihoo 360 which is a shady company (https://en.wikipedia.org/wiki/Qihoo_360)
+	# https://www.reddit.com/r/Android/comments/ektg8u/chinese_spyware_preinstalled_on_all_samsung/
+	# https://www.virustotal.com/gui/file/048ead2be8d18bbe2b05651380069b3740dd05703e9bd66630da986026518398/details
+	# NOTE : If you don't want to delete this package, at least use a firewall (Netguard/AfWall+) to block internet access
+
+	#"com.samsung.android.messaging"
+	# Samsung Messaging app 
+
+	#"com.samsung.android.provider.stickerprovider" 
+	# One more package related to camera stickers.
+	# DO NOT REMOVE THIS IF YOU USE STOCK CAMERA (Samsung camera-app closes after about 4s!) 
+	# adb shell 'pm disable-user com.samsung.android.provider.stickerprovider' can be used as a workaround if you want to stop this running in the background.
+
+	#"com.samsung.android.sm.devicesecurity" # [MORE INFO NEEDED]
+	# Samsung Device security for the Smart Manager app using McAfee antivirus engine.
+	# This is the antivirus in Settings -> Device care -> Security
+	# Privacy nightmare (holy moly there is a LOT of permissions!) for a bit of security. 
+	# https://www.hybrid-analysis.com/sample/05dab93ee2102a2fb6edf16e85750eb1f0189d7b82703c6a00c92cd08d62bb28?environmentId=200
+	# ARCHIVE : https://web.archive.org/web/20200607140002/https://www.hybrid-analysis.com/sample/05dab93ee2102a2fb6edf16e85750eb1f0189d7b82703c6a00c92cd08d62bb28?environmentId=200
+	# 
+	# There is always a trade-off between security and privacy.
+	# Some people reported that without this package they weren't able to install apps anymore BUT I personnally removed this and
+	# I still can install apps.
+	# I think (but I'm not sure at all) that you can remove this safely if you also remove com.samsung.aasaservice and com.samsung.android.sm
+
+	#"com.samsung.android.spdclient"
+	# Security policy updates (part of KNOX)
+	# Updates the SELinux policies according to Security Enhancements for Android (SE for Android)
+	# There are privacy implications to the data collected by Samsung
+	# https://security.stackexchange.com/questions/161190/does-samsungs-security-enhancements-for-android-offer-anything-for-consumers
+	# Not mandatory if you know what you are doing and if you don't install software from unknown sources.
+	# Needs confirmation but removing this package could change SELinux mode (enforcing by default)
+	# https://source.android.com/security/selinux
+	
+	#"com.samsung.app.slowmotion"
+	# Slowmotion mode in camera app
+
+	#"com.samsung.sec.android.application.csc"
+	# Do something related to Country Specific Code (CSC). Maybe it only let you change your CSC
+	# Every Android device from Samsung has a folder called CSC.
+	# This folder contains some XML files that keep the configuration codes for the country and carrier-based customization options.
+	# Maybe it's safe to remove if you'll never change your CSC but it needs testing and I lack time for this.
+	# (I already have plenty of other packages uninstallation to test)
+
+	#"com.samsung.upsmtheme"
+	# Handle the theme of UPSM (Ultra Power Saving Mode)
+	# Safe to remove
+
+	#"com.samsung.clipboardsaveservice"
+	# Clipboard Save service save all the content you saved in the clipboard (clipboard history)
+	# If you remove this you will still be able to copy/cust/past but a new content in clipboard will replace the current content.
+	# In short : there will no longer be a history.
+
+	#"com.samsung.cmh" # [MORE INFO NEEDED]
+	# CMH Provider is a dependency for the the samsung gallery app. This pacakge asks for a lot of permissions. 
+	# It seems to be be used for cloud and story stuff in the gallery and also seems needed for content recognition.
+	# Has the same shared user id than com.samsung.faceservice, com.samsung.mlp, com.samsung.mpl
+	#  
+	# NOTE : Deleting this package will also prevent to preview photos from the camera app.
+	# Seems to trigger com.samsung.faceservice, com.samsung.mlp, com.samsung.mpl when needed.
+
+	#"com.samsung.dcmservice" # [MORE INFO NEEDED]
+	# Hard to find what it really does but I do know what DCM is in telecommunication. It means Dual Carrier Modulation.
+	# To stay simple, we use signal modulation to transfer information. DCM can be seen as an enhancement to conventional QPSK modulation
+	# that expand the coverage and robustness of an outdoor hotspot.
+	# https://www.ekahau.com/wp-content/uploads/2017/03/Webinar-slides-802.11ax-Sneak-Peek-%E2%80%93-The-Next-Generation-Wi-Fi.pdf
+	# Not a good idea to remove this unless it only impacts samsung apps. Need testing.
+
+	#"com.samsung.sdm"
+	# Handles OTA system Updates.
+
+	#"com.samsung.sdm.sdmviewer" # [MORE INFO NEEDED]
+	# Lets you view installed updates?
+
+	#"com.sec.android.app.clockpackage"
+	# Samsung clock
+
+	#"com.sec.android.app.personalization"
+	# Without a doubt this package is involved in personalization of something but It's hard to find what.
+	# 2 permissions : READ_PHONE_STATE and CHANGE_PHONE_STATE
+
+	#"com.sec.android.app.popupcalculator"
+	# Samsung calculator app (https://play.google.com/store/apps/details?id=com.sec.android.app.popupcalculator)
+
+	#"com.sec.android.emergencylauncher"
+	# Samsung Launcher when in emergency mode. 
+	# Here, emergency = low battery
+	# See below
+
+	#"com.sec.android.emergencymode.service"
+	# Emergency mode enables you to extend your device’s standby time when you are in an emergency situation and you want your device to 
+	# conserve power for as long as possible. When this mode is activated, the screen’s brightness will decrease and some of  
+	# the device's functionality will be limited in order to conserve your battery's charge. The home screen will be changed to a black theme 
+	# to reduce battery consumption.
+	# It is NOT related to SOS messages/911.
+	# https://www.samsung.com/uk/support/mobile-devices/what-is-emergency-mode/
+
+	#"com.sec.android.gallery3d"
+	# Samsung Gallery app (https://play.google.com/store/apps/details?id=com.sec.android.gallery3d)
+	# Note: Samsung Gallery is a dependency for the camera so it's not a good idea to delete it.
+	# Note : Good to know. When the original version of the image is deleted, the copy of it within the com.sec.android.gallery3d  folder is not removed.
+	# https://athenaforensics.co.uk/com-sec-android-gallery3d-mobile-phone-forensics/
+	# NOTE : Deleting this package will also prevent to preview photos from the camera app.
+
+	#"com.sec.android.gallery3d.panorama360view"
+	# Let you see panoramic photos in the samsung Gallery.
+
+	#"com.sec.android.provider.emergencymode"
+	# Provider for emergency mode (com.sec.android.emergencylauncher)
+	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
+	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
+	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
+	
+	#"com.sec.android.mimage.photoretouching"
+	# Samsung Photo Editor
+	# Disabling this will disable the inbuilt photo editor accessed via the stock gallery.
+	# Safe to remove if you don't use Samsung gallery.
+
+	#"com.sec.android.ofviewer"
+	# Samsung selective focus camera mode.
+	# Safe to remove (but it's pretty useful)
+
+	#"com.sec.android.sdhms" # [MORE INFO NEEDED]
+	# Samsung Device Health Manager Service
+	# Battery estimation service for Samsung Care/Device maintenance (com.samsung.android.lool)
+	# There is some weird stuff in the java code. I don't understand why there is a need to parse torrent files for instance
+	# or why there is a string "googleapis.com/drive"
+	# https://developers.google.com/drive/api/v3/reference
+
+	#"com.sec.android.soagent"
+	# SOAgent
+	# Responsible for checking software/security OTA updates, readying, alerting the user and downloading such updates 
+	# Software update, works along "com.wssyncmldm"
+	
+	#"com.sec.android.wallpapercropper2"
+	# Samsung Wallpaper. Needed for choosing a wallpaper.
+	# Note : it is technically possible to change the wallpaper and then delete this package. 
+	# Used wallpaper are stored in /data/data/com.sec.android.wallpapercropper2/
+	#"com.sec.imsservice"
+	# This service allows calls and text messages to be delivered via an IP network (Volte/VoIP/Wifi calling). Video calling are obviously also concerned.
+	# Note : Samsung Dialer will crash if you delete this package and have wifi-calling activated in the Dialer's settings.
+	# May be unsafe to uninstall it. I need some more testing.
+
+	#"com.sec.automation"
+	# Tethering Automation enable sharing phone internet to the PC with a usb cable.
+	# Safe to remove (but it's a useful feature)
+
+	#"com.sec.hearingadjust" 
+	# Samsung Adapt Sound
+	# Configures a sound profile according to your ears.
+	# Improve audio experience in the end (even with headphones)
+	# https://www.howtogeek.com/316375/how-to-use-adapt-sound-on-the-galaxy-s7-and-s8-for-better-sound-quality/
+	#
+	# Settings > Sound  and vibration > Sound Quality and effects > Adapt Sound
+	# NOTE : com.sec.android.app.soundalive is needed
+
+	#"com.sec.ims" # [MORE INFO NEEDED]
+	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling).
+	# Don't really know the difference with com.sec.imsservice. Anyway, there is obviously strong interactions between them.
+	# May be unsafe to uninstall it. I need some more testing. 
+
+	# Language Pack for S-voice, the Samsung assistant (com.samsung.android.svoice)
+	#"com.sec.svoice.lang.en_US" # English (US)
+	#"com.sec.svoice.lang.es_US" # Spanish
+	#"com.sec.svoice.lang.fr_US" # French
+	#"com.sec.svoice.lang.de_US" # German
+	#"com.sec.svoice.lang.it_US" # Italian
+	#"com.sec.svoice.lang.ru_US" # Russian
+	#"com.sec.svoice.lang.it_GB" # English (GB)
+
+	#"com.wssyncmldm" 
+	# Software update
+	# Fetch System OTA updates
+	# Works along com.sec.android.soagent
+
 	)
 
 
 #####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
 
-#"com.policydm"
-# Samsung security policy update. I don't have this package and I'm not sure if it is really necessary.
-# Can someone disable it and test if he/she still receives security updates ? 
-# https://www.samsung.com/nz/support/mobile-devices/security-policy-updates/
-
 #"com.samsung.android.SettingsReceiver"
-# Samsung overlay of AOSP Settings. It has 39 permissions. I guess it handles interactions with features controled by the settings.
+# Samsung overlay of AOSP Settings. It has 39 permissions. Handles interactions with features controled by the settings.
 
 #"com.samsung.android.timezone.updater"
 #"com.samsung.android.timezone.autoupdate_O" 
@@ -1524,6 +1528,10 @@ declare -a samsung=(
 
 #"com.samsung.android.incallui"
 # UI when "being called/in call". It's basically the screen that shows you who is calling, lets you answer and hang up, switch to speaker, etc
+
+#"com.samsung.android.MtpApplication"
+# Samsung overlay for MTP. Talks to com.android.mtp
+# Needed to access to your phone from a computer.
 
 #"com.samsung.android.provider.filterprovider" 
 # FilterProvider dependency to Samsung Camera
