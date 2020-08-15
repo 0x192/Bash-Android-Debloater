@@ -33,10 +33,6 @@ declare -a huawei=(
 	# Huawei Share features.
 	# File transfer tool between Huawei mobiles, using Bluetooth connection and WiFi Direct technology.
 
-	#"com.huawei.android.internal.app" 
-	# Component of Huawei sharing. I read someone saying "Do not remove or you won't be able to send files to apps".
-	# Can someone test it ? 
-
 	"com.huawei.android.karaoke" 
 	# Karaoke mode feature.
 
@@ -49,7 +45,8 @@ declare -a huawei=(
 	# Lets you you add, customize, and set up remote controls, allowing control of your electronic appliances through your phone. 
 
 	"com.huawei.android.tips" 
-	# Huawei Tips.
+	# HUAWEI Feature Advisor
+	# Periodically gives you notifications on how to use certain features on your phone.
 
 	"com.huawei.android.totemweather" 
 	# Huawei Weather app.
@@ -58,11 +55,6 @@ declare -a huawei=(
 	# Wi-Fi Direct feature.
 	# Enables Wi-Fi Direct devices to establish a direct Wi-Fi connection over which the two can send and receive files. 
 
-	#"com.huawei.aod" [MORE INFO NEEDED]
-	# Always On Display feature.
-	# Drain battery for nothing really useful.
-	# RedSkull23 says it's unsafe to remove it. Does it bootloop ? 
-
 	"com.huawei.appmarket" 
 	# Huawei app store (AppGallery)
 	# https://www.xda-developers.com/appgallery-huawei-alternative-google-play-store-android/
@@ -70,9 +62,9 @@ declare -a huawei=(
 	"com.huawei.arengine.service" 
 	# Augmented reality service.
 
-	#"com.huawei.bluetooth" # [MORE INFO NEEDED]
-	# Still not clear about his purpose. A user said "Import contact via Bluetooth function" as a description.
-	# I need a confirmation. 
+	"com.huawei.bluetooth"
+	# Lets you import your contacts via Bluetooth
+	# Bluetooth will still work if you remove this package.
 
 	"com.huawei.browser" 
 	# Huawei Browser app.
@@ -137,7 +129,7 @@ declare -a huawei=(
 	# Huawei Smart diagnosis (https://play.google.com/store/apps/details?id=com.huawei.hwdetectrepair)
 	# Useless features and run in background.
 
-	"com.huawei.HwMultiScreenShot"
+	#"com.huawei.HwMultiScreenShot"
 	# Scrolling screenshot feature
 
 	"com.huawei.iaware"
@@ -151,9 +143,14 @@ declare -a huawei=(
 	# Huawei Health (https://play.google.com/store/apps/details?id=com.huawei.health)
 	# Connect Huawei wearables to your phone and all sorts of stats like all fitness tracking apps.
 
+	# Live wallpapers
 	"com.huawei.livewallpaper.paradise" 
-	# Live wallpaper service.
-
+	"com.huawei.livewallpaper.artflower"
+	"com.huawei.livewallpaper.flowersbloom"
+	"com.huawei.livewallpaper.mountaincloud"
+	"com.huawei.livewallpaper.naturalgarden"
+	"com.huawei.livewallpaper.ripplestone"
+	
 	"com.huawei.mirror" # [MORE INFO NEEDED]
 	# Huawei Mirror app. 
 	# Mirror like "Glass" or "screen mirror" ? 
@@ -168,11 +165,8 @@ declare -a huawei=(
 
 	"com.huawei.phoneservice" 
 	# HiCare (https://play.google.com/store/apps/details?id=com.huawei.phoneservice)
-	# Provides you with common online services including customer services, issue feedback, user guides, service centers and self-service. 
-
-	"com.huawei.screenrecorder" 
-	# Huawei Screen recorder feature.
- 
+	# Provides you common online services including customer services, issue feedback, user guides, service centers and self-service. 
+ 	
 	"com.huawei.stylus.floatmenu" 
 	# Floating menu with M-Pen feature.
 
@@ -184,7 +178,7 @@ declare -a huawei=(
 	"com.huawei.trustagent" # [MORE INFO NEEDED]
 	# Smart unlock feature.
 	# Enables you to unlock your phone with a Bluetooth device, like a smart band. 
-	# When a compatible Bluetooth device is detected, you can unlock your phone with a simple swipe.
+	# When a compatible Bluetooth device is detected, you can unlock your phone with a simple swipe (without a password).
 
 	"com.huawei.vassistant" 
 	# HiVoice app.
@@ -194,6 +188,12 @@ declare -a huawei=(
 	"com.huawei.videoeditor" 
 	# Huawei Video editor.
 
+	"com.huawei.vassistant" 
+	# HiVoice app
+	# Huawei voice assistant (like Siri or Google assistant)
+	# Huge privacy risk. Keep in mind that the app keeps the microphone *on* non-stop.
+	# Is now Celia (https://consumer.huawei.com/en/emui/celia/)
+
 	"com.huawei.wallet" 
 	# Huawei Wallet (renammed Huawei Pay)
 	# Mobile payment and e-wallet service for Huawei devices that offers the same services as Apple Pay, Samsung Pay etc...
@@ -201,7 +201,8 @@ declare -a huawei=(
 
 	"com.huawei.watch.sync" # [MORE INFO NEEDED]
 	# Huawei Watch sync function
-	# Is it only used to sync Huawei watch ?  
+	# Is it only used to sync Huawei watch ?
+	# Safe to remove according to several users
 
 	"com.iflytek.speechsuite" 
 	# Default voice input method from iflytek, a big chinese company (https://en.wikipedia.org/wiki/IFlytek)
@@ -216,18 +217,31 @@ declare -a huawei=(
 
 	##############################  ADVANCED DEBLOAT ##############################
 
+	#"com.huawei.aod" [MORE INFO NEEDED]
+	# Always On Display feature.
+	# Drain battery for nothing really useful.
+	# RedSkull23 says it's unsafe to remove it. Does it bootloop ? 
+
+	#"com.huawei.android.internal.app" # [MORE INFO NEEDED]
+	# Component of Huawei sharing. I read someone saying "Do not remove or you won't be able to send files to apps".
+	# Can someone test it ? 
+
 	#"com.huawei.android.launcher" 
 	# Huawei launcher app.
 	# It's basically the home screen, the way icons apps are organized and displayed.
 	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
+	# You will maybe need this package for the recent apps feature to work (even if you have another launcher)
 
-	"com.android.mediacenter" 	
+	#"com.android.mediacenter" 	
 	# Huawei music app. (Yeah they messed up with the package name)
 
-	# "com.hisi.mapcon" 
+	#"com.huawei.screenrecorder" 
+	# Huawei Screen recorder feature (with internal mic record toggle)
+
+	#"com.hisi.mapcon" 
 	# Involved in Wifi Calling. Safe to remove if you don't use this.
 	
-	# "com.huawei.hidisk" 
+	#"com.huawei.hidisk" 
 	# Huawei File Manager app.
 
 	#"com.huawei.search" 
