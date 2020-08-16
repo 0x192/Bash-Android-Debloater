@@ -1,3 +1,9 @@
+# New Release (v2.5.1)
+
+- Fixed an inconsequential typing error
+- A more useful error message is now displayed when the phone is not detected by ADB (#18)
+
+
 # New Release (v2.5)
 
 Big thanks to @plan10, @thekgg and @zxh30b for their nice contributions! :rocket:
