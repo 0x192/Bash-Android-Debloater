@@ -33,10 +33,30 @@ declare -a samsung=(
 
 	"com.osp.app.signin"
 	# Samsung Account app
+	# Lots of trackers in this app
+	# Has a huge list of permissions. It is a essential app for a lof of samsung apps (removed by default in this list)
+
+	"com.samsung.app.jansky"
+	# Multi-lines settings. 
+	# Lets you have multiple virtual phone numbers.
+	# This feature is only available on some US carrier-locked devices
+	# https://www.reddit.com/r/GalaxyS8/comments/6esiub/tmobile_s8s8_multiline_setting_is_awesome/did2pur/
 
 	"com.samsung.aasaservice"
-	# Sometimes, eat a LOT of battery.
+	# Sometimes, eat a LOT of battery (according to some reddit users)
 	# Security policy apps (kind of things which prevents installation of applications)
+
+	"com.samsung.accessory"
+	# Samsung Accessory Service (https://play.google.com/store/apps/details?id=com.samsung.accessory)
+	# Lets you transfer data between your Samsung phone and Samsung accessories (GALAXY Gear/Watch...) 
+
+	"com.samsung.accessory.beansmgr"
+	# Gear IconX Plugin (https://play.google.com/store/apps/details?id=com.samsung.accessory.beansmgr)
+	# Allows you to use features such as device settings and status view when connected to a Samsung Gear IconX (2018) device.
+
+	"com.samsung.accessory.safiletransfer"
+	# SASystemProviders
+	# Needed for Samsung Accessory Service
 
 	"com.samsung.android.aircommandmanager"
 	# AirCommandManager manager
@@ -48,12 +68,17 @@ declare -a samsung=(
 	# Used to stream content from your phone to a Samsung smart TV.
 	# https://www.samsung.com/us/apps/smart-view-2/
 
+	"com.samsung.android.app.accesscontrol"
+	# Samsung Interaction control
+	# Settings > Accessibility > Dexterity and interaction (or vol. down + home key)
+	# Allows you to restrict some functions of your phone (stop the phone from interacting with touch commands for instance)
+
 	"com.samsung.android.app.advsounddetector"
 	# Samsung Sound detectors
 	# Uses microphone to identify recognizable sounds. For example, if it recognizes a baby's cry, it can alert you with flashing lights so 
 	# you know to check on your baby. Or it can notify you if it hears the doorbell ring so you know to open the door.
 	#
-	# adv maybe refers to Samsung Advanced Institute of Technology 
+	# adv maybe refers to 'Samsung Advanced Institute of Technology' (or simply means 'advanced')
 
 	"com.samsung.android.app.appsedge"
 	# Samsung apps edge (https://www.samsung.com/global/galaxy/what-is/apps-edge/)
@@ -88,10 +113,15 @@ declare -a samsung=(
 	# Swipe one of the edges of the screen to bring up information even when your device is locked (with the screen off). 
 	# You can also set it up to display the news or weather, for example.
 
+	"com.samsung.android.app.color"
+	# Color adjustment
+	# Samsung's adaptive super AMOLED screen optimizes the color range, saturation, and sharpness of the picture depending on what you're watching or doing. 
+	# This package lets you to manually customize the color settings to match your preferences.
+
 	"com.samsung.android.app.episodes"
 	# Samsung story album (https://www.samsung.com/in/support/mobile-devices/what-is-story-album-application-in-samsung-galaxy-s4/)
 
-	"com.samsung.android.app.filterinstaller"
+	"com.samsung.android.app.filterinstaller" # [MORE INFO NEEDED]
 	# Filter installer
 	# I have no clue about the usefulness of this package. Maybe it filters apps that are not compatible with the phone.
 	# This package is only triggered when you install an app (private class PackageIntentReceiver) 
@@ -100,7 +130,8 @@ declare -a samsung=(
 	# Samsung Story Video Editor
 	# Lets you edit your videos stories 
 
-	"com.samsung.android.app.interactivepanoramaviewer" #Name : Visual. photo virt.
+	"com.samsung.android.app.interactivepanoramaviewer"
+	# Visual. photo virt.
 	# Samsung Virtual Shot Viewer enable sharing virtual shot
 	# Safe to remove if you don't want virtual photos.
 
@@ -129,10 +160,16 @@ declare -a samsung=(
 
 	"com.samsung.android.app.news"
 	# News Samsung app
-	# Doesn't exist anymore ? 
+	# Doesn't exist anymore? 
 
 	"com.samsung.android.app.notes" 
 	# Samsung Notes app (https://play.google.com/store/apps/details?id=com.samsung.android.app.notes)
+
+	"com.samsung.android.app.panel.naver.v"
+	# Naver V Panel
+	# Special samsung panel for the very useless V LIVE (formerly Naver V) app (https://play.google.com/store/apps/details?id=com.naver.vapp)
+	# V LIVE is an app that features personal video broadcasts of South Korean celebrities
+	# This panel also includes Naver Shopping (https://shopping.naver.com/)
 
 	"com.samsung.android.app.pinboard"
 	# Samsung Scrapbook (discontinued)
@@ -231,13 +268,15 @@ declare -a samsung=(
 	# Biometric authentication service that can be used to sign in to websites and apps in your mobile.
 	# https://www.samsung.com/global/galaxy/apps/samsung-pass/
 
-	"com.samsung.android.bbc.bbcagent"
+	"com.samsung.android.bbc.bbcagent" # [MORE INFO NEEDED]
 	# BBCAgent. KNOX related.
 	# Couldn't find more information about it.
 
 	"com.samsung.android.bbc.fileprovider"
 	# KNOX BBC Provider.
-	# Couldn't find more information about it.
+	# Provider for KNOX BBC
+	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
+	# and provide a way to share data with other apps.
 
 	"com.samsung.android.beaconmanager"
 	# Replaced by Samsung Smart Things (com.samsung.android.ststub)
@@ -258,6 +297,13 @@ declare -a samsung=(
 
 	"com.samsung.android.calendar"
 	# Samsung Calendar App
+
+	"com.samsung.android.coreapps"
+	# Samsung Enhanced features
+	# Files and profiles sharing feature. It may be called "Enhanced messaging".
+	# Using this service lets Samsung to automatically collect your phone number, contact list and messages
+	# https://forums.androidcentral.com/samsung-galaxy-s6-edge/523172-enhanced-features.html
+	# https://www.samsung.com/za/support/mobile-devices/what-is-enhanced-messaging/
 
 	"com.samsung.android.da.daagent"
 	# Samsung dual messenger (https://www.samsung.com/global/galaxy/what-is/dual-messenger/)
@@ -285,6 +331,10 @@ declare -a samsung=(
 	"com.samsung.android.drivelink.stub"
 	# Stub for car mode 
 	# REMINDER : Stub = https://stackoverflow.com/questions/10648280/what-is-stub-and-aidl-for-in-java
+
+	"com.samsung.android.gearoplugin"
+	# Gear S Plugin (https://play.google.com/store/apps/details?id=com.samsung.android.gearoplugin)
+	# Plugin for com.samsung.android.app.watchmanager
 
 	"com.samsung.android.easysetup"
 	# Samsung Connect Easy Setup (now SmartThings)
@@ -364,6 +414,11 @@ declare -a samsung=(
 	#
 	# https://support.samsungknox.com/hc/en-us/articles/115012547907-What-URLs-do-I-have-to-whitelist-to-make-Samsung-apps-work-with-an-authenticated-proxy-
 
+	"com.samsung.android.knox.containerdesktop" # [MORE INFO NEEDED]
+	# Knox Container Desktop
+	# Provides UI for the work(space) container? 
+	# See "com.samsung.android.knox.containeragent"
+
 	"com.samsung.android.livestickers"
 	# Deco Pic (accessible through AR Zone)
 	# Camera app with stickers and snapchat-like filters
@@ -423,6 +478,13 @@ declare -a samsung=(
 	# https://www.eteknix.com/samsungs-context-service-may-take-data-collection-surveillance-worrying-levels/
 	# https://www.theinquirer.net/inquirer/news/2328363/samsung-context-service-will-collect-user-data-to-share-with-developers
 
+	"com.samsung.android.rubin.app"
+	# Customization Service
+	# Collect a massive amount of data (https://www.samsung.com/us/account/customization-service/)
+	# Basically everything you do on your phone.
+	# For "a better user experience" blablabla...
+	# Used to display customized advertisements about products and services that may be of interest to you
+
 	"com.samsung.android.samsungpass"
 	# Samsung Pass app
 	# https://www.samsung.com/global/galaxy/apps/samsung-pass/
@@ -435,6 +497,11 @@ declare -a samsung=(
 	"com.samsung.android.samsungpositioning"
 	# Run at startup and ask for an unknown permission SEC_FACTORY_PHONE
 	# This package seems to be used for samsung apps needing location.
+
+	"com.samsung.android.sdk.handwriting" # [MORE INFO NEEDED]
+	# Handwriting Service
+	# Only for Samsung Note? 
+	# https://www.samsung.com/sg/support/mobile-devices/how-do-you-convert-handwriting-to-text-and-other-formats-using-s-pen-and-samsung-notes/
 
 	"com.samsung.android.sdk.professionalaudio.utility.jammonitor"
 	# Professional Audio
@@ -469,6 +536,11 @@ declare -a samsung=(
 	# SmartFaceService
 	# Used to automatically detects faces when using the Samsung camera
 	# NOTE : This package has nothing to do with face unlock (com.samsung.android.bio.face.service)
+
+	"com.samsung.android.smartswitchassistant" # [MORE INFO NEEDED]
+	# Samsung SmartSwitch
+	# Lets you transfer your data from your old (Samsung) phone to your new one.
+	# Needed for com.sec.android.easyMover?
 
 	"com.samsung.android.stickerplugin" # [MORE INFO NEEDED]
 	# StickerPlugin
@@ -576,6 +648,10 @@ declare -a samsung=(
 	"com.samsung.android.tripwidget"
 	# Discontinued package (used in Galaxy S4) handling trip wallpaper widget.
 
+	"com.samsung.android.unifiedprofile" # [MORE INFO NEEDED]
+	# My Profile
+	# Related to Samsung Members?
+
 	"com.samsung.android.universalswitch"
 	# Universal Switch lets you designate certain touches or gestures to control specific actions on your phone. 
 	# https://www.samsung.com/uk/accessibility/mobile-universal-switch/
@@ -613,10 +689,10 @@ declare -a samsung=(
 	# also swiping to different screens allows you to see breakdowns by day, by hour and by app.
 
 	"com.samsung.android.widgetapp.yahooedge.finance"
-	# Samsung Finance provided by Yahoo
+	# Special edge panel widget for Yahoo Finance
 
 	"com.samsung.android.widgetapp.yahooedge.sport"
-	# Samsung Sport provided by Yahoo 
+	# Special edge panel widget for Yahoo Sport
 
 	"com.samsung.crane"
 	# Call+ (https://support.vodafone.co.uk/Vodafone-apps/Call-and-Message/60900956/What-is-Call.htm)
@@ -646,8 +722,12 @@ declare -a samsung=(
 	"com.samsung.faceservice" # [MORE INFO NEEDED]
 	# Face service detection 
 	# Same shared user id as com.samsung.ipservice, com.samsung.mlp, com.samsung.cmh
-	# Needed for face recognition in the Gallery
+	# Needed for face recognition in the Gallery and maybe
 	# NOTE : Removing this package *should* not break face unlock (confirmation needed)
+
+	"com.samsung.fresco.logging" # [MORE INFO NEEDED]
+	# Fresco Logging Service
+	# Fresco is an android library for managing images and the memory they use (https://github.com/facebook/fresco)
 
 	"com.samsung.groupcast"
 	# Samsung Group Play (discontinued)
@@ -689,7 +769,7 @@ declare -a samsung=(
 	"com.samsung.knox.knoxtrustagent"
 	# Knox Quick Access allows users to access the Knox Workspace container using wearables such as the Galaxy Gear S2.
 
-	"com.samsung.knox.kss"
+	"com.samsung.knox.kss" # [MORE INFO NEEDED]
 	# Knox Keyguard. Not much more information 
 
 	"com.samsung.knox.securefolder"
@@ -698,6 +778,9 @@ declare -a samsung=(
 	# https://www.samsungknox.com/en/solutions/personal-apps/secure-folder
 	# NOTE : The key used to encrypt the files is not derived from the password you use to unlock the secure folder 
 	# but rather from a key stored in the hardware that is set in the factory.
+
+	"com.samsung.knox.securefolder.setuppage"
+	# Provide the setup process when opening secure folder (com.samsung.knox.securefolder) for the first time
 
 	"com.samsung.mdl.radio"
 	# Samsung Milk Music (discontinued in 2016)
@@ -738,10 +821,6 @@ declare -a samsung=(
 	"com.samsung.safetyinformation"
 	# Some safety information telling you not to put your phone in your eyes (it's not a joke)
 
-	"com.samsung.SMT"
-	# Samsung TTS (Text-to-speech)
-	# Seems discontinued.
-
 	"com.samsung.storyservice"
 	# Samsung StoryService
 	# Create stories in the Gallery from your pictures and videos.
@@ -756,7 +835,7 @@ declare -a samsung=(
 	# System UI for Bixby/Bixby2
 
 	"com.samsung.tmovvm"
-	# Samsung Visual Voicemail
+	# Samsung Visual Voicemail (for T-mobile only)
 	# Allows you to review and manage your voicemail directly from your smartphone, eliminating the need to dial into your mailbox.
 	# https://mobile.spectrum.com/support/article/360001296667/samsung-visual-voicemail
 
@@ -774,14 +853,20 @@ declare -a samsung=(
 	# https://www.samsung.com/semiconductor/security/ese/
 	# See above
 
+	"com.samsung.visionprovider"
+	# Provider for Bixby Vision (com.samsung.android.visionintelligence)
+	# Manages access to data stored by itself, stored by other apps, and provide a way to share these data with other apps.
+
 	"com.samsung.voiceserviceplatform"
 	# Samsung Voice (for Galaxy S7)
 	# Virtual mobile personal assistant capable of running basic tasks through voice
 	# https://www.samsung.com/global/galaxy/what-is/s-voice/
 
 	"com.samsung.vvm"
-	# Samsung Voicemail 
+	"com.samsung.vvm.se"
+	# Samsung Verizon Voicemail 
 	# Allows you to review and manage your voicemail directly from your smartphone, eliminating the need to dial into your mailbox.
+	# You can scroll through your messages, pick the ones you want to listen to, and erase them right from your device's screen.
 	# https://mobile.spectrum.com/support/article/360001296667/samsung-visual-voicemail
 
 	"com.sec.allsharecastplayer"
@@ -808,6 +893,22 @@ declare -a samsung=(
 	#"com.sec.android.app.camera"
 	# Samsung camera app
 	# Safe to remove (but not recommanded)
+
+	"com.sec.android.app.bluetoothtest"
+	# Bluetooth Test
+	# Hidden feature accessible by entering *#*#232331#*#* in the samsung dialer
+	# Was calling home back in 2015 (https://forum.xda-developers.com/galaxy-s5/help/bluetoothtest-apk-calling-home-t3035182)
+
+	"com.sec.android.app.chromecustomizations"
+	# Samsung stuff on the homepage of Google Chrome
+
+	"com.sec.android.app.DataCreate"
+	# Automation Test 
+	# Another hidden test app. A lot of mention of samsung note (memo). Has access to basically everything on the phone
+	# Related to these hidden menus (accessible by typing these codes in the samsung dialer) :
+	# - *#3282*727336*# (Status of data usage) 
+	# - *#273283*255*3282*# (Data create menu) 
+	# - 273283*255*663282* (Backup all media files)
 
 	"com.sec.android.app.desktoplauncher"
 	# Samsung DeX Home (launcher)
@@ -840,11 +941,6 @@ declare -a samsung=(
 	# HwModuleTest, a hardware hidden test app (dial *#0*# to open it). 
 	# Fun low-level stuff to see in there
 
-	#"com.sec.android.app.launcher"
-	# Samsung One UI Home launcher (homescreen) (https://play.google.com/store/apps/details?id=com.sec.android.app.launcher)
-	# It is samsung Touchwiz default launcher
-	# DO NOT REMOVE THIS IF YOU DON'T USE ANOTHER LAUNCHER ! 
-
 	"com.sec.android.app.magnifier"
 	# Lets you use your device as a magnifying glass making it easier to read any small font or expand the details of any object, for example.
 
@@ -867,6 +963,10 @@ declare -a samsung=(
 
 	"com.sec.android.app.quicktool"
 	# The Quick Tools panel includes a ruler, a compass and a torch. To add this to the Edge Panel (com.samsung.android.app.clipboardedge)
+
+	"com.sec.android.app.ringtoneBR" # [MORE INFO NEEDED]
+	# Samsung ringtone backup/restore feature
+	# Where is this feature? (available from Samsung Galaxy S9)
 
 	"com.sec.android.app.samsungapps"
 	# Samsung Galaxy Store
@@ -896,14 +996,32 @@ declare -a samsung=(
 	# SysDump hidden app
 	# Low-level debugging and diagnostics tools (dial *#9900# to open it)
 
+	"com.sec.android.app.setupwizardlegalprovider" 
+	# SetupWizardLegalProvider
+	# All the legal terms you need to accept when you boot your phone for the first time. 
+	# The Welcome screen which guides you through the basics of setting up your device is the android setup wizard.
+
 	"com.sec.android.app.shealth"
 	# Samsung Health (https://play.google.com/store/apps/details?id=com.sec.android.app.shealth)
 	# Serves to track various aspects of daily life contributing to well being such as physical activity, diet, and sleep.
 	# https://en.wikipedia.org/wiki/Samsung_Health
+	# S Health data are stored in a Knox container (with HIPAA compliance)
 
 	"com.sec.android.app.sns3"
 	# Samsung Galaxy (Only installed on older phone before Galaxy S7)
 	# Don't really know what this app does but majority of people deleted this.
+
+	"com.sec.android.app.setupwizard"
+	# Samsung Setupwizard
+	# The Welcome screen which guides you through the basics of setting up your device when you boot it for the first time (or after a factory reset)
+
+	"com.sec.android.app.suwscriptplayer"
+	# SuwScriptPlayer
+	# Seems to be another test app which test some "scripts"
+
+	"com.sec.android.app.sysscope"
+	# Checks after every boot if the ROM and kernel have been modified. This package is only present on Verizon-locked phones.
+	# Verizon has the ability to check if your device has root access (content://com.verizon.security/ROOT_STATUS)
 
 	"com.sec.android.app.translator"
 	# Samsung Translater (S Translater)
@@ -916,6 +1034,11 @@ declare -a samsung=(
 	# Samsung Smart View
 	# Allows you to cast your phone screen to the TV.
 	# https://www.samsung.com/us/apps/smart-view-2/
+
+	"com.sec.android.app.wlantest"
+	# wlan test
+	# Hidden test app responding to the #232339*# and *#232338*# secret codes
+	# FYI : wlan = wireless LAN (https://en.wikipedia.org/wiki/Wireless_LAN)
 
 	"com.sec.android.AutoPreconfig"
 	# Auto Preconfig
@@ -999,11 +1122,19 @@ declare -a samsung=(
 	# https://nitter.net/fs0c131y/status/1046689524691218432#m
 	# Archive : https://web.archive.org/web/20200107110205/https://nitter.net/fs0c131y/status/1046689524691218432
 
+	"com.sec.android.providers.security" # [MORE INFO NEEDED]
+	# Provider (handles access) for certain security policies
+	# It seems to provide access to a password database but I don't know under what circumstances this database is used.
+	# This provider is only usable by Samsung apps 
+	# I see a com.android.security.PASSWORD_EXPIRED intent filter in the AndroidManifest so my guess is it handles password policies
+	# Typically, a policy that could force user to change their password after a certain amount of time.
+	# This is mainly useful for enterprises.
+
 	"com.sec.android.provider.snote"
 	# Content provider for S Note (https://www.samsung.com/global/galaxy/apps/samsung-notes/).
 	# REMINDER : Content providers help an application manage access to data stored by itself, stored by other apps, 
 	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
-	# Source : https://developer.android.com/guide/topics/providers/content-providers.html	
+	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
 
 	"com.sec.android.RilServiceModeApp"
 	# Service mode RIL hidden app. Used for debug and diagnostics
@@ -1050,14 +1181,40 @@ declare -a samsung=(
 	# From the Galaxy Essentials widget you can access and download a collection of premium content, free of charge.
 	# https://www.samsung.com/my/support/mobile-devices/what-is-galaxy-essentials-and-how-can-i-add-or-remove-it-from-my-smartphone-home-screen/
 
+	"com.sec.android.widgetapp.webmanual"
+	# User Manual
+	# https://www.samsung.com/us/support/answer/ANS00077583/
+
+	"com.sec.app.RilErrorNotifier"
+	# RilNotifier
+	# Debug app for the RIL
+	# See "com.sec.android.RilServiceModeApp"
+
 	"com.sec.bcservice"
 	# Broadcast Service
 	# Diagnostic/debug hidden app. TCP dump.
+
+	"com.sec.downloadablekeystore"
+	# Keystore is a secure place provided by Android to store cryptographic keys and make it more difficult to extract from the device.
+	# This package is used by enterprise to update certificates on the device.
+	# NOTE : It allow IT admins to install certificates while the device is still locked. 
+	# This means certificates can be silently installed into a keystore without any interaction from the device-user.
+	# It uses the KNOX TIMA (Named Trust-zone-based Integrity Measurement Architecture) that allows storage of keys in the container for certificate signing using the TrustZone hardware platform.[16] 
+	# https://docs.samsungknox.com/dev/knox-sdk/about-keystores.htm
+	# https://docs.samsungknox.com/dev/knox-sdk/faqs/general/what-is-the-knox-tima-ccm.htm
+	# https://docs.samsungknox.com/admin/whitepaper/kpe/client-certificate-manager.htm
 
 	"com.sec.enterprise.knox.attestation"
 	# KNOX Attestation
 	# Lets you check the health of a Samsung Android device,
 	# https://docs.samsungknox.com/dev/knox-attestation/index.htm
+
+	"com.sec.enterprise.knox.cloudmdm.smdms"
+	# Knox Enrollment Service
+	# mdm = mobile device management = software used by an IT department to monitor employees' mobile devices.
+	# Used to enroll/register a large number of phones to the KNOX MDM service
+	# https://docs.samsungknox.com/admin/knox-mobile-enrollment/enroll-your-devices.htm
+	# FYI : https://blog.quarkslab.com/abusing-samsung-knox-to-remotely-install-a-malicious-application-story-of-a-half-patched-vulnerability.html
 
 	"com.sec.enterprise.knox.shareddevice.keyguard"
 	# KNOX shared device keyguard.
@@ -1077,20 +1234,6 @@ declare -a samsung=(
 	# Entreprise VPN service
 	# I couldn't find information about this package. No permissions asked too.
 	# See above for MDM signification
-
-	#"com.sec.epdg"
-	# Huh... that's hard to explain quickly. Let's try : 
-	# First you need to know that there is a standards organization which develops protocols for mobile telephony called 3GPP (mobile network : 2G/3G/4G/5G).
-	# RAT (physical connection method to a wireless communication network) non specified by the 3GPP is called non-3GPP. RAT Wifi is non-3GPP.
-	# 
-	# ePDG means Evolved Packet Data Gateway. The main role of the ePDG is to provide security mechanisms such as IPsec tunnelling of connections 
-	# with the device over an untrusted non-3GPP access. It is mainly use for VoWifi (Voice over wifi).
-	# For further information : 
-	# - https://www.3gpp.org/technologies/keywords-acronyms/100-the-evolved-packet-core
-	# - https://www.aptilo.com/solutions/mobile-data-offloading/3gpp-wifi-access/
-	# - https://en.wikipedia.org/wiki/System_Architecture_Evolution#Evolved_Packet_Core_(EPC)
-	#
-	# Safe to remove if not using VoWifi. 
 
 	"com.sec.epdgtestapp"
 	# Test app for ePDG (see com.sec.epdg)
@@ -1113,9 +1256,13 @@ declare -a samsung=(
 	"com.sec.factory.iris.usercamera" 
 	# Camera Iris User Test (by dialing *#0*#)
 
+	"com.sec.hiddenmenu"
+	# IOTHiddenMenu
+	# Hidden menu used to access other hidden debug apps (those accessible with a secret code)
+
 	"com.sec.imslogger"
 	# IMS Logger provide logging optins.
-	# Security flaw : https://nitter.net/fs0c131y/status/1115889065285562368 
+	# Security flaw : https://nitter.net/fs0c131y/status/1115889065285562368
 
 	"com.sec.kidsplat.installer"
 	# Kids Mode (replaced by Kids Home : com.samsung.android.kidsinstaller)
@@ -1185,6 +1332,9 @@ declare -a samsung=(
 	# Name : SilentLogging
 	# This package runs at startup and logs things (related to the modem ?). Seems Pretty shady to me (I don't like its orwellian name).
 
+	"com.sec.phone"
+	# A another test/debug app used to test the proper functioning of phone calls.
+
 	"com.sec.readershub"
 	# Samsung Books (discontinued)
 	# All-in-one e-Reading solution that offers instant access to thousands of e-reading contents.
@@ -1203,19 +1353,6 @@ declare -a samsung=(
 	# SecVideoEngineService is arguably a Samsung video engine service (handle enconding/decoding ?) for displaying video trough Samsung apps. 
 	# 3 permissions : RECORD_AUDIO, CAMERA, INTERACT_ACROSS_USERS_FULL
 	# Safe to remove.
-
-	"com.sec.vsimservice"
-	# VSim Service 
-	# Something related to virtual SIM. I didn't find what Samsung does with this.
-	# https://www.quora.com/What-is-VSIM-virtual-SIM-technology
-	# Has a LOT of permissions (and involving IMS service)
-	# Interact with VoWifi stuff and can receive messages from Google Cloud Messaging.
-	# Run at startup.
-
-	"com.sec.vsim.ericssonnsds.webapp" 
-	# NSDSWebApp. 
-	# Non Sim Device Solution (NSDS) is needed for VoLTE and VoWifi (Wifi Calling) if you have a virtual SIM. 
-	# NSDS allows connecting non sim devices to IMS core: https://uk.linkedin.com/in/hemant-kumar-dewnarain-2b779679
 
 	"com.sec.yosemite.phone"
 	# Samsung WatchON (discontinued)
@@ -1247,6 +1384,10 @@ declare -a samsung=(
 	# Keep in mind these special types of SMS can be abused : 
 	# https://www.csoonline.com/article/3435729/sms-based-provisioning-messages-enable-advanced-phishing-on-android-phones.html
 	# https://www.zdnet.fr/actualites/les-smartphones-samsung-huawei-lg-et-sony-vulnerables-a-des-attaques-par-provisioning-39890045.htm
+
+	"com.wssnps"
+	# Samsung Backup and restore Manager (on Samsung Galaxy S7)
+	# Was replaced by "com.sec.android.easyMover" (Samsung Smart Switch Mover)
 
 	"tv.peel.samsung.app"
 	# Peel Smart Remote (WatchON)
@@ -1308,6 +1449,32 @@ declare -a samsung=(
 	# Responsible for Dobly Atmos and other pre-programmed equalizer stuff (accessible from the Settings app)
 	# Needed by Adapt Sound (com.sec.hearingadjust) which a pretty useful but little known feature.
 
+	#"com.samsung.android.mcfserver" # [MORE INFO NEEDED]
+	# Samsung Multi Connectivity (starting from Galaxy S20)
+	# See https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/12
+
+	#"com.samsung.app.newtrim"
+	# Samsung Video trimmer
+	# Lets you quickly trim video files (from the gallery “Edit -> Studio -> Video Trimmer”)
+
+	#"com.sec.epdg"
+	# Huh... that's hard to explain quickly. Let's try : 
+	# First you need to know that there is a standards organization which develops protocols for mobile telephony called 3GPP (mobile network : 2G/3G/4G/5G).
+	# RAT (physical connection method to a wireless communication network) non specified by the 3GPP is called non-3GPP. RAT Wifi is non-3GPP.
+	# 
+	# ePDG means Evolved Packet Data Gateway. The main role of the ePDG is to provide security mechanisms such as IPsec tunnelling of connections 
+	# with the device over an untrusted non-3GPP access. It is mainly use for VoWifi (Voice over wifi).
+	# For further information : 
+	# - https://www.3gpp.org/technologies/keywords-acronyms/100-the-evolved-packet-core
+	# - https://www.aptilo.com/solutions/mobile-data-offloading/3gpp-wifi-access/
+	# - https://en.wikipedia.org/wiki/System_Architecture_Evolution#Evolved_Packet_Core_(EPC)
+	#
+	# Safe to remove if not using VoWifi.
+
+	#"com.samsung.android.app.multiwindow" # [MORE INFO NEEDED]
+	# Provides manifestly the ability to display multiple apps on the screen (at the same time)
+	# Can someone test? 
+
 	#"com.samsung.android.bio.face.service"
 	# Handle Face recognition unlock 
 	# https://kp-cdn.samsungknox.com/b60a7f0f59df8f466e8054f783fbbfe2.pdf
@@ -1333,7 +1500,7 @@ declare -a samsung=(
 	# NOTE : If you don't want to delete this package, at least use a firewall (Netguard/AfWall+) to block internet access
 
 	#"com.samsung.android.messaging"
-	# Samsung Messaging app 
+	# Samsung Messaging app
 
 	#"com.samsung.android.provider.stickerprovider" 
 	# One more package related to camera stickers.
@@ -1352,6 +1519,14 @@ declare -a samsung=(
 	# I still can install apps.
 	# I think (but I'm not sure at all) that you can remove this safely if you also remove com.samsung.aasaservice and com.samsung.android.sm
 
+	#"com.samsung.android.server.iris"
+	# Provides iris recognition feature
+
+	#"com.samsung.android.smartfitting" 
+	# Smart Fitting Service
+	# Adapt the size/ratio of the screen. Automatic mode is default but there is a manual mode
+	# https://www.samsung.com/levant/support/mobile-devices/galaxy-s8-s8-plus-what-is-the-smart-fitting-display-for-vod-games/
+
 	#"com.samsung.android.spdclient"
 	# Security policy updates (part of KNOX)
 	# Updates the SELinux policies according to Security Enhancements for Android (SE for Android)
@@ -1360,6 +1535,13 @@ declare -a samsung=(
 	# Not mandatory if you know what you are doing and if you don't install software from unknown sources.
 	# Needs confirmation but removing this package could change SELinux mode (enforcing by default)
 	# https://source.android.com/security/selinux
+
+	#"com.samsung.android.video"
+	# Samsung Video Player
+	# https://galaxystore.samsung.com/prepost/000003980724?appId=com.samsung.android.video
+
+	#"com.samsung.android.wallpaper.res"
+	# Backup your launcher/lockscreen wallapaper and load this backup instead of the original file in case you delete it.
 	
 	#"com.samsung.app.slowmotion"
 	# Slowmotion mode in camera app
@@ -1401,11 +1583,28 @@ declare -a samsung=(
 	#"com.samsung.sdm.sdmviewer" # [MORE INFO NEEDED]
 	# Lets you view installed updates?
 
+	#"com.sansumg.SMT"
+	# Samsung TTS (Text-to-speech)
+	# Works with applications such as S Voice; translation apps, GPS that require Text-To-Speech (TTS) functionality and reads back text
+	# https://galaxystore.samsung.com/detail/com.samsung.SMT
+
+	#"com.samsung.tmowfc.wfccontroller"
+	#"com.samsung.tmowfc.wfcpref"
+	# Wifi Calling for T-mobile clients only! (tmowfc = t-mobile only wifi calling)
+	# Lets you call or text on Wi-Fi networks with your T-Mobile phone number
+	# https://www.t-mobile.com/support/coverage/wi-fi-calling-from-t-mobile
+	# VoLTE/IMS is needed for this to work (see com.sec.imsservice)
+
+	#"com.sec.android.app.launcher"
+	# Samsung One UI Home launcher (homescreen) (https://play.google.com/store/apps/details?id=com.sec.android.app.launcher)
+	# It is samsung Touchwiz default launcher
+	# DO NOT REMOVE THIS IF YOU DON'T USE ANOTHER LAUNCHER !
+
 	#"com.sec.android.app.clockpackage"
 	# Samsung clock
 
-	#"com.sec.android.app.personalization"
-	# Without a doubt this package is involved in personalization of something but It's hard to find what.
+	#"com.sec.android.app.personalization" # [MORE INFO NEEDED]
+	# Without a doubt this package is involved in personalization of something but tt's hard to find what.
 	# 2 permissions : READ_PHONE_STATE and CHANGE_PHONE_STATE
 
 	#"com.sec.android.app.popupcalculator"
@@ -1415,6 +1614,20 @@ declare -a samsung=(
 	# Samsung Launcher when in emergency mode. 
 	# Here, emergency = low battery
 	# See below
+
+	#"com.sec.android.app.ve"
+	#"com.sec.android.app.vepreload"
+	# Samsung video editor
+	# Lets you add add transitions, music, stickers and text to your videos. You can also change the speed of the action, 
+	# or even add filters to switch up the mood of your videos.
+
+	#"com.sec.android.app.ve.vebgm"
+	# Needed if you want to add a background music to your videos from the samsung video editor
+	
+	#"com.sec.android.inputmethod.beta"
+	# Samsung Keyboard Neural Beta
+	# Smarter Samsung Keyboard with better predictition/suggestion (using deep learning)
+	# https://galaxystore.samsung.com/prepost/000004170688?appId=com.sec.android.inputmethod.beta
 
 	#"com.sec.android.emergencymode.service"
 	# Emergency mode enables you to extend your device’s standby time when you are in an emergency situation and you want your device to 
@@ -1434,12 +1647,6 @@ declare -a samsung=(
 	#"com.sec.android.gallery3d.panorama360view"
 	# Let you see panoramic photos in the samsung Gallery.
 
-	#"com.sec.android.provider.emergencymode"
-	# Provider for emergency mode (com.sec.android.emergencylauncher)
-	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
-	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
-	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
-	
 	#"com.sec.android.mimage.photoretouching"
 	# Samsung Photo Editor
 	# Disabling this will disable the inbuilt photo editor accessed via the stock gallery.
@@ -1448,6 +1655,17 @@ declare -a samsung=(
 	#"com.sec.android.ofviewer"
 	# Samsung selective focus camera mode.
 	# Safe to remove (but it's pretty useful)
+
+	#"com.sec.android.provider.badge"
+	# Provider for the notification badges (which are not very useful IMHO)
+	# Provide a way for apps to use notifications badges.
+	# https://www.samsung.com/au/support/mobile-devices/what-is-app-icon-badge/
+
+	#"com.sec.android.provider.emergencymode"
+	# Provider for emergency mode (com.sec.android.emergencylauncher)
+	# Reminder : Content providers help an application manage access to data stored by itself, stored by other apps, 
+	# and provide a way to share data with other apps.
+	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
 
 	#"com.sec.android.sdhms" # [MORE INFO NEEDED]
 	# Samsung Device Health Manager Service
@@ -1465,6 +1683,7 @@ declare -a samsung=(
 	# Samsung Wallpaper. Needed for choosing a wallpaper.
 	# Note : it is technically possible to change the wallpaper and then delete this package. 
 	# Used wallpaper are stored in /data/data/com.sec.android.wallpapercropper2/
+
 	#"com.sec.imsservice"
 	# This service allows calls and text messages to be delivered via an IP network (Volte/VoIP/Wifi calling). Video calling are obviously also concerned.
 	# Note : Samsung Dialer will crash if you delete this package and have wifi-calling activated in the Dialer's settings.
@@ -1486,7 +1705,27 @@ declare -a samsung=(
 	#"com.sec.ims" # [MORE INFO NEEDED]
 	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling).
 	# Don't really know the difference with com.sec.imsservice. Anyway, there is obviously strong interactions between them.
-	# May be unsafe to uninstall it. I need some more testing. 
+	# May be unsafe to uninstall it. I need some more testing.
+
+	#"com.sec.internal.vsim.VSimServiceApp"
+	# Non Sim Device Solution (NSDS) needed for VoLTE and VoWifi (Wifi Calling) if you have a virtual SIM.
+	# See com.sec.vsimservice
+	# Uses IMS service
+
+	#"com.sec.vsimservice"
+	# VSim Service 
+	# Lets you use a virtual sim
+	# https://www.quora.com/What-is-VSIM-virtual-SIM-technology
+	# Has a LOT of permissions (and involving IMS service)
+	# Run at startup.
+	# FYI : https://security.stackexchange.com/questions/223290/esim-vs-sim-card-what-is-more-secure
+
+	#"com.sec.vsim.ericssonnsds.webapp" 
+	# NSDSWebApp.
+	# Virtual SIM is an application-enabled service that requires you to install an app to use a number. 
+	# With this technology, it is possible for one to have numbers of different countries. 
+	# Non Sim Device Solution (NSDS) is needed for VoLTE and VoWifi (Wifi Calling) if you have a virtual SIM. 
+	# NSDS allows connecting non sim devices to IMS core: https://uk.linkedin.com/in/hemant-kumar-dewnarain-2b779679
 
 	# Language Pack for S-voice, the Samsung assistant (com.samsung.android.svoice)
 	#"com.sec.svoice.lang.en_US" # English (US)
@@ -1500,7 +1739,7 @@ declare -a samsung=(
 	#"com.wssyncmldm" 
 	# Software update
 	# Fetch System OTA updates
-	# Works along com.sec.android.soagent
+	# Works along with com.sec.android.soagent
 
 	)
 
@@ -1509,6 +1748,9 @@ declare -a samsung=(
 
 #"com.samsung.android.SettingsReceiver"
 # Samsung overlay of AOSP Settings. It has 39 permissions. Handles interactions with features controled by the settings.
+
+#"com.samsung.android.timezone.data_P" # [MORE INFO NEEDED]
+# Stores timezone data?
 
 #"com.samsung.android.timezone.updater"
 #"com.samsung.android.timezone.autoupdate_O" 
@@ -1520,7 +1762,7 @@ declare -a samsung=(
 # Lets you select a sound for alarm/ringtone
 
 #"com.samsung.android.clipboarduiservice"
-# User interface for clipboard 
+# User interface for clipboard
 
 #"com.samsung.android.communicationservice"
 # Message Service.
@@ -1531,7 +1773,7 @@ declare -a samsung=(
 
 #"com.samsung.android.MtpApplication"
 # Samsung overlay for MTP. Talks to com.android.mtp
-# Needed to access to your phone from a computer.
+# Needed to access your phone from a computer.
 
 #"com.samsung.android.provider.filterprovider" 
 # FilterProvider dependency to Samsung Camera
