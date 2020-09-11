@@ -111,7 +111,7 @@ main() {
             printf "\n${BORANGE}%s\n"               "====================  $title  ===================="
             printf "%s\n"                           "#                                                 #"
             printf "%-14s${NC}%s${BORANGE}%14s\n"   "#"          "1  -  $title a package"             "#" | awk '{print tolower($0)}'
-            (( BRAND_SUPPORTED )) && printf         "#${NC}%12s n2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
+            (( BRAND_SUPPORTED )) && printf         "#${NC}%10s   2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
             printf "%-14s${NC}%s${BORANGE}%27s\n"   "#"          "3  -  GFAM"                         "#"
             printf "%-14s${NC}%s${BORANGE}%23s\n"   "#"          "4  -  Carriers"                     "#"
             printf "%-14s${NC}%s${BORANGE}%25s\n"   "#"          "5  -  Others"                       "#"
@@ -143,9 +143,12 @@ main() {
 generate_custom_list(){
     [[ -v "$1" ]] && local -n list=$1
 
-    printf "%s\n" "${list[@]}" >> "list.txt";
-    readarray -t CUSTOM_LIST < <(comm -12 <(sort -i list.txt) <(sort -i  remaining_packages.txt))
-    rm list.txt
+    if (( RESTORE == 1 )); then
+        readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
+                                              <(adb shell 'pm list packages -s -u' | sed -r 's/package://g' | sort -i))
+    else
+        readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) <(sort -i  remaining_packages.txt))
+    fi
 }
 
 debloat_or_restore() {
