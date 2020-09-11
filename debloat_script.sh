@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # BASH 4.3 or newer is needed ! (use of local -n)
-(( BASH_VERSINFO < 5 )) && echo "Please upgrade to a bash version >= 4.3"
+if (( BASH_VERSINFO < 5 )); then printf "\n%s\n\n" "Please upgrade to a bash version >= 4.3" && exit 1; fi
 
-if ! $(adb get-state &>/dev/null); then echo "Your phone is not detected by ADB." && exit 1; fi
+if ! adb get-state &>/dev/null; then printf "\n%s\n\n" "Your phone is not detected by ADB." && exit 1; fi
 
 set -euo pipefail # Safer bash script
 
@@ -20,9 +20,10 @@ readonly nBold=$(tput sgr0)
 trap 'catch' EXIT
 
 catch() {
-  printf "\n\n${BRED}%s\n" "[EXIT ERROR TRAP] Hum... something is wrong."
-  printf "\n%s\n" "Unless you interrupted yourself the script bravo, you found a bug. Please report it :"
-  printf "%s${NC}\n\n" "https://gitlab.com/W1nst0n/universal-android-debloater/-/issues :)"
+    (( $? == 0 )) && exit 0;
+    printf "\n\n${BRED}%s\n" "[EXIT TRAP] Hum... something is wrong."
+    printf "\n%s\n" "If you think this is a bug. Please report it :)"
+    printf "%s${NC}\n\n" "==> https://gitlab.com/W1nst0n/universal-android-debloater/-/issues"
 }
 
 # Include debloat lists
@@ -34,7 +35,7 @@ done
 
 main() {
 
-    readonly VERSION="v2.4.2 (July 30th 2020)"
+    readonly VERSION="v2.6 (September 10th 2020)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -43,7 +44,9 @@ main() {
     # Legacy support
     readonly OLDER_THAN_ANDROID_7_1=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))   # < Android 7.1
     readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))   # < Android 5.0
-    readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0" ) # '--user 0' option doesn't work sometimes
+    readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0" ) # compatibility for older phones
+
+    declare -a CUSTOM_LIST=()
 
     FORCE_UNINSTALL=0
     RESTORE=0
@@ -57,7 +60,6 @@ main() {
     echo                                            " #                                              #"
     echo                                            " ================================================"
     echo
-    adb devices
     printf "${Bold}%s\n\n"                          "Please carefully read the FAQ before using this script!"
     printf "%s${nBold} "                            "Do you want to do an ADB backup ? [Y/N]"
     
@@ -76,8 +78,10 @@ main() {
     fi
 
     while true; do
+
+        adb shell 'pm list packages -s' | sed -r 's/package://g' > remaining_packages.txt &
+
         clear
-        
         printf "\n${BORANGE}%s\n"                   "===================  MAIN MENU  ==================="
         printf "%s\n"                               "#                                                 #"
         printf "%-14s${NC}%s${BORANGE}%18s\n"       "#"            "0  -  List packages"              "#"
@@ -85,16 +89,19 @@ main() {
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "2  -  Restore packages"           "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "3  -  Debloat packages"           "#"
         printf "%s\n"                               "#                                                 #"
+        printf "%-14s${NC}%s${BORANGE}%6s\n"        "#"            "X  -  Exit and reboot the phone"  "#"
+        printf "%s\n"                               "#                                                 #"
         printf "%s${NC}\n\n"                        "==================================================="
 
-        printf "${BRED}%s${NC}\n\n"                 "DON'T FORGET TO REBOOT YOUR PHONE ONCE THE DEBLOAT IS OVER."   
+        printf "${BRED}%s${NC}\n\n"                 "DON'T FORGET TO REBOOT YOUR PHONE ONCE THE DEBLOAT IS OVER."
+
         read -r -p "Choose an action : "
 
-        if [[ $REPLY = 0 ]]; then list_installed_packages; fi
+        if [[ $REPLY = 0 ]]; then list_installed_packages;
 
-        if [[ $REPLY = 1 ]]; then restore_backup; fi
+        elif [[ $REPLY = 1 ]]; then restore_backup;
 
-        if [[ $REPLY = 2 || $REPLY = 3 ]]; then
+        elif [[ $REPLY = 2 || $REPLY = 3 ]]; then
             clear
 
             (( !BRAND_SUPPORTED )) && printf "\n${BRED}%s\n" "No $BRAND debloat list found. Feel free to contribute ! :)"
@@ -104,7 +111,7 @@ main() {
             printf "\n${BORANGE}%s\n"               "====================  $title  ===================="
             printf "%s\n"                           "#                                                 #"
             printf "%-14s${NC}%s${BORANGE}%14s\n"   "#"          "1  -  $title a package"             "#" | awk '{print tolower($0)}'
-            (( BRAND_SUPPORTED )) && printf         "#${NC}%12s 2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
+            (( BRAND_SUPPORTED )) && printf         "#${NC}%12s n2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
             printf "%-14s${NC}%s${BORANGE}%27s\n"   "#"          "3  -  GFAM"                         "#"
             printf "%-14s${NC}%s${BORANGE}%23s\n"   "#"          "4  -  Carriers"                     "#"
             printf "%-14s${NC}%s${BORANGE}%25s\n"   "#"          "5  -  Others"                       "#"
@@ -120,19 +127,26 @@ main() {
             if [[ "$REPLY" =~ 4 ]]; then lists_selection us_carriers french_carriers german_carriers; fi
             if [[ "$REPLY" =~ 3 ]]; then lists_selection google facebook amazon microsoft; fi
             if [[ "$REPLY" =~ 1 ]]; then debloat_or_restore; fi
-            if [[ "$REPLY" =~ 2 ]]; then debloat_or_restore "$BRAND"; fi
+            if [[ "$REPLY" =~ 2 ]]; then generate_custom_list "$BRAND" && debloat_or_restore CUSTOM_LIST "$BRAND"; fi
             if [[ "$REPLY" =~ 5 ]]; then lists_selection qualcomm misc; fi
-            if [[ "$REPLY" =~ 6 ]]; then debloat_or_restore aosp; fi
-            if [[ "$REPLY" =~ 0 ]]; then debloat_or_restore pending; fi
+            if [[ "$REPLY" =~ 6 ]]; then generate_custom_list aosp && debloat_or_restore CUSTOM_LIST aosp; fi
+            if [[ "$REPLY" =~ 0 ]]; then generate_custom_list pending && debloat_or_restore CUSTOM_LIST pending; fi
+        
+        elif [[ "$REPLY" =~ [Xx] ]]; then exit 0;
+
         fi
-
-    adb shell 'pm list packages -s' | sed -r 's/package://g' | sort > remaining_packages.txt &
-
     done
 }
 
 ############################################  END OF MAIN SCRIPT  ######################################################
 
+generate_custom_list(){
+    [[ -v "$1" ]] && local -n list=$1
+
+    printf "%s\n" "${list[@]}" >> "list.txt";
+    readarray -t CUSTOM_LIST < <(comm -12 <(sort -i list.txt) <(sort -i  remaining_packages.txt))
+    rm list.txt
+}
 
 debloat_or_restore() {
     local action="" # restore or debloat
@@ -149,10 +163,11 @@ debloat_or_restore() {
 
     if [[ $# -gt 0 ]]; then
 
-        # list is a nameref. Array is passed by reference.
-        [[ -v "$1" ]] && local -n list=$1
+        local -n list=$1 # list is a nameref. Array is passed by reference.
 
-        printf "\n${BORANGE}%s${NC}\n"             "==== $1 debloat list ===="
+        printf "\n${BORANGE}%s${NC}\n"             "==== $2 debloat list ===="
+        (( ! ${#CUSTOM_LIST[@]} )) && echo "Nothing to debloat :)" && sleep 1 && return 0
+
         for package in "${list[@]}"; do
             printf "${BRED}%s${NC} "            "$package -->"
             output=$(eval adb shell "$action") && echo "$output"
@@ -182,7 +197,7 @@ lists_selection() {
     read -r -a selection
     for list in "${selection[@]}"; do
         if (( list > $# )) || (( list < 1 )); then continue; fi
-        debloat_or_restore "${!list}"
+        generate_custom_list "${!list}" && debloat_or_restore CUSTOM_LIST "${!list}"
     done
 }
 
