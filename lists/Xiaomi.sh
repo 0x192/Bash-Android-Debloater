@@ -3,12 +3,28 @@
 declare -a xiaomi=(
 
 	"android.autoinstalls.config.Xiaomi.cepheus"
-	# Used to **auto** install stuff (Cepheus phone model) !
+	"android.autoinstalls.config.Xiaomi.dipper"
+	"android.autoinstalls.config.Xiaomi.daisy"
+	"android.autoinstalls.config.Xiaomi.cactus"
+	# android.autoinstalls.config.Xiaomi.X where X is the phone's codename
+	# Used to **auto** install stuff
 	# IMO it's a similar feature than Play Auto Install (https://forum.xda-developers.com/xperia-z/help/how-stop-google-play-auto-install-t2590253)
 
-	"android.autoinstalls.config.Xiaomi.dipper"
-	# Used to **auto** install stuff (Dipper phone model) ! 
-	# See above.
+	"android.romstats" # [MORE INFO NEEDED]
+	# Misleading package name. This is a Xiaomi-only package.
+	# Can someone provide the .apk?
+	# Telemetry stuff 
+
+	"cn.wps.xiaomi.abroad.lite"
+	# Mi Doc viewer
+	# Documents (*.doc/docx, *.ppt/pptx, *.xls/xlsx, *.pdf, *.wps, and *.txt) viewer powered by WPS Office
+	# FYI: WPS is a chinese closed-source software. It's as bad as Microsoft office (privacy-wise)
+	# https://www.wps.com/privacy-policy
+
+	"com.android.midrive"
+	# Mi Drive 
+	# Bad package name choice. It is indeed a closed-source Xiaomi application.
+	# Allow for cloud storage (on Mi Cloud) and syncing across multiple Android devices.
 
 	"com.autonavi.minimap"
 	# 高德地图 (Yeah no english translation) (https://play.google.com/store/apps/details?id=com.autonavi.minimap)
@@ -40,6 +56,41 @@ declare -a xiaomi=(
 	# Peel Mi Remote (https://play.google.com/store/apps/details?id=com.duokan.phone.remotecontroller.peel.plugin)
 	# Peel Mi Remote is a TV guide extension for Xiaomi Mi Remote by "Peel Smart Remote".
 
+	"com.facemoji.lite.xiaomi.gp"
+	# Facemoji Keyboard Lite for Xiaomi - Emoji & Theme  (https://play.google.com/store/apps/details?id=com.facemoji.lite.xiaomi.gp)
+	# Emoji keyboard
+
+	"com.factory.mmigroup"
+	# Hidden super-menu accessible by dialing *#*#64633#*#*
+	# This menu lists all the others hidden test/debug apps.
+
+	"com.fingerprints.sensortesttool"
+	# Sensor Test Tool
+	# Hidden test app used to test working of the fingerprint sensors.
+
+	"com.huaqin.diaglogger"
+	# Secret logging menu only accessible by dialing using a "secret code" (*#*#CODE#*#*)
+	# You can use any of these code : "995995", "996996", "9434", "334334", "5959", "477477"
+	# Used to log Bluetooth traffic and send them to com.miui.bugreport
+	# Write logs to "/sdcard/diag_logs/" | "/sdcard/wlan_logs/" | "/sdcard/MIUI/debug_log/common/"
+	#
+	# FYI Huaqin is a Chinese mobile phone research and development company.
+
+	"com.huaqin.factory"
+	# Hidden test app (dial *#*#64663#*#*)
+	# Used by technician in factory to test the hardware. Not intented to be run by end-users. 
+	# Has a huge amount of permission.
+	# A vulnerability was found in 2019 (CVE-2019-15340) allowing any app co-located on the device to 
+	# programmatically disable and enable Wi-Fi, Bluetooth, and GPS silently (and without the corresponding access permission)
+	# https://nvd.nist.gov/vuln/detail/CVE-2019-15340
+
+	"com.huaqin.sar" # [MORE INFO NEEDED]
+	# SetTransmitPower
+	# I can't access the apk but I'm pretty sure it is another hidden test app not meant to be used by end-user
+	# Given its name it could be used to adjust the transmit power of the cell phone antennas
+	# SAR = Specific Absorption Rate (https://en.wikipedia.org/wiki/Specific_absorption_rate)
+	# XDA users removed this without any issues. To be 100% sure it would be good to test the SAR without this package (just in case)
+
 	"com.milink.service"
 	# UniPlay Service
 	# I couldn't find info about it but I have the feeling it is related to some wireless/remote control. 
@@ -48,7 +99,12 @@ declare -a xiaomi=(
 	# Mi Pay for Indonesia ? 
 
 	"com.mipay.wallet.in"
-	# Mi Pay for India ? 
+	# Mi Pay for India ?
+
+	"com.miui.accessibility"
+	# Mi Ditto
+	# Accesibility feature. Dictation (TTS) and speech output, 
+	# making mobile devices more convenient for people who have difficulties using conventionally designed smartphones. 
 
 	"com.miui.audioeffect"
 	# AudioEffect from Xiaomi (https://developer.android.com/reference/android/media/audiofx/AudioEffect)
@@ -62,6 +118,12 @@ declare -a xiaomi=(
 	"com.miui.cloudservice" 
 	# Mi Cloud Service
 	# NOTE : Settings will crash when pressing on any "Mi Cloud" button if this package is deleted.
+
+	"com.miui.huanji"
+	# Mi Mover (https://play.google.com/store/apps/details?id=com.miui.huanji)
+	# Lets you transfer your contacts, messages, personal files, all the installed apps (but not their data) 
+	# and all the settings (app + system) from an android phone to a Xiaomi phone.
+	# The 2 phones will establish a direct wifi connection.
 
 	"com.miui.enbbs" 
 	# Xiaomi Forums old package.
@@ -202,6 +264,12 @@ declare -a xiaomi=(
 	"com.miui.screenrecorder" 
 	# Mi Screen Recorder
 
+	"com.miui.spock"
+	# Analytics app who constantly run in background.
+	# Sends indentifiable data to Xiaomi servers
+	# See https://www.virustotal.com/gui/file/70400d0055e1924966fb8367cafddc175dee914bbdc227342c9dd86fb3aa829f/details
+	# It leaks system version, device model, exact firmware build + some few mysterious IDs
+
 	"com.miui.systemAdSolution"
 	# Analyzation of user behaviors to show you ads. Yeah Xiaomi phones has ads...
 	# https://www.theverge.com/2018/9/19/17877970/xiaomi-ads-settings-menu-android-phones
@@ -230,6 +298,16 @@ declare -a xiaomi=(
 	"com.miui.vsimcore"
 	# Virtual Sim core service
 
+	"com.miui.miwallpaper.earth"
+	"com.miui.miwallpaper.mars"
+	# SuperWallpaperEARTH / SuperWallpaperMARS
+	# Live/animated Xiaomi wallaper
+
+	"com.miui.newmidrive"
+	# Mi Drive (Chinese version)
+	# Lets you upload and sync your files on the (Mi) Cloud.
+	# Always run in background
+
 	"com.miui.weather2"
 	# Mi Weather app
 
@@ -255,9 +333,19 @@ declare -a xiaomi=(
 	# Can't find info about this package
 	# Probably used for displaying (useless) news
 
+	"com.mi.health"
+	# Mi Health
+	# Pedometer, menstrual and sleep tracker
+	# Your data are synchronized in the cloud. 
+	# Do you really want Xiaomi to know you didn't slept much yesterday (your ovulation day btw...)
+
 	"com.mi.liveassistant"
 	# Mi Live Assistant
-	# I don't really know what it is. Maybe an old name for "com.mi.android.globalpersonalassistant" 
+	# I don't really know what it is. Maybe an old name for "com.mi.android.globalpersonalassistant"
+
+	"com.mi.setupwizardoverlay"
+	# Weird package related to the SetupWizard (the menu which assists you to setup your phone for the first time)
+	# A user said he needed to remove this package to be able to properly apply a dark theme to the Settings app.
 
 	"com.mi.webkit.core"
 	# MI WebView
@@ -370,25 +458,88 @@ declare -a xiaomi=(
 
 	##################################  ADVANCED DEBLOAT  ##################################
 
+	#"com.android.camera"
+	#"com.android.camera2" 
+	# Xiaomi Camera (I don't know why they kept this package name. It's really confusing.)
+	# It's a proprietary app based on the AOSP sources:
+	# https://android.googlesource.com/platform/packages/apps/Camera2/+/master/src/com/android/camera
+
+	#"com.android.fileexplorer"
+	# Xiaomi/Mi File Explorer (Again it's a really bad choice nameconsidering it is not the AOSP File explorer)
+	# It's a Closed-source app based on the AOSP version.
+
+	#"com.android.globalFileexplorer" 
+	# Misleading package name. It's the Xiaomi Files Manager on older phones
+
+	#"com.android.incallui"
+	# Xiaomi Phone (Here we go again! Another confusing package name)
+	# Closed-source app built on top of the AOSP package.
+	# The name is doubly misleading because this package is the whole dialer. It does not only provide the 'in call' screen.
+
+	#"com.android.thememanager" # [MORE INFO NEEDED]
+	# MIUI Themes (manager)
+	# Xiaomi seems to love confusing package name
+	# This package lets you select and apply themes provided by Xiaomi. 
+	# There is a strong likelihood that removing this package will disable the ability to change wallpapers. 
+	# Can someone test?
+
+	#"com.android.thememanager.module" # [MORE INFO NEEDED]
+	# I don't have the .apk but it is obviously related to "com.android.thememanager"
+	# Can someone test with this package too?
+
 	#"com.miui.calculator" 
 	# MIUI Calculator (https://play.google.com/store/apps/details?id=com.miui.calculator)
+
+	#"com.miui.home"
+	# MIUI System Launcher
+	# It's basically the home screen, the way icons apps are organized and displayed.
+	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
+
+	#"com.miui.mishare.connectivity"
+	# Mi Share
+	# Unified file sharing service between Xiaomi, Oppo, Realme and Vivo devices using Wifi-direct
+	# Settings -> Connection & sharing -> Mi Share
+	# FYI : Wifi direct allows 2 devices to establish a direct Wi-Fi connection without requiring a wireless router. 
+
+	#"com.miui.zman" # [MORE INFO NEEDED]
+	# Mi Secure sharing
+	# Provides an option in the settings of the Xiaomi Gallery to automatically remove location and metadata from images 
+	# you want to share. This do not remove metadata of the picture in the gallery but only the shared copy.
+	# There's also a "Secure sharing" watermark that shows up when you share photos on WeChat without metadata.
+	# The question is does this really remove all EXIF tags? Can someone test?
+	# This is a useful app anyway but do not forget that all your photos/vidoes taken with the Xiaomi camera are still geo-tagged 
+	# (+ all others exif tags) by default. 
+	# What you can do is at least revoke the GPS permission to the camera.
+	# FOSS alternative to this app : 
+	# https://f-droid.org/fr/packages/com.jarsilio.android.scrambledeggsif/
+	# https://f-droid.org/fr/packages/de.kaffeemitkoffein.imagepipe/
+
+	#"com.mi.android.globalFileexplorer"
+	# Xiaomi Files Manager (https://play.google.com/store/apps/details?id=com.mi.android.globalFileexplorer)
+
+	#"com.xiaomi.bsp.gps.nps"
+	# GPS location
+	# I think bsp = board system package (https://en.wikipedia.org/wiki/Board_support_package)
+	# Not sure about nps (It might be Non-Permanent GPS station)
+	# It's a small package which seems to display a notification when an app is using GPS.
+	# More precisely, there is a receiver (GnssEventReceiver) which listen to com.xiaomi.bsp.gps.nps.GetEvent 
+	# This event most likely happen when an app use the GPS and refers to the state of the communication with the GNSS:
+	# FIX, LOSE, RECOVER, START, STOP
+	# It's safe to remove if you really want to 
 
 	#"com.xiaomi.discover"
 	# System Apps Updater
 	# WARNING : Disable System app updates (but not firmware updates)
 
-	#"com.mi.android.globalFileexplorer" 
-	# Xiaomi Files Manager (https://play.google.com/store/apps/details?id=com.mi.android.globalFileexplorer)
-
-	#"com.miui.home"
-	# MIUI System Launcher
-	# It's basically the home screen, the way icons apps are organized and displayed.
-	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER ! 
-
 	)
 
 
 #######################  DO NOT REMOVE THIS (will prevent core stuff to work)  #######################
+
+#"com.android.updater"
+# Mi Updater
+# Provide system updates
+# REMOVING THIS WILL BOOTLOOP YOUR DEVICE !
 
 #"com.xiaomi.finddevice"
 # Find My Device feature (in the Settings)
