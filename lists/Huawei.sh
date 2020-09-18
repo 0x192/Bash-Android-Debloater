@@ -7,9 +7,26 @@ declare -a huawei=(
 	# I already made more intensive search on the web to complete it but I need Huawei users to really improve it.
 	# I use [MORE INFO NEEDED] tag as a marker.
 
+	"com.android.keyguard"
+	# HUAWEI magazine unlock (The package name is really confusing)
+	# It's a proprietary app based on the AOSP package called com.android.keyguard. That's not clever at all.
+	# https://consumer.huawei.com/en/support/content/en-us00206571/
+	# Lets you customize your lock screen wallpapers
+
+	"com.android.hwmirror"
+	# Mirror
+	# Lets you use your phone as a mirror...
+
 	"com.baidu.input_huawei"
 	# Woh! 51 permissions! 
 	# Huawei chinese stock input keyboard.
+
+	"com.hicloud.android.clone"
+	# Huawei Phone Clone (https://play.google.com/store/apps/details?id=com.hicloud.android.clone)
+	# 171 Permissions (https://reports.exodus-privacy.eu.org/fr/reports/144565/)
+	# Data migration application between Huawei phones.
+	# Keep in mind that all your data will be synchronised in the Huawei cloud and collected by the company.
+	# https://cloud.huawei.com/privacyStatementTransit
 
 	"com.huawei.android.chr" 
 	# HwChrService
@@ -49,11 +66,14 @@ declare -a huawei=(
 	# Periodically gives you notifications on how to use certain features on your phone.
 
 	"com.huawei.android.totemweather" 
-	# Huawei Weather app.
+	"com.huawei.android.totemweatherapp"
+	"com.huawei.android.totemweatherwidget"
+	# Huawei Weather app (and its widget)
 
+	"com.huawei.android.wfdft"
 	"com.huawei.android.wfdirect" 
 	# Wi-Fi Direct feature.
-	# Enables Wi-Fi Direct devices to establish a direct Wi-Fi connection over which the two can send and receive files. 
+	# Note: Wifi direct enables devices to establish a direct Wi-Fi connection (without a router) over which the two can send and receive files. 
 
 	"com.huawei.appmarket" 
 	# Huawei app store (AppGallery)
@@ -74,6 +94,10 @@ declare -a huawei=(
 
 	"com.huawei.contactscamcard" 
 	# CamCard is a business card reader app.
+
+	"com.huawei.contacts.sync" # [MORE INFO NEEDED]
+	# Huawei Contacts sync
+	# My guess (can't have the apk on hand) is this enables you to synchronise your contacts with your Huawei account.
 
 	"com.huawei.desktop.explorer" # [MORE INFO NEEDED]
 	# From XDA thread : "Service that is been used when you wanna use your phone as an operative system on a PC."
@@ -153,7 +177,7 @@ declare -a huawei=(
 	
 	"com.huawei.mirror" # [MORE INFO NEEDED]
 	# Huawei Mirror app. 
-	# Mirror like "Glass" or "screen mirror" ? 
+	# Mirror like "Glass" or "screen mirror" ?
 
 	"com.huawei.parentcontrol" 
 	# Parental controls functions.
@@ -239,7 +263,10 @@ declare -a huawei=(
 	# Huawei Screen recorder feature (with internal mic record toggle)
 
 	#"com.hisi.mapcon" 
-	# Involved in Wifi Calling. Safe to remove if you don't use this.
+	# Provides wifi calling feature (call or text on Wi-Fi networks using your SIM card)
+	# NOTE: Instant messaging video/voice call does not use this "wifi calling" feature. 
+	# Btw, you should use a E2EE messaging app like Signal/Session/Element(https://element.io/) instead of the non-secure wifi-calling feature
+	# provided by your carrier.
 	
 	#"com.huawei.hidisk" 
 	# Huawei File Manager app.
