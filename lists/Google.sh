@@ -143,8 +143,16 @@ declare -a google=(
 	"com.google.android.apps.podcasts"
 	# Google Podcasts (https://play.google.com/store/apps/details?id=com.google.android.apps.podcasts)
 
-	"com.google.android.apps.restore" 
-	# Restore apps during first boot.
+	"com.google.android.apps.restore"
+	# This is the backup restore wizard used for pulling Android system backups from your Google account. 
+	# You only need this if you factory restore the phone, in which case it’s automatically reinstalled for you.
+
+	"com.google.android.apps.recorder"
+	# Google (audio) recorder (https://play.google.com/store/apps/details?id=com.google.android.apps.recorder)
+
+	"com.google.android.apps.setupwizard.searchselector"
+	# Most likely add a search bar to the setupwizard (com.google.android.setupwizard)
+
 	"com.google.android.apps.santatracker" 
 	# Google Santa Tracker WTF ??? (https://play.google.com/store/apps/details?id=com.google.android.apps.santatracker)
 
@@ -238,9 +246,6 @@ declare -a google=(
 	"com.google.android.onetimeinitializer" 
 	# Provides first time setup, safe to remove.
 
-	"com.google.android.partnersetup" 
-	# Software that helps other apps to work with Google products.
-
 	"com.google.android.play.games" 
 	# Google Play Games (https://play.google.com/store/apps/details?id=com.google.android.play.games)
 
@@ -252,8 +257,11 @@ declare -a google=(
 	"com.google.android.projection.gearhead" 
 	# Android auto (https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead)
 
-	"com.google.android.setupwizard" 
-	# Removable after the first start of the phone, it's the basic configuration wizard that drives you through first boot.
+	"com.google.android.setupwizard"
+	"com.google.android.pixel.setupwizard"
+	# It's the basic configuration setup guides you through the basics of setting up your device.
+	# The second package is only present on Pixel phones.
+
 
 	"com.google.android.soundpicker" 
 	# Google Sounds. Removable if you already have another media select service.
@@ -363,9 +371,15 @@ declare -a google=(
 
 	#"com.google.android.contacts" 
 	# Google Contacts (https://play.google.com/store/apps/details?id=com.google.android.contacts)
-	
+
 	#"com.google.android.dialer"
 	# Google Dialer (https://play.google.com/store/apps/details?id=com.google.android.dialer)
+	# It's not default but seriously, don't use the Google dialer there are Google Analytics embedded inside
+	# https://www.virustotal.com/gui/file/a978d90f27d5947dca33ed59b73bd8efbac67253f9ef7a343beb9197c8913d1a/details
+
+	"com.google.android.email"
+	# AOSP Mail client
+	# Does no longer exist. AOSP Mail is now com.android.email and Gmail is com.google.android.gm
 
 	"com.google.android.ext.services"
 	# Android Services Library only contains, for now, an "Android Notification Ranking Service." 
@@ -395,9 +409,13 @@ declare -a google=(
 	# IMPORTANT : You need to uncheck Find My Device from the "Device admin apps" settings panel to be able to uninstall this package
 	# Search "admin" in the settings search bar.
 
+	"com.google.android.gms.location.history"
+	# Google Location history
+	# https://support.google.com/accounts/answer/3118687?hl=en
+
 	"com.google.android.gms.policy_sidecar_aps" # [MORE INFO NEEDED]
 	# Talks to Gmail.com and Google.com.
-	# Needs a Google Account and Google Paly Services to work correctly.
+	# Needs a Google Account and Google Play Services to work correctly.
 	# I don't know much more but it's sufficient to know you can debloat it.
 	# Given its name maybe it is related to Android auto? 
 	# https://www.hybrid-analysis.com/sample/c710b66d043026007666966d933e3a1ed29720c5009764c01b5f056232a3518a?environmentId=200
@@ -417,7 +435,7 @@ declare -a google=(
 	# Handles location services on older devices. On newer ones Google location services is part of Google Play Services and
 	# Android location service is provided by com.android.location.fused or com.android.location.
 
-	#"com.google.android.partnersetup"
+	"com.google.android.partnersetup"
 	# Enables applications to perform functionality that requires access to your Google account information
 	# Safe to remove if you don't have a Google account
 
