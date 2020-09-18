@@ -1,3 +1,37 @@
+# New Release (v2.6)
+
+:fallen_leaf: :fallen_leaf: :fallen_leaf: :fallen_leaf: :fallen_leaf: :fallen_leaf:
+
+## Notable changes
+- Improved script logic. The script now uses a custom list (`CUSTOM_LIST`) for processing which only contains packages preinstalled on your phone.
+- Added a new menu entry to quickly reboot the phone.
+
+## New packages added
+- **AOSP** : 26
+- **Google** : 2
+- **Miscellaneous** : 14
+- **Samsung** : 1
+- **Pending** : 153
+- **Xiaomi** : 16
+
+## Pending --> Official lists
+- **AOSP** : 3
+- **Google** : 2
+- **Samsung** : 50
+- **Sony** : 2
+- **Huawei** : 5
+- **Xiaomi** : 13
+- **Miscellaneous** : 12
+
+## Bugfixes
+- No sound/mic during phonecalls on some Motorola phones (#25)
+
+## Miscellaneous
+- Packages list installed on your phone (`remaining_packages.txt`) is now generated as soon as you arrive on the main menu. This list is updated once any action is *completed* (and brings you back to the main menu)
+- Adjusted default selection for several lists.
+- Improvement and adjustment of many package's description.
+- The *[EXIT TRAP]* (used for debug) will no longer be triggered when you `ctrl^C`. 
+
 # New Release (v2.5.1)
 
 - Fixed an inconsequential typing error
