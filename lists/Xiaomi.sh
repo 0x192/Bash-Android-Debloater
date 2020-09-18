@@ -13,7 +13,7 @@ declare -a xiaomi=(
 	"android.romstats" # [MORE INFO NEEDED]
 	# Misleading package name. This is a Xiaomi-only package.
 	# Can someone provide the .apk?
-	# Telemetry stuff 
+	# Telemetry stuff
 
 	"cn.wps.xiaomi.abroad.lite"
 	# Mi Doc viewer
@@ -95,11 +95,15 @@ declare -a xiaomi=(
 	# UniPlay Service
 	# I couldn't find info about it but I have the feeling it is related to some wireless/remote control. 
 
+	"com.mipay.wallet"
 	"com.mipay.wallet.id"
-	# Mi Pay for Indonesia ? 
-
 	"com.mipay.wallet.in"
-	# Mi Pay for India ?
+	# Mi Pay (https://play.google.com/store/apps/details?id=com.mipay.in.wallet)
+	# Contactless NFC-based mobile payment system that supports credit, debit and public transportation cards in China.
+	# https://www.mi-pay.com/
+	#
+	# .in = Mi Pay for India
+	# .id = My Pay for Indonesia
 
 	"com.miui.accessibility"
 	# Mi Ditto
@@ -167,11 +171,6 @@ declare -a xiaomi=(
 
 	"com.miui.userguide"
 	# Xiaomi User guide
-
-	"com.mipay.wallet"
-	# Mi Pay (https://play.google.com/store/apps/details?id=com.mipay.in.wallet)
-	# Contactless NFC-based mobile payment system that supports credit, debit and public transportation cards in China.
-	# https://www.mi-pay.com/
 
 	"com.miui.analytics" 
 	# Xiaomi Analytics
@@ -458,15 +457,30 @@ declare -a xiaomi=(
 
 	##################################  ADVANCED DEBLOAT  ##################################
 
+	#"com.android.browser"
+	# Mi Browser
+	# You really should use something else.
+	# FYI https://www.xda-developers.com/xiaomi-mi-web-browser-pro-mint-collecting-browsing-data-incognito-mode/
+
 	#"com.android.camera"
 	#"com.android.camera2" 
 	# Xiaomi Camera (I don't know why they kept this package name. It's really confusing.)
 	# It's a proprietary app based on the AOSP sources:
 	# https://android.googlesource.com/platform/packages/apps/Camera2/+/master/src/com/android/camera
 
+	#"com.android.contacts" 
+	# MIUI Contacts and dialer
+	# It's the contacts app but you can access the dialer from this app.
+
+	#"com.android.email" 
+	# Xiaomi closed-source email app based on the AOSP version. Really confusing package name.
+
 	#"com.android.fileexplorer"
-	# Xiaomi/Mi File Explorer (Again it's a really bad choice nameconsidering it is not the AOSP File explorer)
+	# Xiaomi/Mi File Explorer (Again it's a really poor choice for a package name considering it is not the AOSP File explorer)
 	# It's a Closed-source app based on the AOSP version.
+
+	#"com.android.gallery3d" 
+	# Xiaomi Gallery app (I'll stop repeating this is a really poor choice for the package name...)
 
 	#"com.android.globalFileexplorer" 
 	# Misleading package name. It's the Xiaomi Files Manager on older phones
@@ -494,6 +508,13 @@ declare -a xiaomi=(
 	# MIUI System Launcher
 	# It's basically the home screen, the way icons apps are organized and displayed.
 	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
+
+	#"com.xiaomi.miplay_client" # [MORE INFO NEEDED]
+	# MiPlay Client
+	# Provides support for Miracast?
+	# https://en.wikipedia.org/wiki/Miracast
+	# My guess is it provides the Wireless Display feature (Settings - Connection & sharing - Cast)
+	# Can someone confirm? 
 
 	#"com.miui.mishare.connectivity"
 	# Mi Share
@@ -525,7 +546,7 @@ declare -a xiaomi=(
 	# More precisely, there is a receiver (GnssEventReceiver) which listen to com.xiaomi.bsp.gps.nps.GetEvent 
 	# This event most likely happen when an app use the GPS and refers to the state of the communication with the GNSS:
 	# FIX, LOSE, RECOVER, START, STOP
-	# It's safe to remove if you really want to 
+	# It's safe to remove if you really want to.
 
 	#"com.xiaomi.discover"
 	# System Apps Updater
