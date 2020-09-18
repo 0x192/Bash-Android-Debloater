@@ -26,6 +26,12 @@ declare -a samsung=(
 	# Samsung Knox allows business and personal content to "securely" coexist on the same handset. 
 	# This package handle proxy along side KNOX
 
+	"com.mygalaxy"
+	# My Galaxy (https://play.google.com/store/apps/details?id=com.mygalaxy)
+	# Entertainment hub and life-services application
+	# Lets your access videos, music and gaming and gives quick access to services such as cabs, movies, recharge and bill payment, 
+	# food ordering, travel, hyper local deals and Samsung Care, among others.
+
 	"com.mobeam.barcodeService"
 	# The Beaming Service enables your device to beam (relay) barcodes, as found on digital coupons, event tickets, library cards, loyalty 
 	# cards and membership cards to 1D red laser and Image based scanners prevalent at nearly every retail store and checkout stand around the world.
@@ -210,7 +216,7 @@ declare -a samsung=(
 
 	"com.samsung.android.app.talkback"
 	# Voice assistant. Accessibility feature
-	# Can activate a Screen Reader to provide audible feedback to assist blind and low-vision users.
+	# Screen Reader to provide audible feedback to assist blind and low-vision users.
 
 	"com.samsung.android.app.taskedge"
 	# Handle task edge panel
@@ -269,8 +275,8 @@ declare -a samsung=(
 	# https://www.samsung.com/global/galaxy/apps/samsung-pass/
 
 	"com.samsung.android.bbc.bbcagent" # [MORE INFO NEEDED]
-	# BBCAgent. KNOX related.
-	# Couldn't find more information about it.
+	# BBCAgent (B. B. Container Agent?)
+	# Collects device information and manages installation/uninstallation of trusted apps in KNOX containers
 
 	"com.samsung.android.bbc.fileprovider"
 	# KNOX BBC Provider.
@@ -644,6 +650,7 @@ declare -a samsung=(
 	# Galaxy Themes
 	# Official Samsung app for modifying your smartphone's theme.
 	# https://www.samsung.com/global/galaxy/apps/galaxy-themes/
+	# You'll still be able to change your wallpaper without this app (from the Gallery app)
 
 	"com.samsung.android.tripwidget"
 	# Discontinued package (used in Galaxy S4) handling trip wallpaper widget.
@@ -780,7 +787,7 @@ declare -a samsung=(
 	# but rather from a key stored in the hardware that is set in the factory.
 
 	"com.samsung.knox.securefolder.setuppage"
-	# Provide the setup process when opening secure folder (com.samsung.knox.securefolder) for the first time
+	# Provides the setup process when opening secure folder (com.samsung.knox.securefolder) for the first time
 
 	"com.samsung.mdl.radio"
 	# Samsung Milk Music (discontinued in 2016)
@@ -1126,7 +1133,7 @@ declare -a samsung=(
 	# Provider (handles access) for certain security policies
 	# It seems to provide access to a password database but I don't know under what circumstances this database is used.
 	# This provider is only usable by Samsung apps 
-	# I see a com.android.security.PASSWORD_EXPIRED intent filter in the AndroidManifest so my guess is it handles password policies
+	# I see a com.android.security.PASSWORD_EXPIRED intent filter in the AndroidManifest so my guess is it handles password policies.
 	# Typically, a policy that could force user to change their password after a certain amount of time.
 	# This is mainly useful for enterprises.
 
@@ -1567,7 +1574,7 @@ declare -a samsung=(
 	# It seems to be be used for cloud and story stuff in the gallery and also seems needed for content recognition.
 	# Has the same shared user id than com.samsung.faceservice, com.samsung.mlp, com.samsung.mpl
 	#  
-	# NOTE : Deleting this package will also prevent to preview photos from the camera app.
+	# NOTE : On some phone models, deleting this package can also prevent to preview photos from the camera app.
 	# Seems to trigger com.samsung.faceservice, com.samsung.mlp, com.samsung.mpl when needed.
 
 	#"com.samsung.dcmservice" # [MORE INFO NEEDED]
