@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# VOCABULARY : 
+# overlay : A screen overlay in Android, allows an app to display content over another app
+
+
 declare -a aosp=(
 
 	"com.android.apps.tag"
@@ -31,6 +35,9 @@ declare -a aosp=(
 	"com.android.dreams.phototable" 
 	# Photographic screensavers (Daydream stuff, see above)
 
+	"com.android.dreams.phototable.overlay"
+	# Overlay for com.android.dreams.phototable
+
 	"com.android.egg" 
 	# Android build's easter egg feature (when you click 5 times on the android version in the settings)
 
@@ -59,6 +66,11 @@ declare -a aosp=(
 	"com.android.phasebeam" 
 	# "Phase beam" live wallpaper
 
+	"com.android.email.partnerprovider"
+	"com.android.email.partnerprovider.overlay"
+	# Lets Google partners (OEM in most of the case) to customize the default email settings.
+	# The manufacturer often change the default signature displayed the end of each of your mail (e.g "Sent from my Nokia phone")
+
 	"com.android.printservice.recommendation" 
 	# Keep it, if you need to print directly via your phone.
 
@@ -75,6 +87,7 @@ declare -a aosp=(
 
 	"com.android.soundrecorder" 
 	# AOSP Sound recorder. OEM often use their own solution
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own browser app.
 	# There are better apps (on F-droid) anyway 
 
 	"com.android.stk"
@@ -96,7 +109,8 @@ declare -a aosp=(
 	"com.android.wallpaper.holospiral" 
 	# "Holo spiral" Live wallpaper.
 
-	"com.android.wallpaper.livepicker" 
+	"com.android.wallpaper.livepicker"
+	"com.android.wallpaper.livepicker.overlay"
 	# Enable you to pick live wallpaper.
 
 	"com.android.wallpapercropper" 
@@ -119,27 +133,31 @@ declare -a aosp=(
 	# Bluetooth service
 
 	"com.android.browser" 
-	# AOSP Browser. You honeslty shoud use something else. It is no longer maintained and lack a lot of features.
+	# AOSP Browser. You honeslty shoud use something else. It is no longer maintained and lacks a lot of features.
 	# If you have this package you most likely have an old android version (< Android KitKat v4.4) so you can't really install
 	# another browser. 
 	# Your android device is insecure so you really shouldn't use this device to browse the web.
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own browser app (e.g Mi browser)
 
 	"com.android.browser.provider" 
 	# Strange package. It is old (2014) and there is a hardcoded Picasa URL in the code
 	# https://android.googlesource.com/platform/packages/apps/Browser/+/refs/heads/master/src/com/android/browser/provider/BrowserProvider.java
 	# Related to bookmarks but removing it doesn't seems to affect anything visible.
 
-	"com.android.calendar" 
-	# Old AOSP Calendar app
+	#"com.android.calendar" 
+	# AOSP Calendar app
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own calendar app.
 
-	#"com.android.calculator2" 
-	# Stock calculator app.
+	#"com.android.calculator2"
+	# AOSP calculator app.
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own calculator app.
 
 	"com.android.calllogbackup"
 	# Call Logs Backup/Restore feature.
+	# https://android.googlesource.com/platform/packages/providers/CallLogProvider/+/refs/heads/master/src/com/android/calllogbackup
 
 	#"com.android.captiveportallogin"
-	# Take care of redirecting to the web page that the user of a public access network is obliged to view and interect with, before access is granted.
+	# Takes care of redirecting to the web page that the user of a public access network is obliged to view and interect with, before access is granted.
 
 	#"com.android.carrierconfig"
 	# Gives carriers and OEMs the ability to dynamically provide carrier configuration (APN settings) trough their app.
@@ -148,13 +166,16 @@ declare -a aosp=(
 	# https://source.android.com/devices/tech/config/carrier
 
 	#"com.android.cellbroadcastreceiver"
-	# == EMERGENCY ALERTS  == 
-	# This service manages enabling and disabling ranges of message identifiers that the radio should listen for. 
-	# It operates independently of the other services and runs at boot time and after exiting airplane mode.
+	# Cell broadcast has been designed to deliver messages to multiple users in an area.
+	# This is notably used by ISP to send Emergency/Government alerts. This package handles the situation on occurence of this event.
+	# Runs at boot time and is also triggered after exiting airplane mode.
+	# https://en.wikipedia.org/wiki/Cell_Broadcast
 	# https://www.androidcentral.com/amber-alerts-and-android-what-you-need-know
+	# https://android.googlesource.com/platform/packages/apps/CellBroadcastReceiver/+/refs/heads/master/src/com/android/cellbroadcastreceiver
 
 	#"com.android.contacts" 
 	# AOSP contacts app (it is not Google contacts)
+	# NOTE: On some phones Huawei & Xiaomi also use this package name for their contacts app.
 
 	#"com.android.cts.ctsshim" # [MORE INFO NEEDED]
 	#"com.android.cts.priv.ctsshim"
@@ -163,23 +184,26 @@ declare -a aosp=(
 	# https://android.googlesource.com/platform/frameworks/base/+/51e458e/packages/CtsShim
 
 	#"com.android.deskclock" 
-	# AOSP Clock app 
+	# AOSP Clock app
+	# NOTE: On some phones Huawei & Xiaomi also use this package name for their own clock app.
 
-	"com.android.email" 
+	#"com.android.email" 
 	# AOSP Email app (it is NOT gmail).
+	# NOTE: On some phones Huawei & Xiaomi also use this package name for their own EMAIL app.
 
-	"com.android.emergency"
+	#"com.android.emergency"
 	# Emergency informations. Safe to remove if you don't want this feature.
 
 	#"com.android.exchange" # [MORE INFO NEEDED]
-	# The ExchangeService handles all aspects of starting, maintaining, and stopping the various sync adapters for email.
-	# [WARNING] I need to know if it only concerns stock mail app.
+	# Handles all aspects of starting, maintaining, and stopping the various sync adapters for the email accounts.
+	# Is it only needed for the email stock app?
 
 	#"com.android.facelock" 
 	# Essential if you wanna use Face Unlock features, removable if you don't want to.
 
-	"com.android.gallery3d" 
-	# AOSP Gallery app.
+	#"com.android.gallery3d" 
+	# Gallery app. 
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own Gallery app.
 
 	#"com.android.inputdevices"
 	# Only contains a receiver named "Android keyboard", possibly for an external keyboard.
@@ -206,6 +230,7 @@ declare -a aosp=(
 
 	#"com.android.mms" 
 	# AOSP SMS app.
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own SMS app.
 
 	#"com.android.nfc"
 	# NFC service
@@ -217,6 +242,7 @@ declare -a aosp=(
 
 	#"com.android.phone.recorder" 
 	# AOSP Call recorder function. Most of the time OEM use their own code for this.
+	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own closed-source recorder app.
 
 	#"com.android.providers.blockednumber"
 	# Handles blocked numbers storage
@@ -240,6 +266,15 @@ declare -a aosp=(
 	"com.android.quicksearchbox" 
 	# Google quick search box.
 
+	#"com.android.se" # [MORE INFO NEEDED]
+	# Underlying implementation for Open Mobile API SEService (OMAPI SE)
+	# Enables apps to use the OMAPI API to access secure elements (SE) to enable smart-card payments and other secure services.
+	# 
+	# A SE is a special chip (e.g SIM-card) whose the main purpose is to store cryptographic secrets in such a way 
+	# that illicit use is hard or impossible to do.
+	#
+	# FYI : The Open Mobile Alliance (OPA) is a standards organization which develops open standards for the mobile phone industry.
+
 	#"com.android.settings.intelligence" # [MORE INFO NEEDED]
 	# Settings tips in Settings menu ?
 	# I don't have this in my phone. It for Android Pie. Can someone check ? 
@@ -249,20 +284,63 @@ declare -a aosp=(
 	# Things have changed with Android 10. Don't know if this package is still relevant for new phones.
 	# https://blog.mindorks.com/understanding-the-scoped-storage-in-android.
 
+	#"com.android.smspush" # [MORE INFO NEEDED]
+	# This service is used to push/send specially formatted SMS messages that display an alert message to the user, 
+	# and give the user the option of connecting directly to a particular app.
+	# For instance, a SMS notifying the user he as a new e-mail, with a URL link to connect directly to the e-mail application
+	# https://web.archive.org/web/20200915164901/https://www.nowsms.com/doc/submitting-sms-messages/sending-wap-push-messages
+
 	#"com.android.systemui.theme.dark"
 	# Enables you to use Android dark theme.
+
+	#"com.android.theme.color.black"
+	#"com.android.theme.color.cinnamon"
+	#"com.android.theme.color.green"
+	#"com.android.theme.color.ocean"
+	#"com.android.theme.color.orchid"
+	#"com.android.theme.color.purple"
+	#"com.android.theme.color.space"	
+	#"com.android.theme.font.notoserifsource"
+	#"com.android.theme.icon.roundedrect"
+	#"com.android.theme.icon.squircle"
+	#"com.android.theme.icon.teardrop"
+	#"com.android.theme.icon_pack.circular.android"
+	#"com.android.theme.icon_pack.circular.launcher"
+	#"com.android.theme.icon_pack.circular.settings"
+	#"com.android.theme.icon_pack.circular.systemui"
+	#"com.android.theme.icon_pack.circular.themepicker"
+	#"com.android.theme.icon_pack.filled.android"
+	#"com.android.theme.icon_pack.filled.launcher"
+	#"com.android.theme.icon_pack.filled.settings"
+	#"com.android.theme.icon_pack.filled.systemui"
+	#"com.android.theme.icon_pack.filled.themepicker"
+	#"com.android.theme.icon_pack.rounded.android"
+	#"com.android.theme.icon_pack.rounded.launcher"
+	#"com.android.theme.icon_pack.rounded.settings"
+	#"com.android.theme.icon_pack.rounded.systemui"
+	# Android themes / icons pack / fonts
 
 	#"com.android.timezone.updater"
 	# Time Zone Updater
 	# Automatically updates the clock to correspond to your current time zone
+	# This *may* causes a bootloop if removed. Timezone packages often causes that. 
 
 	#"com.android.voicedialer" 
 	# AOSP Voice dialer. Let's you call someone or open an app with your voice from the dialer.
 	# OEM often use their own code (embeded in their voice-controlled digital assistant)
+	# NOTE: On some phones Huawei & Xiaomi also use this package name for their own voice dialer app.
 
 	#"com.android.wallpaperbackup"
 	# Backup your wallapaper and load this backup instead of the original file in case you delete it.
 	# Safe to remove if you really want to.
+
+	#"com.android.webview"
+	# AOSP webview
+	# It's a system component for the Android operating system (OS) that allows Android apps to display content 
+	# from the web directly inside an application. 
+	# This package is no longer used in recent phones as it was replaced by com.google.android.webview
+	#
+	# On open-source privacy oriented Webview is Bromite (https://www.bromite.org/system_web_view)
 
 	#"org.simalliance.openmobileapi.service"
 	# Smart Card Service by Simalliance
@@ -310,8 +388,8 @@ declare -a aosp=(
 # Handles installation, upgrade, and removal of applications.
 
 #"com.android.provision"
-# Application that sets the provisioned bit, like SetupWizard does.
-# Add a persistent setting to allow other apps to know the device has been provisioned.
+# Provisioning is the process of setting up a network connection that will allow new users. 
+# This service is for exemple needed when the user's phone moves from one cell-tower to another.
 
 #"com.android.phone"
 # AOSP code for dialer app features
@@ -337,7 +415,7 @@ declare -a aosp=(
 # https://android.stackexchange.com/questions/37195/why-are-there-two-settings-apps-settings-and-settings-storage
 
 #"com.android.providers.telephony"
-# [AOSP] Telephony provider. Handle access to telephony database.
+# Telephony provider. Controls and stores phone-related data such as text messages, APN list, operation, etc.
 
 #"com.android.server.telecom"
 # Management your calls via your network provider or SIM and controls the phone modem.
