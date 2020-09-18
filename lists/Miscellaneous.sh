@@ -117,7 +117,30 @@ declare -a microsoft=(
 	)
 
 declare -a qualcomm=(
+	#################################
+	# CAF (Code Aurora Forum) is a place where source code is released by Qualcomm. 
+	# These are Qualcomm's reference sources for their platform. This is what they provide to OEMs
+	# and what nearly all OEMs base their software off of. Usually when Google starts working on an upcoming Android version, 
+	# they'll merge CAF repo.
+	# Packages below are installed by OEM when they need device-specific patches not merged in AOSP yet. 
+
+	"com.caf.fmradio"
+	# https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/fm/tree/fmapp2/src/com/caf/fmradio
+
+	"org.codeaurora.gps.gpslogsave"
+	# Saves GPS logs.
+
+	#"org.codeaurora.bluetooth"
+	# https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/bluetooth
+
+	#"org.codeaurora.ims"
+	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling)
+	# This his package is needed for the Volte/VoIP/Wifi calling provided by your carrier.
+	# This is not needed by messaging apps (Signal, Telegram, WhatsApp...)
+
+	#################################
 	# QTI = Qualcomm Technologies Inc
+	# quicinc = Qualcomm Innovation Center, Inc.
 	# Qualcomm is an American multinational semiconductor and telecommunications equipment company 
 	# that designs and markets wireless telecommunications products and services.
 	# Qualcomm tracking : https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179/20
@@ -131,6 +154,13 @@ declare -a qualcomm=(
 	# It most likely does something to colors on your display. Can someone see the difference ? Is it accessbility feature ?
 	# Needed for Blue screen feature ?
 
+	"com.qti.confuridialer"
+	# Conference URI dialer
+	# Lets you call someone using SIP-URI/IMS (https://en.wikipedia.org/wiki/SIP_URI_scheme)
+	# It's Voice over IP but using SIP (https://en.wikipedia.org/wiki/Session_Initiation_Protocol)
+	# I can assure you that all your messaging apps doesn't use this. It is used by carriers for their wifi-calling stuff. 
+	# This package in particular could be used if you activate the SIP call option from your dialer. 
+
 	"com.qti.snapdragon.qdcm_ff" # [MORE INFO NEEDED]
 	# Qualcomm Display Color Management tool
 	# Works in background and "enhance" the display’s appearance through an intelligent color adjustment and gamut-mapping system 
@@ -143,6 +173,15 @@ declare -a qualcomm=(
 	"com.qualcomm.atfwd"
 	# Qualcomm's WiFi display. It allows you to mirror your devices display on a TV 
 	# Seems to be used by Mircast. Need to be confirmed tho.
+
+	#"com.qualcomm.cabl"
+	# Content Adaptative Backlight Settings
+	# CABL will try to adjust the image being displaye by changing the contrast/quality/image backlight depending on 
+	# the content on the screen.
+	# Downside to this is loss of dynamic range which results in some colors being washed out/clipped.
+	# CABL != Auto brightness (which doesn't change the content of the screen, only the brightness)
+	# NOTE: You may want to remove this. It does not work very well on many phones
+	# https://mobileinternist.com/disable-adaptive-brightness-android
 
 	"com.qualcomm.embms"
 	# Run in background.
@@ -161,7 +200,7 @@ declare -a qualcomm=(
 	"com.qualcomm.location"
 	# May enable your device to determine its location more quickly and accurately, even when your device is unable to get a strong GPS signal. 
 	# **May** also help your device conserve battery power when you use applications or services requiring location data
-	# It will eriodically downloads data to your device regarding the locations of nearby cellular towers and WiFi access points
+	# It will periodically downloads data to your device regarding the locations of nearby cellular towers and WiFi access points
 	#
 	# Qualcomm Location periodically sends a unique software ID, the location of your device (longitude, latitude and altitude, and its uncertainty) 
 	# and nearby cellular towers and Wi-Fi hotspots, signal strength, and time (collectively, “Location Data”) to Qualcomm servers. 
@@ -173,10 +212,26 @@ declare -a qualcomm=(
 	# FYI : ril = Radio Interface layer. It's the bridge between Android phone framework services and the hardware.
 	# There is no noticeable immediate consequences after disabling it but it'd better to know more about.
 
-	"com.qualcomm.uimremoteclient" # [MORE INFO NEEDED]
-	# UIM Remote client
-	# When you see "remote" in a package name you can try to delete it.
-	# See "com.qualcomm.qti.uim" for more information.
+	"com.qualcomm.simcontacts" # [MORE INFO NEEDED]
+	# Sim Contacts
+	# Safe to remove.
+ 	# I don't exactly know what's the purpose of this package. Import/Export tool?
+
+	#"com.qualcomm.svi" # [MORE INFO NEEDED]
+	# SVI Settings
+	# Sunlight Visibility Improvement
+	# I'm pretty sure it relies on com.qualcomm.cabl (can someone confirm?) to improve content visibility in sunlight.
+	# You need to activate the Sunlight Mode in the quick settings menu
+
+	#"com.qualcomm.uimremoteserver" # [MORE INFO NEEDED]
+	# UIM Remote Server
+	# UIM = User Identiy Module
+	# Given its name I don't think it is a mandatory and pertinent feature. Can someone test?
+
+	#"com.qualcomm.wfd.service" # [MORE INFO NEEDED]
+	# Wifi Display
+	# Provides a way to cast your screen to your TV (support for Miracast)
+	# https://en.wikipedia.org/wiki/Miracast
 
 	"com.qualcomm.qti.auth.fidocryptoservice"
 	# Qualcomm FIDO implementation. 
@@ -185,17 +240,67 @@ declare -a qualcomm=(
 	# https://fidoalliance.org/specs/u2f-specs-1.0-bt-nfc-id-amendment/fido-glossary.html
 	# https://fidoalliance.org/specs/fido-v2.0-rd-20170927/fido-overview-v2.0-rd-20170927.html
 
+	"com.qualcomm.qti.autoregistration"
+	# Collect device activation data to remotely activate a phone’s warranty
+	# FYI : In 2019 this package was sending private data (IMEI, CELLID , CCID) in CLEAR text to zzhc.vnet.cn (chinese server). 
+	# According to HMD (Nokia) it was a mistake : 
+	# https://www.androidauthority.com/nokia-7-plus-user-info-967901/
+
+	#"com.qualcomm.qti.callenhancement"
+	# Supposed to enhance call quality (I let you test if it really does)
+	# FYI : This app can record all your phone call
+	# A vulnerability was found in 2019, allowing unauthorized microphone audio recording by 3rd-party apps.
+	# https://nvd.nist.gov/vuln/detail/CVE-2019-15472
+
+	"com.qualcomm.qti.callfeaturessetting" # [MORE INFO NEEDED]
+	# Not mandatory (according to XDA users)
+	# Can someone explain what feature does this package add?
+
+	"com.qualcomm.qti.confdialer" # [MORE INFO NEEDED]
+	# ConfDialer
+	# LTE Conferencing Service
+	# How to use this feature? It is nowhere explained.
+
+	"com.qti.dpmserviceapp" # [MORE INFO NEEDED]
+	# Usually, for android DPM = Device Policy Manager
+	# But I found someone in a russian forum saying it's a service for playing digital rights protected (DRM) Content.
+	# I decompiled the app but that didn't help me to understand what this package really do. There isn't much code and it often
+	# logs stuff.
+	# https://ru.c.mi.com/forum.php?mod=viewthread&tid=1861371
+
+	"com.qualcomm.qti.networksetting"
+	# Network operators (hidden settings menu)
+	# Lets you select network modes like GSM only, WCDMA only, LTE only etc, toggle VoLTE On/Off...
+
+	"com.qualcomm.qti.optinoverlay" # [MORE INFO NEEDED]
+	# Overlay for something but what... 
+	# (nothing useful in any case)
+
+	#"com.qualcomm.qti.qms.service.trustzoneaccess"
+	# Handles access to the Qualcomm/ARM Trustzone?
+	# You may not need Qualcomm Trustzone if you don't used OEM trusted apps.
+	# See com.trustonic.tuiservice
+
 	"com.qualcomm.qti.perfdump"
 	# Performance dump (logging)
 	# Enable a more accurate overview of the running services (and maybe how much power/RAM they take?)
 
-	#"com.qualcomm.qti.qms.service.connectionsecurity" # [MORE INFO NEEDED]
-	# ?????
+	"com.qualcomm.qti.qms.service.connectionsecurity" # [MORE INFO NEEDED]
+	# Telemetry service
+	# qms = quality management service
 	# Background-Connection to tls.telemetry.swe.quicinc.com (Host/Domain belongs to Qualcomm)
 
 	"com.qualcomm.qti.qms.service.telemetry" 
 	# Telemetry service.
 	# Yeah obviously it phones to Qualcomm.
+
+	"com.qualcomm.qti.qtisystemservice" # [MORE INFO NEEDED]
+	# Seems to only log stuff related to telephony
+	# A user removed this without noticing any issues
+
+	"com.qualcomm.qti.roamingsettings" # [MORE INFO NEEDED]
+	# Hidden settings menu
+	# Lets to tweak roaming settings (How to access this settings?)
 
 	"com.qualcomm.qti.rcsbootstraputil"
 	"com.qualcomm.qti.rcsimsbootstraputil" # [MORE INFO NEEDED]
@@ -227,6 +332,12 @@ declare -a qualcomm=(
 	# Qualcomm Time Service
 	# It maybe keeps the real time clock in the Qualcomm processor synchronised with Android time.
 	# Seems not safe to remove. 
+
+	"com.qti.xdivert" # [MORE INFO NEEDED]
+	# Smart-Divert
+	# If enabled, diverts your calls to another number.
+	# You can choose to divert all calls, divert on no reply or divert when the line is busy.
+	# Where can you enable/disable this feature? 
 
 	"com.quicinc.cne.CNEService"
 	# Qualcomm service
@@ -260,10 +371,9 @@ declare -a qualcomm=(
 	#"com.qualcomm.qti.simsettings" # [MORE INFO NEEDED]
 	# Obviously related to SIM settings
 
-	"com.qualcomm.qti.telephonyservice" # [MORE INFO NEEDED]
-	# Sincerely I don't know what it is.
-	# It runs in background.
-	# It seems there is no issue with telephony if removed. I need to keep an eye on this.
+	#"com.qualcomm.qti.telephonyservice"
+	# Sound processing during phonecalls
+	# You absolutely need this package.
 
 	#"com.qualcomm.qti.telephony.vodafonepack" # [MORE INFO NEEDED]
 	# Related to Vodafone Prepaid Recharge Plan
@@ -274,7 +384,7 @@ declare -a qualcomm=(
 	"com.qualcomm.qti.uim"
 	# Related to RUIM I guess. It is a kind of SIM card
 	# https://en.wikipedia.org/wiki/Removable_User_Identity_Module
-	# Still used in China it seems. 
+	# Still used in China it seems.
 
 	"com.quicinc.fmradio"
 	# quicinc = Qualcomm Innovation Center
@@ -331,12 +441,6 @@ declare -a misc=(
 	# https://en.wikipedia.org/wiki/Booking.com
 	# https://blog.usejournal.com/why-i-would-never-trust-booking-com-again-so-you-should-too-a2ab535ed915?gi=7ebe86eaa880
 	# https://ro-che.info/articles/2017-09-17-booking-com-manipulation
-
-	"com.caf.fmradio"
-	# caf = CodeAurora Forum, a Linux Foundation Collaborative Project (https://www.codeaurora.org/) 
-	# All their code is open-source.
-	# Provides tools to access FM radio. 
-	# OpenSource : https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/fm/tree/fmapp2/src/com/caf/fmradio
 
 	"com.cequint.ecid"
 	# Caller ID from Cequint (https://www.cequint.com/)
@@ -478,6 +582,14 @@ declare -a misc=(
 	# AppCloud (discontinued) from ironSource, an advertising company.
 	# Worth reading : https://en.wikipedia.org/wiki/IronSource.
 
+	"com.ironsource.appcloud.oobe.huawei"
+	# Essentials apps
+	# App who promotes some other apps (and encourages you to install them)
+	# This is developped by IronSource, a "next-generation advertising company" 
+	# https://aura.ironsrc.com/ (app) | https://company.ironsrc.com/ (company)
+	# When you try to read their privacy policy you arrive to an outstanding blank PDF file!
+	# (http://www.ironsrc.com/wp-content/uploads/2019/03/ironSource-Privacy-Policy.pdf)
+
 	"com.king.candycrush4"
 	# Candy Crush Friends Saga (https://play.google.com/store/apps/details?id=com.king.candycrush4)
 
@@ -523,7 +635,13 @@ declare -a misc=(
 	# Opera Mini web browser (https://play.google.com/store/apps/details?id=com.opera.mini.native)
 
 	"com.opera.preinstall"
-	# It seems to be Opera Max Data saving (discontinued)
+	# Opera Preinstall Data
+	# Generate utm tracking stuff
+
+	"com.opera.max.oem"
+	"com.opera.max.preinstall"
+	# Opera Max (discontinued)
+	# System-wide data-saving proxy that funnell all app data through Opera’s servers to compress images and videos 
 
 	"com.particlenews.newsbreak"
 	# News Break: Local & Breaking (https://play.google.com/store/apps/details?id=com.particlenews.newsbreak)
@@ -571,6 +689,12 @@ declare -a misc=(
 	# Note : Sprint sold Pinsight to InMobi in 2018.
 	# https://www.fiercewireless.com/wireless/sprint-sells-mobile-ad-biz-pinsight-media-to-inmobi
 
+	"com.realvnc.android.remote"
+	# Remote controle service by Realvnc (https://en.wikipedia.org/wiki/RealVNC)
+	# https://www.realvnc.com/en/legal/#privacy
+	# Not sure having a remote control app installed as a system app is a good idea
+	# This application is no longer maintained, besides.
+
 	"com.remotefairy4"
 	# AnyMote Universal Remote + Wifi Smart Home Control (https://play.google.com/store/apps/details?id=com.remotefairy4)
 	# IR Remote control app 
@@ -601,6 +725,10 @@ declare -a misc=(
 	# Help you find local contractors from the service Home Advisor network
 	# HomeAdvisor collects users data when a request is made and then sells that data to local contractors in exchange for money.
 	# Worth Reading : https://en.wikipedia.org/wiki/HomeAdvisor#Critism
+
+	"com.setk.widget"
+	# Galaxy Bizz (https://play.google.com/store/apps/details?id=com.setk.widget)
+	# Useless app that recommands you stuff to do/buy nearby your area
 
 	"com.sharecare.askmd"
 	# AskMD (discontinued) provided by Sharecare
@@ -755,14 +883,9 @@ declare -a misc=(
 	"net.sharewire.parkmobilev2" 
 	# ParkMobile - Find Parking (https://play.google.com/store/apps/details?id=net.sharewire.parkmobilev2)
 
-	"org.codeaurora.gps.gpslogsave"
-	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
-	# According to its name, it only saves GPS logs.	
-
-	"org.codeaurora.ims"
-	# CodeAurora Forum is a Linux Foundation Collaborative Project (https://www.codeaurora.org/). All their code is open-source.
-	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling)
-	# There is high chances this package is needed for Volte/VoIP/Wifi calling.
+	"pl.zdunex25.updater"
+	# Updater for the zdnex25's theme
+	# https://www.deviantart.com/zdunex25/gallery/26889741/themes
 
 	"tv.fubo.mobile.vpl"
 	# fuboTV (https://play.google.com/store/apps/details?id=tv.fubo.mobile)	
@@ -800,28 +923,41 @@ declare -a misc=(
 	# ANT Radio Service (https://play.google.com/store/apps/details?id=com.dsi.ant.service.socket)
 	# it is NOT related to Radio FM !
 
+	"co.sitic.pp"
+	# Designed to remotely lock the phone (by sending a simple SMS) in case you don't pay your bill 
+	# https://www.reddit.com/r/Android/comments/fde3l6/3rd_party_telemetry_found_in_nokia_smartphones/fjh4zbx/?context=3
+	# This app was preinstalled on phone not served by that carrier (América Móvil) from South America. 
+	# Normally you should not have this app anymore because it was removed by Nokia during an Android 10 update.
+
 	##### TEE #####
-	"com.gd.mobicore.pa"
+	
+	# TODO: Could removing these packages have an impact on Password/fingerprint/face/iris security? 
+
+	#"com.gd.mobicore.pa"
 	# Mobicore is now Trustonic
 	# Trustonic is a small OS running on the CPU providing a TEE, an isolated environment that runs in parallel 
 	# with the operating system, guaranteeing code and data loaded inside to be protected.
 	# That's sound great but it's closed source and "normal" devs can't use it for their apps.
 	# See "com.trustonic.tuiservice"
 
-	"com.trustonic.tuiservice"
+	#"com.trustonic.teeservice"
+	# TEE = Trusted Execution Environment
+	# See below
+
+	#"com.trustonic.tuiservice"
 	# The tuiService (Trusted User Interface) is a new security layer implemented by Trustonic.
 	# Allows a Trusted Application to interact directly with the user via a common display and touch screen, completely isolated from the main device OS.
 	# Seems like a good idea but it's closed source and "normal" devs can't use it for their apps. 
 	# https://stackoverflow.com/questions/16909576/how-to-make-use-of-arm-trust-zone-in-android-application
-	# It is basically only used by manufacter sapps like Samsung Pay and for DRM stuff.
+	# It is basically only used by manufacturer apps like Samsung Pay and for DRM stuff.
 	# Google implemented their own TUI in Android Pie : https://android-developers.googleblog.com/search/label/Trusted%20User%20Interface
 	# 
 	# https://www.trustonic.com/news/blog/benefits-trusted-user-interface/
 	# https://en.wikipedia.org/wiki/Trusted_execution_environment
 	#
-	# If you're wondering, deleting this package will not cause security issues and will not break ARM TrustZone. It will break Trustonic TEE for sure
+	# If you're wondering, deleting theses packages will not cause security issues. It will break Trustonic TEE for sure
 	# but if you don't use Trusted Apps. You won't need this ! 
-	# Deleting this **may** reduce attack surface because yeah, Trustonic TEE isn't foolproof (as it was claimed)
+	# Deleting this **may** reduce attack surface if your phone still has Trusted apps... because yeah, Trustonic TEE isn't foolproof (as it was claimed)
 	# https://en.wikipedia.org/wiki/ARM_architecture#Security_extensions
 	# https://googleprojectzero.blogspot.com/2017/07/trust-issues-exploiting-trustzone-tees.html
 	# https://www.synacktiv.com/posts/exploit/kinibi-tee-trusted-application-exploitation.html
