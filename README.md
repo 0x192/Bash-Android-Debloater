@@ -15,7 +15,7 @@ In any case, you can NOT brick your device with this script! That's the main thi
 * [X] Quick search among all the packages of your phone
 * [X] Uninstallation of system/user packages (manually or with the debloat lists)
 * [X] Reinstallation of system packages (manually or with the debloat lists)
-* [X] ADB backup (not really reliable, see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
+* [X] ADB backup/restore (not really reliable, see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
 * [X] Device brand detection and auto-selection of the appropriate manufacturer debloat list
 * [X] Logs in `debloated_packages.txt` and `remaining_packages.txt`.
 * [ ] Installation of alternative open-source apps replacing stock apps (list in the WIKI section) (WIP)
@@ -27,12 +27,13 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 * [X] AOSP
 * [X] Manufacturers (OEM)
 * [X] Mobile carriers
-* [X] Others / Miscellaneous
+* [X] Qualcomm / Miscellaneous
 
 ## Manufacturers debloat lists
 * [ ] Archos
 * [X] Asus
 * [ ] Blackberry
+* [ ] Gionee
 * [X] LG
 * [X] Google
 * [ ] HTC
@@ -43,6 +44,7 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 * [X] Oppo  
 * [X] Samsung
 * [X] Sony
+* [ ] TCL
 * [ ] Wiko
 * [X] Xiaomi
 * [ ] ZTE
@@ -157,11 +159,15 @@ Note: You can access your Windows files under `/mnt/c/`
 
 
 - Download [the lastest release of Android Universal Debloater](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
-- Check the debloat lists to be sure the default selection suits you.
+- Browse through the debloat lists to be sure the default selection suits you.
 - Run `debloat_script.sh` from a Unix terminal 
 ```bash
 $ bash debloat_script.sh
 ```
+
+**NOTE:** Chinese phones users may need to use the AOSP list for removing some stock apps because those chinese manufacturers (especially Xiaomi and Huawei) have been using the name of AOSP packages for their own (modified & closed-source) app.
+
+**IMPORTANT NOTE:** You will have to run this script whenever your OEM push an update to your phone as some *uninstalled* system apps could be reinstalled.
 
 ## How to contribute
 
