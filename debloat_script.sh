@@ -35,16 +35,16 @@ done
 
 main() {
 
-    readonly VERSION="v2.6 (September 10th 2020)"
+    readonly VERSION="v2.6 (September 18th 2020)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
     readonly BRAND_SUPPORTED=$( declare -p "$BRAND" &>/dev/null && echo "1" || echo "0")
 
     # Legacy support
-    readonly OLDER_THAN_ANDROID_7_1=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))   # < Android 7.1
-    readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))   # < Android 5.0
-    readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0" ) # compatibility for older phones
+    readonly OLDER_THAN_ANDROID_7_1=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))
+    readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))
+    readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0" )
 
     declare -a CUSTOM_LIST=()
 
@@ -62,7 +62,7 @@ main() {
     echo
     printf "${Bold}%s\n\n"                          "Please carefully read the FAQ before using this script!"
     printf "%s${nBold} "                            "Do you want to do an ADB backup ? [Y/N]"
-    
+
     read -r
     if [[ $REPLY =~ [Yy]+[Ee]*[Ss]* ]]; then backup; fi
 
@@ -84,7 +84,7 @@ main() {
         clear
         printf "\n${BORANGE}%s\n"                   "===================  MAIN MENU  ==================="
         printf "%s\n"                               "#                                                 #"
-        printf "%-14s${NC}%s${BORANGE}%18s\n"       "#"            "0  -  List packages"              "#"
+        printf "%-14s${NC}%s${BORANGE}%17s\n"       "#"            "0  -  Package Search"             "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "1  -  Restore a backup"           "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "2  -  Restore packages"           "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "3  -  Debloat packages"           "#"
@@ -131,8 +131,8 @@ main() {
             if [[ "$REPLY" =~ 5 ]]; then lists_selection qualcomm misc; fi
             if [[ "$REPLY" =~ 6 ]]; then generate_custom_list aosp && debloat_or_restore CUSTOM_LIST aosp; fi
             if [[ "$REPLY" =~ 0 ]]; then generate_custom_list pending && debloat_or_restore CUSTOM_LIST pending; fi
-        
-        elif [[ "$REPLY" =~ [Xx] ]]; then exit 0;
+
+        elif [[ "$REPLY" =~ [Xx] ]]; then adb reboot && exit 0;
 
         fi
     done
@@ -147,13 +147,15 @@ generate_custom_list(){
         readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
                                               <(adb shell 'pm list packages -s -u' | sed -r 's/package://g' | sort -i))
     else
-        readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) <(sort -i  remaining_packages.txt))
+        readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
+                                              <(sort -i  remaining_packages.txt))
     fi
 }
 
 debloat_or_restore() {
     local action="" # restore or debloat
     local output=""
+    title=$( echo "$title" | tr '[:upper:]' '[:lower:]')
 
     (( RESTORE )) && action="cmd package install-existing \$package" || action="pm uninstall $OPTION_NEEDED \$package"
 
@@ -169,7 +171,7 @@ debloat_or_restore() {
         local -n list=$1 # list is a nameref. Array is passed by reference.
 
         printf "\n${BORANGE}%s${NC}\n"             "==== $2 debloat list ===="
-        (( ! ${#CUSTOM_LIST[@]} )) && echo "Nothing to debloat :)" && sleep 1 && return 0
+        (( ! ${#CUSTOM_LIST[@]} )) && echo "Nothing to $title :)" && sleep 1 && return 0
 
         for package in "${list[@]}"; do
             printf "${BRED}%s${NC} "            "$package -->"
@@ -178,7 +180,7 @@ debloat_or_restore() {
         done
 
     else
-        printf "\n${BRED}%s${NC}"               "Package name to $title : " | tr '[:upper:]' '[:lower:]'
+        printf "\n${BRED}%s${NC}"               "Package name to $title : "
         read -r package
         printf "${BRED}%s${NC}"                 "$package --> "
         output="$(eval adb shell "$action")" || true
@@ -237,17 +239,17 @@ backup() {
     printf "\n\e[5m%s\033[0m"                   "Press a key when the backup is done (your phone will tell you) "
     read -n 1 -r -s
     check_backup_integrity "${PHONE:-phone}-${backup}.adb";
-} 
+}
 
 check_backup_integrity() {
     printf "\n\n${BBLUE}%s${NC}"                "[($1)] Backup integrity checking : "
-    
+
     ! [[ -f $1 ]] && printf "${BRED}%s${NC}\n\n" "Backup not found" && return 1
 
     # first 24 bytes are skipped (adb backup are modified compressed tar files with a 24B custom header)
     if ! dd if="$1" bs=1M skip=24 iflag=skip_bytes &>/dev/null | zlib-flate -uncompress | tar tf - &>/dev/null; then 
         printf "${BRED}%s${NC}\n\n" "FAILED" && return 1
-    
+
     else printf "${BGREEN}%s${NC}\n\n" "OK"
     fi
 }
