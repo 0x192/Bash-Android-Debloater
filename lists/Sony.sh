@@ -213,6 +213,14 @@ declare -a sony=(
 	# Smart backlight control
 	# Keeps the screen on as long as the device is held in your hand. Once you put down the device, the screen turns off according to your sleep setting.
 
+	"com.sonymobile.indeviceintelligence"
+	# Xperia Intelligence Engine
+	# This app is supposed to understand how you use the phone, the apps you prefer, and will suggest tips 
+	# and options based on app usage, how often you use an app, what time of day...
+	# For me this just looks like a AI bullshit app who has a huge list of permissions and launch in background at boot
+	# This app performs geofencing (check if your are located in a certain perimeter, near your home for instance) 
+	# and this doesn't looks great privacy-wise (https://en.wikipedia.org/wiki/Geo-fence)
+
 	"com.sonymobile.intelligent.gesture"
 	# Smart call handling
 	# Lets you handle incoming calls without touching the screen.
@@ -221,6 +229,7 @@ declare -a sony=(
 	"com.sonymobile.intelligent.iengine" # [MORE INFO NEEDED]
 	# According to a sony user it is part of Smart Screen rotation (auto screen rotation based on the gyroscope).
 	# Seems not reliable.
+	# Does it break the screen-rotation if removed?
 
 	"com.sonymobile.intelligent.observer" # [MORE INFO NEEDED]
 	# IntelligentObserver
@@ -303,6 +312,7 @@ declare -a sony=(
 	"com.sonymobile.themes.sou.cid19.silver"
 	"com.sonymobile.themes.sou.cid20.blue"
 	"com.sonymobile.themes.sou.cid21.pink"
+	"com.sonymobile.themes.xperialoops2"
 	# Sony themes
 
 	"com.sonymobile.xperialounge.services"
