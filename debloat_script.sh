@@ -47,6 +47,7 @@ main() {
     readonly OPTION_NEEDED=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user 0" )
 
     declare -a CUSTOM_LIST=()
+    declare -a EXTERNAL_LIST=()
 
     FORCE_UNINSTALL=0
     RESTORE=0
@@ -79,12 +80,12 @@ main() {
 
     while true; do
 
-        adb shell 'pm list packages -s' | sed -r 's/package://g' > remaining_packages.txt &
+        adb shell 'pm list packages -s' | sed 's/package://g' > remaining_packages.txt &
 
         clear
         printf "\n${BORANGE}%s\n"                   "===================  MAIN MENU  ==================="
         printf "%s\n"                               "#                                                 #"
-        printf "%-14s${NC}%s${BORANGE}%17s\n"       "#"            "0  -  Package Search"             "#"
+        printf "%-14s${NC}%s${BORANGE}%16s\n"       "#"            "0  -  Packages search"            "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "1  -  Restore a backup"           "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "2  -  Restore packages"           "#"
         printf "%-14s${NC}%s${BORANGE}%15s\n"       "#"            "3  -  Debloat packages"           "#"
@@ -116,6 +117,7 @@ main() {
             printf "%-14s${NC}%s${BORANGE}%23s\n"   "#"          "4  -  Carriers"                     "#"
             printf "%-14s${NC}%s${BORANGE}%25s\n"   "#"          "5  -  Others"                       "#"
             printf "%-14s${NC}%s${BORANGE}%27s\n"   "#"          "6  -  AOSP"                         "#"
+            printf "%-14s${NC}%s${BORANGE}%18s\n"   "#"          "7  -  External list"                "#"
             printf "%s\n"                           "#                                                 #"
             printf "%-14s${NC}%s${BORANGE}%15s\n"   "#"          "0  -  Pending list /!\\"            "#"
             printf "%s\n"                           "#                                                 #"
@@ -123,7 +125,7 @@ main() {
 
             read -r -p "Your selection (e.g: 2 3 4 5): "
             echo
-
+            if [[ "$REPLY" =~ 7 ]]; then import_external_list && debloat_or_restore EXTERNAL_LIST "external list"; fi
             if [[ "$REPLY" =~ 4 ]]; then lists_selection us_carriers french_carriers german_carriers; fi
             if [[ "$REPLY" =~ 3 ]]; then lists_selection google facebook amazon microsoft; fi
             if [[ "$REPLY" =~ 1 ]]; then debloat_or_restore; fi
@@ -139,6 +141,14 @@ main() {
 }
 
 ############################################  END OF MAIN SCRIPT  ######################################################
+
+import_external_list(){
+    local path=""
+    printf "\n${BRED}%s${NC}"               "Path to the list : "
+    read -r path
+    readarray -t EXTERNAL_LIST < "$path"
+}
+
 
 generate_custom_list(){
     [[ -v "$1" ]] && local -n list=$1
@@ -213,7 +223,7 @@ list_installed_packages() {
     read -r
 
     echo
-    adb shell "pm list packages | grep -i $REPLY" | sed -r 's/package://g' | sort
+    adb shell "pm list packages | grep -i $REPLY" | sed 's/package://g' | sort || true
 
     printf "\n\e[5m%s\033[0m"                   "Press any key to continue"
     read -n 1 -r -s
@@ -247,7 +257,7 @@ check_backup_integrity() {
     ! [[ -f $1 ]] && printf "${BRED}%s${NC}\n\n" "Backup not found" && return 1
 
     # first 24 bytes are skipped (adb backup are modified compressed tar files with a 24B custom header)
-    if ! dd if="$1" bs=1M skip=24 iflag=skip_bytes &>/dev/null | zlib-flate -uncompress | tar tf - &>/dev/null; then 
+    if ! dd if="$1" bs=128k skip=24 iflag=skip_bytes 2>/dev/null | zlib-flate -uncompress | tar tf - &>/dev/null; then 
         printf "${BRED}%s${NC}\n\n" "FAILED" && return 1
 
     else printf "${BGREEN}%s${NC}\n\n" "OK"
