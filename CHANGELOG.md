@@ -1,3 +1,20 @@
+# New Version (v2.7)
+
+Didn't you notice the last release never found packages to debloat/restore? Well... this works now. It seems all my changes wasn't pushed on the repo. 
+
+Altough this release contains almost exclusively bugfixes, it's is not a hotfix as there's also a new feature.
+
+PS : I currently don't have a lot free time so the next *real* release will be in quite some time. 
+
+## Notable changes
+- New menu entry (`7 - External list`) which enables you to use your own debloat list (#30)
+
+## Bugfixes
+- Nothing to debloat message when there is stuff to debloat.
+- Compatibility issue with BSB version of `sed` MacOS which prevented the script to generate the debloat lists (#32)
+- Backup integrity check always failing (#32)
+- Script failed when `Packages search` feature didn't find any package 
+
 # New Release (v2.6)
 
 :fallen_leaf: :fallen_leaf: :fallen_leaf: :fallen_leaf: :fallen_leaf: :fallen_leaf:
