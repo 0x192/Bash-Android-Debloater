@@ -102,7 +102,6 @@ declare -a pending=(
 	"com.huawei.android.pushagent"
 	"com.huawei.android.thememanager"
 	"com.huawei.bd"
-	"com.huawei.KoBackup"
 	"com.huawei.mirrorlink"
 	"com.huawei.securitymgr"
 
@@ -267,4 +266,3 @@ declare -a pending=(
 	"com.tct.weather.a_overlay"
 	#"com.tct.wfcwebiew"
 	)
-	

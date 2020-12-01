@@ -3,9 +3,16 @@
 declare -a huawei=(
 	# I NEVER HAD AN HUAWEI DEVICE ON HAND. THIS LIST WAS MADE POSSIBLE BY @REDSKULL23 
 	# https://forum.xda-developers.com/honor-6x/how-to/guide-list-bloat-software-emui-safe-to-t3700814
-	# Yet, his documentation is not enough precise to me.
-	# I already made more intensive search on the web to complete it but I need Huawei users to really improve it.
+	# Additional informaton were taken from https://forum.xda-developers.com/huawei-p40-pro/how-to/adb-debloating-t4088633
+	# Yet, those documentations are not precise enough.
+	# If you have additional information, please contribute to this list
 	# I use [MORE INFO NEEDED] tag as a marker.
+	# If you have EMUI 10 or older, check the AOSP file, as Huawei overwrites some stock packages with their own.
+
+
+	#"com.android.backupconfirm"
+	# Restore google settings with Google Backup restore function, which is unusable for devices without Google Mobile Sercices.
+	# Also display confirmation popup when doing ADB backup. If you remove this package you couldn't do ADB Backup.
 
 	"com.android.keyguard"
 	# HUAWEI magazine unlock (The package name is really confusing)
@@ -20,6 +27,9 @@ declare -a huawei=(
 	"com.baidu.input_huawei"
 	# Woh! 51 permissions! 
 	# Huawei chinese stock input keyboard.
+
+	#"com.bjbyhd.screenreader_huawei"
+	# An accessibility feature for visually impaired people
 
 	"com.hicloud.android.clone"
 	# Huawei Phone Clone (https://play.google.com/store/apps/details?id=com.hicloud.android.clone)
@@ -45,6 +55,9 @@ declare -a huawei=(
 	# Huawei Pay
 	# Mobile payment and e-wallet service for Huawei devices that offers the same services as Apple Pay, Samsung Pay etc...
 	# https://consumer.huawei.com/en/mobileservices/huawei-wallet/
+
+	"com.huawei.android.instantonline" # [MORE INFO NEEDED]
+	# no noticable consequences
 
 	"com.huawei.android.instantshare" 
 	# Huawei Share features.
@@ -89,19 +102,37 @@ declare -a huawei=(
 	"com.huawei.browser" 
 	# Huawei Browser app.
 
+	"com.huawei.browserhomepage"
+	# Huawei Browser component.
+
+	"com.huawei.calculator"
+	# Huawei Calculator app.
+
+	"com.huawei.calendar"
+	# Huawei Calendar app.
+
 	"com.huawei.compass" 
 	# Huawei Compass app.
 
 	"com.huawei.contactscamcard" 
 	# CamCard is a business card reader app.
 
+	"com.huawei.contacts"
+	# Huawei Contacts app
+
 	"com.huawei.contacts.sync" # [MORE INFO NEEDED]
 	# Huawei Contacts sync
 	# My guess (can't have the apk on hand) is this enables you to synchronise your contacts with your Huawei account.
 
+	"com.huawei.deskclock"
+	# Huawei Clock App.
+
 	"com.huawei.desktop.explorer" # [MORE INFO NEEDED]
 	# From XDA thread : "Service that is been used when you wanna use your phone as an operative system on a PC."
 	# I don't understand what does it mean.
+
+	"com.huawei.email"
+	# Huawei Email app.
 
 	"com.huawei.fido.uafclient" 
 	# UAF client for FIDO.
@@ -114,6 +145,9 @@ declare -a huawei=(
 	# https://developers.google.com/identity/fido/android/native-apps
 	# Safe to remove if you don't use password-less authentification to access online servics
 
+	"com.huawei.game.kitserver" # [MORE INFO NEEDED]
+	# probably safe to remove if you don't play games
+
 	"com.huawei.gameassistant" 
 	# Huawei Game Suite (HiGame).
 	# Mobile game app store.
@@ -125,17 +159,39 @@ declare -a huawei=(
 	# A geofence is a virtual perimeter set on a real geographic area. Combining a user position with a geofence perimeter, 
 	# it is possible to know if the user is inside or outside the geofence or even if he is exiting or entering the area.
 
+	"com.huawei.hwsearch"
+	# Petal Search widget. Used for finding apps/apks on serveral online sources (introduced after Google Mobile Services Ban).
+
 	"com.huawei.hwid" 
 	# Huawei Mobile Services (https://play.google.com/store/apps/details?id=com.huawei.hwid)
 	# Needed to access advanced Huawei features.
 	# A Huawei ID is required to access services, like Themes, Mobile Cloud, HiCare, Huawei Wear, Huawei Health  
 
+	"com.huawei.hiaction" # [MORE INFO NEEDED]
+	# no noticable consequences
+
+	"com.huawei.hiai" # [MORE INFO NEEDED]
+	# no noticable consequences
+
+	"com.huawei.hiassistantoversea"
+	# HiVoice. Huawei's voice assistant to replace "Hey Google"
+
+	"com.huawei.hicard" # [MORE INFO NEEDED]
+	# Huawei Cards, no noticable consequences
+
+	"com.huawei.hicloud"
+	# Huawei cloud features
+
 	"com.huawei.hifolder" 
 	# Huawei Online Cloud folder service
 	# https://consumer.huawei.com/en/mobileservices/mobilecloud/
 
-	"com.huawei.himovie.overseas" 
-	# Huawei video (https://play.google.com/store/apps/details?id=com.huawei.himovie.overseas)
+	#"com.huawei.hiview"
+	#"com.huawei.hiviewtunnel"
+	# This displays details/attributes of pictures in the gallery (ISO, exposure time, etc.).
+
+	"com.huawei.himovie.overseas"
+	# Huawei stock video application (https://play.google.com/store/apps/details?id=com.huawei.himovie.overseas). Replace with VLC, which integrates well with the stock gallery.
 
 	"com.huawei.hitouch" 
 	# Huawei HiTouch
@@ -149,6 +205,9 @@ declare -a huawei=(
 	# to detect and access the functionality of UAF authenticators and hides internal communication complexity from FIDO UAF Client.
 	# Source : https://fidoalliance.org/specs/fido-uaf-v1.0-ps-20141208/fido-uaf-asm-api-v1.0-ps-20141208.html
 
+	"com.huawei.hwblockchain" # [MORE INFO NEEDED]
+	# probably blockchain related, no noticable consequences
+
 	"com.huawei.hwdetectrepair" 
 	# Huawei Smart diagnosis (https://play.google.com/store/apps/details?id=com.huawei.hwdetectrepair)
 	# Useless features and run in background.
@@ -156,12 +215,21 @@ declare -a huawei=(
 	#"com.huawei.HwMultiScreenShot"
 	# Scrolling screenshot feature
 
+	"com.huawei.hwstartupguide"
+	# A one-time setup app that is no longer needed
+	
+	"com.huawei.hwvoipservice"
+	# MeeTime (https://consumer.huawei.com/en/support/content/en-us00956296/)
+
 	"com.huawei.iaware"
 	# App Prioritizer. Prioritizes apps to avoid slowdown
 	# Up to you but there is apparently no noticeable difference when deleted.
 
 	"com.huawei.ihealth" 
 	# MotionService package, it's required for actions like shaking the phone to shut off the alarm, ecc.
+
+	"com.huawei.intelligent"
+	# Huawei Assistant. Shopping recommendations
 
 	"com.huawei.health"
 	# Huawei Health (https://play.google.com/store/apps/details?id=com.huawei.health)
@@ -175,9 +243,15 @@ declare -a huawei=(
 	"com.huawei.livewallpaper.naturalgarden"
 	"com.huawei.livewallpaper.ripplestone"
 	
+	"com.huawei.magazine"
+	# Magazine unlock. Downloads wallpapers for your lock screen.
+
 	"com.huawei.mirror" # [MORE INFO NEEDED]
 	# Huawei Mirror app. 
 	# Mirror like "Glass" or "screen mirror" ?
+
+	"com.huawei.music"
+	# Huawei Music app.
 
 	"com.huawei.parentcontrol" 
 	# Parental controls functions.
@@ -190,6 +264,12 @@ declare -a huawei=(
 	"com.huawei.phoneservice" 
 	# HiCare (https://play.google.com/store/apps/details?id=com.huawei.phoneservice)
 	# Provides you common online services including customer services, issue feedback, user guides, service centers and self-service. 
+
+	"com.huawei.photos"
+	# Huawei Gallery app.
+
+	"com.huawei.scanner"
+	# AI Lens. Shop for objects that you take a picture of. This de-clutters the camera interface by removing the AI Lens button on the top left corner and does not break the AR Measure app.
  	
 	"com.huawei.stylus.floatmenu" 
 	# Floating menu with M-Pen feature.
@@ -198,6 +278,10 @@ declare -a huawei=(
 	# Huawei Cloud & Network Synergy.
 	# Seems to be related to B2B (Business To Business) cloud stuff.
 	# https://www.huawei.com/en/press-events/news/2016/10/Cloud-Network-Synergy-Whitepaper
+
+	"com.huawei.tips"
+	# HUAWEI Feature Advisor
+	# Periodically gives you notifications on how to use certain features on your phone.
 
 	"com.huawei.trustagent" # [MORE INFO NEEDED]
 	# Smart unlock feature.
@@ -241,9 +325,12 @@ declare -a huawei=(
 
 	##############################  ADVANCED DEBLOAT ##############################
 
+	#"com.huawei.KoBackup"
+	# As of writing this, Huawei phones cannot be rooted. This Backup application is probably able to backup more than any other 3rd party backup app.
+
 	#"com.huawei.aod" [MORE INFO NEEDED]
 	# Always On Display feature.
-	# Drain battery for nothing really useful.
+	# Drain battery (though not much on OLED screens) for nothing really useful.
 	# RedSkull23 says it's unsafe to remove it. Does it bootloop ? 
 
 	#"com.huawei.android.internal.app" # [MORE INFO NEEDED]

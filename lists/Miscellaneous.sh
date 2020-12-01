@@ -780,7 +780,7 @@ declare -a misc=(
 	# Keyboard app developed by TouchType, a Microsoft subsidiary (https://en.wikipedia.org/wiki/SwiftKey)
 	# Sends "anonymous" to Microsoft.
 	# 4 Trackers + 11 Permissions : https://reports.exodus-privacy.eu.org/en/reports/com.touchtype.swiftkey/latest/
-	# NOTE : default keyboard on some Nokia phones
+	# NOTE : default keyboard on some Nokia and Huawei phones
 
 	#"com.touchtype.swiftkey.res.overlay"
 	# Overlay for Swiftkey keyboard.
