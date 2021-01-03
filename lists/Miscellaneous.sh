@@ -6,7 +6,6 @@
 # and I'm sure it's the good abbreviation but I don't know what V.P.L means !! It seems to refer to a special job for vendors.
 
 declare -a amazon=(
-
 	"com.amazon.appmanager"
 	# Mobile Device Information Provider
 	# Seems related to Kindle
@@ -418,7 +417,7 @@ declare -a misc=(
 	# Kind of GPS that helps you find Point of interest (POI) like hotels, restaurants, and car repair facilities from the AAA databases.
 	# NOTE : You’ll have to sign up for an AAA membership to enjoy all of the features and functionality of the Android app.
 	# AAA = American Automobile Association
-
+	
 	"com.aspiro.tidal.vpl" # for VPL mobiles/employees ? 
 	"com.aspiro.tidal"
 	# Tidal Music (https://play.google.com/store/apps/details?id=com.aspiro.tidal)
@@ -776,15 +775,12 @@ declare -a misc=(
 	# India News (https://play.google.com/store/apps/details?id=com.til.timesnews)
 	
 	#"com.touchtype.swiftkey"
+	#"com.touchtype.swiftkey.res.overlay"
 	# Swiftkey Keyboard (https://play.google.com/store/apps/details?id=com.touchtype.swiftkey)
 	# Keyboard app developed by TouchType, a Microsoft subsidiary (https://en.wikipedia.org/wiki/SwiftKey)
 	# Sends "anonymous" to Microsoft.
 	# 4 Trackers + 11 Permissions : https://reports.exodus-privacy.eu.org/en/reports/com.touchtype.swiftkey/latest/
 	# NOTE : default keyboard on some Nokia and Huawei phones
-
-	#"com.touchtype.swiftkey.res.overlay"
-	# Overlay for Swiftkey keyboard.
-	# REMINDER : A screen overlay in Android, also referred to as “Draw On Top”, allows an app to display content over another app
 
 	"com.tracker.t"
 	# WTF is this ?? Given its name I think you can take the risk to delete it.
@@ -816,7 +812,6 @@ declare -a misc=(
 	"com.ume.browser.northamerica"
 	# UME Web Browser (https://play.google.com/store/apps/details?id=com.ume.browser.northamerica)
 	# Trackers and a LOT of permissions (https://reports.exodus-privacy.eu.org/en/reports/com.ume.browser.cust/latest/)
-
 
 	"com.vlingo.midas"
 	# Speech recognition app forthe personal assistant by Vlingo 
@@ -886,6 +881,14 @@ declare -a misc=(
 	"pl.zdunex25.updater"
 	# Updater for the zdnex25's theme
 	# https://www.deviantart.com/zdunex25/gallery/26889741/themes
+
+	#"se.dirac.acs"
+	# Earphone audio quality improvement from the Swedish company Dirac.
+	# The technology relies on impulse and magnitude frequency response correction to deliver a more dynamic soundstage, 
+	# even when connected to budget headphones. 
+	# The goal is to improve overall sound clarity and bass fidelity while correcting the frequency response so as to deliver a flat curve.
+	# Can be disabled in Settings/Additional settings/Headphone and audio effects (to try to hear the difference)
+	# https://www.androidcentral.com/heres-how-dirac-enabling-xiaomi-create-better-audio-products
 
 	"tv.fubo.mobile.vpl"
 	# fuboTV (https://play.google.com/store/apps/details?id=tv.fubo.mobile)	
@@ -971,4 +974,118 @@ declare -a misc=(
 	#
 	# NOTE : Trustonic TEE (called Kinibi) is used in Samsung, Vivo, Oppo, Xiaomi, Meizu and LG devices.
 
+	##### SIMALLIANCE (now Trusted Connectivity Alliance) #####
+	# Non-profit trade association that aims at creating secure, open and interoperable mobile services.
+	# https://trustedconnectivityalliance.org/introduction/
+
+	#"org.simalliance.openmobileapi.uicc1terminal"
+	#"org.simalliance.openmobileapi.uicc2terminal"
+	# Open Mobile API ("interface") to access UICC secure elements 
+	# UICC stands for Universal Integrated Circuit Card. 
+	# It is a the physical and logical platform for the USIM and may contain additional USIMs and other applications.
+	# (U)SIM is an application on the UICC.
+	# https://bluesecblog.wordpress.com/2016/11/18/uicc-sim-usim/
+	# Good read: https://arxiv.org/ftp/arxiv/papers/1601/1601.03027.pdf
+	# Note2: The term SIM is widely used in the industry and especially with consumers to mean both SIMs and UICCs.
+	# https://www.justaskgemalto.com/us/what-uicc-and-how-it-different-sim-card/
+
+	#"org.simalliance.openmobileapi.service"
+	# Smart Card Service
+	# 
+	# The SmartCard API is a reference implementation of the SIMalliance Open Mobile API specification that enables Android applications 
+	# to communicate with Secure Elements, (SIM card, embedded Secure Elements, Mobile Security Card or others)
+	# https://github.com/seek-for-android/pool/wiki/SmartcardAPI
+	# Safe to remove if you think you don't need this
+
+	)
+
+declare -a mediatek=(
+	#"com.mediatek" # [MORE INFO NEEDED]
+	# Mediatek is a Taiwanese chipset manufacturer.
+	# Can someone share the apk? This package name is really weird.
+	# It is most likely a set of general APIs for accessing general mediatek functionalities.
+	# Can someone share the apk?
+
+	"com.mediatek.atmwifimeta"
+	# wifi data logger you don't want.
+
+	#"com.mediatek.callrecorder" # [MORE INFO NEEDED]
+	# This is not the kind of feature expected from a Soc company.
+	# If you remove this I guess you will not be able to record your calls from the stock dialer
+	# Can someone share the apk and verify this?
+
+	"com.mediatek.engineermode"
+	# Enigneer mode you can access by dialing a secret code (*#*#3646633#*#* on some Xiaomi phones for instance)
+	# It enables you to access to debug/logged data and some hidden firmware settings. 
+
+	#"com.mediatek.gpslocationupdate" # [MORE INFO NEEDED]
+	# I wonder if it is really only a logging app. 
+	# Can someone try to remove it and use a GPS app to see it still works?
+	# Can someone share the apk? (from a Xiaomi/Huawei phone)
+
+	#"com.mediatek.location.lppe.main"
+	# LPPE = LTE Positioning Protocol enhancements/extensions (LTE = "4G")
+	# Positioning and assistance protocol between E-SMLC (mobile location center) and UE (User Equipement = phone)
+	# https://www.gpsworld.com/wirelessexpert-advice-positioning-protocol-next-gen-cell-phones-11125/
+	# I don't know the app has the permission to read SMS
+
+	#"com.mediatek.ims" # [MORE INFO NEEDED]
+	# Mediatek's implementation of IMS
+	# https://www.programmersought.com/article/50164530665/
+	# Note: IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling).
+	# Unless you use VolTE (wifi calling) or RCS from Google or your carrier you don't need IMS.
+	# I'm also not sure to understand the purpose of this package because there already is "com.google.android.ims" on the phone.
+	# Can someone remove this package and test if IMS still works?
+
+	"com.mediatek.mdmconfig" # [MORE INFO NEEDED]
+	# Mobile Device Management (MDM) allows company’s IT department to reach inside your phone in the background, allowing them to ensure 
+	# your device is secure, know where it is, and remotely erase your data if the phone is stolen.
+	# It's a way to ensure employees stay productive and do not breach corporate policies
+	# You should NEVER have a MDM tool on your personal phone. Never.
+	# https://blog.cdemi.io/never-accept-an-mdm-policy-on-your-personal-phone/
+	# This package probably isn't a MDM tool on its own but you definitively don't need it on your phone.
+	# Can someone share the apk?
+
+	"com.mediatek.mtklogger"
+	# Logs debug data. Has a lot of permissions and run in background all the time.
+	# Don't keep useless apps: reduce the attack surface
+	# Vulnerability found in this app in 2016: https://nvd.nist.gov/vuln/detail/CVE-2016-10135
+
+	#"com.mediatek.nlpservice" # [MORE INFO NEEDED]
+	# Mediatek Network Location Provider
+	# Provides periodic reports on the geographical location of the device. Each provider has a set of criteria under which it may be used.
+	# For example, some providers require GPS hardware and visibility to a number of satellites others require the use of 
+	# the cellular radio, or access to a specific carrier's network, or to the internet. 
+	# They may also have different battery consumption characteristics or monetary costs to the user.
+	# 
+	# I don't really understand why you would need this as there is already one in 'com.google.android.gms'
+	# I wonder if NLP can be replaced by https://github.com/microg/UnifiedNlp
+	# I suggest to test if you get a better signal/battery performance with Mediatek NLP, if not you can get rid of it.
+
+	#"com.mediatek.omacp"
+	# omacp = OMA Client Provisioning. It is a protocol specified by the Open Mobile Alliance (OMA).
+	# Configuration messages parser. Used for provisioning APN settings to devices via SMS 
+	# In my case, it was automatic and I never needed configuration messages.
+	# Maybe it's useful if carriers change their APN. But you still can change the config manually, it's not difficult.
+	# Dunno why Mediatek handles this kind of things. Safe to remove. At worst, you'll need to manually config your APN.
+	# Note: OMACP can be abused. Be careful:
+	# https://research.checkpoint.com/2019/advanced-sms-phishing-attacks-against-modern-android-based-smartphones/
+	# https://www.zdnet.com/article/samsung-huawei-lg-and-sony-phones-vulnerable-to-rogue-provisioning-messages/
+
+	"com.mediatek.providers.drm"
+	# DRM provider (actually Beep Science is the MediaTek’s default DRM vendor)
+	# You probably need this if you want to watch Netflix & others stuff in high-res 
+	# REMINDER : DRM = all the things that restrict the use of proprietary hardware and copyrighted works.
+	# ==> https://en.wikipedia.org/wiki/Digital_rights_management
+	# ==> https://creativecommons.org/2017/07/09/terrible-horrible-no-good-bad-drm/
+	# ==> https://fckdrm.com/
+	# ==> http://www.info-mech.com/drm_flaws.html
+
+	"com.mediatek.wfo.impl"
+	# According to olorin (https://www.olorin.me/2019/09/08/debloating-the-umidigi-f1-play/)
+	# it's the MediaTek’s default fingerprint app (and he removed it)
+	# Can someone confirm what does this package exactly do? 
+	# Remember that any preinstalled apps you don't actually need just increase the surface attack.
+	# Vulnerability found in 2019: https://nvd.nist.gov/vuln/detail/CVE-2019-15368
+	# Any app co-located on the device could modify a system property through an exported interface without proper authorization.
 	)
