@@ -1,59 +1,25 @@
 #!/usr/bin/env bash
 
 ### These packages will be added in the default selection when I will find time to document them.
-# It should be safe but you still need to be **VERY** careful. 
+# uncommented packages should be safe to remove but you still need to be **VERY** careful. 
 
 # REMINDER : "Safe" only means "does not cause bootloop". 
 # These packages can definitely break useful features (but you can easily reinstall them with the script)
 
 declare -a pending=(
 
-	# These packages seems to be disguished Xiaomi apps once again! If someone have these packages on their phones, 
-	# can someone decompile the apk to confirm this (and try to understand its relevance)?
+	# These packages seems to be disguished Xiaomi apps and not part of AOSP. Can someone confirm/refute this?
 	#"com.android.systemui.gesture.line.overlay"
 	#"com.android.systemui.navigation.bar.overlay"
 
 	############## AOSP ###############
-	#"com.android.bluetooth.tempow"
-	#"com.android.documentsui.a_overlay"
-	#"com.android.dynsystem"
-	"com.android.gallery3d.refocus"
-	#"com.android.hotspot2"
-	#"com.android.internal.systemui.navbar.gestural"
-	#"com.android.internal.systemui.navbar.gestural_extra_wide_back"
-	#"com.android.internal.systemui.navbar.gestural_narrow_back"
-	#"com.android.internal.systemui.navbar.gestural_wide_back"
-	#"com.android.internal.systemui.navbar.threebutton"
-	#"com.android.internal.systemui.navbar.twobutton"
-	#"com.android.localtransport"
-	#"com.android.mmi"
-	#"com.android.ons"
-	#"com.android.otaprovisioningclient"
-	#"com.android.phone.a_overlay"
-	#"com.android.providers.tctdatahubprovider"
-	"com.android.runintest.ddrtest"
-	#"com.android.server.telecom.a_overlay"
 
 	############# GOOGLE ##############
-	#"com.google.android.captiveportallogin"
-	#"com.google.android.documentsui"
-	"com.google.android.modulemetadata"
-	#"com.google.android.networkstack"
-	#"com.google.android.networkstack.permissionconfig"
-	#"com.google.android.overlay.gmsconfig"
-	#"com.google.android.overlay.gmsgsaconfig"
-	#"com.google.android.overlay.modules.ext.services"
-	#"com.google.android.overlay.modules.permissioncontroller"
-	#"com.google.android.overlay.modules.permissioncontroller.forframework"
-	#"com.google.android.packageinstaller.a_overlay"
-	#"com.google.android.permissioncontroller"
-	"com.google.android.setupwizard.a_overlay"
-	"com.google.android.tag"
 
 	############ QUALCOMM #############
 	"com.qti.qualcomm.deviceinfo"
 	"com.qualcomm.qti.cne"
-	# "com.qualcomm.qti.ims"
+	#"com.qualcomm.qti.ims"
 	"com.qualcomm.qti.performancemode"
 	"com.qualcomm.qti.poweroffalarm"
 	"com.qualcomm.qti.qdma"
@@ -83,15 +49,7 @@ declare -a pending=(
 	"com.jrdcom.filemanager.a_overlay"
 	"com.vendor.frameworkresoverlay"
 
-	############# SAMSUNG #############
-	"com.samsung.android.mdecservice"
-	"com.aura.oobe.samsung"
-	"com.samsung.logwriter"
-	"com.samsung.android.airtel.stubapp"
-	"com.samsung.android.spaymini"
-	"com.samsung.SMT"
-	"com.samsung.android.mfi"
-	"com.samsung.android.tapack.authfw"
+	############# SAMSUNG #############	
 
 	############### SONY ##############	
 	"com.sonymobile.devicesecurity.service"
@@ -99,99 +57,19 @@ declare -a pending=(
 	"com.sonymobile.swiqisystemservice"
 
 	############# HUAWAI ##############
-	"com.huawei.android.pushagent"
-	"com.huawei.android.thememanager"
-	"com.huawei.bd"
-	"com.huawei.mirrorlink"
-	"com.huawei.securitymgr"
 
 	############## NOKIA ##############
-	# Nokia users ! Please give the apk. I can't find them on the web.
-	"com.evenwell.batteryprotect.overlay.d.base.s600e0"
-	"com.evenwell.factorywizard.overlay.base"
-	"com.evenwell.phone.overlay.base"
-	"com.evenwell.powersaving.g3.overlay.d.base.s600e0"
-	"com.evenwell.settings.data.overlay.base"
-	"com.evenwell.SetupWizard.overlay.base"
-	"com.evenwell.SetupWizard.overlay.d.base.s600ww"
+	# Nokia users: Please give the apk. I can't find them on the web.
 	"com.evenwell.whitebalance"
 	"com.evenwell.whitebalance.overlay.base"
-	"com.hmdglobal.datago"
-	"com.hmdglobal.datago.overlay.base"
 	"com.hmdglobal.enterprise.api"
 
+	########### XIAOMI ##############
 
-	########## XIAOMI ###############
-	#"com.mi.android.globalminusscreen"
-	"com.mi.AutoTest"
-	#"com.mi.globallayout"
-	"com.miui.audiomonitor"
-	"com.miui.backup"
-	#"com.miui.core"
-	"com.miui.face"
-	"com.miui.fmservice"
-	"com.miui.freeform"
-	#"com.miui.global.packageinstaller"
-	"com.miui.guardprovider"
-	#"com.miui.miservice"
-	#"com.miui.misound"
-	#"com.miui.notification"
-	"com.miui.phrase"
-	#"com.miui.powerkeeper"
-	#"com.miui.rom"
-	#"com.miui.securitycore"
-	"com.miui.smsextra"
-	"com.miui.sysopt"
-	#"com.miui.system"
-	#"com.miui.systemui.carriers.overlay"
-	#"com.miui.systemui.devices.overlay"
-	#"com.miui.systemui.overlay.devices.android"
-	#"com.miui.wmsvc"
-	#"com.wapi.wapicertmanager"
-	"com.wingtech.standard"
-	"com.wt.secret_code_manager"
-	#"com.xiaomi.bluetooth"
-	#"com.xiaomi.bluetooth.overlay"
-	#"com.xiaomi.location.fused"
-	"com.xiaomi.mi_connect_service"
-	#"com.xiaomi.misettings"
-	#"com.xiaomi.powerchecker"
-	#"com.xiaomi.simactivate.service"
-	"com.xiaomi.upnp"
-	"com.xiaomi.xmsf"
-	"com.xiaomi.xmsfkeeper"
-	#"org.simalliance.openmobileapi.uicc1terminal"
-	#"org.simalliance.openmobileapi.uicc2terminal"
-	"se.dirac.acs"
-
-	"com.fido.asm"
-	#"com.fido.xiaomi.uafclient"
-	#"com.lbe.security.miui"
-	#"com.mediatek"
-	"com.mediatek.atmwifimeta"
-	#"com.mediatek.callrecorder"
-	"com.mediatek.engineermode"
-	#"com.mediatek.gpslocationupdate"
-	#"com.mediatek.ims"
-	#"com.mediatek.location.lppe.main"
-	"com.mediatek.mdmconfig"
-	"com.mediatek.mtklogger"
-	#"com.mediatek.nlpservice"
-	#"com.mediatek.omacp"
-	"com.mediatek.providers.drm"
-	"com.mediatek.wfo.impl"
-	#"android.telephony.overlay.cmcc"
-	"android.ui.overlay.ct"
-	"com.android.backup"
-	"com.android.mms.overlay.cmcc"
-	"com.android.networksettings.overlay.ct"
-	#"com.android.settings.overlay.cmcc"
-	#"com.android.systemui.overlay.cmcc"
-	#"com.android.systemui.overlay.ct"
-	#"com.android.wallpaperpicker"
-
-	########### TCL ############
+	############# TCL ###############
+	"com.android.gallery3d.refocus"
 	"android.autoinstalls.config.TCL.PAI"
+	"com.android.providers.tctdatahubprovider"
 	#"com.tcl.android.launcher"
 	#"com.tcl.android.launcher.a_overlay"
 	#"com.tcl.android.launchertheme.res"
