@@ -118,7 +118,11 @@ declare -a oneplus=(
 
 	"net.oneplus.forums"
 	# OnePlus Community (https://play.google.com/store/apps/details?id=net.oneplus.forums)
-	# Lets you access to OnePlus forum... wah that great ! 
+	# Lets you access to OnePlus forum... wah that great !
+
+	"com.oneplus.opsports"
+	# Cricket Scores (https://play.google.com/store/apps/details?id=com.oneplus.opsports)
+	# Lets you access and follow cricket teams and tournaments
 
 	"net.oneplus.odm"
 	"net.oneplus.odm.provider"

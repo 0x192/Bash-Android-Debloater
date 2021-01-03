@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
 
 declare -a huawei=(
-	# I NEVER HAD AN HUAWEI DEVICE ON HAND. THIS LIST WAS MADE POSSIBLE BY @REDSKULL23 
+	# I NEVER HAD AN HUAWEI DEVICE ON HAND. THIS LIST WAS MADE POSSIBLE BY @REDSKULL23
 	# https://forum.xda-developers.com/honor-6x/how-to/guide-list-bloat-software-emui-safe-to-t3700814
 	# Additional informaton were taken from https://forum.xda-developers.com/huawei-p40-pro/how-to/adb-debloating-t4088633
-	# Yet, those documentations are not precise enough.
-	# If you have additional information, please contribute to this list
+	# Yet, those documentations are not precise enough. If you have additional information, please contribute to this list
 	# I use [MORE INFO NEEDED] tag as a marker.
-	# If you have EMUI 10 or older, check the AOSP file, as Huawei overwrites some stock packages with their own.
-
-
-	#"com.android.backupconfirm"
-	# Restore google settings with Google Backup restore function, which is unusable for devices without Google Mobile Sercices.
-	# Also display confirmation popup when doing ADB backup. If you remove this package you couldn't do ADB Backup.
-
+	# If you have EMUI 10 or older, check the AOSP file, as Huawei uses AOSP package name for their own app.
+	
 	"com.android.keyguard"
 	# HUAWEI magazine unlock (The package name is really confusing)
 	# It's a proprietary app based on the AOSP package called com.android.keyguard. That's not clever at all.
@@ -70,6 +64,11 @@ declare -a huawei=(
 	# MirrorShare feature (Miracast rebranded by Huawei)
 	# Used to mirror screen of you smartphone on a TV.
 
+	"com.huawei.android.pushagent" # [MORE INFO NEEDED]
+	# push notification agent
+	# Seems to only be used for Huawei apps
+	# The recompiled java code makes it look like it's once again mainly used for analytics.
+
 	"com.huawei.android.remotecontroller" 
 	# Huawei Smart Controller app.
 	# Lets you you add, customize, and set up remote controls, allowing control of your electronic appliances through your phone. 
@@ -95,6 +94,12 @@ declare -a huawei=(
 	"com.huawei.arengine.service" 
 	# Augmented reality service.
 
+	"com.huawei.bd"
+	# HwUE (Huawei UserExperience)
+	# When a company call a something 'UserExperience' you know you don't need this.
+	# Analytics service, run at boot. Collect information about packages/apps usages.
+	# Has a nice custom permission called com.huawei.permission.BIG_DATA
+
 	"com.huawei.bluetooth"
 	# Lets you import your contacts via Bluetooth
 	# Bluetooth will still work if you remove this package.
@@ -105,27 +110,15 @@ declare -a huawei=(
 	"com.huawei.browserhomepage"
 	# Huawei Browser component.
 
-	"com.huawei.calculator"
-	# Huawei Calculator app.
-
-	"com.huawei.calendar"
-	# Huawei Calendar app.
-
 	"com.huawei.compass" 
 	# Huawei Compass app.
 
 	"com.huawei.contactscamcard" 
 	# CamCard is a business card reader app.
 
-	"com.huawei.contacts"
-	# Huawei Contacts app
-
 	"com.huawei.contacts.sync" # [MORE INFO NEEDED]
 	# Huawei Contacts sync
 	# My guess (can't have the apk on hand) is this enables you to synchronise your contacts with your Huawei account.
-
-	"com.huawei.deskclock"
-	# Huawei Clock App.
 
 	"com.huawei.desktop.explorer" # [MORE INFO NEEDED]
 	# From XDA thread : "Service that is been used when you wanna use your phone as an operative system on a PC."
@@ -143,10 +136,10 @@ declare -a huawei=(
 	# The UAF protocol is designed to enable online services to offer passwordless and multi-factor security by allowing users to register their device 
 	# to the online service and using a local authentication mechanism such as iris or fingerprint recognition. .
 	# https://developers.google.com/identity/fido/android/native-apps
-	# Safe to remove if you don't use password-less authentification to access online servics
+	# Safe to remove if you don't use password-less authentification to access online servics.
 
 	"com.huawei.game.kitserver" # [MORE INFO NEEDED]
-	# probably safe to remove if you don't play games
+	# Probably safe to remove if you don't play games
 
 	"com.huawei.gameassistant" 
 	# Huawei Game Suite (HiGame).
@@ -200,7 +193,7 @@ declare -a huawei=(
 
 	"com.huawei.hwasm" 
 	# FIDO UAF Autenthicator-Specific Module.
-	# See com.huawei.fido.uafclient for FIDO explaination.
+	# See 'com.huawei.fido.uafclient' for FIDO explaination.
 	# The UAF Authenticator-Specific Module (ASM) is a software interface on top of UAF authenticators which gives a standardized way for FIDO UAF clients 
 	# to detect and access the functionality of UAF authenticators and hides internal communication complexity from FIDO UAF Client.
 	# Source : https://fidoalliance.org/specs/fido-uaf-v1.0-ps-20141208/fido-uaf-asm-api-v1.0-ps-20141208.html
@@ -248,7 +241,11 @@ declare -a huawei=(
 
 	"com.huawei.mirror" # [MORE INFO NEEDED]
 	# Huawei Mirror app. 
-	# Mirror like "Glass" or "screen mirror" ?
+	# Mirror like "Glass"
+	
+	"com.huawei.mirrorlink"
+	# Huawei mirrorlink implementation
+	# Used to connect your phone to a car (with https://mirrorlink.com/ support) in order to provide audio streaming, GPS navigation...
 
 	"com.huawei.music"
 	# Huawei Music app.
@@ -264,9 +261,6 @@ declare -a huawei=(
 	"com.huawei.phoneservice" 
 	# HiCare (https://play.google.com/store/apps/details?id=com.huawei.phoneservice)
 	# Provides you common online services including customer services, issue feedback, user guides, service centers and self-service. 
-
-	"com.huawei.photos"
-	# Huawei Gallery app.
 
 	"com.huawei.scanner"
 	# AI Lens. Shop for objects that you take a picture of. This de-clutters the camera interface by removing the AI Lens button on the top left corner and does not break the AR Measure app.
@@ -325,8 +319,20 @@ declare -a huawei=(
 
 	##############################  ADVANCED DEBLOAT ##############################
 
+	#"com.hisi.mapcon" 
+	# Provides wifi calling feature (call or text on Wi-Fi networks using your SIM card)
+	# NOTE: Instant messaging video/voice call does not use this "wifi calling" feature. 
+	# Btw, you should use a E2EE messaging app like Signal/Session/Element(https://element.io/) instead of the non-secure wifi-calling feature
+	# provided by your carrier.
+
 	#"com.huawei.KoBackup"
-	# As of writing this, Huawei phones cannot be rooted. This Backup application is probably able to backup more than any other 3rd party backup app.
+	# As of writing this, Huawei phones cannot be rooted. 
+	# This Backup application is probably able to backup more than any other 3rd party backup app.
+
+	#"com.huawei.android.thememanager" # [MORE INFO NEEDED]
+	# Huawei Themes (https://play.google.com/store/apps/details?id=com.huawei.android.thememanager)
+	# Lets you use Huawei themes
+	# You should still be able to set wallapers without it. Can someone check?
 
 	#"com.huawei.aod" [MORE INFO NEEDED]
 	# Always On Display feature.
@@ -343,17 +349,27 @@ declare -a huawei=(
 	# DON'T REMOVE THIS IF YOU DIDN'T INSTALL ANOTHER LAUNCHER !
 	# You will maybe need this package for the recent apps feature to work (even if you have another launcher)
 
+	#"com.huawei.calculator"
+	# Huawei Calculator app.
+
+	#"com.huawei.calendar"
+	# Huawei Calendar app.
+
+	#"com.huawei.contacts"
+	# Huawei Contacts app
+
+	#"com.huawei.deskclock"
+	# Huawei Clock App.
+
+	#"com.huawei.photos"
+	# Huawei Gallery app.
+	# Note: The official camera app refuses to open photos in another gallery (you can't review your picture from the camera app)
+
 	#"com.android.mediacenter" 	
 	# Huawei music app. (Yeah they messed up with the package name)
 
 	#"com.huawei.screenrecorder" 
 	# Huawei Screen recorder feature (with internal mic record toggle)
-
-	#"com.hisi.mapcon" 
-	# Provides wifi calling feature (call or text on Wi-Fi networks using your SIM card)
-	# NOTE: Instant messaging video/voice call does not use this "wifi calling" feature. 
-	# Btw, you should use a E2EE messaging app like Signal/Session/Element(https://element.io/) instead of the non-secure wifi-calling feature
-	# provided by your carrier.
 	
 	#"com.huawei.hidisk" 
 	# Huawei File Manager app.
@@ -362,6 +378,13 @@ declare -a huawei=(
 	# HiSearch
 	# Allows you to search through settings, files, contacts and notes while keeping a record of your search history.
 	# Hi Search is really annonying because it's triggered as soon as you wipe down from the middle part of the home.
+
+	#"com.huawei.securitymgr" # [MORE INFO NEEDED]
+	# PrivateSpace
+	# Lets you store private information in a hidden space within your device that can only be accessed 
+	# with your fingerprint or password.
+	# TODO: Data at rest encryption? If not, this is useless
+	# https://consumer.huawei.com/en/support/content/en-us00754246/
 	)
 
 

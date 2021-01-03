@@ -32,7 +32,7 @@ declare -a lge=(
 	
 	"com.lge.drmservice"
 	# DRM Service
-	# Use to support DRM content playback. It manages the DRM Client, which holds a particular type of information required to get a license key. 
+	# Needed to read DRM content playback. It manages the DRM Client, which holds a particular type of information required to get a license key. 
 	# REMINDER : DRM = all the things that restrict the use of proprietary hardware and copyrighted works.
 	# ==> https://en.wikipedia.org/wiki/Digital_rights_management
 	# ==> https://creativecommons.org/2017/07/09/terrible-horrible-no-good-bad-drm/

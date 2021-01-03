@@ -11,13 +11,13 @@ declare -a nokia=(
 	# ww = Worldwide users / cn = china / tw = Taiwan / id = Indonesia
 
 	# I don't understand why there are so much overlay stuff.
-	# REMINDER : A screen overlay in Android, also referred to as “Draw On Top”, allows an app to display content over another app
+	# overlay : https://budhdisharma.medium.com/rro-runtime-resource-overlay-in-android-aosp-e094be17f4bc
+	# 			https://source.android.com/devices/architecture/rros
 	
 	# blt = Bell Telephone Laboratories owned by Nokia (https://en.wikipedia.org/wiki/Bell_Labs)
 
 	"com.android.partnerbrowsercustomizations.btl.s600ww.overlay"
 	# Add Nokia pinned bookmarks in your chromium based browser
-	# btl = Bell Telephone Laboratories
 
 	"com.android.providers.calendar.overlay.base.s600ww" # [MORE INFO NEEDED]
 	# "com.android.providers.calendar" is necessary to sync stock Calendar app and lets it work correctly.
@@ -48,23 +48,22 @@ declare -a nokia=(
 	# Another overlay for APN widget this time. Seems useless to me
 	# REMINDER : APN means Access Point Name and must be configured with carrier values in order your device could acess carrier network. 
 
-	##### WHAT IS EVENWELL #####
-	# Evenwell/FiH is chinese company. Specifically, they are a subsidary of the massive Foxconn group that manufactures consumer electronics for sale 
-	# around the world.
+	##### WHAT IS EVENWELL? #####
+	# Evenwell/FiH is chinese company. Specifically, they are a subsidary of the massive Foxconn group that manufactures 
+	# consumer electronics for sale around the world.
 	# You should read the Foxxconn wikipedia page and especially the Controversies section (https://en.wikipedia.org/wiki/Foxconn#Controversies)
 	# Evenwell apps was caught to send personnal data to chinese servers
 	# https://arstechnica.com/gadgets/2019/03/hmd-admits-the-nokia-7-plus-was-sending-personal-data-to-china/
 	#
-	#
 	# Majority of evenwell app are useless background apps.
 
-	"com.evenwell.AprUploadService"
+	"com.evenwell.AprUploadService" # [MORE INFO NEEDED]
 	"com.evenwell.AprUploadService.data.overlay.base"
 	"com.evenwell.AprUploadService.data.overlay.base.s600ww"
 	"com.evenwell.AprUploadService.data.overlay.base.s600id"
 	# Apr Upload Service ????
 
-	"com.evenwell.autoregistration"
+	"com.evenwell.autoregistration" # [MORE INFO NEEDED]
 	"com.evenwell.autoregistration.overlay.base"
 	"com.evenwell.autoregistration.overlay.base.s600id"
 	"com.evenwell.autoregistration.overlay.base.s600ww"
@@ -79,11 +78,11 @@ declare -a nokia=(
 	"com.evenwell.batteryprotect.overlay.base"
 	"com.evenwell.batteryprotect.overlay.base.s600id"
 	"com.evenwell.batteryprotect.overlay.base.s600ww"
+	"com.evenwell.batteryprotect.overlay.d.base.s600e0"
 	# Battery protect is advertised to improve battery performance but in practice it drains your battery and kills apps to aggressively.
 	# https://dontkillmyapp.com/nokia
 	# Nokia decided to stop using this app-killer in the future
 	# https://www.androidpolice.com/2019/08/27/nokia-hmd-phones-disable-evenwell-background-process-app-killer/
-
 
 	"com.evenwell.bboxsbox" # [MORE INFO NEEDED]
 	"com.evenwell.bboxsbox.app"
@@ -100,7 +99,6 @@ declare -a nokia=(
 	# CP = Client Provisioning.
 	# Surely used to push new carrier internet/MMS settings automatically
 	# Maybe it's useful if carriers change their APN... but you still can change it manually, it's not difficult.
-
 
 	"com.evenwell.custmanager" # [MORE INFO NEEDED]
 	"com.evenwell.custmanager.data.overlay.base"
@@ -123,7 +121,7 @@ declare -a nokia=(
 	"com.evenwell.DbgCfgTool.overlay.base.s600ww"
 	# Debug config tool ? 
 
-	"com.evenwell.defaultappconfigure.overlay.base.s600ww"
+	"com.evenwell.defaultappconfigure.overlay.base.s600ww" # [MORE INFO NEEDED]
 	# ????
 
 	"com.evenwell.DeviceMonitorControl" # [MORE INFO NEEDED]
@@ -136,10 +134,10 @@ declare -a nokia=(
 	# Overlay for email app
 
 	"com.evenwell.factorywizard"
+	"com.evenwell.factorywizard.overlay.base"
 	"com.evenwell.factorywizard.overlay.base.s600ww"
 	# Most likely a configuration setup after a factory reset (and/or after first boot)
 	# Guides you through the basics of setting up your device.
-
 
 	"com.evenwell.foxlauncher.partner" # [MORE INFO NEEDED]
 	# Partner Launcher Customization
@@ -185,6 +183,7 @@ declare -a nokia=(
 	# ????
 
 	"com.evenwell.phone.overlay.base.s600ww"
+	"com.evenwell.phone.overlay.base"
 	# Overlay for the dialer app
 
 	"com.evenwell.PowerMonitor"
@@ -196,7 +195,8 @@ declare -a nokia=(
 	#"com.evenwell.powersaving.g3"
 	#"com.evenwell.powersaving.g3.overlay.base.s600id"
 	#"com.evenwell.powersaving.g3.overlay.base.s600ww"
-	# Does nokia powersaving is effective ? 
+	#"com.evenwell.powersaving.g3.overlay.d.base.s600e0"
+	# Is nokia powersaving really effective? 
 
 	"com.evenwell.providers.downloads.overlay.base.s600ww"
 	"com.evenwell.providers.downloads.ui.overlay.base.s600ww"
@@ -212,12 +212,11 @@ declare -a nokia=(
 	# and provide a way to share data with other apps. They encapsulate the data, and provide mechanisms for defining data security
 	# Source : https://developer.android.com/guide/topics/providers/content-providers.html
 
-
 	"com.evenwell.pushagent"
 	"com.evenwell.pushagent.overlay.base"
 	"com.evenwell.pushagent.overlay.base.s600id"
 	"com.evenwell.pushagent.overlay.base.s600ww"
-	# Surely related to push notification for Nokia apps (only ?)
+	# Surely related to push notifications for Nokia apps (only ?)
 
 	"com.evenwell.retaildemoapp"
 	"com.evenwell.retaildemoapp.overlay.base"
@@ -226,11 +225,11 @@ declare -a nokia=(
 	# Nokia retail demonstration mode 
 	# https://en.wikipedia.org/wiki/Demo_mode
 
-
 	"com.evenwell.screenlock.overlay.base.s600ww" # [MORE INFO NEEDED]
 	# Overlay for the screenlock
 
-	"com.evenwell.settings.data.overlay.base.s600ww" # [MORE INFO NEEDED]
+	"com.evenwell.settings.data.overlay.base" # [MORE INFO NEEDED]
+	"com.evenwell.settings.data.overlay.base.s600ww" 
 	# Overlay related to settings
 
 	"com.evenwell.SettingsUtils"
@@ -240,7 +239,9 @@ declare -a nokia=(
 	# See https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/9#note_369056538
 
 	"com.evenwell.SetupWizard"
+	"com.evenwell.SetupWizard.overlay.base"
 	"com.evenwell.setupwizard.btl.s600ww.overlay"
+	"com.evenwell.SetupWizard.overlay.d.base.s600ww"
 	"com.evenwell.SetupWizard.overlay.base.s600ww"
 	# It's the basic configuration wizard that drives you through first boot and guides you through the basics of setting up your device.
 
@@ -277,9 +278,10 @@ declare -a nokia=(
 	# IFAA = China’s Internet Finance Authentication Alliance
 	# Chinese organisation that aim to achieve a more simple way to verify the identity of human (like passwordless authentication)
 
+	"com.hmdglobal.datago"
+	"com.hmdglobal.datago.overlay.base"
 	"com.hmdglobal.datago.overlay.base.s600ww" # [MORE INFO NEEDED]
-	# Most likely sends diagnostic data to HMD (Company behin Nokia)
-	# Just an overlay ? Weird.
+	# Sends diagnostic data to HMD (Company behin Nokia) ?
 
 	"com.hmdglobal.support"
 	# My Phone (https://play.google.com/store/apps/details?id=com.hmdglobal.support)	

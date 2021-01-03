@@ -5,6 +5,16 @@ declare -a samsung=(
 	"android.autoinstalls.config.samsung"
 	# Samsung's implementation of the "necessary apps" that need to be downloaded upon first setting up the device.
 
+	"com.aura.oobe.samsung"
+	# AppCloud
+	# It offers the "Aura out-of-the-box experience" (OOBE)
+	# It's an app who promotes some other apps (and encourages you to install them)
+	# Developped by IronSource (an Israeli  advertising company)
+	# https://en.wikipedia.org/wiki/IronSource
+	# https://aura.ironsrc.com/tools/drive-app-downloads/
+	# https://arxiv.org/pdf/2010.10088.pdf
+	# Has way too much permissions.
+
 	"com.cnn.mobile.android.phone.edgepanel" # (Samsung-exclusive)
 	# CNN Edge panel. Twitter trends, and news from CNN.
 
@@ -37,13 +47,8 @@ declare -a samsung=(
 	# cards and membership cards to 1D red laser and Image based scanners prevalent at nearly every retail store and checkout stand around the world.
 	# Mobeam is a 3-party (https://mobeam.com/)
 
-	"com.osp.app.signin"
-	# Samsung Account app
-	# Lots of trackers in this app
-	# Has a huge list of permissions. It is a essential app for a lof of samsung apps (removed by default in this list)
-
 	"com.samsung.app.jansky"
-	# Multi-lines settings. 
+	# Multi-lines settings
 	# Lets you have multiple virtual phone numbers.
 	# This feature is only available on some US carrier-locked devices
 	# https://www.reddit.com/r/GalaxyS8/comments/6esiub/tmobile_s8s8_multiline_setting_is_awesome/did2pur/
@@ -68,6 +73,12 @@ declare -a samsung=(
 	# AirCommandManager manager
 	# Gives you access to signature S Pen features. You can access Air command anytime you are using your phone by simply taking out the S Pen.
 	# https://www.samsung.com/global/galaxy/what-is/air-command/
+
+	"com.samsung.android.airtel.stubapp"
+	# My Airtel Stub app
+	# My Airtel is a customer service app designed for Airtel subscribers in Sri Lanka
+	# This pasckage isn't the app itself but only a stub. 
+	# It's basically a non-functional empty shell which often only redirect you to the PlayStore to download the full app
 	
 	"com.samsung.android.allshare.service.mediashare"
 	# Samsung Allshare service (now called SmartView).
@@ -124,6 +135,12 @@ declare -a samsung=(
 	# Samsung's adaptive super AMOLED screen optimizes the color range, saturation, and sharpness of the picture depending on what you're watching or doing. 
 	# This package lets you to manually customize the color settings to match your preferences.
 
+	"com.samsung.android.app.dressroom" # [MORE INFO NEEDED]
+	# Samsung Wallpapers
+	# Wallaper manager from the launcher. You can probably remove it and still set a wallpaper from the Gallery.
+	# Can someone check?
+	# Has INTERNET permission and... ACCESS_MEDIA_LOCATION
+
 	"com.samsung.android.app.episodes"
 	# Samsung story album (https://www.samsung.com/in/support/mobile-devices/what-is-story-album-application-in-samsung-galaxy-s4/)
 
@@ -161,7 +178,7 @@ declare -a samsung=(
 	# You can debloat this and still create hotspot. 
 
 	"com.samsung.android.app.mirrorlink"
-	# Used to connect your phone to a car in order to provide audio streaming, GPS navigation...
+	# Used to connect your phone to a car (with https://mirrorlink.com/ support) in order to provide audio streaming, GPS navigation...
 	# https://www.samsung.com/us/support/answer/ANS00048972/
 
 	"com.samsung.android.app.news"
@@ -318,7 +335,7 @@ declare -a samsung=(
 	"com.samsung.android.dlp.service"
 	# SamsungDLPService (KNOX). Old feature. Was replaced by SDP (Sensitive Data Protection)
 	# Data Loss Prevention (DLP) feature
-	# Good security feature but only works with Samsung apps.
+	# SDP is good because it allows to have encrypted data at rest (= decryption keys not in RAM) even when your phone is on.
 	# https://docs.samsungknox.com/admin/whitepaper/kpe/sensitive-data-protection.htm 
 	# https://docs.samsungknox.com/knox-platform-for-enterprise/admin-guide/sensitive-data-protection.htm
 
@@ -337,6 +354,11 @@ declare -a samsung=(
 	"com.samsung.android.drivelink.stub"
 	# Stub for car mode 
 	# REMINDER : Stub = https://stackoverflow.com/questions/10648280/what-is-stub-and-aidl-for-in-java
+
+	"com.samsung.android.dynamiclock"
+	# Samsung Dynamic Lock
+	# Automatically changes your Lock screen’s wallpaper
+	# https://www.samsung.com/us/support/answer/ANS00084210/
 
 	"com.samsung.android.gearoplugin"
 	# Gear S Plugin (https://play.google.com/store/apps/details?id=com.samsung.android.gearoplugin)
@@ -357,6 +379,13 @@ declare -a samsung=(
 	# AR Emoji updater
 	# This package has no permission so I wonder how it can update anything.
 	# See com.samsung.android.aremoji
+
+	"com.samsung.android.fast"
+	# Samsung Secure Wi-Fi
+	# Samsung VPN service powered by McAfee
+	# https://www.pcmag.com/news/mcafee-samsung-partner-on-built-in-security-vpn-for-galaxy-s9
+	# https://www.ctrl.blog/entry/what-is-samsung-secure-wi-fi.html
+	# Note: If you need to use a VPN use something more trustworthy*
 
 	"com.samsung.android.fmm"
 	# Find My Mobile
@@ -408,6 +437,11 @@ declare -a samsung=(
 	# NOTE : You shouldn't give your phone to a child. That bad ! 
 	# https://ifstudies.org/blog/a-smartphone-will-change-your-child-in-ways-you-might-not-expect-or-want
 
+	"com.samsung.android.knox.attestation"
+	# KNOX Attestation
+	# Lets you check the integrity of a Samsung Android device by connecting to a Samsung Attestation server.
+	# https://docs.samsungknox.com/admin/whitepaper/kpe/attestation.htm
+
 	"com.samsung.android.knox.containeragent" # Older version of "com.sec.knox.containeragent2" ?
 	"com.samsung.android.knox.containercore"
 	# KNOX Work profile/space
@@ -436,6 +470,12 @@ declare -a samsung=(
 	# Samsung Galaxy Friends is an accessory platform service that allows the user to enjoy a variety of content quickly 
 	# and easily by simply connecting an accessory, without having to install additional applications.
 	# https://developer.samsung.com/codelab/SDC18-experiences/Galaxy-Friends
+
+	"com.samsung.android.mdecservice" # [MORE INFO NEEDED]
+	# Samsung Call & Text
+	# Not 100% sure but by looking at the recompiled java code it seems the apps provides a way to receive call and SMS on
+	# Samsung accessories. In any case it is only usful for Samsung IoT stuff.
+	# Embeded Google Firebase analytics
 
 	"com.samsung.android.mdm"
 	# MDMApp (Mobile Device Management app)
@@ -581,6 +621,11 @@ declare -a samsung=(
 	# Live Message enables you to draw your own animated GIFs or emojis.
 	# https://www.samsung.com/global/galaxy/what-is/live-message/
 
+	"com.samsung.android.mfi"
+	# Galaxy Widget (https://play.google.com/store/apps/details?id=com.samsung.android.mfi)
+	# Provide you with quick access to information without requiring you to open the app that manages this information
+	# https://www.samsung.com/ie/support/mobile-devices/what-are-widgets-and-how-do-i-add-them-to-my-android-smartphone-or-tablet/
+
 	"com.samsung.android.service.peoplestripe"
 	# People Edge
 	# Gives you immediate access to your favorite contacts from the edge of your phone.
@@ -603,6 +648,10 @@ declare -a samsung=(
 	# Enable you to mirror screen your phone to a TV
 	# https://www.samsung.com/us/apps/smart-view-2/
 
+	"com.samsung.android.spayfw" 
+	# Samsung Pay Framework needed for Samsung Pay
+	# See below
+
 	"com.samsung.android.spay"
 	# Samsung Pay (https://play.google.com/store/apps/details?id=com.samsung.android.spay)
 	# Samsung Pay is a mobile payment and digital wallet service by Samsung Electronics that lets users make payments using compatible phones 
@@ -611,9 +660,10 @@ declare -a samsung=(
 	# NOTE : Samsung Pay is KNOX dependant and will never work again if you root your phone.
 	# FYI : Your data are sold (https://www.sammobile.com/news/samsung-pay-new-privacy-policy-your-data-sold/)
 
-	"com.samsung.android.spayfw" 
-	# Samsung Pay Framework needed for Samsung Pay
-	# See above
+	"com.samsung.android.spaymini"
+	# Samsung Pay Mini
+	# Same service as Samsung Pay but for online payments only and is available on all compatible android devices (not only Samsung devices)
+	# https://www.samsung.com/in/samsung-pay/mini/
 
 	"com.samsung.android.spdfnote"
 	# Write on PDF (https://play.google.com/store/apps/details?id=com.samsung.android.spdfnote)
@@ -783,11 +833,17 @@ declare -a samsung=(
 	# Knox Secure Folder (https://play.google.com/store/apps/details?id=com.samsung.knox.securefolder)
 	# Create a secure space on your device to encrypt and store your private data and apps.
 	# https://www.samsungknox.com/en/solutions/personal-apps/secure-folder
-	# NOTE : The key used to encrypt the files is not derived from the password you use to unlock the secure folder 
+	# NOTE: The key used to encrypt the files is not derived from the password you use to unlock the secure folder 
 	# but rather from a key stored in the hardware that is set in the factory.
 
 	"com.samsung.knox.securefolder.setuppage"
 	# Provides the setup process when opening secure folder (com.samsung.knox.securefolder) for the first time
+
+	"com.samsung.logwriter"
+	# LogWriter
+	# Writes data in a logs SQL database.
+	# Runs at boot and is triggered when an download from an Iron Source (Iron Source is an Israeli advertising company)
+	# app is completed (probably "com.aura.oobe.samsung")
 
 	"com.samsung.mdl.radio"
 	# Samsung Milk Music (discontinued in 2016)
@@ -827,6 +883,12 @@ declare -a samsung=(
 
 	"com.samsung.safetyinformation"
 	# Some safety information telling you not to put your phone in your eyes (it's not a joke)
+
+	"com.samsung.SMT"
+	# Samsung Text To Speech
+	# Generate synthesized audio output from a text
+	# Works with applications such as S Voice and translation apps that require Text-To-Speech (TTS) functionality
+	# https://galaxystore.samsung.com/detail/com.samsung.SMT
 
 	"com.samsung.storyservice"
 	# Samsung StoryService
@@ -989,10 +1051,6 @@ declare -a samsung=(
 
 	"com.sec.android.app.scloud" # [APK_NEEDED]
 	# I guess it's the core of Samsung scloud.
-
-	#"com.sec.android.app.simsettingmgr"
-	# SIM card manager.
-	# Contains configuration and settings for handling dual SIM (give a SIM an icon, a name, and so on)
 
 	"com.sec.android.app.SecSetupWizard"
 	# Samsung Setup Wizard
@@ -1213,8 +1271,8 @@ declare -a samsung=(
 
 	"com.sec.enterprise.knox.attestation"
 	# KNOX Attestation
-	# Lets you check the health of a Samsung Android device,
-	# https://docs.samsungknox.com/dev/knox-attestation/index.htm
+	# Lets you check the integrity of a Samsung Android device by connecting to a Samsung Attestation server.
+	# https://docs.samsungknox.com/admin/whitepaper/kpe/attestation.htm
 
 	"com.sec.enterprise.knox.cloudmdm.smdms"
 	# Knox Enrollment Service
@@ -1233,9 +1291,8 @@ declare -a samsung=(
 	# I couldn't find information about this package. No permissions asked. It's quite strange.
 	#
 	# Mobile device management (MDM) is a type of security software used by an IT department to monitor employees' mobile devices.
-	# 
-	# IMO this package is related to KNOX. The term "entreprise" in the package name strengthens me in my view.
-	# Maybe it is related : https://developer.samsung.com/tech-insights/knox/mobile-device-management
+	# KNOX-dependent.
+	# https://developer.samsung.com/tech-insights/knox/mobile-device-management
 
 	"com.sec.enterprise.mdm.vpn"
 	# Entreprise VPN service
@@ -1368,7 +1425,7 @@ declare -a samsung=(
 
 	"com.skms.android.agent"
 	# Samsung KMS agent service a client application for Android devices to support eSE-based (embedded secure element) mobile-NFC Services.
-	# https://developer.samsung.com/eSE
+	# https://developer.samsung.com/ese/overview.html
 	# KMS = Key Management System
 	# KNOX feature (https://en.wikipedia.org/wiki/Samsung_Knox)
 
@@ -1386,11 +1443,11 @@ declare -a samsung=(
 	"com.wsomacp"
 	# omacp = OMA Client Provisioning. It is a protocol specified by the Open Mobile Alliance (OMA).
 	# Configuration messages parser. Used for provisioning APN settings to Samsung devices via SMS 
-	# In my case, it was automatic and I never needed configuration messages. I'm pretty sure that in France this package is useless.
-	# Maybe it's useful if carriers change their APN. But you still can change it manually, it's not difficult.
+	# In my case, it was automatic and I never needed configuration messages.
+	# Maybe it's useful if carriers change their APN. But you still can change the config manually, it's not difficult.
 	# Keep in mind these special types of SMS can be abused : 
-	# https://www.csoonline.com/article/3435729/sms-based-provisioning-messages-enable-advanced-phishing-on-android-phones.html
-	# https://www.zdnet.fr/actualites/les-smartphones-samsung-huawei-lg-et-sony-vulnerables-a-des-attaques-par-provisioning-39890045.htm
+	# https://research.checkpoint.com/2019/advanced-sms-phishing-attacks-against-modern-android-based-smartphones/
+	# https://www.zdnet.com/article/samsung-huawei-lg-and-sony-phones-vulnerable-to-rogue-provisioning-messages/
 
 	"com.wssnps"
 	# Samsung Backup and restore Manager (on Samsung Galaxy S7)
@@ -1405,10 +1462,18 @@ declare -a samsung=(
 	
 	#########################  ADVANCED DEBLOAT  #########################
 
+	#"com.osp.app.signin"
+	# Samsung Account app
+	# Lots of trackers in this app.
+	# Has a huge list of permissions. It is an essential app for a lot of samsung apps (which will be removed with the default selection in this list)
+	# Settings apps will crash if removed on Android 11/OneUI 3.0 (https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/39)
+	# This issue happens only if you are running Android 11. If not, you can can (and should) remove this package!
+
 	#"com.policydm"
 	# Samsung security policy update (https://play.google.com/store/apps/details?id=com.policydm)
 	# Updatable policy files designed to increase android security and detect malicious behaviour.
 	# Has nothing to do with OTA updates or Android Security patches.
+	# Can be removed without issue (https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/15)
 	# See "com.samsung.android.spdclient" for more information.
 
 	#"com.samsung.advp.imssettings"
@@ -1486,6 +1551,9 @@ declare -a samsung=(
 	# Handle Face recognition unlock 
 	# https://kp-cdn.samsungknox.com/b60a7f0f59df8f466e8054f783fbbfe2.pdf
 
+	#"com.samsung.android.biometrics.app.setting"
+	# Biometric settings
+
 	#"com.samsung.android.bluelightfilter"
 	# Blue ligth filter
 	# You should use it, it's great
@@ -1542,6 +1610,19 @@ declare -a samsung=(
 	# Not mandatory if you know what you are doing and if you don't install software from unknown sources.
 	# Needs confirmation but removing this package could change SELinux mode (enforcing by default)
 	# https://source.android.com/security/selinux
+
+	#"com.samsung.android.tadownloader"
+	# Seems to check if a trusted application needs an update and download it. 
+	# This package probably do more than that. There is a LOT of lines of code (obfuscated obviously)
+	# It was used to push an update to fix a security issue with the fingerprint sensor in 2019.
+	# https://old.reddit.com/r/galaxys10/comments/bcy93f/adb_how_to_get_the_fingerprint_update_pushed_to/
+	# Seems to be only used for biometrics stuff
+	# There is Samsung analytics inside. You may want to remove it if you don't use biometrics authentification.
+
+	#"com.samsung.android.tapack.authfw" # [MORE INFO NEEDED]
+	# AuthFw TaPack
+	# Authentification Framework for Trusted Application? (don't know what 'Pack' could mean)
+	# Hard to know what this app really do. Seems to be an assets provider used by com.samsung.android.tadownloader
 
 	#"com.samsung.android.video"
 	# Samsung Video Player
@@ -1607,7 +1688,7 @@ declare -a samsung=(
 	# It is samsung Touchwiz default launcher
 	# DO NOT REMOVE THIS IF YOU DON'T USE ANOTHER LAUNCHER !
 
-	#"com.sec.android.app.clockpackage"
+	"com.sec.android.app.clockpackage"
 	# Samsung clock
 
 	#"com.sec.android.app.personalization" # [MORE INFO NEEDED]
@@ -1687,7 +1768,7 @@ declare -a samsung=(
 	# Software update, works along "com.wssyncmldm"
 	
 	#"com.sec.android.wallpapercropper2"
-	# Samsung Wallpaper. Needed for choosing a wallpaper.
+	# Samsung Wallpaper. Needed to set a wallpaper on the launcher.
 	# Note : it is technically possible to change the wallpaper and then delete this package. 
 	# Used wallpaper are stored in /data/data/com.sec.android.wallpapercropper2/
 
@@ -1751,7 +1832,12 @@ declare -a samsung=(
 	)
 
 
-#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
+#####################  YOU PROBABLY DON'T WANT TO REMOVE THEM  #####################
+
+#"com.samsung.android.applock"
+# Samsung App Lock
+# Lets you lock your app (Settins > Advanced fuctions > App lock)
+# You should lock your apps storing private data (provides data at rest encryption when your phone is locked)
 
 #"com.samsung.android.SettingsReceiver"
 # Samsung overlay of AOSP Settings. It has 39 permissions. Handles interactions with features controled by the settings.
@@ -1763,7 +1849,7 @@ declare -a samsung=(
 #"com.samsung.android.timezone.autoupdate_O" 
 # Samsung Time Zone Updater
 # Used to automatically detect appropriate timezone
-# REMOVING THIS WILL BOOTLOOP YOUR DEVICE 
+# REMOVING THIS WILL BOOTLOOP YOUR DEVICE
 
 #"com.samsung.android.app.soundpicker"
 # Lets you select a sound for alarm/ringtone
@@ -1787,6 +1873,15 @@ declare -a samsung=(
 # Provides access to filters (when you swipe right from the camera app)
 # WARNING : Samsung camera will crash if this package is deleted.
 
+#"com.samsung.knox.keychain" # [MORE INFO NEEDED]
+# Knox Key Chain
+# Allows apps to sign data using system-wide private key/certificate pairs. 
+# So, even though the Android Keystore provides per-app access to credentials, the Android KeyChain runs as a system user, 
+# and hence, credentials stored through the Android KeyChain are associated with the system ID instead of a user ID.
+# https://docs.samsungknox.com/dev/knox-sdk/about-keystores.htm
+# This is only useful for apps using the TIMA Keystore. The big question I'm trying to anwser is:
+# Which are using this except Samsung apps? Can an android dev help on this?
+
 #"com.samsung.networkui"
 # User interface of the Mobile Network settings
 
@@ -1800,7 +1895,9 @@ declare -a samsung=(
 # Note : used for unlocking the phone after a reboot. Third-parties keyboards cannot be used here.
 # DO NOT REMOVE THIS. NEVER ! 
 
-
+#"com.sec.android.app.simsettingmgr"
+# SIM card manager.
+# Contains configuration and settings for handling dual SIM (give a SIM an icon, a name, and so on)
 
 
 

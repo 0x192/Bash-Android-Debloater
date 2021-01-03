@@ -16,6 +16,9 @@ declare -a us_carriers=(
    #
    # 3) Not a scandal but freaking scary :
    # https://www.theverge.com/2019/5/22/18635674/att-location-ad-tracking-data-collection-privacy-nightmare
+   # 
+   # 4) AT&T is selling your phone calls and text messages to marketers
+   # https://news.ycombinator.com/item?id=24756042
    #
    # Wikipedia pages are worth reading : 
    # https://en.wikipedia.org/wiki/AT%26T#Criticism_and_controversies
@@ -26,9 +29,15 @@ declare -a us_carriers=(
    # everything they can (big lobbying) to lock the internet and make more money.
 
 
-
-   # HELP ME : I got mad seeking for the meaning of VPL. A lot of people use it on Reddit (https://www.reddit.com/r/Bestbuy/search/?q=vpl&restrict_sr=1)
-   # and I'm sure it's the good abbreviation but I don't know what V.P.L means !! It seems to refer to a special job for vendors.
+   ## Vocabulary ##
+   # VPL 
+   # Stands for 'Vendor Provided Labor' (now 'Certified Advisor'). 
+   # They are basically ambassadors for a brand. Theorically the brand gives money to a store to hire an employee dedicated to better selling 
+   # its brand. Some stores just use them as normal sales employees.
+   # See https://old.reddit.com/r/Bestbuy/comments/keclql/what_is_a_vpl/
+   # Theses ambassadors most likely have a phone with custom apps for demonstration purposes
+   # https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/40
+   # Example of package: "com.asurion.android.mobilerecovery.sprint.vpl
 
    
    ########################  T-Mobile ########################
@@ -135,7 +144,7 @@ declare -a us_carriers=(
    # Custom permissions for some verizon stuff ?  
 
    "com.verizon.vzwavs" # [MORE INFO NEEDED]
-   # ???
+   # Has a scary list of permissions in any case.
 
    "com.verizontelematics.verizonhum"
    # Hum Family Locator (https://play.google.com/store/apps/details?id=com.verizontelematics.verizonhum)
@@ -411,10 +420,6 @@ declare -a us_carriers=(
    "com.att.mobiletransfer"
    # AT&T Mobile Transfer
    # Lets you transfert user data from an older AT&T phone to a new one.
-   
-   "com.synchronoss.dcs.att.r2g"
-   # Setup & Transfer
-   # App for transferring "contacts, photos, videos, music, call logs, and documents" from another device
 
    "com.att.myWireless"
    # My AT&T (https://play.google.com/store/apps/details?id=com.att.myWireless)
@@ -475,6 +480,10 @@ declare -a us_carriers=(
    "com.samsung.attvvm"
    # Visual Voicemail
    # Simple GUI for voicemail
+
+   "com.synchronoss.dcs.att.r2g"
+   # Setup & Transfer
+   # App for transferring "contacts, photos, videos, music, call logs, and documents" from another device
    )
 
 declare -a french_carriers=(

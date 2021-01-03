@@ -317,7 +317,10 @@ declare -a motorola=(
 
 	#"com.motorola.VirtualUiccPayment"
 	# Virtual UICC Payment
-	# UICC stands for Universal Integrated Circuit Card. It is a new generation SIM (Subscriber Identification Module) which can have multiple applications on it.
+	# UICC stands for Universal Integrated Circuit Card. 
+	# It is a the physical and logical platform for the USIM and may contain additional USIMs and other applications.
+	# (U)SIM is an application on the UICC.
+	# https://bluesecblog.wordpress.com/2016/11/18/uicc-sim-usim/
 	# I guess this package provides support for NFC payement.
 	# Note: The term SIM is widely used in the industry and especially with consumers to mean both SIMs and UICCs.
 	# https://www.justaskgemalto.com/us/what-uicc-and-how-it-different-sim-card/

@@ -1,26 +1,21 @@
 #!/usr/bin/env bash
 
 # VOCABULARY : 
-# overlay : A screen overlay in Android, allows an app to display content over another app
-
+# overlay : https://budhdisharma.medium.com/rro-runtime-resource-overlay-in-android-aosp-e094be17f4bc
+# 			https://source.android.com/devices/architecture/rros
 
 declare -a aosp=(
-
-	"com.android.apps.tag"
-	# NFC Tagging (5 permissions : Contacts/Phone On by default).
-	# https://en.wikipedia.org/wiki/TecTile
-	# It will NOT prevent you to use NFC devices (like speakers)
 
 	"com.android.bips"
 	# Default print Service.
 	# Safe to remove if you don't plan to print from your phone.
-
+	
 	"com.android.bluetoothmidiservice"
 	# Provides classes for using the MIDI protocol over Bluetooth. Safe to remove if you don't plan to connect MIDI devices. 
 	# (Seriously, use a PC if you want to do this !)
 
 	"com.android.bookmarkprovider" 
-	# Only exist for compatibility reasons to prevent apps querying it from getting null cursors they do not expect and crash.
+	# Only exists for compatibility reasons to prevent apps querying it from getting null cursors they do not expect and crash.
 
 	"com.android.carrierdefaultapp"
 	# Allows carrier customization. Carrier action upon specific signal.
@@ -81,6 +76,12 @@ declare -a aosp=(
 	"com.android.providers.partnerbookmarks" 
 	# Provides bookmarks about partners of Google in Chrome.
 
+	"com.android.runintest.ddrtest"
+	# DDR Test
+	# RAM Stress tester
+	# Can be run from the bootloader
+	# NOTE: I'm not sure it's really from AOSP (seen in TCL Plex phone)
+
 	"com.android.simappdialog"
 	# Sim App Dialog
 	# Used to install the carrier SIM app when the SIM is inserted.
@@ -111,7 +112,7 @@ declare -a aosp=(
 
 	"com.android.wallpaper.livepicker"
 	"com.android.wallpaper.livepicker.overlay"
-	# Enable you to pick live wallpaper.
+	# Enables you to pick a live wallpaper.
 
 	"com.android.wallpapercropper" 
 	# Wallpaper cropper.
@@ -122,6 +123,18 @@ declare -a aosp=(
 
 	#####################   UP TO YOU (can be useful features but safe to remove)   #####################
 
+	"android.auto_generated_vendor_" # [MORE INFO NEEDED]
+	# Auto generated vendor's stuff for Android Auto (https://www.android.com/intl/en_en/auto/)
+	# Note: You don't need this if you don't use Android auto 
+
+	"com.android.apps.tag"
+	# Support for NFC tags interactions (5 permissions : Contacts/Phone On by default).
+	# NFC Tags are for instance used in bus to let you validate your transport card with your phone 
+	# Other exemple : https://en.wikipedia.org/wiki/TecTile
+	# You will still be able to connect to a NFC device (e.g a speaker) if removed.
+	#"com.google.android.GoogleCamera" 
+	# Google Camera (https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera)
+	
 	#"com.android.backupconfirm"
 	# Restore google settings with Google Backup restore function.
 	# Also display confirmation popup when doing ADB backup. If you remove this package you couldn't do ADB Backup.
@@ -157,13 +170,17 @@ declare -a aosp=(
 	# https://android.googlesource.com/platform/packages/providers/CallLogProvider/+/refs/heads/master/src/com/android/calllogbackup
 
 	#"com.android.captiveportallogin"
-	# Takes care of redirecting to the web page that the user of a public access network is obliged to view and interect with, before access is granted.
+	# Support for captive portal : https://en.wikipedia.org/wiki/Captive_portal
+	# A captive portal login is a web page where the users have to input their login information or accept the displayed terms of use. 
+	# Some networks (typically public wifi network) use the captive portal login to block access until the user inputs 
+	# some necessary information
 
 	#"com.android.carrierconfig"
 	# Gives carriers and OEMs the ability to dynamically provide carrier configuration (APN settings) trough their app.
 	# NOTE : The probability that your carrier's APN change is very low. If you change your carrier and insert a new SIM card
 	# This package will be triggered to automatically choose the suitable APN.
 	# https://source.android.com/devices/tech/config/carrier
+	# https://android.googlesource.com/platform/packages/apps/CarrierConfig/+/refs/heads/master/src/com/android/carrierconfig/DefaultCarrierConfigService.java
 
 	#"com.android.cellbroadcastreceiver"
 	# Cell broadcast has been designed to deliver messages to multiple users in an area.
@@ -205,6 +222,10 @@ declare -a aosp=(
 	# Gallery app. 
 	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own Gallery app.
 
+	#"com.android.hotspot2"
+	# Provides wifi tethering (lets you share your mobile device's Internet connection with other devices)
+	# https://en.wikipedia.org/wiki/Tethering)
+
 	#"com.android.inputdevices"
 	# Only contains a receiver named "Android keyboard", possibly for an external keyboard.
 	# Locates available keyboard layouts. 
@@ -221,9 +242,19 @@ declare -a aosp=(
 	# https://developer.android.com/guide/topics/display-cutout
 	# https://source.android.com/devices/tech/display/display-cutouts
 
-	#"com.android.keychain" 
-	# Enable apps to use system wide credential KeyChain (shared credentials between apps)
-	# https://security.stackexchange.com/questions/216716/android-keychain-what-is-a-system-wide-credential
+	#"com.android.internal.systemui.navbar.gestural"
+	# Gesture navigation
+	# Lets you use swipes and other actions to control your phone, rather than tapping on buttons.
+	# Option -> System -> Gestures -> System Navigation
+	# https://android-developers.googleblog.com/2019/08/gesture-navigation-backstory.html
+
+	#"com.android.internal.systemui.navbar.gestural_extra_wide_back" 
+	#"com.android.internal.systemui.navbar.gestural_narrow_back"
+	#"com.android.internal.systemui.navbar.gestural_wide_back"
+	# Enables you to turn down the sensitivity to make it easier to perform gestures in apps (i.e. making back harder to trigger)
+
+	#"com.android.internal.systemui.navbar.threebutton" # 3-button navigation
+	#"com.android.internal.systemui.navbar.twobutton" # 2-button navigation
 
 	#"com.android.musicfx" 
 	# Audio equalizer. Some 3-party music apps can use it to provide you equalizing features.
@@ -234,6 +265,22 @@ declare -a aosp=(
 
 	#"com.android.nfc"
 	# NFC service
+
+	#"com.android.ons"
+	# Opportunistic Network Service
+	# Opportunistic networks are networks which are formed when devices come into contact opportunistically through 
+	# physical proximity, and communicate wirelessly to share each other’s content, resources and services.
+	# This kind of networks leads to a set of challenging issues (congestion, transfer ordering, and resilience)
+	# Basically, this package implements ions (asynchronous networking) to resolve these issues.
+	# Run in background after booting the phone.
+	# https://en.wikipedia.org/wiki/Opportunistic_mobile_social_network
+
+	#"com.android.otaprovisioningclient"
+	# OTA Access Point Configuration
+	# OTA (Over the air : https://fr.wikipedia.org/wiki/Over-the-air_programming) is the method used by OEM to push updates on
+	# your phone.
+	# An OTA access point is used to run system software updates over a special gateway. This package is most likely customized
+	# by your OEM.
 
 	#"com.android.pacprocessor"
 	# A PAC (Proxy Auto-Config) is a file which defines how an app can automatically define the correct proxy server for fetching an URL. 
@@ -330,6 +377,9 @@ declare -a aosp=(
 	# OEM often use their own code (embeded in their voice-controlled digital assistant)
 	# NOTE: On some phones Huawei & Xiaomi also use this package name for their own voice dialer app.
 
+	#"com.android.wallpaperpicker"
+	# Enables you to pick a wallpaper.
+
 	#"com.android.wallpaperbackup"
 	# Backup your wallapaper and load this backup instead of the original file in case you delete it.
 	# Safe to remove if you really want to.
@@ -341,16 +391,6 @@ declare -a aosp=(
 	# This package is no longer used in recent phones as it was replaced by com.google.android.webview
 	#
 	# On open-source privacy oriented Webview is Bromite (https://www.bromite.org/system_web_view)
-
-	#"org.simalliance.openmobileapi.service"
-	# Smart Card Service by Simalliance
-	# https://simalliance.org/about-us/mission-objectives/
-	# 
-	# The SmartCard API is a reference implementation of the SIMalliance Open Mobile API specification that enables Android applications 
-	# to communicate with Secure Elements, (SIM card, embedded Secure Elements, Mobile Security Card or others)
-	# https://github.com/seek-for-android/pool/wiki/SmartcardAPI
-	# Safe to remove if you don't think you need this
-
 	)
 
 
@@ -362,7 +402,7 @@ declare -a aosp=(
 
 #"com.android.companiondevicemanager"
 # Companion Device Manager that comes by default in every Oreo+ device. 
-# This handles connections to other devices, like Bluetooth Headphones, desktop Operative Systems, ecc. 
+# This handles connections to other devices, like Bluetooth Headphones, desktop Operative Systems, ecc.
 
 #"com.android.defcontainer"
 # Package Access Helper 
@@ -371,8 +411,31 @@ declare -a aosp=(
 #"com.android.documentsui" # Files picker
 # Interface for apps wishing to access access files outside of their own storage area.
 
+#"com.android.documentsui.a_overlay"
+# DocumentsUI Overlay
+# The DocumentsUI controls access to specific files for components that handle document permissions 
+# (such as attaching a file to an email)
+# https://source.android.com/devices/architecture/modular-system/documentsui?hl=en
+
+#"com.android.dynsystem"
+# Dynamic System Updates
+# Treble gived the ability to boot an AOSP Generic System Image (GSI) on any supported device. 
+# Dynamic System Updates allows to boot into a Generic System Image (GSI) without interfering with the current installation.
+# That means the bootloader doesn’t need to be unlocked and the user data doesn’t need to be wiped.
+# https://developer.android.com/topic/dsu
+
 #"com.android.externalstorage"
 # Needed by apps to access external storage (SD card)
+
+#"com.android.keychain" 
+# Enable apps to use system wide credential KeyChain (shared credentials between apps)
+# https://security.stackexchange.com/questions/216716/android-keychain-what-is-a-system-wide-credential
+
+#"com.android.localtransport"
+# Backup transport for stashing stuff into a known location on disk, and later restoring from there.
+# Seems needed for storeing backup data locally on the device. 
+# This package also provides the backup confirmation UI.
+# https://developer.android.com/guide/topics/data/testingbackup
 
 #"com.android.location.fused"
 # Manages the underlying location technologies, such as GPS and Wi-Fi.
@@ -392,6 +455,7 @@ declare -a aosp=(
 # This service is for exemple needed when the user's phone moves from one cell-tower to another.
 
 #"com.android.phone"
+#"com.android.phone.a_overlay"
 # AOSP code for dialer app features
 # SIM card will also not be detected if deleted.
 
@@ -418,6 +482,7 @@ declare -a aosp=(
 # Telephony provider. Controls and stores phone-related data such as text messages, APN list, operation, etc.
 
 #"com.android.server.telecom"
+#"com.android.server.telecom.a_overlay"
 # Management your calls via your network provider or SIM and controls the phone modem.
 
 #"com.android.settings"

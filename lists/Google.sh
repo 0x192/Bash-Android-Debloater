@@ -258,10 +258,10 @@ declare -a google=(
 	# Android auto (https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead)
 
 	"com.google.android.setupwizard"
+	"com.google.android.setupwizard.a_overlay"
 	"com.google.android.pixel.setupwizard"
-	# It's the basic configuration setup guides you through the basics of setting up your device.
+	# It's the basic configuration setup guides you through the basics of setting up Google features on your device.
 	# The second package is only present on Pixel phones.
-
 
 	"com.google.android.soundpicker" 
 	# Google Sounds. Removable if you already have another media select service.
@@ -365,9 +365,15 @@ declare -a google=(
 	# Run in background and is triggered when a SIM card is added/removed/replaced. 
 	# It also has Gcm receiver (Google Cloud Messaging receiver)
 	# Has a lot of permissions (16).
-	# Talks to websites which provide SSL certificates.
+	# Talks to websites providing SSL certificates.
 	# Needs Google Play Services to work.
 	# https://www.hybrid-analysis.com/sample/71bcaf2e71d78665fc5bc53db39df5309f24dd4ecab6402cf6ca20027dc6ecad?environmentId=200
+
+	#"com.google.android.carrierconfig" # [MORE INFO NEEDED]
+	# Provides network overrides for carrier configuration.
+	# The configuration available through CarrierConfigManager is a combination of default values, default network overrides, 
+	# and carrier overrides. The default network overrides are provided by this service.
+	# What's the difference between com.android.carrierconfig and this package?
 
 	#"com.google.android.contacts" 
 	# Google Contacts (https://play.google.com/store/apps/details?id=com.google.android.contacts)
@@ -377,22 +383,32 @@ declare -a google=(
 	# It's not default but seriously, don't use the Google dialer there are Google Analytics embedded inside
 	# https://www.virustotal.com/gui/file/a978d90f27d5947dca33ed59b73bd8efbac67253f9ef7a343beb9197c8913d1a/details
 
+	#"com.google.android.documentsui"
+	# Google File manager
+
 	"com.google.android.email"
 	# AOSP Mail client
 	# Does no longer exist. AOSP Mail is now com.android.email and Gmail is com.google.android.gm
 
-	"com.google.android.ext.services"
+	#"com.google.android.ext.services"
+	#"com.google.android.overlay.modules.ext.services"
 	# Android Services Library only contains, for now, an "Android Notification Ranking Service." 
 	# It sorts notifications by "importance" based on things like freshness, app type (IM apps come first), and by contact. 
 	# For now it is safe to remove if you really want.
-	# The library android.ext.services is open-source but this apk is not. Google probably uses it to update its API without having to rely to the OEM
+	# The library android.ext.services is open-source. Google probably uses it to update its API without having to rely to the OEM
+	# https://source.android.com/devices/architecture/modular-system/extservices
 	# https://arstechnica.com/gadgets/2016/11/android-extensions-could-be-googles-plan-to-make-android-updates-suck-less/
 	
-	"com.google.android.ext.shared"
-	## Google shared library (used to share common code between apps)
+	#"com.google.android.ext.shared"
+	# Google shared library (used to share common code between apps)
 	# For now the library (android.ext.shared is empty). So this apk is useless. 
 	# This apk has the same role than the one above.
 
+	"com.google.android.tag"
+	# Support for NFC tags interactions (5 permissions : Contacts/Phone On by default).
+	# NFC Tags are for instance used in bus to let you validate your transport card with your phone 
+	# Other exemple : https://en.wikipedia.org/wiki/TecTile
+	# You will still be able to connect to a NFC device (e.g a speaker) if removed.
 	#"com.google.android.GoogleCamera" 
 	# Google Camera (https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera)
 
@@ -408,6 +424,11 @@ declare -a google=(
 	#
 	# IMPORTANT : You need to uncheck Find My Device from the "Device admin apps" settings panel to be able to uninstall this package
 	# Search "admin" in the settings search bar.
+
+	#"com.google.android.overlay.gmsconfig" # [MORE INFO NEEDED]
+	#"com.google.android.overlay.gmsgsaconfig"
+	# Probably RROs (https://source.android.com/devices/architecture/rros?hl=en) tied to "com.google.android.gms" (Google Play Services)
+	# If you remove com.google.android.gms you can remove those 2 packages as well.
 
 	"com.google.android.gms.location.history"
 	# Google Location history
@@ -479,8 +500,38 @@ declare -a google=(
 	)
 
 
-#####################  DO NOT REMOVE THIS (prevent core stuff to work)  #####################
+#####################  YOU MOST LIKELY DON'T WANT TO REMOVE THESE #####################
+
+#"com.google.android.captiveportallogin"
+# Support for captive portal : https://en.wikipedia.org/wiki/Captive_portal
+# A captive portal login is a web page where the users have to input their login information or accept the displayed terms of use. 
+# Some networks (typically public wifi network) use the captive portal login to block access until the user inputs 
+# some necessary information
+# NOTE : This package is a now a mandatory mainline module (https://www.xda-developers.com/android-project-mainline-modules-explanation/)
+
+#"com.google.android.modulemetadata"
+# Module that contains ... metadata about the list of modules on the device. And that’s about it.
+# I wouldn't advise you to mess with it as it could break the proper working of other important modules (see #37)
+# Good explanation of what android modules are : https://www.xda-developers.com/android-project-mainline-modules-explanation/
+
+#"com.google.android.networkstack"
+# Network Stack Components
+# https://source.android.com/devices/architecture/modular-system/networking
+# Provides common IP services, network connectivity monitoring, and captive login portal detection.
+
+#"com.google.android.networkstack.permissionconfig"
+# Network Stack Permission Configuration
+# Defines a permission that enables modules to perform network-related tasks.
+# https://source.android.com/devices/architecture/modular-system/networking
 
 #"com.google.android.packageinstaller"
+#"com.google.android.packageinstaller.a_overlay"
 # Gives ability to install, update or remove applications on the device.
 # If you delete this package, your phone will probably bootloop.
+
+#"com.google.android.permissioncontroller"
+#"com.google.android.overlay.modules.permissioncontroller"
+#"com.google.android.overlay.modules.permissioncontroller.forframework"
+# The PermissionController module enables updatable privacy policies and UI elements.
+# For example, the policies and UI around granting and managing permissions.
+# https://source.android.com/devices/architecture/modular-system/permissioncontroller
