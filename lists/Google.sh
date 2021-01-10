@@ -389,15 +389,6 @@ declare -a google=(
 	"com.google.android.email"
 	# AOSP Mail client
 	# Does no longer exist. AOSP Mail is now com.android.email and Gmail is com.google.android.gm
-
-	#"com.google.android.ext.services"
-	#"com.google.android.overlay.modules.ext.services"
-	# Android Services Library only contains, for now, an "Android Notification Ranking Service." 
-	# It sorts notifications by "importance" based on things like freshness, app type (IM apps come first), and by contact. 
-	# For now it is safe to remove if you really want.
-	# The library android.ext.services is open-source. Google probably uses it to update its API without having to rely to the OEM
-	# https://source.android.com/devices/architecture/modular-system/extservices
-	# https://arstechnica.com/gadgets/2016/11/android-extensions-could-be-googles-plan-to-make-android-updates-suck-less/
 	
 	#"com.google.android.ext.shared"
 	# Google shared library (used to share common code between apps)
@@ -511,8 +502,17 @@ declare -a google=(
 
 #"com.google.android.modulemetadata"
 # Module that contains ... metadata about the list of modules on the device. And that’s about it.
-# I wouldn't advise you to mess with it as it could break the proper working of other important modules (see #37)
+# I wouldn't advise you to mess with it as it could break the proper working of other important modules (see #37)	
 # Good explanation of what android modules are : https://www.xda-developers.com/android-project-mainline-modules-explanation/
+
+#"com.google.android.ext.services"
+#"com.google.android.overlay.modules.ext.services"
+# Android Services Library that contains an "Android Notification Ranking Service." 
+# It sorts notifications by "importance" based on things like freshness, app type (IM apps come first), and by contact. 
+# The library android.ext.services is open-source. Google probably uses it to update its API without having to rely to the OEM
+# It is a mainline module and is needed to boot since Android 11 
+# https://source.android.com/devices/architecture/modular-system/extservices
+# https://arstechnica.com/gadgets/2016/11/android-extensions-could-be-googles-plan-to-make-android-updates-suck-less/
 
 #"com.google.android.networkstack"
 # Network Stack Components
