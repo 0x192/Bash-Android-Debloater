@@ -337,7 +337,7 @@ declare -a motorola=(
 	)
 
 
-#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
+##################### YOU SHOULDN'T MESS WITH THEM (core packages and may cause bootloop)  #####################
 
 #"com.motorola.android.providers.settings"
 # Removal causes bootloop. Which is fairly common with settings providers.

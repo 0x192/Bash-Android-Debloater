@@ -491,7 +491,7 @@ declare -a google=(
 	)
 
 
-#####################  YOU MOST LIKELY DON'T WANT TO REMOVE THESE #####################
+##################### YOU SHOULDN'T MESS WITH THEM (core packages and may cause bootloop)  #####################
 
 #"com.google.android.captiveportallogin"
 # Support for captive portal : https://en.wikipedia.org/wiki/Captive_portal
@@ -510,7 +510,7 @@ declare -a google=(
 # Android Services Library that contains an "Android Notification Ranking Service." 
 # It sorts notifications by "importance" based on things like freshness, app type (IM apps come first), and by contact. 
 # The library android.ext.services is open-source. Google probably uses it to update its API without having to rely to the OEM
-# It is a mainline module and is needed to boot since Android 11 
+# It is a mainline module and is needed to boot since Android 11! NO NOT REMOVE IT!
 # https://source.android.com/devices/architecture/modular-system/extservices
 # https://arstechnica.com/gadgets/2016/11/android-extensions-could-be-googles-plan-to-make-android-updates-suck-less/
 

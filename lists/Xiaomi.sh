@@ -782,7 +782,7 @@ declare -a xiaomi=(
 	)
 
 
-#######################  DO NOT REMOVE THIS (will prevent core stuff to work)  #######################
+##################### YOU SHOULDN'T MESS WITH THEM (core packages and may cause bootloop)  #####################
 
 #"com.android.updater"
 # Mi Updater

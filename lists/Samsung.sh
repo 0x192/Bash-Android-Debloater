@@ -1432,7 +1432,7 @@ declare -a samsung=(
 	"com.sec.usbsettings"
 	# USBSettings
 	# Hidden settings. Lets you choose from ADB, MTP, RNDIS, ACM, DM (dial *#0808# to open)
-	# Run at startup
+	# Runs at startup
 
 	"com.monotype.android.font.samsungone"
 	# Samsung One font
@@ -1688,7 +1688,7 @@ declare -a samsung=(
 	# It is samsung Touchwiz default launcher
 	# DO NOT REMOVE THIS IF YOU DON'T USE ANOTHER LAUNCHER !
 
-	"com.sec.android.app.clockpackage"
+	#"com.sec.android.app.clockpackage"
 	# Samsung clock
 
 	#"com.sec.android.app.personalization" # [MORE INFO NEEDED]
@@ -1832,7 +1832,7 @@ declare -a samsung=(
 	)
 
 
-#####################  YOU PROBABLY DON'T WANT TO REMOVE THEM  #####################
+##################### YOU SHOULDN'T MESS WITH THEM (core packages and may cause bootloop)  #####################
 
 #"com.samsung.android.applock"
 # Samsung App Lock

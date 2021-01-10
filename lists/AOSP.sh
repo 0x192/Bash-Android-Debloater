@@ -165,7 +165,7 @@ declare -a aosp=(
 	# AOSP calculator app.
 	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own calculator app.
 
-	"com.android.calllogbackup"
+	#"com.android.calllogbackup"
 	# Call Logs Backup/Restore feature.
 	# https://android.googlesource.com/platform/packages/providers/CallLogProvider/+/refs/heads/master/src/com/android/calllogbackup
 
@@ -394,7 +394,7 @@ declare -a aosp=(
 	)
 
 
-#####################  DO NOT REMOVE THIS (will prevent core stuff to work)  #####################
+##################### YOU SHOULDN'T MESS WITH THEM (core packages and may cause bootloop)  #####################
 
 #"com.android.certinstaller"
 # Certificate installer. Identifies your device and confirms that it should be able to access something.

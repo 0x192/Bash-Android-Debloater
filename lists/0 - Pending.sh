@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ### These packages will be added in the default selection when I will find time to document them.
-# uncommented packages should be safe to remove but you still need to be **VERY** careful. 
+# Uncommented packages should be safe to remove but you still need to be **VERY** careful. 
 
 # REMINDER : "Safe" only means "does not cause bootloop". 
 # These packages can definitely break useful features (but you can easily reinstall them with the script)

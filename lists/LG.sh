@@ -475,8 +475,3 @@ declare -a lge=(
     # Does not remove screen pinning feature.
     # I don't know if this removes the floating windows feature that you have to enable with ADB (to make it look more like a desktop)
 	)
-
-
-# TODO :
-# Find the main Q-voice package.
-# Add more packages.
