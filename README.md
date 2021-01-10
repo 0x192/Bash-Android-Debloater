@@ -7,27 +7,30 @@ I try to maintain a universal tool which removes bloatwares on any Android phone
 
 The main goal is to improve battery performance and privacy by removing unnecessary and obscure system apps. This can also contribute to improve security by reducing [the attack surface](https://en.wikipedia.org/wiki/Attack_surface). The script has a menu that lets you choose what debloat list you want to use. I strongly encourage you to take a look at the lists because the default selection may not suit you. All packages are as well documented as possible in order to provide a better understanding of what you can delete or not.
 
-This script *should* be safe with the default selection. The worse thing which could happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. After about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. So make a backup! 
+This script *should* be safe with the default selection. The worse thing which could happen is preventing an essential system process to be loaded during boot causing then an unfortunate bootloop. If you used the non-root solution, after about 5 failed system boots, the phone will automatically reboot in recovery mode and you'll have to perform a FACTORY RESET. So make a backup!
+
+If you have a rooted device you can also physically delete the apks. Ironically this solution is safer because the script saves the apks before their removal. In case of bootloop you just need to run the script from a recovery with ADB support (e.g TWRP) and restore them.
 
 In any case, you can NOT brick your device with this script! That's the main thing, right?
 
 ## Features 
-* [X] Quick search among all the packages of your phone
+* [X] Quick search among all the packages of an android device
 * [X] Uninstallation of system/user packages (manually or with the debloat lists)
 * [X] Reinstallation of system packages (manually or with the debloat lists)
 * [X] ADB backup/restore (not really reliable, see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
 * [X] Device brand detection and auto-selection of the appropriate manufacturer debloat list
-* [X] Logs in `debloated_packages.txt` and `remaining_packages.txt`.
+* [X] Logging:`debloated_packages.txt`, `remaining_packages.txt`, `deleted_apks.txt` (for root users)
+* [X] Root support
 * [ ] Installation of alternative open-source apps replacing stock apps (list in the WIKI section) (WIP)
 
-NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
+NB : The non-root method is NOT a real uninstallation for system apps (see the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ))
 
 ## Universal debloat lists 
 * [X] GFAM (Google/Facebook/Amazon/Microsoft)
 * [X] AOSP
 * [X] Manufacturers (OEM)
 * [X] Mobile carriers
-* [X] Qualcomm / Miscellaneous
+* [X] Qualcomm / Mediatek / Miscellaneous
 
 ## Manufacturers debloat lists
 * [ ] Archos
@@ -49,13 +52,13 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 * [X] Xiaomi
 * [ ] ZTE
 
-## Mobile carriers debloat lists 
-|France           | USA      |Germany     |
-|:---------------:|:--------:|:----------:|
-| Orange          | T-Mobile |  Telekom   |
-| SFR             | Verizon  |            |
-| Free            | Sprint   |            |
-| Bouygues / Sosh | AT&T     |            |
+## Mobile carriers debloat lists
+|   Country       | Carriers                          |
+|-----------------|-----------------------------------|
+| France          | Orange, SFR, Free, Bouyges/Sosh   |
+| USA             | T-Mobile, Verizon, Sprint, AT&T   |  
+| Germany         | Telekom                           |
+
 
 ## How to use it 
 - **Read the [FAQ](https://gitlab.com/W1nst0n/universal-android-debloater/-/wikis/FAQ)!**
@@ -69,15 +72,15 @@ NB : It is NOT a real uninstallation for system apps (see the [FAQ](https://gitl
 
 - Install *Android platform tools* and *qpdf* on your PC :
 
-Debian Base :
+Debian Base:
 ```bash
 $ sudo apt install android-sdk-platform-tools qpdf
 ```
-Arch-Linux Base :
+Arch-Linux Base:
 ```bash
 $ sudo pacman -S android-tools qpdf
 ```
-Fedora :
+Red Hat Base:
 ```bash
 $ sudo yum install android-tools qpdf
 ```
@@ -97,13 +100,13 @@ You will also need to upgrade bash because Apple ships a very old bash version (
 $ brew install android-platform-tools qpdf bash
 ```
 
-You have to make the new bash version your default : 
+You have to make the new bash version your default: 
 
 ```bash
 $ sudo echo "/usr/local/bin/bash" >> /etc/shells
 $ chsh -s /usr/local/bin/bash
 ```
-Check if it works : 
+Check if it works: 
 
 ```bash
 $ echo $BASH_VERSION
@@ -115,10 +118,21 @@ $ echo $BASH_VERSION
 <details>
 <summary>WINDOWS</summary>
 
+Windows can't natively run bash script. Choose a workaround:
+
+## Method 1: Live Linux USB
+Create a Linux Live USB. Boot your computer on it and follow the instructions of the `LINUX` section. If you are a new to Linux, this will be a good opportunity to discover this wonderful OS. I recommend Linux Mint: [Instructions](https://itsfoss.com/install-linux-mint/)
+
+**Note:** Just in case, I recall that you don't need to install Linux on your computer. You can do whatever your want direclty on the Live USB.
+
+## Method 2: WSL (W10 only)
+This method consists of installing WSL, a compatibility layer for running Linux binary executables natively on Windows 10.
+
 For now, there is no USB support in the WSL. This means you need to install both Windows and Linux platform-tools and force the use of Windows adb server.
+
 - Download [android platform tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and unzip it somewhere. [Add the folder to your PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 - [Install USB drivers of your device](https://developer.android.com/studio/run/oem-usb#Drivers)
-- Check your device is detected :
+- Check your device is detected:
 ```batch
 > adb devices
 ```
@@ -165,7 +179,7 @@ Note: You can access your Windows files under `/mnt/c/`
 $ bash debloat_script.sh
 ```
 
-**NOTE:** Chinese phones users may need to use the AOSP list for removing some stock apps because those chinese manufacturers (especially Xiaomi and Huawei) have been using the name of AOSP packages for their own (modified & closed-source) app.
+**NOTE:** Chinese phones users may need to use the AOSP list for removing some stock apps because those chinese manufacturers (especially Xiaomi and Huawei) have been using the name of AOSP packages for their own (modified & closed-source) apps.
 
 **IMPORTANT NOTE:** You will have to run this script whenever your OEM push an update to your phone as some *uninstalled* system apps could be reinstalled.
 
