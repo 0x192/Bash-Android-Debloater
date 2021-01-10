@@ -1,18 +1,60 @@
+# New Version (v2.8)
+
+Happy new year! :star2:
+
+## Notable changes
+- Apps are now removed for all users (not only `user 0`) (see #29)
+- `debloated_packages.txt` logfile will no longer have duplicates.
+- New list added: `Mediatek` a chipset manufacturer (like Qualcomm) mostly providing chinese phones.
+- Documentation improvement/update for many apps.
+- General improvement of UI/UX and better error handling.
+
+### Root Support
+If your device is rooted you can now use this script to physically remove apks. Ironically this method is actually safer because you can restore the apks from TWRP recovery in case of a bootloop.
+- Root debloat: use the lists but remove the apks (`rm -rf`) instead of using the package manager (`pm`). All apks are automatically backed-up in `apks_backup` before being deleted.
+- APKs restore: you can use the script, even when in TWRP recovery, to restore your apks
+- Flashable zip: Generate a flashable zip
+
+## New packages added
+- **AOSP** : 0
+- **Google** : 0
+- **Huawei** : 25
+- **Miscellaneous** : 0
+- **OnePlus**: 1
+- **Samsung** : 13
+- **Xiaomi** : 1
+
+## Pending --> Official lists
+- **Tcl** : 2
+- **AOSP** : 16
+- **Google** : 16
+- **Nokia** : 1
+- **Samsung** : 25
+- **Huawei** : 7
+- **Xiaomi** : 49
+- **Mediatek** : 13
+- **Miscellaneous** : 0
+
+## Bugfixes
+- Renamed confusing variable name (OLDER_THAN_ANDROID_7_1) to OLDER_THAN_ANDROID_8.
+- Fixed broken bash version check
+- Bootloop with Google debloat list on Android 11 (and higher) (#43)
+
 # New Version (v2.7)
 
 Didn't you notice the last release never found packages to debloat/restore? Well... this works now. It seems all my changes wasn't pushed on the repo. 
 
 Altough this release contains almost exclusively bugfixes, it's is not a hotfix as there's also a new feature.
 
-PS : I currently don't have a lot free time so the next *real* release will be in quite some time. 
+NB: I currently don't have a lot free time so the next *real* release will be in quite some time. 
 
 ## Notable changes
 - New menu entry (`7 - External list`) which enables you to use your own debloat list (#30)
 
 ## Bugfixes
 - Nothing to debloat message when there is stuff to debloat.
-- Compatibility issue with BSB version of `sed` MacOS which prevented the script to generate the debloat lists (#32)
-- Backup integrity check always failing (#32)
+- Compatibility issue with BSD version of `sed` MacOS which prevented the script to generate the debloat lists (#32)
+- Backup integrity check always failing (#31)
 - Script failed when `Packages search` feature didn't find any package 
 
 # New Release (v2.6)
