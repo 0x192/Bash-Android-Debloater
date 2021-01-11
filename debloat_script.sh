@@ -34,7 +34,7 @@ done
 
 main() {
     readonly SRC_URI="https://gitlab.com/W1nst0n/universal-android-debloater/-/archive/master/universal-android-debloater-master.tar.gz"
-    readonly VERSION="v2.8 (January 10th 2021)"
+    readonly VERSION="v2.8.1 (January 11th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -303,6 +303,7 @@ backup_apks() {
 create_flashable_zip() {
     clear -x
     declare -a selection=()
+    local UPDATE_BINARY="META-INF/com/google/android/update-binary"
 
     echo
     for i in "${!LISTS[@]}"; do 
@@ -312,30 +313,32 @@ create_flashable_zip() {
     printf "\n${BRED}%s${NC} "                  "Your choice (e.g 1 2 3) :"
     read -r -a selection
 
-    echo "#!/sbin/sh" > root_debloat_script.sh
+    mkdir -p META-INF/com/google/android/
+    echo "#!/sbin/sh" > "$UPDATE_BINARY"
+    echo "echo 'ui_print --- Universal Android Debloater ---' > /proc/self/fd/\$2" >> "$UPDATE_BINARY"
+    echo "mount /system" >> "$UPDATE_BINARY"
 
     declare -i is_empty=1
 
     for list in "${selection[@]}"; do
         if (( list > ${#LISTS[@]} )) || (( list < 1 )); then continue; fi
         generate_custom_list "${LISTS[$list]}"
-
+        backup_apks CUSTOM_LIST
         for package in "${CUSTOM_LIST[@]}"; do
-            echo "rm -rf $package" >> root_debloat_script.sh
+            echo "echo $package" >> "$UPDATE_BINARY"
         done
         [[ $is_empty -eq 1 && ${#CUSTOM_LIST[@]} -gt 0 ]] && is_empty=0 
     done
 
     if [[ $is_empty -eq 1 ]]; then 
         printf "\n${BRED}%s${NC}\n"             "Nothing to debloat!"
-        rm root_debloat_script.sh
-    else 
-        if [[ ! -e META-INF/com/google/android/updater-binary ]]; then
-            printf "\n${BBLUE}%s${NC}%s\n"           "META-INF/com/google/android/updater-binary" " is missing!"
-        else 
-            zip -r flashable_zip_UAD_v2.8.zip META-INF/ root_debloat_script.sh 1>/dev/null
-            printf "\n${BRED}%s${NC}%s\n"           "flashable_zip_UAD_v2.8.zip" " has been generated."
-        fi
+        rm -rf META-INF/
+    else
+        echo "umount /system" >> "$UPDATE_BINARY"
+        echo "echo 'ui_print ----- ALL DONE -----' > /proc/self/fd/\$2" >> "$UPDATE_BINARY"
+        zip -rm flashable_zip_UAD_v2.8.zip META-INF/ 1>/dev/null
+        printf "\n${BRED}%s${NC}%s\n"           "flashable_zip_UAD_v2.8.zip" " has been generated."
+
     fi
 
     sleep 2
@@ -489,15 +492,14 @@ get_brand() {
 uad_recovery_mode() {
     ROOT=1
     while true; do
-        clear -x
-        printf "\n${BBLUE}%s\n"                 "===========  MAIN MENU (RECOVERY MODE)  ==========="
-        printf "%s\n"                           "#                                                 #"
-        printf "%-14s${NC}%s${BBLUE}%12s\n"     "#"            "1  -  Restore APKs (Root)"        "#"
-        printf "%-14s${NC}%s${BBLUE}%12s\n"     "#"            "2  -  Debloat APKs (Root)"        "#"
-        printf "%s\n"                           "#                                                 #"
-        printf "%-14s${NC}%s${BBLUE}%6s\n"      "#"            "X  -  Exit and reboot the phone"  "#"
-        printf "%s\n"                           "#                                                 #"
-        printf "%s${NC}\n\n"                    "==================================================="
+        printf "\n${BBLUE}%s\n"                 "==========  MAIN MENU (RECOVERY MODE)  =========="
+        printf "%s\n"                           "#                                               #"
+        printf "%-12s${NC}%s${BBLUE}%12s\n"     "#"          "1  -  Restore APKs (Root)"        "#"
+        printf "%-12s${NC}%s${BBLUE}%12s\n"     "#"          "2  -  Debloat APKs (Root)"        "#"
+        printf "%s\n"                           "#                                               #"
+        printf "%-12s${NC}%s${BBLUE}%6s\n"      "#"          "X  -  Exit and reboot the phone"  "#"
+        printf "%s\n"                           "#                                               #"
+        printf "%s${NC}\n\n"                    "================================================="
 
         read -r -p                              "Choose an action : "
 
@@ -509,13 +511,13 @@ uad_recovery_mode() {
         esac
 
         clear -x
-        printf "\n${BBLUE}%s\n"                 "=================  $title (ROOT)  ================"
-        printf "%s\n"                           "#                                                 #"
-        printf "%-14s${NC}%s${BBLUE}%17s\n"     "#"          "1  -  $title an APK"                "#" | awk '{print tolower($0)}'
-        printf "%-14s${NC}%s${BBLUE}%18s\n"     "#"          "2  -  External list"                "#"
-        ((RESTORE)) && printf                   "#${NC}%9s    3  -  deleted_apks.txt   ${BBLUE}%11s#\n"
-        printf "%s\n"                           "#                                                 #"
-        printf "%s\n${NC}"                      "==================================================="
+        printf "\n${BBLUE}%s\n"                 "================  $title (ROOT)  ==============="
+        printf "%s\n"                           "#                                               #"
+        printf "%-12s${NC}%s${BBLUE}%17s\n"     "#"          "1  -  $title an APK"              "#" | awk '{print tolower($0)}'
+        printf "%-12s${NC}%s${BBLUE}%18s\n"     "#"          "2  -  External list"              "#"
+        ((RESTORE)) && printf                   "#${NC}%9s    3  -  deleted_apks.txt ${BBLUE}%11s#\n"
+        printf "%s\n"                           "#                                               #"
+        printf "%s\n${NC}"                      "================================================="
 
         read -r -p "Choose an action : "
 
