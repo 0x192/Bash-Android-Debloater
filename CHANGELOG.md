@@ -1,3 +1,7 @@
+# Hotfix (v2.8.2)
+
+- Flashable debloat zip not removing anything (oversight on my part after debugging for the first hotfix)
+
 # Hotfix (v2.8.1)
 
 - Flashable zip was broken. I reworked all the generation logic. It is much simpler and correctly works now.

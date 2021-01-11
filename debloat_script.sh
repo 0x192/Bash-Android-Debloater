@@ -33,8 +33,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly SRC_URI="https://gitlab.com/W1nst0n/universal-android-debloater/-/archive/master/universal-android-debloater-master.tar.gz"
-    readonly VERSION="v2.8.1 (January 11th 2021)"
+    readonly VERSION="v2.8.2 (January 11th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -325,7 +324,7 @@ create_flashable_zip() {
         generate_custom_list "${LISTS[$list]}"
         backup_apks CUSTOM_LIST
         for package in "${CUSTOM_LIST[@]}"; do
-            echo "echo $package" >> "$UPDATE_BINARY"
+            echo "rm -rf $package" >> "$UPDATE_BINARY"
         done
         [[ $is_empty -eq 1 && ${#CUSTOM_LIST[@]} -gt 0 ]] && is_empty=0 
     done
