@@ -1,3 +1,8 @@
+# Hotfix (v2.8.1)
+
+- Flashable zip was broken. I reworked all the generation logic. It is much simpler and correctly works now.
+- The script will now force a backup of the apks before generating a flashable zip.
+
 # New Version (v2.8)
 
 Happy new year! :star2:
