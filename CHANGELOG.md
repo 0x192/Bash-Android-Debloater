@@ -1,3 +1,7 @@
+# Hotfix (v2.8.3)
+
+- Fix a bug (bad variable name) which basically broke all the non root debloat/restore features.
+
 # Hotfix (v2.8.2)
 
 - Flashable debloat zip not removing anything (oversight on my part after debugging for the first hotfix)
