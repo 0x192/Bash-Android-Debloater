@@ -33,7 +33,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly VERSION="v2.8.2 (January 11th 2021)"
+    readonly VERSION="v2.8.3 (January 12th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -221,12 +221,12 @@ debloat_or_restore() {
     local output=""
     local title=$( echo "$title" | tr '[:upper:]' '[:lower:]')
 
+    (( RESTORE )) && action='cmd package install-existing $package' || action='pm uninstall $user $package'
+
     # Android 7.1 and older can't reinstall packages
     if (( OLDER_THAN_ANDROID_8 )); then
-        (( RESTORE )) && action='pm enable $package' || action='am force-stop $package && pm disable-user $package && pm clear $package'
+        (( RESTORE && FORCE_UNINSTALL != 1 )) && action='pm enable $package' || action='am force-stop $package && pm disable-user $package && pm clear $package'
     fi
-
-    (( RESTORE && FORCE_UNINSTALL == 1 )) && action='cmd package install-existing $package' || action='pm uninstall $user $package'
 
     # parse user list on the phone
     readarray -t USERS < <(adb shell pm list users | grep -o "{[0-9]*" | grep -o "[0-9]*")
@@ -243,16 +243,16 @@ debloat_or_restore() {
             return
         fi
 
-        for u in "${USERS[@]}"; do
-            local user=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user $u" )
+        for u_num in "${USERS[@]}"; do
+            local user=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user $u_num" )
             generate_custom_list "$list" "$user"
 
             if [[ ${#CUSTOM_LIST[@]} -eq 0 ]]; then
-                printf "${BBLUE}%s${NC}%s" "[user $u]" " Nothing to $title :)" && sleep 1 && continue
+                printf "${BBLUE}%s${NC}%s" "[user $u_num]" " Nothing to $title :)" && sleep 1 && continue
             fi
 
             for package in "${CUSTOM_LIST[@]}"; do
-                do_package_action_and_log "$package" "$action" "$u"
+                do_package_action_and_log "$package" "$action" "$user"
             done
         done
         sleep 1
@@ -265,9 +265,9 @@ debloat_or_restore() {
 
         printf "\n${BRED}%s${NC}"               "Package name to $title: "
         read -r package
-        for u in "${USERS[@]}"; do
-            local user=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user $u" )
-            do_package_action_and_log "$package" "$action" "$u"
+        for u_num in "${USERS[@]}"; do
+            local user=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user $u_num" )
+            do_package_action_and_log "$package" "$action" "$user"
         done
         sleep 1
     fi
@@ -277,7 +277,7 @@ do_package_action_and_log() {
     local package="$1"
     local action="$2"
     local user="$3"
-    printf "${BBLUE}%s${BRED}%s${NC}%s"         "[user $user] " "$package --> "
+    printf "${BBLUE}%s${BRED}%s${NC}%s"         "[user $u_num] " "$package --> "
     output="$(eval adb shell "$action")" && echo "$output"
 
     if [[ ! "$output" =~ Failure|Error ]]; then
