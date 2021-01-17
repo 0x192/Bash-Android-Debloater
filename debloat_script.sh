@@ -33,7 +33,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly VERSION="v2.8.3 (January 12th 2021)"
+    readonly VERSION="v2.8.4 (January 16th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -41,6 +41,7 @@ main() {
 
     readonly OLDER_THAN_ANDROID_8=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))
     readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))
+    readonly SYSTEM_MOUNT_POINT=$(adb shell getprop ro.build.system_root_image | grep "true" && echo "/system_root" || echo "/system")
 
     declare -a CUSTOM_LIST=() # Trimed APK/package list from the debloat lists only containing packages/APK on the device (populated by generate_custom_list())
     declare -a EXTERNAL_LIST=() # APK/package list provided by the user (populated by import_external_list())
@@ -52,7 +53,7 @@ main() {
     declare -i RESTORE=0
     declare -i ROOT=0
 
-    clear
+    # clear
     printf "\n${BORANGE}%s\n"                       "================================================"
     printf "%s\n"                                   "#                                              #"
     printf "%-8s${NC}%s${BORANGE}%8s\n"             "#"     "UNIVERSAL ANDROID DEBLOAT SCRIPT"     "#"
@@ -238,6 +239,7 @@ debloat_or_restore() {
         printf "\n${BORANGE}%s${NC}\n"          "==== $list debloat list ===="
 
         if (( ROOT )); then
+            touch deleted_apks.txt
             generate_custom_list "$list"
             if (( RESTORE )); then restore_apks "$list"; else root_debloat "$list"; fi
             return
@@ -259,6 +261,7 @@ debloat_or_restore() {
 
     else
         if (( ROOT )); then
+            touch deleted_apks.txt
             if (( RESTORE )); then restore_apks; else root_debloat; fi
             return
         fi
@@ -294,9 +297,12 @@ backup_apks() {
     local -n apks="$1"
     mkdir -p apks_backup
     for apk in "${apks[@]}"; do
-        adb pull "$apk" apks_backup/
+        if ! adb pull "$apk" apks_backup/; then
+            printf "\n${BRED}%s${NC}%s\n" "$apk" " cannot be found on the phone!"
+            printf "\n${BRED}%s${NC}\n\n" "APKs backup failed" && exit 1
+        fi
     done
-    printf "\n${BRED}%s${NC}\n\n"               "Backup done!"
+    printf "\n${BGREEN}%s${NC}\n\n"               "Backup done!"
 }
 
 create_flashable_zip() {
@@ -363,7 +369,7 @@ restore_apks() {
         CUSTOM_LIST=("$path")
     fi
 
-    adb shell "su -c 'mount -o rw,remount /system'"
+    adb shell "su -c \"mount -o rw,remount $SYSTEM_MOUNT_POINT\""
     
 
     for p in "${CUSTOM_LIST[@]}"; do # $p = path/to/app.apk
@@ -374,7 +380,7 @@ restore_apks() {
         fi
     done
 
-    adb shell "su -c 'mount -o ro,remount /system'"
+    adb shell "su -c \"mount -f -o ro,remount $SYSTEM_MOUNT_POINT\""
     printf "\n${BRED}%s${NC}%s\n"               "Reboot your phone and Android will reinstall the app(s)"
     printf "\n\e[5m%s\033[0m"                   "Press any key to continue"
     read -n 1 -r -s
@@ -385,7 +391,6 @@ root_debloat() {
 
         [[ ${#CUSTOM_LIST[@]} -eq 0 ]] && echo "Nothing to debloat :)" && sleep 1 && return 0
 
-        backup_apks CUSTOM_LIST
     else 
         printf "\n${BRED}%s${NC}"               "Android Path of the APK to delete: "
         read -r path
@@ -395,15 +400,16 @@ root_debloat() {
         fi
         CUSTOM_LIST=("$path")
     fi
+    backup_apks CUSTOM_LIST
 
     read -r -p                                  "Type YES if you want to physically delete the apks: "
     if [[ $REPLY = "YES" ]]; then
-        local commandes="mount -o rw,remount /system;"
+        local commandes="mount -o rw,remount $SYSTEM_MOUNT_POINT;"
         for apk in "${CUSTOM_LIST[@]}"; do
             grep -qxF "$apk" deleted_apks.txt || echo "$apk" >> "deleted_apks.txt"
             commandes+="echo \"rm -rf $apk\"; rm -rf \"$apk\";"
         done
-        commandes+="mount -o ro,remount /system"
+        commandes+="mount -f -o ro,remount $SYSTEM_MOUNT_POINT"
         printf "\n${BRED}%s${NC}\n\n"           "Check your phone: Magisk Manager is probably asking you to grand root permissions for ADB"
         adb shell "su -c '$commandes'"
         printf "\n${BRED}%s${NC}\n"             "DONE"
@@ -432,11 +438,18 @@ lists_selection() {
 list_installed_packages() {
     clear -x
 
+    declare -a packages=()
+
     printf "\n${BRED}%s${NC}"                   "Search for packages (regex accepted): "
     read -r
 
     echo
-    adb shell "pm list packages | grep -i $REPLY" | sed 's/package://g' | sort || true
+
+    readarray -t packages < <(adb shell "pm list packages -f" | grep -i "$REPLY" | sed -r 's/package://g' | sort || true)
+    
+    for i in "${packages[@]}"; do
+        printf "%s${BBLUE}%s${NC}\n"           "${i##*=}" " ${i%%=*}"
+    done   
 
     printf "\n\e[5m%s\033[0m"                   "Press any key to continue"
     read -n 1 -r -s

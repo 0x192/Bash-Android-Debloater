@@ -1,3 +1,16 @@
+# Hotfix (v2.8.4)
+
+- Error when remounting `/system` as read-only after a restore/debloat action (#46)
+- Package search feature now displays APK path along with the package name
+- The APK was not backed-up when you use the manual root debloat feature (`1 - debloat a package`)
+- `deleted_apks.txt` not found
+- Mounting error on Android 9+ (only fixed for Android 9)
+
+# IMPORTANT NOTE
+Root features do not work and **will never work for Android 10+**. Android 10 has introduced a new dynamic partitioning system
+which, in short, prevent to easily mount system filesystem in read-write (use of EXT4 dedup filesystem, which is not writable). 
+Fortunately, the awesome @topjohnwu (developer of Magisk) has found a solution. I'll try to update my script to use the Magisk magic.
+
 # Hotfix (v2.8.3)
 
 - Fix a bug (bad variable name) which basically broke all the non root debloat/restore features.
