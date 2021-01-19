@@ -182,7 +182,7 @@ associate_path_with_package() {
     readarray -t PACKAGES < <(adb shell 'pm list packages -s -u -f' | sed -r 's/package://g' | sort -i)
     
     for i in "${PACKAGES[@]}"; do
-        ASSOCIATE["${i##*=}"]="${i%%=*}"
+        ASSOCIATE["${i##*=}"]="${i%=*}"
     done    
 }
 
@@ -445,10 +445,10 @@ list_installed_packages() {
 
     echo
 
-    readarray -t packages < <(adb shell "pm list packages -f" | grep -i "$REPLY" | sed -r 's/package://g' | sort || true)
+    readarray -t packages < <(adb shell "pm list packages -f" | grep -i "$REPLY" | sed 's/package://g' | sort || true)
     
     for i in "${packages[@]}"; do
-        printf "%s${BBLUE}%s${NC}\n"           "${i##*=}" " ${i%%=*}"
+        printf "%s${BBLUE}%s${NC}\n"           "${i##*=}" " ${i%=*}"
     done   
 
     printf "\n\e[5m%s\033[0m"                   "Press any key to continue"
