@@ -33,7 +33,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly VERSION="v2.8.4 (January 16th 2021)"
+    readonly VERSION="v2.9 (January 27th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -41,6 +41,7 @@ main() {
 
     readonly OLDER_THAN_ANDROID_8=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))
     readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))
+    readonly NEWER_THAN_ANDROID_10=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') >= 29 ))
     readonly SYSTEM_MOUNT_POINT=$(adb shell getprop ro.build.system_root_image | grep "true" && echo "/system_root" || echo "/system")
 
     declare -a CUSTOM_LIST=() # Trimed APK/package list from the debloat lists only containing packages/APK on the device (populated by generate_custom_list())
@@ -53,7 +54,7 @@ main() {
     declare -i RESTORE=0
     declare -i ROOT=0
 
-    # clear
+    clear
     printf "\n${BORANGE}%s\n"                       "================================================"
     printf "%s\n"                                   "#                                              #"
     printf "%-8s${NC}%s${BORANGE}%8s\n"             "#"     "UNIVERSAL ANDROID DEBLOAT SCRIPT"     "#"
@@ -82,7 +83,6 @@ main() {
     fi
 
     while true; do
-
         adb shell 'pm list packages -s' | sed 's/package://g' > remaining_packages.txt &
 
         clear -x
@@ -114,10 +114,10 @@ main() {
             (( !BRAND_SUPPORTED )) && printf "\n${BRED}%s\n" "No $BRAND debloat list found. Feel free to contribute ! :)"
 
             case $REPLY in
-            2) { title="RESTORE"; RESTORE=1; };;
-            3) { title="DEBLOAT"; RESTORE=0; };;
-            4) { title="RESTORE"; RESTORE=1; ROOT=1;};;
-            5) { title="DEBLOAT"; RESTORE=0; ROOT=1;};;
+            2) { title="RESTORE"; RESTORE=1; ROOT=0; };;
+            3) { title="DEBLOAT"; RESTORE=0; ROOT=0; };;
+            4) { title="RESTORE"; RESTORE=1; ROOT=1; };;
+            5) { title="DEBLOAT"; RESTORE=0; ROOT=1; };;
             esac
 
             ((!ROOT)) && printf "\n${BORANGE}%s\n"  "===================  $title  ==================="
@@ -130,7 +130,7 @@ main() {
             printf "%-12s${NC}%s${BORANGE}%25s\n"   "#"          "5  -  Others"                     "#"
             printf "%-12s${NC}%s${BORANGE}%27s\n"   "#"          "6  -  AOSP"                       "#"
             printf "%-12s${NC}%s${BORANGE}%18s\n"   "#"          "7  -  External list"              "#"
-            (( ROOT && !RESTORE )) && printf        "#${NC}%7s    8  -  Create a flashable zip${BORANGE}%7s #\n"
+            (( ROOT && !RESTORE && !NEWER_THAN_ANDROID_10 )) && printf     "#${NC}%7s    8  -  Create a flashable zip${BORANGE}%7s #\n"
             printf "%s\n"                           "#                                               #"
             printf "%-12s${NC}%s${BORANGE}%15s\n"   "#"          "0  -  Pending list /!\\"          "#"
             printf "%s\n"                           "#                                               #"
@@ -147,7 +147,6 @@ main() {
             if [[ "$REPLY" =~ 6 ]]; then debloat_or_restore aosp; fi
             if [[ "$REPLY" =~ 8 ]]; then create_flashable_zip; fi
             if [[ "$REPLY" =~ 0 ]]; then debloat_or_restore pending; fi
-
 
         elif [[ "$REPLY" =~ [Xx] ]]; then adb reboot && exit 0;
 
@@ -208,12 +207,13 @@ generate_custom_list() {
     else
         if (( RESTORE )); then
             readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
-                                                  <(adb shell "pm list packages -s -u $user_id" | sed -r 's/package://g' | sort -i))
+                                                  <(adb shell "pm list packages -s -u $user_id" | sed 's/package://g' | sort -i))
         else
             readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
                                                   <(adb shell "pm list packages -s $user_id" | sed 's/package://g' | sort -i))
         fi
     fi
+
     return 0
 }
 
@@ -254,7 +254,7 @@ debloat_or_restore() {
             fi
 
             for package in "${CUSTOM_LIST[@]}"; do
-                do_package_action_and_log "$package" "$action" "$user"
+                do_package_action_and_log
             done
         done
         sleep 1
@@ -270,16 +270,13 @@ debloat_or_restore() {
         read -r package
         for u_num in "${USERS[@]}"; do
             local user=$( ((OLDER_THAN_ANDROID_5)) && echo "" || echo "--user $u_num" )
-            do_package_action_and_log "$package" "$action" "$user"
+            do_package_action_and_log
         done
         sleep 1
     fi
 }
 
 do_package_action_and_log() {
-    local package="$1"
-    local action="$2"
-    local user="$3"
     printf "${BBLUE}%s${BRED}%s${NC}%s"         "[user $u_num] " "$package --> "
     output="$(eval adb shell "$action")" && echo "$output"
 
@@ -320,8 +317,9 @@ create_flashable_zip() {
 
     mkdir -p META-INF/com/google/android/
     echo "#!/sbin/sh" > "$UPDATE_BINARY"
+
     echo "echo 'ui_print --- Universal Android Debloater ---' > /proc/self/fd/\$2" >> "$UPDATE_BINARY"
-    echo "mount /system" >> "$UPDATE_BINARY"
+    echo "mount $SYSTEM_MOUNT_POINT" >> "$UPDATE_BINARY"
 
     declare -i is_empty=1
 
@@ -339,11 +337,10 @@ create_flashable_zip() {
         printf "\n${BRED}%s${NC}\n"             "Nothing to debloat!"
         rm -rf META-INF/
     else
-        echo "umount /system" >> "$UPDATE_BINARY"
+        echo "umount $SYSTEM_MOUNT_POINT" >> "$UPDATE_BINARY"
         echo "echo 'ui_print ----- ALL DONE -----' > /proc/self/fd/\$2" >> "$UPDATE_BINARY"
-        zip -rm flashable_zip_UAD_v2.8.zip META-INF/ 1>/dev/null
-        printf "\n${BRED}%s${NC}%s\n"           "flashable_zip_UAD_v2.8.zip" " has been generated."
-
+        zip -rm flashable_zip_UAD_$VERSION.zip META-INF/ 1>/dev/null
+        printf "\n${BGREEN}%s${NC}%s\n"           "flashable_zip_UAD_$VERSION.zip" " has been generated."
     fi
 
     sleep 2
@@ -354,7 +351,7 @@ restore_apks() {
 
     if [[ $# -eq 1 ]]; then
 
-        [[ ${#CUSTOM_LIST[@]} -eq 0 ]] && echo "Nothing to restore" && sleep 1 && return 0
+        [[ ${#CUSTOM_LIST[@]} -eq 0 ]] && echo "Nothing to restore" && sleep 1 && return
 
         printf "\n%s${BBLUE}%s${NC}%s${BBLUE}%s${NC}\n\n" "Deleted apks from " "$list" " will be restored from " "apks_backups/"
         printf "\n${BRED}%s${NC}\n\n"           "Check your phone: Magisk Manager is probably asking you to grand root permissions for ADB"
@@ -369,9 +366,10 @@ restore_apks() {
         CUSTOM_LIST=("$path")
     fi
 
+    [[ NEWER_THAN_ANDROID_10 -eq 1 ]] && magisk_module && return
+
     adb shell "su -c \"mount -o rw,remount $SYSTEM_MOUNT_POINT\""
     
-
     for p in "${CUSTOM_LIST[@]}"; do # $p = path/to/app.apk
         local apk=$(echo "$p" | sed -r 's/.*\///g') # app.apk
         local dir=$(dirname "$p") # path/to
@@ -387,6 +385,8 @@ restore_apks() {
 }
 
 root_debloat() {
+    local method=""
+
     if [[ $# -eq 1 ]]; then
 
         [[ ${#CUSTOM_LIST[@]} -eq 0 ]] && echo "Nothing to debloat :)" && sleep 1 && return 0
@@ -402,8 +402,13 @@ root_debloat() {
     fi
     backup_apks CUSTOM_LIST
 
-    read -r -p                                  "Type YES if you want to physically delete the apks: "
+    [[ NEWER_THAN_ANDROID_10 -eq 1 ]] && method=systemlessly || method=physically
+
+    read -r -p                                  "Type YES if you want to $method delete the apks: "
     if [[ $REPLY = "YES" ]]; then
+
+        [[ NEWER_THAN_ANDROID_10 -eq 1 ]] && magisk_module && return
+
         local commandes="mount -o rw,remount $SYSTEM_MOUNT_POINT;"
         for apk in "${CUSTOM_LIST[@]}"; do
             grep -qxF "$apk" deleted_apks.txt || echo "$apk" >> "deleted_apks.txt"
@@ -419,6 +424,64 @@ root_debloat() {
     fi
 }
 
+magisk_module() {
+    declare -i new=1 # apk is not in customize.sh
+
+    mkdir MAGISK_MODULE && cd "$_"
+    local -r MODULE_DIR=$(pwd)
+
+    cat << EOF > module.prop
+id=universal-android-debloater
+name=Universal Android Debloater Magisk Flashable zip
+version=1.0
+versionCode=1000
+author=w1nst0n
+description=custom root debloat script
+EOF
+
+    if [[ -f ../uad_magisk_$VERSION.zip ]]
+    then
+        unzip -qn "../uad_magisk_$VERSION.zip" && rm "$_"
+        truncate -s-1 customize.sh 
+    else
+        mkdir -p META-INF/com/google/android/ && cd "$_"
+        wget -q https://raw.githubusercontent.com/topjohnwu/Magisk/master/scripts/module_installer.sh
+        mv module_installer.sh update-binary
+        echo "#MAGISK" > updater-script
+        cd "$MODULE_DIR" && echo "REPLACE=\"" > customize.sh
+    fi
+
+    for apk in "${CUSTOM_LIST[@]}"; do
+        
+        if ((RESTORE)); then ###### TODO #########
+            local -r dir="$(dirname "${apk:1}")"
+            cp "backup_apks/$(echo "$apk" | sed -r 's/.*\///g')" "${apk:1}"
+
+            adb push "apks_backup/$apk" /sdcard && adb shell "su -c 'mkdir -p \"$dir\" && mv \"/sdcard/$apk\" \"$dir\"'"
+            grep -Fqv "$p" deleted_apks.txt > temp.tmp || touch temp.tmp; mv temp.tmp deleted_apks.txt
+
+        else
+            if grep -qxF "$(dirname "$apk")" customize.sh; then
+                new=0
+                echo "$apk" >> "deleted_apks.txt"
+                dirname "$apk" >> customize.sh
+            fi
+        fi
+    done
+    
+    [[ new -eq 1 && RESTORE -ne 1 ]] && echo "\"" >> customize.sh
+
+    zip -rm ../uad_magisk_"$VERSION".zip META-INF/ customize.sh module.prop 1>/dev/null || true
+    cd .. && rm -rf MAGISK_MODULE
+
+    printf "\n${BGREEN}%s${NC}%s\n"                 "uad_magisk_$VERSION.zip" " has been generated."
+    printf "\n%s${BGREEN}%s${NC}%s\n"               "Flash this file from" " Magisk Manager" " and reboot your phone."
+    printf "\n${BRED}%s${NC}\n\n"                   "/!\ Do not flash this from your recovery /!\\"
+
+    printf "\e[5m%s\033[0m"                         "Press any key to continue"
+    read -n 1 -r -s  
+}
+
 lists_selection() {
     clear -x
     declare -a selection=()
@@ -427,7 +490,7 @@ lists_selection() {
         printf "%-2s%s\n" "$i" " - ${!i}"
     done
 
-    printf "\n${BRED}%s${NC} "                    "Your choice (e.g 1 2 3) :"
+    printf "\n${BRED}%s${NC} "                  "Your choice (e.g 1 2 3) :"
     read -r -a selection
     for list in "${selection[@]}"; do
         if (( list > $# )) || (( list < 1 )); then continue; fi
