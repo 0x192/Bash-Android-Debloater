@@ -66,13 +66,6 @@ declare -a aosp=(
 	# Lets Google partners (OEM in most of the case) to customize the default email settings.
 	# The manufacturer often change the default signature displayed the end of each of your mail (e.g "Sent from my Nokia phone")
 
-	"com.android.printservice.recommendation" 
-	# Keep it, if you need to print directly via your phone.
-
-	"com.android.printspooler"
-	# Print spooler. Manage the printing process. 
-	# Safe to remove if you don't plan to print from your phone
-
 	"com.android.providers.partnerbookmarks" 
 	# Provides bookmarks about partners of Google in Chrome.
 
@@ -291,6 +284,15 @@ declare -a aosp=(
 	# AOSP Call recorder function. Most of the time OEM use their own code for this.
 	# NOTE: On some phones, Huawei & Xiaomi also use this package name for their own closed-source recorder app.
 
+	#"com.android.printservice.recommendation"
+	# Used to discover and interact one or more printers via one or more protocols. 
+	# You can remove it if you don't need to print directly from your phone.
+
+	#"com.android.printspooler"
+	# Print spooler. Manage the printing process. 
+	# Safe to remove if you don't plan to print from your phone
+	# Note: Break connection preferences from the settings app on some phones (Pixel 4a / Android 11)
+
 	#"com.android.providers.blockednumber"
 	# Handles blocked numbers storage
 	# On some devices this packages seems to be tied to recent apps menu (see https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/6)
@@ -322,9 +324,10 @@ declare -a aosp=(
 	#
 	# FYI : The Open Mobile Alliance (OPA) is a standards organization which develops open standards for the mobile phone industry.
 
-	#"com.android.settings.intelligence" # [MORE INFO NEEDED]
-	# Settings tips in Settings menu ?
-	# I don't have this in my phone. It for Android Pie. Can someone check ? 
+	#"com.android.settings.intelligence"
+	# Setting search feature 
+	# Note: Settings app may crash when searching for a setting if you removed this package (it depends on the phone)
+	# See https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/51
 
 	#"com.android.sharedstoragebackup"
 	# Used during backup. Fetch shared storage (files accessible by every apps with STORAGE permission)

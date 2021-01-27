@@ -359,6 +359,7 @@ declare -a google=(
 	# Device Health Services (discontinued ?)
 	# Calculates your remaining battery percentage based on your usage
 	# Reviews for this app were... funny (https://www.reddit.com/r/google/comments/ajnbmh/the_reviews_for_device_health_services_are_quite/)
+	# Note: this app needs com.google.android.gms
 
 	"com.google.android.apps.work.oobconfig" # [MORE INFO NEEDED]
 	# Needs internet to fetchs enterprise and carrier lock config via internet.
