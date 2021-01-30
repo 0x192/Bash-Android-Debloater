@@ -420,6 +420,11 @@ declare -a samsung=(
 	# Gear VR Service
 	# See above.
 
+	"com.samsung.android.icecone"
+	# Keyboard Content Center
+	# Lets you choose media content (e.g. stickers and music) from the Galaxy Keyboard.
+	# This app always runs in background.
+
 	"com.samsung.android.intelligenceservice2"
 	# It seems that this package is a kind of spyware. Very difficult to find information about this.
 	# Some people say it's linked to Carrier IQ (which is a carrier rootkit for the NSA).
@@ -427,6 +432,18 @@ declare -a samsung=(
 	# https://forum.xda-developers.com/showpost.php?s=c85df628dfc39c3a971e6f9cfa98cbb8&p=54071328&postcount=6
 	# This package also have very stranges permissions : READ_PLACE / WRITE_PLACE. I couldn't find any explaination on the web. 
 	# So either it's a useless samsung package either it's a spyware. I delete it and I didn't notice anything bad.
+
+	"com.samsung.android.ipsgeofence"
+	# IPSGeofence
+	# IPS = Indoor Positioning System.
+	# The concept of Indoor Positioning System designates a network of connected devices within a building making it possible 
+	# to trace the position of another device – and therefore potentially of a person – in environments where GPS systems are 
+	# not efficient .
+	# Geofencing is a technique which consists in activating preconfigured actions when a device enters a 
+	# certain geographical area. For example, a user can use it to automatically turn on Wi-Fi and home lights when their smartphone 
+	# is detected nearby.
+	# In short, if enabled, this app will track your location everywhere and all the time!
+	# https://www.comparitech.com/blog/vpn-privacy/what-is-geofencing-privacy/
 
 	"com.samsung.android.keyguardwallpaperupdator"
 	# Lets you customize your Samsung device with different images (provided by Samsung) on the lock screen. 
@@ -486,8 +503,22 @@ declare -a samsung=(
 	# https://developer.samsung.com/tech-insights/knox/mobile-device-management
 
 	"com.samsung.android.mdx"
+	# Link to Windows Service
+	# Works in conjunction with the Microsoft Your Phone app and activates a connection to your PC on Windows
+
+	"com.samsung.android.mdx.kit"
+	# MDE Service Framework
+	# MDE = Multi Devices Experience (https://www.samsung.com/levant/multi-device-experience/)
+	# Framework for IoT stuff.
+	# Asks for a LOT of dangerous permissions
+	# Interacts with "com.samsung.android.mobileservice" and "com.osp.app.signin"
+
+	"com.samsung.android.mdx.quickboard"
 	# Media & Devices feature
+	# Kind of a hub for managing medias played on smart devices (e.g play music to 2 Bluetooth devices simultaneously with Dual audio)
 	# https://www.samsung.com/latin_en/support/mobile-devices/media-and-device-feature/
+	# Has a lot of permissions and asks for ACESS_COARSE_LOCATION
+	# Removing this package do not prevent you to connect your phones to smart devices.
 
 	"com.samsung.android.mobileservice"
 	# Samsung Experience Service (https://play.google.com/store/apps/details?id=com.samsung.android.mobileservice)
@@ -562,6 +593,10 @@ declare -a samsung=(
 	"com.samsung.android.shortcutbackupservice"
 	# ShortcutBNR 
 	# Related to smartSwitch Samsung Cloud features
+
+	"com.samsung.android.sdm.config" 
+	# Configuration Update for Samsung Deskphone Manager (SDM)
+	# SDM allows a user to synchronize your smartphone with a IP deskphone
 
 	"com.samsung.android.slinkcloud"
 	# Samsung Cloud Gateway
