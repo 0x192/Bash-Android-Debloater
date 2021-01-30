@@ -33,7 +33,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly VERSION="v2.9 (January 27th 2021)"
+    readonly VERSION="v2.9 (January 30th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -41,14 +41,15 @@ main() {
 
     readonly OLDER_THAN_ANDROID_8=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 26 ))
     readonly OLDER_THAN_ANDROID_5=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') < 21 ))
-    readonly NEWER_THAN_ANDROID_10=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') >= 29 ))
+    readonly NEWER_THAN_ANDROID_9=$(( $(adb shell getprop ro.build.version.sdk | tr -d '\r') >= 29 ))
+
     readonly SYSTEM_MOUNT_POINT=$(adb shell getprop ro.build.system_root_image | grep "true" && echo "/system_root" || echo "/system")
 
-    declare -a CUSTOM_LIST=() # Trimed APK/package list from the debloat lists only containing packages/APK on the device (populated by generate_custom_list())
+    declare -a CUSTOM_LIST=() # Trimed APK/package list only containing packages/APK on the device (populated by generate_custom_list())
     declare -a EXTERNAL_LIST=() # APK/package list provided by the user (populated by import_external_list())
     declare -a USERS=() # User list (populated by debloat_or_restore())
     declare -ra LISTS=(us_carriers french_carrier german_carriers "$BRAND" google facebook amazon microsoft \
-                      qualcomm mediatek misc aosp pending)
+                       qualcomm mediatek misc aosp pending EXTERNAL_LIST)
 
     declare -i FORCE_UNINSTALL=0
     declare -i RESTORE=0
@@ -111,7 +112,7 @@ main() {
         elif [[ $REPLY = 2 || $REPLY = 3 || $REPLY = 4 || $REPLY = 5 ]]; then
             clear -x
 
-            (( !BRAND_SUPPORTED )) && printf "\n${BRED}%s\n" "No $BRAND debloat list found. Feel free to contribute ! :)"
+            (( !BRAND_SUPPORTED )) && printf "\n${BRED}%s${NC}\n" "No $BRAND debloat list found. Feel free to contribute ! :)"
 
             case $REPLY in
             2) { title="RESTORE"; RESTORE=1; ROOT=0; };;
@@ -120,23 +121,38 @@ main() {
             5) { title="DEBLOAT"; RESTORE=0; ROOT=1; };;
             esac
 
+            if (( ROOT && NEWER_THAN_ANDROID_9 )); then
+                magisk_module
+                continue
+            fi
+
+            if (( ROOT )); then
+                printf "\n%s\n"                     "The script will physically remove the apks from your phone"
+                printf "%s${BBLUE}%s${NC}%s\n"      "Do you prefer to use a " "Magisk " "module for a systemless debloat instead? [y/n]"
+                read -r
+                if [[ $REPLY =~ [Yy] ]]; then 
+                    magisk_module
+                    continue
+                fi
+            fi
+
             ((!ROOT)) && printf "\n${BORANGE}%s\n"  "===================  $title  ==================="
             (( ROOT )) && printf "\n${BORANGE}%s\n" "================  $title (ROOT)  ==============="
             printf "%s\n"                           "#                                               #"
             printf "%-12s${NC}%s${BORANGE}%14s\n"   "#"          "1  -  $title a package"           "#" | awk '{print tolower($0)}'
-            (( BRAND_SUPPORTED )) && printf         "#${NC}%8s   2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
+            (( BRAND_SUPPORTED )) && printf         "#${NC}%7s    2  -  ${BRAND} %$((25-${#BRAND}))s  ${BORANGE}  #\n"
             printf "%-12s${NC}%s${BORANGE}%27s\n"   "#"          "3  -  GFAM"                       "#"
             printf "%-12s${NC}%s${BORANGE}%23s\n"   "#"          "4  -  Carriers"                   "#"
             printf "%-12s${NC}%s${BORANGE}%25s\n"   "#"          "5  -  Others"                     "#"
             printf "%-12s${NC}%s${BORANGE}%27s\n"   "#"          "6  -  AOSP"                       "#"
             printf "%-12s${NC}%s${BORANGE}%18s\n"   "#"          "7  -  External list"              "#"
-            (( ROOT && !RESTORE && !NEWER_THAN_ANDROID_10 )) && printf     "#${NC}%7s    8  -  Create a flashable zip${BORANGE}%7s #\n"
-            printf "%s\n"                           "#                                               #"
+            (( ROOT && !RESTORE )) && printf        "#${NC}%7s    8  -  Create a flashable zip${BORANGE}%7s #\n"
+             printf "%s\n"                          "#                                               #"
             printf "%-12s${NC}%s${BORANGE}%15s\n"   "#"          "0  -  Pending list /!\\"          "#"
             printf "%s\n"                           "#                                               #"
             printf "%s\n${NC}\n"                    "================================================="
 
-            read -r -p                              "Your selection (e.g: 2 3 4 5): "
+            read -r -p                               "Your selection (e.g: 2 3 4 5): "
 
             if [[ "$REPLY" =~ 7 ]]; then import_external_list && debloat_or_restore EXTERNAL_LIST; fi
             if [[ "$REPLY" =~ 4 ]]; then lists_selection us_carriers french_carriers german_carriers; fi
@@ -165,13 +181,17 @@ import_external_list() {
     done
 
     for i in "${EXTERNAL_LIST[@]}"; do
-        if [[ ROOT -eq 1 && $i =~ ^/.*\.apk$ ]]; then
+        if [[ $ROOT -eq 1 && $RESTORE -eq 0 && $i =~ ^/.*\.apk$ ]]; then
             printf "\n${BRED}%s${NC}\n\n"             "Please use a package list, not an APK list"
             exit 1
-        elif [[ ROOT -eq 0 && ! $i =~ ^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z0-9_]+)+[0-9a-zA-Z_]$ ]]; then
+        elif [[ $ROOT -eq 0 && ! $i =~ ^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z0-9_]+)+[0-9a-zA-Z_]$ ]]; then
             printf "\n${BRED}%s${NC}%s${BRED}%s${NC}%s\n\n" "$i" " is not a package (format is" " com.android.bips" ")"
             exit 1
+        elif [[ $ROOT -eq 1 && $RESTORE -eq 1 && ! $i =~ ^/.*\.apk$ ]]; then
+            printf "\n${BRED}%s${NC}\n\n"             "Please use an APK list"
+            exit 1
         fi
+
     done
 }
 
@@ -186,6 +206,7 @@ associate_path_with_package() {
 }
 
 generate_custom_list() {
+    clear -x
     local -n list="$1"
     [[ $# -eq 2 ]] && local user_id="$2"
     CUSTOM_LIST=()
@@ -198,12 +219,25 @@ generate_custom_list() {
         readarray -t TEMP < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
                                        <(for p in "${!PACKAGE_AND_PATH[@]}"; do echo "$p"; done|sort -i))
 
-        for p in "${TEMP[@]}"; do 
+        [[ RESTORE -ne 1 ]] && printf "\n${BGREEN}%s${NC}\n\n" "Clearing app data..." 
+        
+        for p in "${TEMP[@]}"; do
+
+            [[ RESTORE -ne 1 ]] && printf "${BBLUE}%s${NC}" "$p --> " && adb shell "pm clear $p"
+            
             CUSTOM_LIST+=("${PACKAGE_AND_PATH[$p]}")
         done
 
-        [[ RESTORE -eq 1 ]] && readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${CUSTOM_LIST[@]}"; do echo "${p}"; done|sort -i) \
-                                                          <(sort -i deleted_apks.txt))
+        if [[ $RESTORE -eq  1 ]]; then
+
+            if [[ ${#CUSTOM_LIST[@]} -eq 0 ]]; then
+                readarray -t CUSTOM_LIST <(sort -i deleted_apks.txt)
+            else
+                readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${CUSTOM_LIST[@]}"; do echo "${p}"; done|sort -i) \
+                                                      <(sort -i deleted_apks.txt))
+            fi
+        fi
+
     else
         if (( RESTORE )); then
             readarray -t CUSTOM_LIST < <(comm -12 <(for p in "${list[@]}"; do echo "${p}"; done|sort -i) \
@@ -239,7 +273,7 @@ debloat_or_restore() {
         printf "\n${BORANGE}%s${NC}\n"          "==== $list debloat list ===="
 
         if (( ROOT )); then
-            touch deleted_apks.txt
+            touch -a deleted_apks.txt
             generate_custom_list "$list"
             if (( RESTORE )); then restore_apks "$list"; else root_debloat "$list"; fi
             return
@@ -261,7 +295,7 @@ debloat_or_restore() {
 
     else
         if (( ROOT )); then
-            touch deleted_apks.txt
+            touch -a deleted_apks.txt
             if (( RESTORE )); then restore_apks; else root_debloat; fi
             return
         fi
@@ -315,6 +349,12 @@ create_flashable_zip() {
     printf "\n${BRED}%s${NC} "                  "Your choice (e.g 1 2 3) :"
     read -r -a selection
 
+    for i in "${selection[@]}"; do 
+        if [[ "${LISTS[$i]}" == EXTERNAL_LIST ]]; then
+            import_external_list
+        fi
+    done
+
     mkdir -p META-INF/com/google/android/
     echo "#!/sbin/sh" > "$UPDATE_BINARY"
 
@@ -325,11 +365,14 @@ create_flashable_zip() {
 
     for list in "${selection[@]}"; do
         if (( list > ${#LISTS[@]} )) || (( list < 1 )); then continue; fi
+
         generate_custom_list "${LISTS[$list]}"
         backup_apks CUSTOM_LIST
+
         for package in "${CUSTOM_LIST[@]}"; do
             echo "rm -rf $package" >> "$UPDATE_BINARY"
         done
+
         [[ $is_empty -eq 1 && ${#CUSTOM_LIST[@]} -gt 0 ]] && is_empty=0 
     done
 
@@ -339,7 +382,7 @@ create_flashable_zip() {
     else
         echo "umount $SYSTEM_MOUNT_POINT" >> "$UPDATE_BINARY"
         echo "echo 'ui_print ----- ALL DONE -----' > /proc/self/fd/\$2" >> "$UPDATE_BINARY"
-        zip -rm flashable_zip_UAD_$VERSION.zip META-INF/ 1>/dev/null
+        zip -rm flashable_zip_UAD_${VERSION%%[[:space:]]*}.zip META-INF/ 1>/dev/null
         printf "\n${BGREEN}%s${NC}%s\n"           "flashable_zip_UAD_$VERSION.zip" " has been generated."
     fi
 
@@ -366,7 +409,10 @@ restore_apks() {
         CUSTOM_LIST=("$path")
     fi
 
-    [[ NEWER_THAN_ANDROID_10 -eq 1 ]] && magisk_module && return
+    if [[ $NEWER_THAN_ANDROID_9 -eq 1 ]]; then
+            magisk_module
+            return
+    fi
 
     adb shell "su -c \"mount -o rw,remount $SYSTEM_MOUNT_POINT\""
     
@@ -402,12 +448,13 @@ root_debloat() {
     fi
     backup_apks CUSTOM_LIST
 
-    [[ NEWER_THAN_ANDROID_10 -eq 1 ]] && method=systemlessly || method=physically
-
-    read -r -p                                  "Type YES if you want to $method delete the apks: "
+    read -r -p                                  "Type YES if you want to physically delete the apk(s): "
     if [[ $REPLY = "YES" ]]; then
 
-        [[ NEWER_THAN_ANDROID_10 -eq 1 ]] && magisk_module && return
+        if [[ $NEWER_THAN_ANDROID_9 -eq 1 ]]; then
+            magisk_module 1
+            return
+        fi
 
         local commandes="mount -o rw,remount $SYSTEM_MOUNT_POINT;"
         for apk in "${CUSTOM_LIST[@]}"; do
@@ -425,9 +472,42 @@ root_debloat() {
 }
 
 magisk_module() {
-    declare -i new=1 # apk is not in customize.sh
+    clear -x
+    declare -a selection=()
+    declare -i is_empty=1
 
-    mkdir MAGISK_MODULE && cd "$_"
+    echo
+    if (( !RESTORE )); then
+        for i in "${!LISTS[@]}"; do 
+            printf "%-2s%s\n" "$i" " - ${LISTS[$i]}"
+        done
+
+        printf "\n${BRED}%s${NC} "                  "Your choice (e.g 1 2 3) :"
+        read -r -a selection
+
+        for i in "${selection[@]}"; do 
+            if [[ "${LISTS[$i]}" == EXTERNAL_LIST ]]; then
+                import_external_list
+            fi
+        done
+    else
+        printf "%-2s%s\n" "1" " - deleted_apks.txt"
+        printf "%-2s%s\n" "2" " - EXTERNAL_LIST"
+
+        printf "\n${BRED}%s${NC} "                  "Your choice :"
+        read -r
+        selection=(1)
+        case $REPLY in
+        1) readarray -t CUSTOM_LIST < deleted_apks.txt ;;
+        2) { import_external_list && CUSTOM_LIST=("${EXTERNAL_LIST[@]}"); } ;;
+        *) exit 1 ;;
+        esac
+    fi
+
+    touch -a deleted_apks.txt
+    rm -r MAGISK_MODULE || true
+    mkdir MAGISK_MODULE
+    cd "$_"
     local -r MODULE_DIR=$(pwd)
 
     cat << EOF > module.prop
@@ -439,46 +519,60 @@ author=w1nst0n
 description=custom root debloat script
 EOF
 
-    if [[ -f ../uad_magisk_$VERSION.zip ]]
-    then
-        unzip -qn "../uad_magisk_$VERSION.zip" && rm "$_"
-        truncate -s-1 customize.sh 
-    else
-        mkdir -p META-INF/com/google/android/ && cd "$_"
-        wget -q https://raw.githubusercontent.com/topjohnwu/Magisk/master/scripts/module_installer.sh
-        mv module_installer.sh update-binary
-        echo "#MAGISK" > updater-script
-        cd "$MODULE_DIR" && echo "REPLACE=\"" > customize.sh
+    mkdir -p META-INF/com/google/android/ && cd "$_"
+    wget -q https://raw.githubusercontent.com/topjohnwu/Magisk/master/scripts/module_installer.sh
+    mv module_installer.sh update-binary
+    echo "#MAGISK" > updater-script
+
+    cd "$MODULE_DIR"
+    [[ RESTORE -eq 0 ]] && echo "REPLACE=\"" > customize.sh
+
+    for list in "${selection[@]}"; do
+
+        if (( list > ${#LISTS[@]} )) || (( list < 1 )); then continue; fi
+
+        cd ..
+        if (( !RESTORE )); then
+            generate_custom_list "${LISTS[$list]}"
+            backup_apks CUSTOM_LIST
+        fi
+
+        cd "$MODULE_DIR"
+        for apk in "${CUSTOM_LIST[@]}"; do
+            if (( RESTORE )); then
+                local dir="$(dirname "${apk:1}")"
+                mkdir -p "$dir"
+                cp "../apks_backup/$(echo "$apk" | sed -r 's/.*\///g')" "${apk:1}"
+                grep -Fqv "$apk" ../deleted_apks.txt > temp.tmp || touch temp.tmp; mv temp.tmp ../deleted_apks.txt
+            else
+                grep -qxF "$(dirname "$apk")" customize.sh || dirname "$apk" >> customize.sh
+                grep -qxF "$apk" ../deleted_apks.txt || echo "$apk" >> ../deleted_apks.txt
+            fi
+
+        done
+
+        [[ $is_empty -eq 1 && ${#CUSTOM_LIST[@]} -gt 0 ]] && is_empty=0 
+    done
+
+    if [[ RESTORE -eq 0 && $is_empty -eq 1 ]]; then 
+        printf "\n${BRED}%s${NC}\n"             "Nothing to debloat!"
+        cd .. && rm -rf MAGISK_MODULE
+        return 0
     fi
 
-    for apk in "${CUSTOM_LIST[@]}"; do
-        
-        if ((RESTORE)); then ###### TODO #########
-            local -r dir="$(dirname "${apk:1}")"
-            cp "backup_apks/$(echo "$apk" | sed -r 's/.*\///g')" "${apk:1}"
-
-            adb push "apks_backup/$apk" /sdcard && adb shell "su -c 'mkdir -p \"$dir\" && mv \"/sdcard/$apk\" \"$dir\"'"
-            grep -Fqv "$p" deleted_apks.txt > temp.tmp || touch temp.tmp; mv temp.tmp deleted_apks.txt
-
-        else
-            if grep -qxF "$(dirname "$apk")" customize.sh; then
-                new=0
-                echo "$apk" >> "deleted_apks.txt"
-                dirname "$apk" >> customize.sh
-            fi
-        fi
-    done
-    
-    [[ new -eq 1 && RESTORE -ne 1 ]] && echo "\"" >> customize.sh
-
-    zip -rm ../uad_magisk_"$VERSION".zip META-INF/ customize.sh module.prop 1>/dev/null || true
+    [[ RESTORE -ne 1 ]] && echo "\"" >> customize.sh
+    zip -FSrm ../uad_magisk_"${VERSION%%[[:space:]]*}_$title".zip ./* 1>/dev/null || true
     cd .. && rm -rf MAGISK_MODULE
 
-    printf "\n${BGREEN}%s${NC}%s\n"                 "uad_magisk_$VERSION.zip" " has been generated."
-    printf "\n%s${BGREEN}%s${NC}%s\n"               "Flash this file from" " Magisk Manager" " and reboot your phone."
-    printf "\n${BRED}%s${NC}\n\n"                   "/!\ Do not flash this from your recovery /!\\"
+    printf "\n${BGREEN}%s${NC}%s\n"                   "uad_magisk_${VERSION%%[[:space:]]*}.zip" " has been generated."
+    printf "\n%s${BBLUE}%s${NC}%s${BBLUE}%s${NC}%s\n" "Flash this file from " "Magisk Manager " "or " "TWRP " "and reboot your phone."
+    printf "\n%s${BBLUE}%s${NC}%s\n"                  "Removing the module from " "Magisk Manager " "will restore the apks."
 
-    printf "\e[5m%s\033[0m"                         "Press any key to continue"
+    if [[ $BRAND == "samsung" ]]; then
+        printf "\n${BRED}%s${NC}\n\n"                 "/!\ TWRP doesn't support Samsung encryption. You won't be able to flash this Magisk module from TWRP /!\\"
+    fi
+
+    printf "\e[5m%s\033[0m"                           "Press any key to continue"
     read -n 1 -r -s  
 }
 
@@ -616,6 +710,17 @@ uad_recovery_mode() {
             printf "\n%s${BRED}%s${NC}%s\n\n"   "Your apks has been backed-up in" " apks_backup/" " (in case you messed up)"
         fi
 
+        [[ $NEWER_THAN_ANDROID_9 -eq 1 ]] && magisk_module && continue
+
+        printf "\n%s\n"                     "The script will physically remove the apks from your phone."
+        printf "%s${BBLUE}%s${NC}%s\n"      "Do you prefer to use a " "Magisk " "module for a systemless debloat instead? [y/n]"
+        read -r
+
+        if [[ $REPLY =~ [Yy] ]]; then 
+            magisk_module
+            continue
+        fi
+        
         for p in "${CUSTOM_LIST[@]}"; do # $p = path/to/app.apk
             local apk=$(echo "$p" | sed -r 's/.*\///g') # app.apk
             local dir=$(dirname "$p") # path/to
