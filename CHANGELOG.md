@@ -1,3 +1,24 @@
+# New Version (v2.9)
+
+**Note:** The `debloat_script.sh` is now in maintenance mode and won't receive any more features. The focus is on the developement of a GUI.
+
+### Magisk module and root support for Android 10+
+Root users can now systemlessly debloat their device. The script will create a flashable Magisk zip you'll need to flash from **TWRP** or **Magisk Manager** (recommended). Once installed the module will, on boot, replace the APKs folders with an empty folder (only containing a `.replace` file). 
+
+Systemless debloat is the only solution for Android 10+ users because *system* can't be mounted in read-write anymore.
+
+## New packages added
+- **Samsung** : 5 (thanks @j0taz)
+
+## Bugfixes
+- **Debloated packages (non root) reappear after a reboot (#48)**
+- Bad apks names when using root features (parsing issue)
+- Connection preferences settings won't open (AOSP list, Pixel 4a / Android 11) (#49)
+- Impossible to use a non-root feature after having used a root feature
+
+# Miscellaneous
+- App data is now cleared (`pm clear $package`) before root debloat
+
 # Hotfix (v2.8.4)
 
 - Error when remounting `/system` as read-only after a restore/debloat action (#46)
@@ -7,9 +28,9 @@
 - Mounting error on Android 9+ (only fixed for Android 9)
 
 # IMPORTANT NOTE
-Root features do not work and **will never work for Android 10+**. Android 10 has introduced a new dynamic partitioning system
+**Root features do currently not work for Android 10+**. Android 10 has introduced a new dynamic partitioning system
 which, in short, prevent to easily mount system filesystem in read-write (use of EXT4 dedup filesystem, which is not writable). 
-Fortunately, the awesome @topjohnwu (developer of Magisk) has found a solution. I'll try to update my script to use the Magisk magic.
+Fortunately, the awesome @topjohnwu (developer of Magisk) found a solution. I'll try to update my script to use the Magisk magic.
 
 # Hotfix (v2.8.3)
 
