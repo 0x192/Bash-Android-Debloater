@@ -799,13 +799,15 @@ declare -a xiaomi=(
 # Your phone needs to be connected to internet (Wifi/mobile data) for this feature to work. 
 # REMOVING THIS PACKAGE WILL BOOTLOOP YOUR DEVICE!
 # 
-# NOTE : I don't have a Xiaomi phone on hand anymore but maybe only disabling it will work : adb shell 'pm disable-user com.xiaomi.finddevice'
-# Can someone try ? 
+# NOTE : You cannot disable it via adb
+# According some sources, disabling MIUI optimizations in the Developer
+# settings and removing the apk file in a custom recovery does not cause a
+# bootloop, but I didn't test this.
 
-#"com.miui.global.packageinstaller" # [MORE INFO NEEDED]
-# MIUI Package installer
-# Offers the ability to install, upgrade, and remove applications on the device.
-# Is it the replacement of com.android.packageinstaller?
+#"com.miui.global.packageinstaller"
+# The security check / virus scan which runs after a package installation
+# Uninstalling it does not cause a bootloop
+# Package installation still works fine
 
 #"com.miui.securitycenter"
 # MIUI Security app
