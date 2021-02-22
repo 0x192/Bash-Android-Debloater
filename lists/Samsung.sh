@@ -1706,7 +1706,7 @@ declare -a samsung=(
 	#"com.samsung.sdm.sdmviewer" # [MORE INFO NEEDED]
 	# Lets you view installed updates?
 
-	#"com.sansumg.SMT"
+	#"com.samsung.SMT"
 	# Samsung TTS (Text-to-speech)
 	# Works with applications such as S Voice; translation apps, GPS that require Text-To-Speech (TTS) functionality and reads back text
 	# https://galaxystore.samsung.com/detail/com.samsung.SMT
