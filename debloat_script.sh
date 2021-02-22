@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # BASH 4.4 or newer is needed!
-if (( "${BASH_VERSINFO[0]}" < 5 )); then printf "\n%s\n\n" "Please upgrade to a bash version >= 4.4" && exit 1; fi
+if (( "${BASH_VERSINFO[0]}" < 4 || ("${BASH_VERSINFO[0]}" == 4 && "${BASH_VERSINFO[1]}" < 4) )); then 
+    printf "\n%s\n\n" "Please upgrade to a bash version >= 4.4" && exit 1; 
+fi
 
 if ! adb get-state &>/dev/null; then printf "\n%s\n\n" "Your phone is not detected by ADB." && exit 1; fi
 
