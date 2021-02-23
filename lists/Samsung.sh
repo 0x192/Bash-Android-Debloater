@@ -776,7 +776,8 @@ declare -a samsung=(
 	# Samsung Weather
 
 	"com.samsung.android.wellbeing"
-	# Digital Welbeing (https://play.google.com/store/apps/details?id=com.google.android.apps.wellbeing)
+	"com.samsung.android.forest"
+	# Digital Wellbeing (https://play.google.com/store/apps/details?id=com.google.android.apps.wellbeing)
 	# is a feature which shows apps dashboard through which one can see how much time any application opened and 
 	# also swiping to different screens allows you to see breakdowns by day, by hour and by app.
 
@@ -1596,6 +1597,7 @@ declare -a samsung=(
 	# You should use it, it's great
 
 	#"com.samsung.android.contacts"
+	#"com.samsung.android.app.contacts"
 	# Samsung contacts app
 	# Safe to debloat if you use another contacts app
 	# NOTE : If you do, you will no longer be able to access Contacts from the Samsung dialer app.
@@ -1719,6 +1721,14 @@ declare -a samsung=(
 	# Lets you call or text on Wi-Fi networks with your T-Mobile phone number
 	# https://www.t-mobile.com/support/coverage/wi-fi-calling-from-t-mobile
 	# VoLTE/IMS is needed for this to work (see com.sec.imsservice)
+
+	#"com.samsung.android.app.dofviewer"
+	#Viewer for Samsung Live Focus # [MORE INFO NEEDED]
+	# https://www.apkmirror.com/apk/samsung-electronics-co-ltd/live-focus/live-focus-5-0-44-release/samsung-live-focus-5-0-44-android-apk-download/
+
+	#"com.sec.android.app.fm"
+	#Samsung Radio
+	#Listen to FM radio stations
 
 	#"com.sec.android.app.launcher"
 	# Samsung One UI Home launcher (homescreen) (https://play.google.com/store/apps/details?id=com.sec.android.app.launcher)
@@ -1880,6 +1890,7 @@ declare -a samsung=(
 # Samsung overlay of AOSP Settings. It has 39 permissions. Handles interactions with features controled by the settings.
 
 #"com.samsung.android.timezone.data_P" # [MORE INFO NEEDED]
+#"com.samsung.android.timezone.data_Q" # [MORE INFO NEEDED]
 # Stores timezone data?
 
 #"com.samsung.android.timezone.updater"
