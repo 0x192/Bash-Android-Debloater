@@ -1178,7 +1178,9 @@ declare -a samsung=(
 	# Needed to use Smart Switch. See above.
 
 	"com.sec.android.easyonehand"
-	# Samsung Easy One Hand mode (replaced by One Hand Operation + : com.samsung.android.sidegesturepad)
+	# Samsung Easy One Hand mode
+	# Allows you to temporarily scale down the display size of your screen for easier control of your phone with just one hand.
+	# https://www.samsung.com/au/support/mobile-devices/using-one-handed-mode/
 
 	"com.sec.android.fido.uaf.asm"
 	# Fido is a set of open technical specifications for mechanisms of authenticating users to online services that do not depend on passwords.
