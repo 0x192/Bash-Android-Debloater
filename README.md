@@ -74,15 +74,15 @@ NB : The non-root method is NOT a real uninstallation for system apps (see the [
 
 Debian Base:
 ```bash
-$ sudo apt install android-sdk-platform-tools qpdf
+$ sudo apt install android-sdk-platform-tools qpdf zip
 ```
 Arch-Linux Base:
 ```bash
-$ sudo pacman -S android-tools qpdf
+$ sudo pacman -S android-tools qpdf zip
 ```
 Red Hat Base:
 ```bash
-$ sudo yum install android-tools qpdf
+$ sudo yum install android-tools qpdf zip
 ```
 </details>
 </p>
@@ -98,18 +98,6 @@ You will also need to upgrade bash because Apple ships a very old bash version (
 
 ```bash
 $ brew install android-platform-tools qpdf bash
-```
-
-You have to make the new bash version your default: 
-
-```bash
-$ sudo echo "/usr/local/bin/bash" >> /etc/shells
-$ chsh -s /usr/local/bin/bash
-```
-Check if it works: 
-
-```bash
-$ echo $BASH_VERSION
 ```
 </details>
 </p>
@@ -141,7 +129,7 @@ For now, there is no USB support in the WSL. This means you need to install both
 - Install *Android platform tools* and *qpdf* from the Debian/Ubuntu shell
 ```bash
 $ sudo apt update && sudo apt upgrade
-$ sudo apt install android-sdk-platform-tools qpdf
+$ sudo apt install android-sdk-platform-tools qpdf zip
 ```
 - Check the version of ADB on Linux & Windows
 ```bash
@@ -172,9 +160,9 @@ Note: You can access your Windows files under `/mnt/c/`
 </p>
 
 
-- Download [the lastest release of Android Universal Debloater](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases) 
+- Download [the lastest release of Android Universal Debloater](https://gitlab.com/W1nst0n/universal-android-debloater/-/releases).
 - Browse through the debloat lists to be sure the default selection suits you.
-- Run `debloat_script.sh` from a Unix terminal 
+- Run `debloat_script.sh` from a Unix terminal.
 ```bash
 $ bash debloat_script.sh
 ```
