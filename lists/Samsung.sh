@@ -135,10 +135,9 @@ declare -a samsung=(
 	# Samsung's adaptive super AMOLED screen optimizes the color range, saturation, and sharpness of the picture depending on what you're watching or doing. 
 	# This package lets you to manually customize the color settings to match your preferences.
 
-	"com.samsung.android.app.dressroom" # [MORE INFO NEEDED]
+	"com.samsung.android.app.dressroom"
 	# Samsung Wallpapers
-	# Wallaper manager from the launcher. You can probably remove it and still set a wallpaper from the Gallery.
-	# Can someone check?
+	# Wallaper manager from the launcher. You can remove it and still set a wallpaper from the Gallery.
 	# Has INTERNET permission and... ACCESS_MEDIA_LOCATION
 
 	"com.samsung.android.app.episodes"
@@ -290,6 +289,13 @@ declare -a samsung=(
 	# Used by Samsung Pass
 	# Biometric authentication service that can be used to sign in to websites and apps in your mobile.
 	# https://www.samsung.com/global/galaxy/apps/samsung-pass/
+
+	"com.samsung.android.aware.service"
+	# Samsung Quick Share
+	# Use Wifi direct to share files between 2 Samsung Galaxy phones (it's only for Samsung Galaxy users)
+	# Quick Share also lets you temporarily upload files to Samsung Cloud
+	# There are better alternatives (compatible with all Android devices and free and open-source):
+	# For instance: https://f-droid.org/packages/com.genonbeta.TrebleShot/
 
 	"com.samsung.android.bbc.bbcagent" # [MORE INFO NEEDED]
 	# BBCAgent (B. B. Container Agent?)
@@ -774,6 +780,9 @@ declare -a samsung=(
 
 	"com.samsung.android.weather"
 	# Samsung Weather
+	# Lets you see updates on the weather at all times, specific to your current location. 
+	# You can also check the weather in other areas even
+	# Dependency: "com.sec.android.daemonapp"
 
 	"com.samsung.android.wellbeing"
 	"com.samsung.android.forest"
@@ -859,11 +868,22 @@ declare -a samsung=(
 	# Knox Analytics Uploader
 	# Sends analytcs to Samsung
 
+	"com.samsung.knox.keychain"
+	# KNOX TIMA Keychain
+	# Used to store secrets in a TrustZone (hardware-based secure world)
+	# It's a great thing but third-party developers have no or very limited direct access to it. So you don't really need this
+	# package if you use the default selection of this script and/or don't use any Samsung app relying on KNOX.
+	# Very interesting write-up: https://medium.com/@nimronagy/arm-trustzone-on-android-975bfe7497d2
+	# FYI: Don't worry, your device password/fingerprint hash is securly stored in Android TEE
+
 	"com.samsung.knox.knoxtrustagent"
 	# Knox Quick Access allows users to access the Knox Workspace container using wearables such as the Galaxy Gear S2.
 
 	"com.samsung.knox.kss" # [MORE INFO NEEDED]
-	# Knox Keyguard. Not much more information 
+	# Knox Keyguard. Not much more information
+
+	"com.samsung.android.knox.pushmanager" # [MORE INFO NEEDED]
+	# KnoxPushManager
 
 	"com.samsung.knox.securefolder"
 	# Knox Secure Folder (https://play.google.com/store/apps/details?id=com.samsung.knox.securefolder)
@@ -1589,6 +1609,9 @@ declare -a samsung=(
 	# Handle Face recognition unlock 
 	# https://kp-cdn.samsungknox.com/b60a7f0f59df8f466e8054f783fbbfe2.pdf
 
+	#"com.samsung.android.biometrics"
+	# Provide biometric support
+
 	#"com.samsung.android.biometrics.app.setting"
 	# Biometric settings
 
@@ -1723,8 +1746,10 @@ declare -a samsung=(
 	# VoLTE/IMS is needed for this to work (see com.sec.imsservice)
 
 	#"com.samsung.android.app.dofviewer"
-	#Viewer for Samsung Live Focus # [MORE INFO NEEDED]
-	# https://www.apkmirror.com/apk/samsung-electronics-co-ltd/live-focus/live-focus-5-0-44-release/samsung-live-focus-5-0-44-android-apk-download/
+	# Live focus 
+	# Allows you to adjust the level of background blur in the camera app.
+	# From the Samsung Gallery, you can also select from a range of background blur shapes to add characters and shapes to a photo.
+	# https://www.samsung.com/global/galaxy/what-is/live-focus/
 
 	#"com.sec.android.app.fm"
 	#Samsung Radio
@@ -1781,6 +1806,17 @@ declare -a samsung=(
 
 	#"com.sec.android.gallery3d.panorama360view"
 	# Let you see panoramic photos in the samsung Gallery.
+
+	#"com.sec.android.inputmethod"
+	#"com.samsung.android.honeyboard" # New default keyboard on newer Samsung phones
+	# Samsung keyboard
+	# WARNING: do NOT remove the samsung keyboard if you don't have another keyboard with direct boot mode support or 
+	# you'll be stuck at boot (no keyboard to unlock the phone) 
+	# https://developer.android.com/training/articles/direct-boot
+	# FYI: Simple Keyboard and OpenBoard are 2 FOSS keyboard with direct boot support
+	# https://f-droid.org/packages/org.dslul.openboard.inputmethod.latin/
+	# https://f-droid.org/packages/rkr.simplekeyboard.inputmethod/
+	# WARNING: Do NOT remove this package with root if it wasn't first uninstalled with the non-root method.
 
 	#"com.sec.android.mimage.photoretouching"
 	# Samsung Photo Editor
@@ -1937,11 +1973,6 @@ declare -a samsung=(
 # SPCM (Striped Phase Change Memory ?) client.
 # It kills rarely used apps running in background.
 # Surely linked to Smart Manager. I think it can have a very bad impact on battery performance if deleted. I'm testing.
-
-#"com.sec.android.inputmethod"
-# Samsung keyboard
-# Note : used for unlocking the phone after a reboot. Third-parties keyboards cannot be used here.
-# DO NOT REMOVE THIS. NEVER ! 
 
 #"com.sec.android.app.simsettingmgr"
 # SIM card manager.

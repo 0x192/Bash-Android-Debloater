@@ -468,6 +468,12 @@ declare -a google=(
 	# Carrier Services (for Google phones) (https://play.google.com/store/apps/details?id=com.google.android.ims)
 	# IMS is an open industry standard for voice and multimedia communications over packet-based IP networks (Volte/VoIP/Wifi calling).
 
+	"com.google.audio.hearing.visualization.accessibility.scribe"
+	# Live Transcribe & Sound Notifications (https://play.google.com/store/apps/details?id=com.google.audio.hearing.visualization.accessibility.scribe)
+	# Provides push notifications for critical sounds around you. This feature can be helpful for people with hearing loss.
+	# https://blog.google/products/android/new-sound-notifications-on-android/
+	# Works offline
+
 	#"com.android.vending" 
 	# Google Play Store app.
 	

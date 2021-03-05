@@ -402,6 +402,10 @@ declare -a us_carriers=(
    # Spam call blocking app provided by Hiya 
    # NOTE : You should never trust spam blocking apps (https://itmunch.com/robocall-caught-sending-customers-confidential-data-without-consent/)
 
+   "com.att.csoiam.mobilekey"
+   # AT&T Sign in Helper (https://play.google.com/store/apps/details?id=com.att.csoiam.mobilekey)
+   # Allows AT&T applications to securely authenticate on Android devices
+
    "com.att.dh"
    # Device Help (https://play.google.com/store/apps/details?id=com.att.dh)
    # Troubleshooting app.
@@ -432,6 +436,12 @@ declare -a us_carriers=(
    "com.att.mobile.android.vvm"
    # AT&T Visual Voicemail (https://play.google.com/store/apps/details?id=com.att.mobile.android.vvm)
    # Lets you manage your voicemail directly from the app without the need to dial into your mailbox.
+
+   "com.att.personalcloud"
+   # AT&T Personal Cloud (https://play.google.com/store/apps/details?id=com.att.personalcloud)
+   # Note: it's a paid extra feature and data are obviously not E2EE (i.e AT&T can access them)
+   # Don't keep this app. It's a privacy nightmare and was poorly coded:
+   # https://beta.pithus.org/report/bc54b5e2446ace90d9f992278d0ec320befe4983a76cb4fdcf47e565366e67b6
 
    "com.att.tv"
    # AT&T TV (https://play.google.com/store/apps/details?id=com.att.tv)
@@ -480,6 +490,10 @@ declare -a us_carriers=(
    "com.samsung.attvvm"
    # Visual Voicemail
    # Simple GUI for voicemail
+
+   "com.sec.android.app.ewidgetatt"
+   # Entertainment Widget
+   # AT&T Widget for OneUI
 
    "com.synchronoss.dcs.att.r2g"
    # Setup & Transfer

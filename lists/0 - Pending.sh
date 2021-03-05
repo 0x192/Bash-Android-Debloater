@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 ### These packages will be added in the default selection when I will find time to document them.
-# Uncommented packages should be safe to remove but you still need to be **VERY** careful. 
+# Uncommented packages should be safe to remove AT FIRST SIGHT but you still need to be **VERY** careful. 
+# Commented packages are NOT safe! DO NOT TRY TO REMOVE THESE FROM YOUR PHONE
 
 # REMINDER : "Safe" only means "does not cause bootloop". 
-# These packages can definitely break useful features (but you can easily reinstall them with the script)
+# These packages will most likely break useful features (but you can easily reinstall them with the script)
 
 declare -a pending=(
 
@@ -13,6 +14,7 @@ declare -a pending=(
 	#"com.android.systemui.navigation.bar.overlay"
 
 	############## AOSP ###############
+	#"com.android.wifi.resources"
 
 	############# GOOGLE ##############
 
@@ -23,7 +25,9 @@ declare -a pending=(
 	"com.qualcomm.qti.performancemode"
 	"com.qualcomm.qti.poweroffalarm"
 	"com.qualcomm.qti.qdma"
+	#"com.qualcomm.qti.gpudrivers.kona.api30"
 	#"com.qualcomm.qti.seccamservice"
+	#"com.qualcomm.qti.services.secureui"
 	#"com.qualcomm.qti.services.systemhelper"
 	#"com.qualcomm.qti.simcontacts"
 	#"com.qualcomm.qti.uceShimService"
@@ -49,7 +53,29 @@ declare -a pending=(
 	"com.jrdcom.filemanager.a_overlay"
 	"com.vendor.frameworkresoverlay"
 
-	############# SAMSUNG #############	
+	############# SAMSUNG #############
+	#"com.samsung.android.cmfa.framework"
+	#"com.samsung.android.incall.contentprovider"
+	"com.samsung.android.service.tagservice"
+	"com.samsung.android.camerasdkservice"
+	"com.samsung.android.cameraxservice" # CBattery drain related on S10
+	"com.samsung.android.coldwalletservice"
+	"com.samsung.android.digitalkey"
+	"com.samsung.android.forest"
+	"com.samsung.android.kgclient" # Samsung Pay One Ui 3.0 ?
+	"com.samsung.android.providers.carrier"
+	#"com.samsung.android.wifi.resources"
+	"com.samsung.android.wifi.softap.resources"
+	"com.sec.android.Cdfs"
+	"com.sec.android.smartfpsadjuster"
+	"com.sec.location.nfwlocationprivacy"
+	"com.samsung.gamedriver.sm8250"
+	"com.samsung.gpuwatchapp" # Gpu viewer ?
+	"com.samsung.huxplatform"
+	"com.samsung.qosindicator"
+	"com.samsung.sait.sohservice"
+	"com.samsung.vklayer.sm8250"
+
 
 	############### SONY ##############	
 	"com.sonymobile.devicesecurity.service"

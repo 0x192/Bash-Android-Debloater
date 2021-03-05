@@ -118,7 +118,12 @@ declare -a aosp=(
 
 	"android.auto_generated_vendor_" # [MORE INFO NEEDED]
 	# Auto generated vendor's stuff for Android Auto (https://www.android.com/intl/en_en/auto/)
-	# Note: You don't need this if you don't use Android auto 
+	# Note: You don't need this if you don't use Android auto
+
+	"android.auto_generated_rro__"
+	# rro = Runtime Resources Overlay.
+	# Changes values of a package config, based in the overlay definitions (heavily used by OEM for custom themming android) 
+	# Link: https://source.android.com/devices/architecture/rros and https://code.tutsplus.com/tutorials/quick-tip-theme-android-with-the-runtime-resource-overlay-framework--cms-29708
 
 	"com.android.apps.tag"
 	# Support for NFC tags interactions (5 permissions : Contacts/Phone On by default).
