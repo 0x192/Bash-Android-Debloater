@@ -35,7 +35,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly VERSION="v2.9 (January 30th 2021)"
+    readonly VERSION="v2.9.1 (March 5th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -78,7 +78,7 @@ main() {
         clear
         printf "\n${BRED}%s "                       "WARNING : Your android version is too old (< 8.0)."
         printf "%s${NC}\n\n"                        "Uninstalled packages can't be restored."
-        printf "%s"                                 "The script will force-disable the apps instead of uninstalling them"
+        printf "%s"                                 "The script will force-disable the apps instead of uninstalling them "
         printf "%s\n\n"                             "so that you can restore them if needed"
         printf "%s "                                "If you still want to force-uninstall the apps, type '1' ('0' otherwise):"
 
@@ -129,8 +129,8 @@ main() {
             fi
 
             if (( ROOT )); then
-                printf "\n%s\n"                     "The script will physically remove the apks from your phone"
-                printf "%s${BBLUE}%s${NC}%s\n"      "Do you prefer to use a " "Magisk " "module for a systemless debloat instead? [y/n]"
+                printf "\n%s\n"                     "The script will physically $title the apks from your phone"
+                printf "%s${BBLUE}%s${NC}%s\n"      "Do you prefer to use a " "Magisk " "module for a systemless $title instead? [y/n]"
                 read -r
                 if [[ $REPLY =~ [Yy] ]]; then 
                     magisk_module
@@ -262,9 +262,14 @@ debloat_or_restore() {
 
     # Android 7.1 and older can't reinstall packages
     if (( OLDER_THAN_ANDROID_8 )); then
-        (( RESTORE && FORCE_UNINSTALL != 1 )) && action='pm enable $package' || action='am force-stop $package && pm disable-user $package && pm clear $package'
-    fi
 
+        if (( RESTORE )); then
+            action='pm enable $package'
+
+        elif (( !FORCE_UNINSTALL )); then
+            action='am force-stop $package && pm disable-user $package && pm clear $package'
+        fi
+    fi
     # parse user list on the phone
     readarray -t USERS < <(adb shell pm list users | grep -o "{[0-9]*" | grep -o "[0-9]*")
 
@@ -314,7 +319,7 @@ debloat_or_restore() {
 
 do_package_action_and_log() {
     printf "${BBLUE}%s${BRED}%s${NC}%s"         "[user $u_num] " "$package --> "
-    output="$(eval adb shell "$action")" && echo "$output"
+    output="$(eval adb shell "\"$action\"")" && echo "$output"
 
     if [[ ! "$output" =~ Failure|Error ]]; then
         if [[ $RESTORE -eq 0 ]]; then 
@@ -663,6 +668,7 @@ get_brand() {
 uad_recovery_mode() {
     ROOT=1
     while true; do
+        clear -x
         printf "\n${BBLUE}%s\n"                 "==========  MAIN MENU (RECOVERY MODE)  =========="
         printf "%s\n"                           "#                                               #"
         printf "%-12s${NC}%s${BBLUE}%12s\n"     "#"          "1  -  Restore APKs (Root)"        "#"
@@ -686,7 +692,7 @@ uad_recovery_mode() {
         printf "%s\n"                           "#                                               #"
         printf "%-12s${NC}%s${BBLUE}%17s\n"     "#"          "1  -  $title an APK"              "#" | awk '{print tolower($0)}'
         printf "%-12s${NC}%s${BBLUE}%18s\n"     "#"          "2  -  External list"              "#"
-        ((RESTORE)) && printf                   "#${NC}%9s    3  -  deleted_apks.txt ${BBLUE}%11s#\n"
+        ((RESTORE)) && printf                   "#${NC}%7s    3  -  deleted_apks.txt ${BBLUE}%13s#\n"
         printf "%s\n"                           "#                                               #"
         printf "%s\n${NC}"                      "================================================="
 
@@ -694,13 +700,14 @@ uad_recovery_mode() {
 
         if [[ $REPLY = 1 ]]; then
 
-            printf "\n${BRED}%s${NC}"           "Android path of the APK to $title: "
-            read -r path
+            while true; do
+                printf "\n${BRED}%s${NC}"           "Android path of the APK to $title: "   
+                read -r path
 
-            if [[ ! $path =~ ^/.*\.apk$ ]]; then
+                [[ $path =~ ^/.*\.apk$ ]] && break
+
                 printf "\n${BRED}%s${NC}%s${BRED}%s${NC}%s\n" "$path" " doesn't look like a valid APK path"
-                sleep 3 && return 0
-            fi
+            done
             CUSTOM_LIST=("$path")
         fi 
         
@@ -714,8 +721,8 @@ uad_recovery_mode() {
 
         [[ $NEWER_THAN_ANDROID_9 -eq 1 ]] && magisk_module && continue
 
-        printf "\n%s\n"                     "The script will physically remove the apks from your phone."
-        printf "%s${BBLUE}%s${NC}%s\n"      "Do you prefer to use a " "Magisk " "module for a systemless debloat instead? [y/n]"
+        printf "\n%s\n"                     "The script will physically $title the apks from your phone."
+        printf "%s${BBLUE}%s${NC}%s\n"      "Do you prefer to use a " "Magisk " "module for a systemless $title instead? [y/n]"
         read -r
 
         if [[ $REPLY =~ [Yy] ]]; then 
@@ -723,6 +730,8 @@ uad_recovery_mode() {
             continue
         fi
         
+        adb shell mount system || exit 1
+
         for p in "${CUSTOM_LIST[@]}"; do # $p = path/to/app.apk
             local apk=$(echo "$p" | sed -r 's/.*\///g') # app.apk
             local dir=$(dirname "$p") # path/to
