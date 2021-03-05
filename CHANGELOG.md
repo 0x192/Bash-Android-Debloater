@@ -1,3 +1,26 @@
+# New Version (v2.9.1)
+
+## New packages added
+- **AOSP** : 1
+- **Asus** : 2
+- **Google** : 1
+- **Carriers** : 3 (AT&T)
+- **OnePlus**: 1
+- **Pending**: 24
+- **Samsung** : 9
+- **Xiaomi** : 1
+
+## Bugfixes
+- Bash version check not working as expected (#60)
+- Debloating/restoring not working if the script was run from the recovery
+- Package name typo (!3) (thanks @maximilian.overmeyer!)
+- "pm: command not found" when disabling packages (Android 7 [Nougat] and below) (#78)
+
+## Miscellaneous
+- Documentation improvement/update for many apps.
+- UI/UX improvement for the recovery version of the script
+
+
 # New Version (v2.9)
 
 **Note:** The `debloat_script.sh` is now in maintenance mode and won't receive any more features. The focus is on the developement of a GUI.
