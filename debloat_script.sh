@@ -35,7 +35,7 @@ done
 ###############################################  MAIN SCRIPT  ##########################################################
 
 main() {
-    readonly VERSION="v2.9.1 (March 5th 2021)"
+    readonly VERSION="v2.9.2 (March 30th 2021)"
     readonly PAD=$(((48-${#VERSION})/2))
 
     readonly BRAND="$(get_brand)"
@@ -658,9 +658,9 @@ get_brand() {
     local brand
     brand=$(adb shell getprop ro.product.brand | tr -d '\r' | awk '{print tolower($0)}')
 
-    # Support for alternative name
+    # Support for sub-brands
     case "$brand" in
-    "redmi") echo "xiaomi" ;;
+    "redmi"|"poco") echo "xiaomi" ;;
     *) echo "$brand"
     esac
 }
