@@ -315,7 +315,10 @@ declare -a samsung=(
 	# Bixby (Samsung intelligence assistant)
 	# Enable or Disable access to S-Voice or Bixby voice controls. 
 	# This does not prevent access to other voice-controlled apps, only the Samsung-provided ones.
+
 	"com.samsung.android.bixby.agent" # Bixby voice
+	# Removing this will disable the bixby hardware key without breaking Bixby itself.
+
 	"com.samsung.android.bixby.agent.dummy" # Bixby Voice Stub
 	"com.samsung.android.bixby.es.globalaction"
 	"com.samsung.android.bixby.plmsync"
@@ -417,6 +420,10 @@ declare -a samsung=(
 	# Samsung Game Tuner (https://play.google.com/store/apps/details?id=com.samsung.android.gametuner.thin)
 	# Game Tuner is advanced setting app. It enables you to change the resolution and frames per second settings
 	# in mobile games that require tuning for different Android devices, and thereby control heat generation and battery drain.
+
+	"com.samsung.android.homemode"
+	# Daily Board (https://play.google.com/store/apps/details?id=com.samsung.android.homemode)
+	# Show a slideshow of your favourite pictures while your device is charging.
 
 	"com.samsung.android.hmt.vrshell"
 	# Gear VR Shell 
@@ -1069,9 +1076,6 @@ declare -a samsung=(
 	"com.sec.android.app.magnifier"
 	# Lets you use your device as a magnifying glass making it easier to read any small font or expand the details of any object, for example.
 
-	#"com.sec.android.app.myfiles"
-	# Samsung file manager app (https://play.google.com/store/apps/details?id=com.sec.android.app.myfiles) 
-
 	"com.sec.android.app.mt"
 	# The Mobile tracker is a security feautre in your device that if someone inserts a new SIM card in your device the device will automatically 
 	# sends the SIM contact number to specified recipients to help you locate and recover you device.
@@ -1677,7 +1681,7 @@ declare -a samsung=(
 	# Seems to check if a trusted application needs an update and download it. 
 	# This package probably do more than that. There is a LOT of lines of code (obfuscated obviously)
 	# It was used to push an update to fix a security issue with the fingerprint sensor in 2019.
-	# https://old.reddit.com/r/galaxys10/comments/bcy93f/adb_how_to_get_the_fingerprint_update_pushed_to/
+	# https://libredd.it/r/galaxys10/comments/bcy93f/adb_how_to_get_the_fingerprint_update_pushed_to/
 	# Seems to be only used for biometrics stuff
 	# There is Samsung analytics inside. You may want to remove it if you don't use biometrics authentification.
 
@@ -1762,6 +1766,9 @@ declare -a samsung=(
 
 	#"com.sec.android.app.clockpackage"
 	# Samsung clock
+
+	#"com.sec.android.app.myfiles"
+	# Samsung file manager app (https://play.google.com/store/apps/details?id=com.sec.android.app.myfiles) 
 
 	#"com.sec.android.app.personalization" # [MORE INFO NEEDED]
 	# Without a doubt this package is involved in personalization of something but tt's hard to find what.
