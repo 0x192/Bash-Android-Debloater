@@ -542,3 +542,10 @@ declare -a google=(
 # The PermissionController module enables updatable privacy policies and UI elements.
 # For example, the policies and UI around granting and managing permissions.
 # https://source.android.com/devices/architecture/modular-system/permissioncontroller
+
+#"com.google.mainline.telemetry"
+# It's a set of metrics-related modules. Google Play uses the version of the Telemetry module to determine
+# if updates are available for metrics-related modules and which security patch version to display to the end user. 
+# This module doesn’t contain active code and has no functionality on its own. 
+# Removing modules-related packages may not be safe since Android 11
+# https://gitlab.com/W1nst0n/universal-android-debloater/-/issues/27#note_410012436
