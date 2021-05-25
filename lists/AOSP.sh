@@ -106,7 +106,8 @@ declare -a aosp=(
 	"com.android.wallpaper.livepicker"
 	"com.android.wallpaper.livepicker.overlay"
 	# Enables you to pick a live wallpaper.
-
+	# Will break some weather applications (especially ones with widgets) and wallpaper applications like Muzei.
+	
 	"com.android.wallpapercropper" 
 	# Wallpaper cropper.
 
