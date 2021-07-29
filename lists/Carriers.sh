@@ -128,9 +128,10 @@ declare -a us_carriers=(
    "com.verizon.messaging.vzmsgs"
    # Verizon Messages (https://play.google.com/store/apps/details?id=com.verizon.messaging.vzmsgs)
 
-   "com.verizon.mips.services"
+   # "com.verizon.mips.services"
    # My Verizon Services 
    # Related to My Verizon app.
+   # Tested to be required for hotspot.
 
    "com.verizon.obdm" # [MORE INFO NEEDED]
    "com.verizon.obdm_permissions"
