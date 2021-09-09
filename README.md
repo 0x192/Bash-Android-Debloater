@@ -1,6 +1,10 @@
+# This project is no longer maintained!
+The whole project has been rewritten in Rust. The Universal Android Debloat is now a real software with a cross-platform GUI. It is still in a very early stage of developpement but basics features are there. Please do not open new merge requests and issues on this repo.<br>
+===> [The new Universal Android Debloat](https://gitlab.com/W1nst0n/universal-android-debloater-rs)
+
 # Universal Android Debloater
 
-**DISCLAIMER**: Use this script at your own risk. I am not responsible for anything that could happen to your phone. 
+**DISCLAIMER**: Use this script at your own risk. I am not responsible for anything that could happen to your phone.
 
 ## Summary
 I try to maintain a universal tool which removes bloatwares on any Android phones by using ADB.
