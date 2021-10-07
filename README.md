@@ -1,6 +1,6 @@
 # This project is no longer maintained!
-The whole project has been rewritten in Rust. The Universal Android Debloat is now a real software with a cross-platform GUI. It is still in a very early stage of developpement but basics features are there. Please do not open new merge requests and issues on this repo.<br>
-===> [The new Universal Android Debloat](https://gitlab.com/W1nst0n/universal-android-debloater-rs)
+The whole project has been rewritten in Rust. The Universal Android Debloat is now a real software with a cross-platform GUI. It is still in a early stage of developpement but most features are there. Please do not open new merge requests and issues on this repo.<br>
+===> [The new Universal Android Debloat](https://github.com/0x192/universal-android-debloater)
 
 # Universal Android Debloater
 
